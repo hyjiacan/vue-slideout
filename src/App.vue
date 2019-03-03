@@ -6,6 +6,7 @@
     </h2>
     <a href="https://github.com/hyjiacan/vue-slideout.git">Github</a>
     <a href="https://gitee.com/hyjiacan/vue-slideout.git">Gitee</a>
+    <a href="https://github.com/hyjiacan/vue-slideout/blob/master/src/components/Demo.vue" target="_blank">Demo Source</a>
     <demo />
   </div>
 </template>
