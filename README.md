@@ -9,7 +9,7 @@ A Slide-Out component for Vue.js 2.0
 ## Install
 
 ```
-npm i vue-slideout --save
+npm i @hyjiacan/vue-slideout --save
 ```
 
 ## Usage
@@ -37,6 +37,8 @@ export default {
 }
 </script>
 ```
+
+For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 ## Properties
 

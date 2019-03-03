@@ -1,5 +1,5 @@
 {
-  "name": "vue-slideout",
+  "name": "@hyjiacan/vue-slideout",
   "version": "1.0.0",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "index.js",

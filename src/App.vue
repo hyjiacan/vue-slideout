@@ -5,6 +5,7 @@
       <small>A Slide-Out component for Vue.js 2.0</small>
     </h2>
     <a href="https://github.com/hyjiacan/vue-slideout.git">Github</a>
+    <a href="https://gitee.com/hyjiacan/vue-slideout.git">Gitee</a>
     <demo />
   </div>
 </template>
