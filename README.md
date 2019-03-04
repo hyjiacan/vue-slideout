@@ -21,8 +21,11 @@ npm i @hyjiacan/vue-slideout --save
 content
 </slide-out>
 <script>
+import SlideOut from '@hyjiacan/vue-slideout'
+
 export default {
     name: 'Foobar',
+    components: {SlideOut},
     methods: {
         onClose (e) {
             // prevent close and wait
