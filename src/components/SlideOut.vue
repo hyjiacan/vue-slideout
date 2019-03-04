@@ -3,7 +3,7 @@
     <div class="slide-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="slide-layout" :style="layoutStyle">
       <div class="slide-header" v-if="$slots.header || title">
-        <slot name="header" :title="title">
+        <slot name="header" :title="title" slot-scope="{ title }">
           <div class="title-text left">
             {{title}}
           </div>

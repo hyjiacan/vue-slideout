@@ -16,9 +16,14 @@ npm i @hyjiacan/vue-slideout --save
 
 ```html
 <slide-out @close="onClose">
-<div v-slot.header="{title}">
-</div>
-content
+    <div v-slot.header="{title}">
+    </div>
+    For Vue2.6+
+</slide-out>
+<slide-out @close="onClose">
+    <div slot-scope="{title}">
+    </div>
+    For Vue2.x
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
@@ -63,7 +68,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 |name|scope|description|
 |---|---|---|
-|header|`{title}`|Header content, take all the header bar, `title` will take no affected(and close button will be removed) if specified this，use `v-slot.header="{title}"` to read property `title`|
+|header|`{title}`|Header content, take all the header bar, `title` will take no affected(and close button will be removed) if specified this，use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or `slot-scope="{ title }"`(Vue2.x) to get property `title`|
 |default||Content|
 |footer||Footer content|
 
