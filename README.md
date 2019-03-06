@@ -52,7 +52,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 |name|type|required|description|default|
 |---|---|---|---|---|
-|size|String \| Number|false|Slide size, both `pixel` and `%` available|400|
+|size|String \| Number|false|Slide size, both `px` and `%` available|400|
 |zIndex|Number|false|z-index|1997|
 |visible|Boolean|true|Is the slide visible，modifier `.sync` is available|false|
 |title|String|false|Slide `title` text, if this is empty and `slot=header` is empty too, the header would be hidden||
@@ -60,15 +60,15 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |customClass|String|false|Customized stylesheet class name||
 |showMask|Boolean|false|Is mask visible|true|
 |maskColor|String|false|Mask color|rgba(0, 0, 0, 0.5)|
-|dock|String|false|DOck position|right|
-|appendTo|String \| HTMLElement|false|Append slide into specified element|null|
+|dock|String|false|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
+|appendTo|String \| HTMLElement|false|Append slide into specified element.Both `string`(selector) and `HTMLElement`(DOM object) available|null|
 |disableAnimation|Boolean|false|Whether to disable animation|false|
 
 ## Slots
 
 |name|scope|description|
 |---|---|---|
-|header|`{title}`|Header content, take all the header bar, `title` will take no affected(and close button will be removed) if specified this，use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or `slot-scope="{ title }"`(Vue2.x) to get property `title`|
+|header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or `slot-scope="{ title }"`(Vue2.x) to get property `title`|
 |default||Content|
 |footer||Footer content|
 
@@ -78,7 +78,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |name|parameter|description|
 |---|---|---|
 |open||Invoke after slide opened|
-|close|e: `{close: Boolean, wait: Boolean}`|Invoke before slide close, in callback function, assign `e.wait=true` to prevent close，and assign `e.close=true` to close (async supported)|
+|close|e: `{close: Boolean, wait: Boolean}`|Invoke before slide close, in callback function, <br/>assign `e.wait=true` to prevent close，<br/>and assign `e.close=true` to close (async supported)|
 
 ## Development
 
