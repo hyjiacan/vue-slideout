@@ -99,10 +99,7 @@ export default {
      * 将元素放置到指定元素下
      */
     appendTo: {
-      type: [String, HTMLElement],
-      default: () => {
-        return document.body
-      }
+      type: [String, HTMLElement]
     },
     /**
      * 是否禁用滑出动画，默认为false
