@@ -3,7 +3,7 @@
     <div class="slide-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="slide-layout" :style="layoutStyle">
       <div class="slide-header" v-if="$slots.header || title">
-        <slot name="header" :title="title" slot-scope="{ title }">
+        <slot name="header" :title="title">
           <div class="title-text left">
             {{title}}
           </div>
@@ -100,7 +100,9 @@ export default {
      */
     appendTo: {
       type: [String, HTMLElement],
-      default: null
+      default: () => {
+        return document.body
+      }
     },
     /**
      * 是否禁用滑出动画，默认为false

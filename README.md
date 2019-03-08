@@ -3,7 +3,7 @@
 A Slide-Out component for Vue.js 2.0
 
 ### Dependencies
-- Vue.js 2.6+
+- Vue.js 2.x
 - Less
 
 ## Install
@@ -29,14 +29,9 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 
 ```html
 <slide-out @close="onClose">
-    <div v-slot.header="{title}">
-    </div>
-    For Vue2.6+
-</slide-out>
-<slide-out @close="onClose">
     <div slot-scope="{title}">
     </div>
-    For Vue2.x
+    content
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
@@ -81,7 +76,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 |name|scope|description|
 |---|---|---|
-|header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or<br/>`slot-scope="{ title }"`(Vue2.x) to get property `title`|
+|header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `slot-scope="{ title }"` to get property `title`|
 |default||Content|
 |footer||Footer content|
 

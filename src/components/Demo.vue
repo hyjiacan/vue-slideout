@@ -135,8 +135,7 @@ export default {
       demo10Visible: false,
       demo11Visible: false,
       demo12Visible: false,
-      demo13Visible: false,
-      demo14Visible: false
+      demo13Visible: false
     }
   },
   methods: {
