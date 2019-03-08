@@ -167,7 +167,8 @@ export default {
 .demo-block {
   margin-bottom: 40px;
 }
-li{
-  padding: 10px 0;
+button{
+    padding: 5px;
+    min-width: 80px;
 }
 </style>

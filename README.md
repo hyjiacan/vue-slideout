@@ -8,9 +8,22 @@ A Slide-Out component for Vue.js 2.0
 
 ## Install
 
+```bash
+npm i @hyjiacan/vue-slideout
 ```
-npm i @hyjiacan/vue-slideout --save
+
+or
+
+```bash
+yarn add @hyjiacan/vue-slideout
 ```
+
+For the latest code, you can:
+
+```bash
+git clone https://github.com/hyjiacan/vue-slideout.git
+```
+or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
 
 ## Usage
 
@@ -55,20 +68,20 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |size|String \| Number|false|Slide size, both `px` and `%` available|400|
 |zIndex|Number|false|z-index|1997|
 |visible|Boolean|true|Is the slide visible，modifier `.sync` is available|false|
-|title|String|false|Slide `title` text, if this is empty and `slot=header` is empty too, the header would be hidden||
+|title|String|false|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden||
 |closeOnMaskClick|Boolean|false|Whether to close slide while mask clicked|true|
 |customClass|String|false|Customized stylesheet class name||
 |showMask|Boolean|false|Is mask visible|true|
 |maskColor|String|false|Mask color|rgba(0, 0, 0, 0.5)|
 |dock|String|false|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
-|appendTo|String \| HTMLElement|false|Append slide into specified element.Both `string`(selector) and `HTMLElement`(DOM object) available|null|
+|appendTo|String \| HTMLElement|false|Append slide into specified element.Both `string`(selector) and<br/>`HTMLElement`(DOM object) available|null|
 |disableAnimation|Boolean|false|Whether to disable animation|false|
 
 ## Slots
 
 |name|scope|description|
 |---|---|---|
-|header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or `slot-scope="{ title }"`(Vue2.x) to get property `title`|
+|header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `v-slot.header="{title}"`(Vue2.6+, Vue3.x) or<br/>`slot-scope="{ title }"`(Vue2.x) to get property `title`|
 |default||Content|
 |footer||Footer content|
 
