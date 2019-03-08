@@ -33,9 +33,33 @@ export default {
 }
 </script>
 <style lang="less">
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  background-color: rgba(200, 200, 200, .2);
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(30, 30, 30, 0.1);
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(30, 30, 30, 0.2);
+  }
+}
+
 #app {
   width: 800px;
   margin: 0 auto;
+  height: 100%;
+  overflow: auto;
 }
 h1 small {
   font-size: 16px;
