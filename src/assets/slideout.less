@@ -1,0 +1,238 @@
+@duration: 318ms;
+
+.slide {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: normal;
+
+  &-show-header {
+    .slide-content {
+      top: 48px;
+    }
+  }
+
+  &-show-footer {
+    .slide-content {
+      bottom: 48px;
+    }
+  }
+}
+
+.enable-animation {
+  opacity: 0;
+  transition: opacity @duration, left 1ms @duration, top 1ms @duration, bottom 1ms @duration, right 1ms @duration;
+
+  &.visible {
+    opacity: 1;
+    transition: opacity @duration, left 1ms, top 1ms, bottom 1ms, right 1ms;
+  }
+
+  .slide-layout {
+    transition-property: left, right, top, bottom;
+    transition-duration: @duration;
+  }
+}
+
+.slide-layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+}
+
+.slide-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.slide-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: auto;
+  z-index: 30;
+}
+
+.slide-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #EEE;
+  z-index: 50;
+}
+
+.slide-title-text {
+  padding-right: 40px;
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slide-btn-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: border-color 318ms;
+  outline: none;
+  background: none;
+
+  svg {
+    fill: #5d616f;
+    vertical-align: -2px;
+  }
+
+  &:hover {
+    border-color: rgba(146, 146, 154, 0.63);
+
+    svg {
+      fill: #1C1F2E;
+    }
+  }
+
+  &:active {
+    background-color: rgba(146, 146, 154, 0.63);
+
+    svg {
+      fill: #222326;
+    }
+  }
+}
+
+.slide-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #DDD;
+  z-index: 50;
+}
+
+.title-text {
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@drag-handle-padding: 2px;
+@drag-handle-size: 1px;
+@drag-handle-bar-size: 3px;
+@drag-handle-color: rgba(86, 148, 235, 0.88);
+.slide-drag-handle {
+  position: absolute;
+  z-index: 60;
+  user-select: none;
+
+  &:hover {
+    background-color: @drag-handle-color;
+  }
+
+  &:active {
+    background-color: darken(@drag-handle-color, 10%);
+  }
+}
+
+.dock-top {
+  .slide-drag-handle {
+    bottom: @drag-handle-padding;
+    left: 0;
+    right: 0;
+    height: @drag-handle-size;
+    cursor: ns-resize;
+
+    &:hover, &:active {
+      bottom: 0;
+      height: @drag-handle-bar-size;
+    }
+  }
+}
+
+.dock-right {
+  .slide-btn-close {
+    transform: rotate(90deg);
+  }
+
+  .slide-drag-handle {
+    top: 0;
+    bottom: 0;
+    left: @drag-handle-padding;
+    width: @drag-handle-size;
+    cursor: ew-resize;
+
+    &:hover, &:active {
+      left: 0;
+      width: @drag-handle-bar-size;
+    }
+  }
+}
+
+.dock-bottom {
+  .slide-btn-close {
+    transform: rotate(180deg);
+  }
+
+  .slide-drag-handle {
+    top: @drag-handle-padding;
+    left: 0;
+    right: 0;
+    height: @drag-handle-size;
+    cursor: ns-resize;
+
+    &:hover, &:active {
+      top: 0;
+      height: @drag-handle-bar-size;
+    }
+  }
+}
+
+.dock-left {
+  .slide-btn-close {
+    transform: rotate(-90deg);
+  }
+
+  .slide-drag-handle {
+    top: 0;
+    right: @drag-handle-padding;
+    bottom: 0;
+    width: @drag-handle-size;
+    cursor: ew-resize;
+
+    &:hover, &:active {
+      right: 0;
+      width: @drag-handle-bar-size;
+    }
+  }
+}

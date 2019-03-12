@@ -82,7 +82,7 @@ li{
   padding: 10px 0;
 }
 code {
-  padding: 8px 15px;
+  padding: 3px 5px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 14px;
   background-color: rgb(228, 227, 224);

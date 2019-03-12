@@ -54,23 +54,28 @@ export default {
 </script>
 ```
 
+You can register it into global with `Vue.use(SlideOut.name, SlideOut)` 
+
 For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 ## Properties
 
 |name|type|required|description|default|
 |---|---|---|---|---|
-|size|String \| Number|false|Slide size, both `px` and `%` available|400|
-|zIndex|Number|false|z-index|1997|
-|visible|Boolean|true|Is the slide visible，modifier `.sync` is available|false|
-|title|String|false|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden||
-|closeOnMaskClick|Boolean|false|Whether to close slide while mask clicked|true|
-|customClass|String|false|Customized stylesheet class name||
-|showMask|Boolean|false|Is mask visible|true|
-|maskColor|String|false|Mask color|rgba(0, 0, 0, 0.5)|
-|dock|String|false|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
-|appendTo|String \| HTMLElement|false|Append slide into specified element.Both `string`(selector) and<br/>`HTMLElement`(DOM object) available|null|
-|disableAnimation|Boolean|false|Whether to disable animation|false|
+|size|String/Number|NO|Slide size, both `px` and `%` available|400px|
+|zIndex|Number|NO|z-index|1997|
+|visible|Boolean|YES|Is the slide visible，modifier `.sync` is available|false|
+|title|String|NO|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden||
+|closeOnMaskClick|Boolean|NO|Whether to close slide while mask clicked|true|
+|customClass|String|NO|Customized stylesheet class name||
+|showMask|Boolean|NO|Is mask visible|true|
+|maskColor|String|NO|Mask color|rgba(0, 0, 0, 0.5)|
+|dock|String|NO|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
+|appendTo|String/HTMLElement|NO|Append slide into specified element.Both `string`(selector) and<br/>`HTMLElement`(DOM object) available|null|
+|disableAnimation|Boolean|NO|Whether to disable animation|false|
+|resize|Boolean|NO|Whether to enable drag-resize|false|
+|minSize|Number|NO|The min limit of drag-resize, value in `px`|60|
+|maxSize|Number|NO|The min limit of drag-resize, value `0` makes no limit, value in `px`|0|
 
 ## Slots
 
