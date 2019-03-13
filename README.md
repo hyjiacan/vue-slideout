@@ -54,7 +54,7 @@ export default {
 </script>
 ```
 
-You can register it into global with `Vue.use(SlideOut.name, SlideOut)` 
+You can register it into global with `Vue.component(SlideOut.name, SlideOut)` or `Vue.use(SlideOut)` 
 
 For more usage, see https://hyjiacan.github.io/vue-slideout/
 
