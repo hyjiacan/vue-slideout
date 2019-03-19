@@ -56,11 +56,13 @@ html, body {
   }
 }
 
-#app {
-  width: 800px;
-  margin: 0 auto;
-  height: 100%;
-  overflow: auto;
+@media screen and (min-width: 800px) {
+  #app {
+    width: 800px;
+    margin: 0 auto;
+    height: 100%;
+    overflow: auto;
+  }
 }
 
 h1 small {
@@ -101,5 +103,15 @@ code {
 .standout {
   font-weight: bold;
   color: #aa0000;
+}
+
+@media screen and (max-width: 800px) {
+  h1 small {
+    display: block;
+  }
+
+  #app {
+    padding: 0 5px 15px 5px;
+  }
 }
 </style>
