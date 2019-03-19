@@ -13,6 +13,12 @@
   ],
   "author": "hyjiacan",
   "license": "MIT",
+  "files": [
+    "docs",
+    "src",
+    "types"
+  ],
+  "typings": "types/index.d.ts",
   "bugs": {
     "url": "https://github.com/hyjiacan/vue-slideout/issues"
   },
