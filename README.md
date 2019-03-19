@@ -62,8 +62,8 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 |name|type|required|description|default|
 |---|---|---|---|---|
-|size|String/Number|NO|Slide size, both `px` and `%` available|400px|
-|zIndex|Number|NO|z-index|1997|
+|size|String/Number|NO|The size of slide, both `px` and `%` available|400px|
+|zIndex|Number|NO|The z-index of slide|1997|
 |visible|Boolean|YES|Is the slide visible，modifier `.sync` is available|false|
 |title|String|NO|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden||
 |closeOnMaskClick|Boolean|NO|Whether to close slide while mask clicked|true|
@@ -73,9 +73,10 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |dock|String|NO|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
 |appendTo|String/HTMLElement|NO|Append slide into specified element.Both `string`(selector) and<br/>`HTMLElement`(DOM object) available|null|
 |disableAnimation|Boolean|NO|Whether to disable animation|false|
-|resize|Boolean|NO|Whether to enable drag-resize|false|
+|allowResize|Boolean|NO|Whether to allow drag-resize|false|
 |minSize|Number|NO|The min limit of drag-resize, value in `px`|60|
 |maxSize|Number|NO|The min limit of drag-resize, value `0` makes no limit, value in `px`|0|
+|ignoreEsc|Boolean|NO|Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`|false|
 
 ## Slots
 
@@ -99,5 +100,10 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 npm i
 npm run dev
 ```
+or
+```bash
+yarn
+yarn run dev
+```
 
-> Note: run `npm run build` to build docs。
+> Note: run `npm run build` or `yarn run build` to build docs。

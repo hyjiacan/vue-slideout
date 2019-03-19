@@ -1,5 +1,6 @@
 <template>
   <div id="demo">
+    <p class="standout">You can press `ESC` key to close slide.</p>
     <slide-out :visible.sync="demo1Visible" :dock="position" :title="text.header">
       <code>:dock="{{position}}"</code>
       <div slot="footer">{{text.footer}}</div>
@@ -45,9 +46,9 @@
       <div><code>:show-mask="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" resize>
+    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" allow-resize>
       <div>
-        <div><code>append-to="#customize"</code></div>
+        <div><code>append-to="#customize" allow-resize</code></div>
         <p>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
         <div>Resize is available for this instance.</div>
         <p><span style="color: red;">&lt;-</span> Move the cursor onto this border to have a try</p>
@@ -60,10 +61,10 @@
       </p>
       <div>{{text.wait}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo14Visible" :dock="position" :title="text.header" resize @resize="onResize">
+    <slide-out :visible.sync="demo14Visible" :dock="position" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>resize @resize="onResize"</code></p>
-        <p><code>resize</code> makes it resizable</p>
+        <p><code>allow-resize @resize="onResize"</code></p>
+        <p><code>allow-resize</code> makes it resizable</p>
         <p><code>@resize="onResize"</code> makes function <code>onResize</code> to accept resize event</p>
       </div>
       <div>Resize value: {{resizeValue}}px</div>
@@ -71,6 +72,21 @@
     </slide-out>
     <slide-out :visible.sync="demo15Visible" title="And God said, let there be light, and there was light">
       <div>Long header text turns out <b>ellipse</b> style.</div>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo16Visible" :title="text.header" ignore-esc>
+      <div>
+        <p><code>ignore-esc</code></p>
+        <p>
+          This makes slide ignore <code>Esc</code> key press.
+        </p>
+        <p>
+          So you can not close slide by press <code>Esc</code> key.
+        </p>
+        <p>
+          No matter how many times you press <code>Esc</code> key, slide will always keep opened.
+        </p>
+      </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <div class="demo-block">
@@ -111,6 +127,9 @@
               style="width: 14px;height: 14px;background: rgba(89, 150, 105, 0.5);display: inline-block;vertical-align: -2px;"></span>
           </button>
           <button @click="demo11Visible = true">No Mask</button>
+        </li>
+        <li>
+          <button @click="demo16Visible = true">Ignore ESC key press</button>
         </li>
       </ul>
     </div>
@@ -172,7 +191,8 @@ export default {
       demo12Visible: false,
       demo13Visible: false,
       demo14Visible: false,
-      demo15Visible: false
+      demo15Visible: false,
+      demo16Visible: false
     }
   },
   methods: {

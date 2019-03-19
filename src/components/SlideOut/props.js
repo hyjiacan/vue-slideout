@@ -34,6 +34,13 @@ export default {
     default: true
   },
   /**
+   * 是否忽略ESC键，不忽略时按下ESC会关闭
+   */
+  ignoreEsc: {
+    type: Boolean,
+    default: false
+  },
+  /**
    * 自定义样式类
    */
   customClass: {
@@ -77,7 +84,7 @@ export default {
   /**
    * 是否允许拖动弹出大小
    */
-  resize: {
+  allowResize: {
     type: Boolean,
     default: false
   },

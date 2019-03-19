@@ -141,6 +141,7 @@ const component = {
         this.resizeValue = 0
       }
       this.isVisible = visible
+      this.$el.focus()
       this.$emit('update:visible', visible)
     },
     appendComponentTo() {
@@ -237,18 +238,30 @@ const component = {
     },
     mouseUpHandler() {
       this.mousedown = false
+    },
+    onKeydown(e) {
+      if (!this.isVisible) {
+        return
+      }
+      this.toggle(false)
     }
   },
   mounted() {
     this.appendComponentTo()
-    if (this.resize) {
+    if (this.allowResize) {
       // 绑定鼠标事件
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
+    if (!this.ignoreEsc) {
+      this.$el.addEventListener('keydown', this.onKeydown)
+    }
   },
   beforeDestroy() {
-    if (this.resize) {
+    if (!this.ignoreEsc) {
+      this.$el.removeEventListener('keydown', this.onKeydown)
+    }
+    if (this.allowResize) {
       // 移除事件
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)

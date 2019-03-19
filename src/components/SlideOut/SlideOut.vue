@@ -1,8 +1,8 @@
 <template>
-  <div class="slide" :style="containerStyle" :class="containerClasses">
+  <div class="slide" :style="containerStyle" :class="containerClasses" tabindex="0">
     <div class="slide-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="slide-layout" :style="layoutStyle" ref="layout">
-      <div class="slide-drag-handle" v-if="resize" @mousedown="mouseDownHandler"></div>
+      <div class="slide-drag-handle" v-if="allowResize" @mousedown="mouseDownHandler"></div>
       <div class="slide-header" v-if="$slots.header || title">
         <slot name="header" :title="title">
           <div class="slide-title-text">
