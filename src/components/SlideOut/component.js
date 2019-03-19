@@ -1,4 +1,8 @@
 import props from './props'
+import VScrollLock from 'v-scroll-lock'
+import Vue from 'vue'
+
+Vue.use(VScrollLock)
 
 const component = {
   name: 'SlideOut',
@@ -244,6 +248,10 @@ const component = {
         return
       }
       this.toggle(false)
+    },
+    onSlideScroll(e) {
+      e.preventDefault()
+      return false
     }
   },
   mounted() {

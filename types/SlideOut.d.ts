@@ -61,6 +61,10 @@ declare class SlideOut {
    * Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`, default is `false`
    */
   ignoreEsc: Boolean
+  /**
+   * Whether to lock page scroll (except slide self), default is `false`
+   */
+  lockScroll: Boolean
 }
 
 export default SlideOut

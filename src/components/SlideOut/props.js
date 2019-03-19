@@ -101,5 +101,12 @@ export default {
   maxSize: {
     type: Number,
     default: 0
+  },
+  /**
+   * 是否锁定页面滚动
+   */
+  lockScroll: {
+    type: Boolean,
+    default: false
   }
 }
