@@ -29,11 +29,9 @@
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
   },
-  "dependencies": {
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0"
-  },
   "peerDependencies": {
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "vue": "^2.0.0"
   },
   "devDependencies": {
