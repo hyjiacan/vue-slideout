@@ -3,9 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import SlideOut from './components/SlideOut'
+import LangDirective from './assets/lang-directive'
 
 Vue.config.productionTip = false
 
+Vue.use(LangDirective)
 Vue.use(SlideOut)
 
 /* eslint-disable no-new */

@@ -2,24 +2,25 @@
   <div id="app">
     <h1>
       SlideOut
-      <small>A Slide-Out component for Vue.js 2.0</small>
+      <small v-lang>A Slide-Out component for Vue.js 2.0</small>
     </h1>
-    <h2>Install</h2>
+    <h2 v-lang>Install</h2>
     <code>npm install @hyjiacan/vue-slideout</code>
-    <p>or</p>
+    <p v-lang>or</p>
     <code>yarn add @hyjiacan/vue-slideout</code>
-    <p>For the latest code, you can:</p>
+    <p v-lang>For the latest code, you can:</p>
     <code>git clone https://github.com/hyjiacan/vue-slideout.git</code>
-    <p>or <a href="https://github.com/hyjiacan/vue-slideout/archive/master.zip">download archive</a></p>
-    <h2>Source</h2>
+    <p><span v-lang>or</span> <a href="https://github.com/hyjiacan/vue-slideout/archive/master.zip"
+                                          v-lang>download archive</a></p>
+    <h2 v-lang>Source</h2>
     <ul>
       <li><a href="https://github.com/hyjiacan/vue-slideout.git">Github</a></li>
       <li><a href="https://gitee.com/hyjiacan/vue-slideout.git">Gitee</a></li>
-      <li><a href="https://github.com/hyjiacan/vue-slideout/blob/master/src/components/Demo.vue" target="_blank">Demo
-        Source</a></li>
+      <li><a href="https://github.com/hyjiacan/vue-slideout/blob/master/src/components/Demo.vue" target="_blank"
+             v-lang>Demo Source</a></li>
     </ul>
-    <h2>Samples</h2>
-    <demo/>
+    <h2 v-lang>Samples</h2>
+    <demo />
   </div>
 </template>
 

@@ -1,13 +1,13 @@
 <template>
   <div id="demo">
-    <p class="standout">You can press `ESC` key to close slide.</p>
+    <p class="standout" v-lang>You can press <code>ESC</code> key to close slide.</p>
     <slide-out :visible.sync="demo1Visible" :dock="position" :title="text.header">
       <code>:dock="{{position}}"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo2Visible">
       <div slot="header">{{text.header}}</div>
-      <div>Close button would be removed while use <code>slot="header"</code></div>
+      <div v-lang>Close button would be removed while use <code>slot="header"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo3Visible" size="50%" :title="text.header">
@@ -49,9 +49,9 @@
     <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" allow-resize>
       <div>
         <div><code>append-to="#customize" allow-resize</code></div>
-        <p>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
-        <div>Resize is available for this instance.</div>
-        <p><span style="color: red;">&lt;-</span> Move the cursor onto this border to have a try</p>
+        <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
+        <div v-lang>Resize is available for this instance.</div>
+        <p><span style="color: red;">&lt;-</span><span v-lang>Move the cursor onto this border to have a try</span></p>
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
@@ -59,104 +59,100 @@
       <p>
         <code>@open="onOpen" @close="onClose"</code>
       </p>
-      <div>{{text.wait}}</div>
+      <div v-show="status === 0" v-lang>I will close after 3 seconds...</div>
+      <div v-show="status === 1" v-lang>I am opened</div>
     </slide-out>
     <slide-out :visible.sync="demo14Visible" :dock="position" :title="text.header" allow-resize @resize="onResize">
       <div>
         <p><code>allow-resize @resize="onResize"</code></p>
-        <p><code>allow-resize</code> makes it resizable</p>
-        <p><code>@resize="onResize"</code> makes function <code>onResize</code> to accept resize event</p>
+        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>@resize="onResize"</code> <span
+          v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
       </div>
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo15Visible" title="And God said, let there be light, and there was light">
-      <div>Long header text turns out <b>ellipse</b> style.</div>
+      <div v-lang>Long header text turns out <b>ellipse</b> style.</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo16Visible" :title="text.header" ignore-esc>
       <div>
         <p><code>ignore-esc</code></p>
-        <p>
-          This makes slide ignore <code>Esc</code> key press.
-        </p>
-        <p>
-          So you can not close slide by press <code>Esc</code> key.
-        </p>
-        <p>
-          No matter how many times you press <code>Esc</code> key, slide will always keep opened.
-        </p>
+        <p v-lang>This makes slide ignore <code>Esc</code> key press.</p>
+        <p v-lang>So you can not close slide by press <code>Esc</code> key.</p>
+        <p v-lang>No matter how many times you press <code>Esc</code> key, slide will always keep opened.</p>
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <div class="demo-block">
-      <h3>Dock position</h3>
+      <h3 v-lang>Dock position</h3>
       <ul>
         <li>
-          <button @click="showDemo1('top')">Top</button>
-          <button @click="showDemo1('right')">Right</button>
-          <button @click="showDemo1('bottom')">Bottom</button>
-          <button @click="showDemo1('left')">Left</button>
+          <button @click="showDemo1('top')" v-lang>Top</button>
+          <button @click="showDemo1('right')" v-lang>Right</button>
+          <button @click="showDemo1('bottom')" v-lang>Bottom</button>
+          <button @click="showDemo1('left')" v-lang>Left</button>
         </li>
       </ul>
     </div>
     <div class="demo-block" id="customize">
-      <h3>Customize</h3>
+      <h3 v-lang>Customize</h3>
       <ul>
         <li>
-          <button @click="demo2Visible = true">Header</button>
-          <button @click="demo12Visible = true">Append to specified element <b>#customize</b></button>
+          <button @click="demo2Visible = true" v-lang>Header</button>
+          <button @click="demo12Visible = true" v-lang>Append to specified element <b>#customize</b></button>
         </li>
         <li>
-          <button @click="demo3Visible = true">Size: 50%</button>
-          <button @click="demo4Visible = true">Size: 200px</button>
+          <button @click="demo3Visible = true" v-lang>Size: 50%</button>
+          <button @click="demo4Visible = true" v-lang>Size: 200px</button>
         </li>
         <li>
-          <button @click="demo5Visible = true">No close button</button>
-          <button @click="demo6Visible = true">No Header</button>
-          <button @click="demo7Visible = true">No Footer</button>
+          <button @click="demo5Visible = true" v-lang>No close button</button>
+          <button @click="demo6Visible = true" v-lang>No Header</button>
+          <button @click="demo7Visible = true" v-lang>No Footer</button>
         </li>
         <li>
-          <button @click="demo8Visible = true">Disable close on mask click</button>
-          <button @click="demo9Visible = true">Disable animation</button>
+          <button @click="demo8Visible = true" v-lang>Disable close on mask click</button>
+          <button @click="demo9Visible = true" v-lang>Disable animation</button>
         </li>
         <li>
           <button @click="demo10Visible = true">
-            <span>Mask color</span>
+            <span v-lang>Mask color</span>
             <span
               style="width: 14px;height: 14px;background: rgba(89, 150, 105, 0.5);display: inline-block;vertical-align: -2px;"></span>
           </button>
-          <button @click="demo11Visible = true">No Mask</button>
+          <button @click="demo11Visible = true" v-lang>No Mask</button>
         </li>
         <li>
-          <button @click="demo16Visible = true">Ignore ESC key press</button>
-        </li>
-      </ul>
-    </div>
-    <div class="demo-block">
-      <h3>Event</h3>
-      <ul>
-        <li>
-          <button @click="demo13Visible = true">Event after open and before close</button>
+          <button @click="demo16Visible = true" v-lang>Ignore ESC key press</button>
         </li>
       </ul>
     </div>
     <div class="demo-block">
-      <h3>Allow Resize</h3>
+      <h3 v-lang>Event</h3>
       <ul>
         <li>
-          <button @click="showResizeDemo('top')">Top</button>
-          <button @click="showResizeDemo('right')">Right</button>
-          <button @click="showResizeDemo('bottom')">Bottom</button>
-          <button @click="showResizeDemo('left')">Left</button>
+          <button @click="demo13Visible = true" v-lang>Event after open and before close</button>
         </li>
       </ul>
     </div>
     <div class="demo-block">
-      <h3>Long header text</h3>
+      <h3 v-lang>Allow Resize</h3>
       <ul>
         <li>
-          <button @click="demo15Visible = true">Long header</button>
+          <button @click="showResizeDemo('top')" v-lang>Top</button>
+          <button @click="showResizeDemo('right')" v-lang>Right</button>
+          <button @click="showResizeDemo('bottom')" v-lang>Bottom</button>
+          <button @click="showResizeDemo('left')" v-lang>Left</button>
+        </li>
+      </ul>
+    </div>
+    <div class="demo-block">
+      <h3 v-lang>Long header text</h3>
+      <ul>
+        <li>
+          <button @click="demo15Visible = true" v-lang>Long header</button>
         </li>
       </ul>
     </div>
@@ -172,9 +168,9 @@ export default {
       text: {
         header: 'Here is header',
         content: 'Here is content',
-        footer: 'Here is footer',
-        wait: ''
+        footer: 'Here is footer'
       },
+      status: 0,
       resizeValue: 0,
       position: null,
       demo1Visible: false,
@@ -206,12 +202,12 @@ export default {
       this.demo14Visible = true
     },
     onOpen() {
-      this.text.wait = 'I am opened'
+      this.status = 1
     },
     onClose(e) {
       // prevent close and wait
       e.wait = true
-      this.text.wait = 'I will close after 3 seconds...'
+      this.status = 0
       // close after 3 seconds
       setTimeout(() => {
         // assign true to close, do nothing or assign false to cancel close.
