@@ -5,6 +5,7 @@ A Slide-Out component for Vue.js 2.0
 ### Dependencies
 - Vue.js 2.x
 - Less
+- v-scroll-lock
 
 ## Install
 
@@ -29,7 +30,7 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 
 ```html
 <slide-out @close="onClose">
-    <div slot-scope="{title}">
+    <div slot="header" slot-scope="{title}">
     </div>
     content
 </slide-out>
@@ -75,7 +76,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |disableAnimation|Boolean|NO|Whether to disable animation|false|
 |allowResize|Boolean|NO|Whether to allow drag-resize|false|
 |minSize|Number|NO|The min limit of drag-resize, value in `px`|60|
-|maxSize|Number|NO|The min limit of drag-resize, value `0` makes no limit, value in `px`|0|
+|maxSize|Number|NO|The max limit of drag-resize, value `0` makes no limit, value in `px`|0|
 |ignoreEsc|Boolean|NO|Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`|false|
 |lockScroll|Boolean|NO|Whether to lock page scroll (except slide self)|false|
 ## Slots
