@@ -45,6 +45,9 @@
     "Long header text": "长标题文本",
     "Long header": "长标题",
     "I am opened": "我打开了",
-    "I will close after 3 seconds...": "我会在 3 秒后关闭"
+    "I will close after 3 seconds...": "我会在 3 秒后关闭",
+    "Press Esc in <code>editable element</code> will not close slide": "在<code>可编辑元素</code>内按下ESC不会关闭Slide",
+    "This is an editable <code>DIV</code> element with attribute <code>contenteditable=\"true\"</code>": "这是一个设置了属性 <code>contenteditable=\"true\"</code> 的 <code>DIV</code> 元素",
+    "Slide will not close if you press <code>Esc</code> key in editable element, such as <code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>": "如果你在可编辑元素(<code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>)内按下 <code>Esc</code> 键时，Slide 不会关闭"
   }
 }

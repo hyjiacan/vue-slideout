@@ -247,10 +247,14 @@ const component = {
       if (!this.isVisible) {
         return
       }
+      if (e.keyCode !== 27 && e.which !== 27) {
+        return
+      }
+      // 忽略输入组件
+      if (['INPUT', 'TEXTAREA'].indexOf(e.target.tagName) !== -1 || e.target.contentEditable === 'true') {
+        return
+      }
       this.toggle(false)
-    },
-    onSlideScroll(e) {
-      e.preventDefault()
       return false
     }
   },
