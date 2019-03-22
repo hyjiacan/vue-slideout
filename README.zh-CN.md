@@ -78,7 +78,7 @@ export default {
 |minSize|Number|否|拖动大小的最小值限制，单位为 `px`|60|
 |maxSize|Number|否|拖动大小的最大值限制，单位为 `px`， 设置为 `0` 表示不限制|0|
 |ignoreEsc|Boolean|否|是否忽略 `Esc` 键，设置为`false`或保持默认值时，按下`Esc`不会关闭|false|
-|lockScroll|Boolean|否|是否锁定页面的滚动(slide内可正常滚动)|false|
+|lockScroll|Boolean|否|是否锁定页面(仅影响`body`元素)的滚动(slide内可正常滚动)|false|
 ## 插槽
 
 |名称|作用域|描述|

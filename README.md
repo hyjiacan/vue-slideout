@@ -78,7 +78,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |minSize|Number|NO|The min limit of drag-resize, value in `px`|60|
 |maxSize|Number|NO|The max limit of drag-resize, value `0` makes no limit, value in `px`|0|
 |ignoreEsc|Boolean|NO|Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`|false|
-|lockScroll|Boolean|NO|Whether to lock page scroll (except slide self)|false|
+|lockScroll|Boolean|NO|Whether to lock page (affected to `body` element only) scroll (except slide self)|false|
 ## Slots
 
 |name|scope|description|
