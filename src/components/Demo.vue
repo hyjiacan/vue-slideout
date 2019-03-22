@@ -46,11 +46,12 @@
       <div><code>:show-mask="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" allow-resize>
+    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" lock-scroll allow-resize>
       <div>
-        <div><code>append-to="#customize" allow-resize</code></div>
+        <div><code>append-to="#customize" lock-scroll allow-resize</code></div>
         <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
-        <div v-lang>Resize is available for this instance.</div>
+        <p v-lang>Resize is available for this instance.</p>
+        <p v-lang><code>body</code> scroll is locked now, close slide to release it.</p>
         <p><span style="color: red;">&lt;-</span><span v-lang>Move the cursor onto this border to have a try</span></p>
       </div>
       <div slot="footer">{{text.footer}}</div>

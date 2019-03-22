@@ -61,8 +61,6 @@ html, body {
   #app {
     width: 800px;
     margin: 0 auto;
-    height: 100%;
-    overflow: auto;
   }
 }
 
