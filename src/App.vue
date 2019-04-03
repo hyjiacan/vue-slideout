@@ -11,7 +11,7 @@
     <p v-lang>For the latest code, you can:</p>
     <code>git clone https://github.com/hyjiacan/vue-slideout.git</code>
     <p><span v-lang>or</span> <a href="https://github.com/hyjiacan/vue-slideout/archive/master.zip"
-                                          v-lang>download archive</a></p>
+                                 v-lang>download archive</a></p>
     <h2 v-lang>Source</h2>
     <ul>
       <li><a href="https://github.com/hyjiacan/vue-slideout.git">Github</a></li>
@@ -20,7 +20,8 @@
              v-lang>Demo Source</a></li>
     </ul>
     <h2 v-lang>Samples</h2>
-    <demo />
+    <demo @show-tip="onShowTip"/>
+    <div id="tip" v-show="tipVisible">{{tipText}}</div>
   </div>
 </template>
 
@@ -31,6 +32,23 @@ export default {
   name: 'App',
   components: {
     Demo
+  },
+  data() {
+    return {
+      tipVisible: false,
+      tipText: null
+    }
+  },
+  methods: {
+    onShowTip(tip) {
+      this.tipText = tip
+      this.tipVisible = true
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.tipVisible = false
+        }, 3000)
+      })
+    }
   }
 }
 </script>
@@ -112,5 +130,15 @@ code {
   #app {
     padding: 0 5px 15px 5px;
   }
+}
+
+#tip {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(100, 149, 213, 0.79);
+  color: #FFF;
+  box-shadow: 0 0 3px 3px rgba(100, 149, 213, 0.64);
+  padding: 20px 15px;
 }
 </style>

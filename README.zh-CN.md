@@ -66,9 +66,9 @@ export default {
 |size|String/Number|否|显示的尺寸, 可以使用单位`px`和`%`|400px|
 |zIndex|Number|否|z-index 值|1997|
 |visible|Boolean|是|是否可见，可使用 `.sync` 修饰|false|
-|title|String|否|标题文本，如果此属性为空，`slot=header` 也为空,<br/>那么头部会被隐藏||
+|title|String|否|标题文本，如果此属性为空，`slot=header` 也为空,<br/>那么头部会被隐藏|-|
 |closeOnMaskClick|Boolean|否|是否在点击遮罩层时关闭|true|
-|customClass|String|否|自定义的样式类名称||
+|customClass|String|否|自定义的样式类名称|-|
 |showMask|Boolean|否|遮罩层是否可见|true|
 |maskColor|String|否|遮罩层的颜色|rgba(0, 0, 0, 0.5)|
 |dock|String|否|停靠位置，可选值为: `top`, `right`, `bottom`, `left`|right|
@@ -79,21 +79,25 @@ export default {
 |maxSize|Number|否|拖动大小的最大值限制，单位为 `px`， 设置为 `0` 表示不限制|0|
 |ignoreEsc|Boolean|否|是否忽略 `Esc` 键，设置为`false`或保持默认值时，按下`Esc`不会关闭|false|
 |lockScroll|Boolean|否|是否锁定页面(仅影响`body`元素)的滚动(slide内可正常滚动)|false|
+
+> 注意：在未设置`appendTo`时，Slide组件会以`position: fixed`的方式显示，并且锁定`body`滚动
+
 ## 插槽
 
 |名称|作用域|描述|
 |---|---|---|
 |header|`{title}`|头部内容，使用时会占据整个头部，此时属性`title`会无效，同时也不会显示关闭按钮<br/>使用`slot-scope="{ title }"`可以取到属性`title`的值|
-|default||内容部分|
-|footer||底部内容|
+|default|-|内容部分|
+|footer|-|底部内容|
 
 
 ## 事件
 
 |名称|参数|描述|
 |---|---|---|
-|open||在打开后立即调用|
+|open|-|在打开后立即调用|
 |close|e: `{close: Boolean, wait: Boolean}`|在关闭前调用,在回调函数内, <br/>设置`e.wait=true` 可以阻止关闭，<br/>设置 `e.close=true` 可以继续关闭(支持异步关闭)|
+|closed|-|在slide真正关闭后调用,它在事件`close`后才会被触发|
 
 ## 开发
 

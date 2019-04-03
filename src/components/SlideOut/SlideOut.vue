@@ -1,5 +1,6 @@
 <template>
-  <div class="slide" :style="containerStyle" :class="containerClasses" v-scroll-lock="isVisible && lockScroll"
+  <div class="slide" :style="containerStyle" :class="containerClasses"
+       v-scroll-lock="isVisible && (lockScroll || isFixed)"
        tabindex="0">
     <div class="slide-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="slide-layout" :style="layoutStyle" ref="layout">

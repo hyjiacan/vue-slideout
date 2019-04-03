@@ -45,10 +45,11 @@
     "Allow Resize": "允许改变尺寸",
     "Long header text": "长标题文本",
     "Long header": "长标题",
-    "I am opened": "我打开了",
+    "I am opened, I will close after 3 seconds while click <code>close</code> button, and event <code>closed</code> will be emitted after slide really closed": "我打开了，在点击了<code>关闭</code>按钮后过3秒我才会关闭，在真正关闭后会触发事件<code>closed</code>",
     "I will close after 3 seconds...": "我会在 3 秒后关闭",
     "Press Esc in <code>editable element</code> will not close slide": "在<code>可编辑元素</code>内按下ESC不会关闭Slide",
     "This is an editable <code>DIV</code> element with attribute <code>contenteditable=\"true\"</code>": "这是一个设置了属性 <code>contenteditable=\"true\"</code> 的 <code>DIV</code> 元素",
-    "Slide will not close if you press <code>Esc</code> key in editable element, such as <code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>": "如果你在可编辑元素(<code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>)内按下 <code>Esc</code> 键时，Slide 不会关闭"
+    "Slide will not close if you press <code>Esc</code> key in editable element, such as <code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>": "如果你在可编辑元素(<code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>)内按下 <code>Esc</code> 键时，Slide 不会关闭",
+    "Hot key: Esc": "快捷键: Esc"
   }
 }

@@ -66,9 +66,9 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |size|String/Number|NO|The size of slide, both `px` and `%` available|400px|
 |zIndex|Number|NO|The z-index of slide|1997|
 |visible|Boolean|YES|Is the slide visible，modifier `.sync` is available|false|
-|title|String|NO|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden||
+|title|String|NO|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden|-|
 |closeOnMaskClick|Boolean|NO|Whether to close slide while mask clicked|true|
-|customClass|String|NO|Customized stylesheet class name||
+|customClass|String|NO|Customized stylesheet class name|-|
 |showMask|Boolean|NO|Is mask visible|true|
 |maskColor|String|NO|Mask color|rgba(0, 0, 0, 0.5)|
 |dock|String|NO|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
@@ -79,21 +79,25 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |maxSize|Number|NO|The max limit of drag-resize, value `0` makes no limit, value in `px`|0|
 |ignoreEsc|Boolean|NO|Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`|false|
 |lockScroll|Boolean|NO|Whether to lock page (affected to `body` element only) scroll (except slide self)|false|
+
+> Note: Slide uses style `position: fixed` and lock `body` scroll if property `appendTo` not specified.
+
 ## Slots
 
 |name|scope|description|
 |---|---|---|
 |header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `slot-scope="{ title }"` to get property `title`|
-|default||Content|
-|footer||Footer content|
+|default|-|Content|
+|footer|-|Footer content|
 
 
 ## Events
 
 |name|parameter|description|
 |---|---|---|
-|open||Invoke after slide opened|
+|open|-|Invoke after slide opened|
 |close|e: `{close: Boolean, wait: Boolean}`|Invoke before slide close, in callback function, <br/>assign `e.wait=true` to prevent close，<br/>and assign `e.close=true` to close (async supported)|
+|closed|-|Invoke after slide really closed, it's emit after event `close`|
 
 ## Development
 

@@ -87,14 +87,20 @@ const component = {
       return style
     },
     containerClasses() {
-      return [
-        this.customClass,
-        `dock-${this.dockOn}`,
-        this.isVisible ? 'visible' : '',
-        this.disableAnimation ? '' : 'enable-animation',
-        this.title || this.$slots.header ? 'slide-show-header' : '',
-        this.$slots.footer ? 'slide-show-footer' : ''
-      ]
+      return {
+        [this.customClass || '']: true,
+        [`dock-${this.dockOn}`]: true,
+        'visible': this.isVisible,
+        'enable-animation': !this.disableAnimation,
+        'slide-show-header': this.title || this.$slots.header,
+        'slide-show-footer': this.$slots.footer,
+        'slide-fixed': this.isFixed
+      }
+    },
+    isFixed() {
+      // 是否使用固定定位
+      // 设置了 appendTo 的时候，就不固定显示
+      return !this.appendTo
     }
   },
   methods: {
@@ -140,6 +146,10 @@ const component = {
       this.setVisibleValue(false)
     },
     setVisibleValue(visible) {
+      // 如果显示状态相同，则啥也不做
+      if (this.isVisible === visible) {
+        return
+      }
       // 显示时重置大小
       if (visible) {
         this.resizeValue = 0
@@ -147,6 +157,10 @@ const component = {
       this.isVisible = visible
       this.$el.focus()
       this.$emit('update:visible', visible)
+      // 触发关闭后的事件
+      if (!visible) {
+        this.emitCloseEvent()
+      }
     },
     appendComponentTo() {
       if (!this.appendTo) {
@@ -256,6 +270,16 @@ const component = {
       }
       this.toggle(false)
       return false
+    },
+    emitCloseEvent() {
+      if (this.disableAnimation) {
+        // 禁用动画时不需要等待
+        this.$emit('closed')
+      }
+      // 开启动画时，有个318ms的动画
+      setTimeout(() => {
+        this.$emit('closed')
+      }, 318)
     }
   },
   mounted() {

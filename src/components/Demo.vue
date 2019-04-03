@@ -56,12 +56,14 @@
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo13Visible" :title="text.header" @open="onOpen" @close="onClose">
+    <slide-out :visible.sync="demo13Visible" :title="text.header" @open="onOpen" @close="onClose" @closed="onClosed">
       <p>
-        <code>@open="onOpen" @close="onClose"</code>
+        <code>@open="onOpen" @close="onClose" @closed="onClosed"</code>
       </p>
       <div v-show="status === 0" v-lang>I will close after 3 seconds...</div>
-      <div v-show="status === 1" v-lang>I am opened</div>
+      <div v-show="status === 1" v-lang>I am opened, I will close after 3 seconds while click <code>close</code> button,
+        and event <code>closed</code> will be emitted after slide really closed
+      </div>
     </slide-out>
     <slide-out :visible.sync="demo14Visible" :dock="position" :title="text.header" allow-resize @resize="onResize">
       <div>
@@ -175,7 +177,8 @@
       <h3 v-lang>Hot key: Esc</h3>
       <ul>
         <li>
-          <button @click="demo17Visible = true" v-lang>Press Esc in <code>editable element</code> will not close slide</button>
+          <button @click="demo17Visible = true" v-lang>Press Esc in <code>editable element</code> will not close slide
+          </button>
         </li>
       </ul>
     </div>
@@ -240,6 +243,9 @@ export default {
     },
     onResize(e) {
       this.resizeValue = e.size
+    },
+    onClosed() {
+      this.$emit('show-tip', 'Aha, I am really closed')
     }
   }
 }
