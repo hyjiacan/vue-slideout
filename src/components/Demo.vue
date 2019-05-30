@@ -190,8 +190,8 @@ import SlideOut from './SlideOut'
 
 export default {
   name: 'Demo',
-  components: {SlideOut},
-  data() {
+  components: { SlideOut },
+  data () {
     return {
       text: {
         header: 'Here is header',
@@ -221,19 +221,19 @@ export default {
     }
   },
   methods: {
-    showDemo1(position) {
+    showDemo1 (position) {
       this.position = position
       this.demo1Visible = true
     },
-    showResizeDemo(position) {
+    showResizeDemo (position) {
       this.resizeValue = 0
       this.position = position
       this.demo14Visible = true
     },
-    onOpen() {
+    onOpen () {
       this.status = 1
     },
-    onClose(e) {
+    onClose (e) {
       // prevent close and wait
       e.wait = true
       this.status = 0
@@ -243,10 +243,10 @@ export default {
         e.close = true
       }, 3000)
     },
-    onResize(e) {
+    onResize (e) {
       this.resizeValue = e.size
     },
-    onClosed() {
+    onClosed () {
       this.$emit('show-tip', 'Aha, I am really closed')
     }
   }

@@ -33,14 +33,14 @@ export default {
   components: {
     Demo
   },
-  data() {
+  data () {
     return {
       tipVisible: false,
       tipText: null
     }
   },
   methods: {
-    onShowTip(tip) {
+    onShowTip (tip) {
       this.tipText = tip
       this.tipVisible = true
       this.$nextTick(() => {

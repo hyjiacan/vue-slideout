@@ -7,15 +7,15 @@ Vue.use(VScrollLock)
 const component = {
   name: 'SlideOut',
   props,
-  data() {
+  data () {
     return {
       isVisible: false,
       // 标识鼠标是否按下，仅按下时能拖动大小
       mousedown: false,
       // 鼠标按下时的位置
-      mouseDownPosition: {x: 0, y: 0},
+      mouseDownPosition: { x: 0, y: 0 },
       // 弹出的原始大小
-      originSize: {width: 0, height: 0},
+      originSize: { width: 0, height: 0 },
       // 调整大小时的值，单位为px
       resizeValue: 0,
       // 父级元素
@@ -23,15 +23,15 @@ const component = {
     }
   },
   watch: {
-    visible(visible) {
+    visible (visible) {
       this.toggle(visible)
     }
   },
   computed: {
-    dockOn() {
+    dockOn () {
       return this.dock || 'right'
     },
-    containerStyle() {
+    containerStyle () {
       let style = {
         'z-index': this.zIndex
       }
@@ -55,12 +55,12 @@ const component = {
       }
       return style
     },
-    maskStyle() {
+    maskStyle () {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
-    layoutStyle() {
+    layoutStyle () {
       let style = {}
       let size = this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
       let distance = this.isVisible || this.disableAnimation
@@ -86,7 +86,7 @@ const component = {
       }
       return style
     },
-    containerClasses() {
+    containerClasses () {
       return {
         [this.customClass || '']: true,
         [`dock-${this.dockOn}`]: true,
@@ -97,7 +97,7 @@ const component = {
         'slide-fixed': this.isFixed
       }
     },
-    isFixed() {
+    isFixed () {
       // 是否使用固定定位
       // 设置了 appendTo 的时候，就不固定显示
       return !this.appendTo
@@ -107,13 +107,13 @@ const component = {
     /**
      * 获取关闭事件参数对象
      */
-    getArgs() {
+    getArgs () {
       let me = this
       // 通过使用 setter 以实现延迟操作
       return {
         // 是否等待操作
         wait: false,
-        set close(close) {
+        set close (close) {
           // 取消关闭
           if (!close) {
             return
@@ -121,12 +121,12 @@ const component = {
           // 关闭
           me.setVisibleValue(false)
         },
-        get close() {
+        get close () {
           return undefined
         }
       }
     },
-    toggle(visible) {
+    toggle (visible) {
       if (visible === this.isVisible) {
         return
       }
@@ -145,7 +145,7 @@ const component = {
       }
       this.setVisibleValue(false)
     },
-    setVisibleValue(visible) {
+    setVisibleValue (visible) {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible === visible) {
         return
@@ -162,7 +162,7 @@ const component = {
         this.emitCloseEvent()
       }
     },
-    appendComponentTo() {
+    appendComponentTo () {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -178,12 +178,12 @@ const component = {
       target.appendChild(this.$el)
       this.parentElement = target
     },
-    onMaskClick() {
+    onMaskClick () {
       if (this.closeOnMaskClick) {
         this.toggle(false)
       }
     },
-    getParentSize() {
+    getParentSize () {
       let rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -193,14 +193,14 @@ const component = {
     /**
      * 获取到此组件的大小（基于px）
      */
-    getMyOwnSize() {
+    getMyOwnSize () {
       let rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
-    mouseDownHandler(e) {
+    mouseDownHandler (e) {
       this.mousedown = true
       this.mouseDownPosition = {
         x: e.pageX,
@@ -208,7 +208,7 @@ const component = {
       }
       this.originSize = this.getMyOwnSize()
     },
-    mouseMoveHandler(e) {
+    mouseMoveHandler (e) {
       // 鼠标未按下时，不能拖动
       if (!this.mousedown) {
         return
@@ -251,13 +251,13 @@ const component = {
       }
       this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       this.$nextTick(() => {
-        this.$emit('resize', {size: this.resizeValue})
+        this.$emit('resize', { size: this.resizeValue })
       })
     },
-    mouseUpHandler() {
+    mouseUpHandler () {
       this.mousedown = false
     },
-    onKeydown(e) {
+    onKeydown (e) {
       if (!this.isVisible) {
         return
       }
@@ -271,7 +271,7 @@ const component = {
       this.toggle(false)
       return false
     },
-    emitCloseEvent() {
+    emitCloseEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('closed')
@@ -282,7 +282,7 @@ const component = {
       }, 318)
     }
   },
-  mounted() {
+  mounted () {
     this.appendComponentTo()
     if (this.allowResize) {
       // 绑定鼠标事件
@@ -293,7 +293,7 @@ const component = {
       this.$el.addEventListener('keydown', this.onKeydown)
     }
   },
-  beforeDestroy() {
+  beforeDestroy () {
     if (!this.ignoreEsc) {
       this.$el.removeEventListener('keydown', this.onKeydown)
     }

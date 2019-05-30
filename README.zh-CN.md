@@ -36,6 +36,7 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
+import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
 
 export default {
     name: 'Foobar',
@@ -102,13 +103,9 @@ export default {
 ## 开发
 
 ```bash
-npm i
-npm run dev
-```
-或
-```bash
 yarn
-yarn run dev
+# 启动服务器
+yarn run serve
+# 构建仓库
+yarn run release
 ```
-
-> 注: 执行`npm run build` 或`yarn run build` 以生成文档。

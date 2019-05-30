@@ -8,9 +8,6 @@ Vue.config.productionTip = false
 
 Vue.use(LangDirective)
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  components: {App},
-  template: '<App/>'
-})
+  render: h => h(App)
+}).$mount('#app')

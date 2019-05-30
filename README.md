@@ -36,6 +36,7 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
+import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
 
 export default {
     name: 'Foobar',
@@ -102,13 +103,9 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 ## Development
 
 ```bash
-npm i
-npm run dev
-```
-or
-```bash
 yarn
-yarn run dev
+# start dev server
+yarn run serve
+# Build library
+yarn run release
 ```
-
-> Note: run `npm run build` or `yarn run build` to build docs。
