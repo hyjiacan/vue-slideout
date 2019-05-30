@@ -186,9 +186,11 @@
 </template>
 
 <script>
+import SlideOut from './SlideOut'
 
 export default {
   name: 'Demo',
+  components: {SlideOut},
   data() {
     return {
       text: {
