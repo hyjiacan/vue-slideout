@@ -1,6 +1,6 @@
 @duration: 318ms;
 
-.slide {
+.vue-slideout {
   position: absolute;
   left: 0;
   right: 0;
@@ -16,13 +16,13 @@
   }
 
   &-show-header {
-    .slide-content {
+    .vue-slideout-content {
       top: 48px;
     }
   }
 
   &-show-footer {
-    .slide-content {
+    .vue-slideout-content {
       bottom: 48px;
     }
   }
@@ -37,13 +37,13 @@
     transition: opacity @duration, left 1ms, top 1ms, bottom 1ms, right 1ms;
   }
 
-  .slide-layout {
+  .vue-slideout-layout {
     transition-property: left, right, top, bottom;
     transition-duration: @duration;
   }
 }
 
-.slide-layout {
+.vue-slideout-layout {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -53,7 +53,7 @@
   border-left: 1px solid #DDD;
 }
 
-.slide-mask {
+.vue-slideout-mask {
   position: absolute;
   left: 0;
   right: 0;
@@ -62,7 +62,7 @@
   background-color: rgba(0, 0, 0, .5);
 }
 
-.slide-content {
+.vue-slideout-content {
   position: absolute;
   left: 0;
   top: 0;
@@ -76,7 +76,7 @@
   z-index: 30;
 }
 
-.slide-header {
+.vue-slideout-header {
   position: absolute;
   left: 0;
   right: 0;
@@ -89,7 +89,7 @@
   z-index: 50;
 }
 
-.slide-title-text {
+.vue-slideout-title-text {
   padding-right: 40px;
   line-height: 36px;
   overflow: hidden;
@@ -97,7 +97,7 @@
   white-space: nowrap;
 }
 
-.slide-btn-close {
+.vue-slideout-btn-close {
   position: absolute;
   right: 10px;
   top: 8px;
@@ -133,7 +133,7 @@
   }
 }
 
-.slide-footer {
+.vue-slideout-footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -157,7 +157,7 @@
 @drag-handle-size: 1px;
 @drag-handle-bar-size: 3px;
 @drag-handle-color: rgba(86, 148, 235, 0.88);
-.slide-drag-handle {
+.vue-slideout-drag-handle {
   position: absolute;
   z-index: 60;
   user-select: none;
@@ -172,7 +172,7 @@
 }
 
 .dock-top {
-  .slide-drag-handle {
+  .vue-slideout-drag-handle {
     bottom: @drag-handle-padding;
     left: 0;
     right: 0;
@@ -187,11 +187,11 @@
 }
 
 .dock-right {
-  .slide-btn-close {
+  .vue-slideout-btn-close {
     transform: rotate(90deg);
   }
 
-  .slide-drag-handle {
+  .vue-slideout-drag-handle {
     top: 0;
     bottom: 0;
     left: @drag-handle-padding;
@@ -206,11 +206,11 @@
 }
 
 .dock-bottom {
-  .slide-btn-close {
+  .vue-slideout-btn-close {
     transform: rotate(180deg);
   }
 
-  .slide-drag-handle {
+  .vue-slideout-drag-handle {
     top: @drag-handle-padding;
     left: 0;
     right: 0;
@@ -225,11 +225,11 @@
 }
 
 .dock-left {
-  .slide-btn-close {
+  .vue-slideout-btn-close {
     transform: rotate(-90deg);
   }
 
-  .slide-drag-handle {
+  .vue-slideout-drag-handle {
     top: 0;
     right: @drag-handle-padding;
     bottom: 0;

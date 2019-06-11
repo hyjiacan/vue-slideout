@@ -28,6 +28,23 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 
 ## Usage
 
+### Global (recommend)
+
+*main.js*
+```javascript
+import Vue from 'vue'
+import SlideOut from '@hyjiacan/vue-slideout'
+import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
+
+// import SlideOut component, and set the defaults props
+Vue.use(SlideOut, {
+  // set props here
+})
+```
+
+### In Component
+
+*Foobar.vue*
 ```html
 <slide-out @close="onClose">
     <div slot="header" slot-scope="{title}">
@@ -55,8 +72,6 @@ export default {
 }
 </script>
 ```
-
-You can register it into global with `Vue.component(SlideOut.name, SlideOut)` or `Vue.use(SlideOut)` 
 
 For more usage, see https://hyjiacan.github.io/vue-slideout/
 
@@ -105,7 +120,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 ```bash
 yarn
 # start dev server
-yarn run serve
+yarn serve
 # Build library
-yarn run release
+yarn release
 ```

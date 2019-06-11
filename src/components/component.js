@@ -92,9 +92,9 @@ const component = {
         [`dock-${this.dockOn}`]: true,
         'visible': this.isVisible,
         'enable-animation': !this.disableAnimation,
-        'slide-show-header': this.title || this.$slots.header,
-        'slide-show-footer': this.$slots.footer,
-        'slide-fixed': this.isFixed
+        'vue-slideout-show-header': this.title || this.$slots.header,
+        'vue-slideout-show-footer': this.$slots.footer,
+        'vue-slideout-fixed': this.isFixed
       }
     },
     isFixed () {

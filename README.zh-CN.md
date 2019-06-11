@@ -28,6 +28,23 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 
 ## 使用
 
+### 全局引用 (推荐)
+
+*main.js*
+```javascript
+import Vue from 'vue'
+import SlideOut from '@hyjiacan/vue-slideout'
+import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
+
+// 引入 SlideOut 组件，并设置组件默认值
+Vue.use(SlideOut, {
+  // 在此处填写默认的属性值
+})
+```
+
+### 组件内引用
+
+*Foobar.vue*
 ```html
 <slide-out @close="onClose">
     <div slot="header" slot-scope="{title}">
@@ -55,8 +72,6 @@ export default {
 }
 </script>
 ```
-
-也可以通过 `Vue.component(SlideOut.name, SlideOut)` 或 `Vue.use(SlideOut)` 将其注册为全局组件。 
 
 更多的用法，参见 https://hyjiacan.github.io/vue-slideout/
 
@@ -105,7 +120,7 @@ export default {
 ```bash
 yarn
 # 启动服务器
-yarn run serve
+yarn serve
 # 构建仓库
-yarn run release
+yarn release
 ```

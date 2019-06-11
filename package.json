@@ -1,11 +1,11 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "lib/slideout.common.js",
   "scripts": {
     "serve": "npx vue-cli-service serve",
-    "build": "node version.js & npx vue-cli-service build --target lib --dest=lib --formats=commonjs --name slideout ./src/components/SlideOut/index.js",
+    "build": "node version.js & npx vue-cli-service build --target lib --dest=lib --formats=commonjs --name slideout src/components/index.js",
     "build:docs": "npx vue-cli-service build --dest=docs",
     "release": "yarn run lint & yarn run build & yarn run build:docs",
     "lint": "npx vue-cli-service lint"
@@ -24,7 +24,9 @@
     "docs",
     "lib",
     "src",
-    "types"
+    "types",
+    "README.md",
+    "README.zh-CN.md"
   ],
   "typings": "types/index.d.ts",
   "bugs": {

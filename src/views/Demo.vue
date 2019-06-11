@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import SlideOut from './SlideOut'
+import SlideOut from '../components'
 
 export default {
   name: 'Demo',

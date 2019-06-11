@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Demo from './components/Demo'
+import Demo from './views/Demo'
 
 export default {
   name: 'App',

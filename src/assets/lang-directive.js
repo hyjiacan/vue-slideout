@@ -9,10 +9,8 @@ function getLang () {
     if (languages.hasOwnProperty(lang)) {
       return lang
     }
-  }
-  // 找不到完全匹配的语言，打语言系（如：zh-CN，zh 表示语言系）
-  for (let i = 0; i < langOrder.length; i++) {
-    let lang = langOrder[i].split('-')[0]
+    // 找不到完全匹配的语言，使用语言系（如：zh-CN，zh 表示语言系）
+    lang = lang.split('-')[0]
     if (languages.hasOwnProperty(lang)) {
       return lang
     }

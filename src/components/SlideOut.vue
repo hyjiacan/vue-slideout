@@ -1,16 +1,16 @@
 <template>
-  <div class="slide" :style="containerStyle" :class="containerClasses"
+  <div class="vue-slideout" :style="containerStyle" :class="containerClasses"
        v-scroll-lock="isVisible && (lockScroll || isFixed)"
        tabindex="0">
-    <div class="slide-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
-    <div class="slide-layout" :style="layoutStyle" ref="layout">
-      <div class="slide-drag-handle" v-if="allowResize" @mousedown="mouseDownHandler"></div>
-      <div class="slide-header" v-if="$slots.header || title">
+    <div class="vue-slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
+    <div class="vue-slideout-layout" :style="layoutStyle" ref="layout">
+      <div class="vue-slideout-drag-handle" v-if="allowResize" @mousedown="mouseDownHandler"></div>
+      <div class="vue-slideout-header" v-if="$slots.header || title">
         <slot name="header" :title="title">
-          <div class="slide-title-text">
+          <div class="vue-slideout-title-text">
             {{title}}
           </div>
-          <button class="slide-btn-close" @click="toggle(false)">
+          <button class="vue-slideout-btn-close" @click="toggle(false)">
             <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
               <path
                 d="M493.45411 71.89033 197.751365 361.596502c-9.624195 9.380648-9.624195 24.707728 0 34.138518 9.576099 9.381671 25.222451 9.381671 34.848693 0l253.612115-248.494561 0 786.690176c0 13.3214 11.047614 24.142863 24.642237 24.142863 13.597693 0 24.645306-10.821463 24.645306-24.142863L535.499715 147.240459l253.632581 248.494561c9.603729 9.381671 25.248034 9.381671 34.847669 0 4.836145-4.76349 7.194866-10.939143 7.194866-17.116843 0-6.1777-2.405793-12.355399-7.194866-17.116843L528.255731 71.797209c-9.602705-9.383718-25.244964-9.383718-34.849716 0L493.45411 71.89033z"
@@ -19,10 +19,10 @@
           </button>
         </slot>
       </div>
-      <div class="slide-content">
+      <div class="vue-slideout-content">
         <slot></slot>
       </div>
-      <div class="slide-footer" v-show="$slots.footer">
+      <div class="vue-slideout-footer" v-show="$slots.footer">
         <slot name="footer"></slot>
       </div>
     </div>
@@ -36,5 +36,5 @@ export default component
 </script>
 
 <style lang="less" scoped>
-@import "../../assets/slideout";
+@import "../assets/slideout";
 </style>
