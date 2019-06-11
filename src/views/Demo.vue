@@ -102,6 +102,12 @@
         <code>div[contenteditable="true"]</code>
       </p>
     </slide-out>
+    <slide-out :visible.sync="demo18Visible" :title="text.header" allow-resize :fullscreen.sync="fullscreen">
+      <p>
+        <code>allow-resize :fullscreen="fullscreen"</code>
+      </p>
+      <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
+    </slide-out>
     <div class="demo-block">
       <h3 v-lang>Dock position</h3>
       <ul>
@@ -182,6 +188,14 @@
         </li>
       </ul>
     </div>
+    <div class="demo-block">
+      <h3 v-lang>Fullscreen</h3>
+      <ul>
+        <li>
+          <button @click="demo18Visible = true" v-lang>Toggle fullscreen</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -201,6 +215,7 @@ export default {
       status: 0,
       resizeValue: 0,
       position: null,
+      fullscreen: false,
       demo1Visible: false,
       demo2Visible: false,
       demo3Visible: false,
@@ -217,7 +232,8 @@ export default {
       demo14Visible: false,
       demo15Visible: false,
       demo16Visible: false,
-      demo17Visible: false
+      demo17Visible: false,
+      demo18Visible: false
     }
   },
   methods: {

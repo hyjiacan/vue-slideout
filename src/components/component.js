@@ -33,7 +33,8 @@ const component = {
     },
     containerStyle () {
       let style = {
-        'z-index': this.zIndex
+        // 2147483647 是允许的最大值
+        'z-index': this.fullscreen ? 2147483647 : this.zIndex
       }
       if (this.mousedown) {
         style.userSelect = 'none'
@@ -62,7 +63,7 @@ const component = {
     },
     layoutStyle () {
       let style = {}
-      let size = this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
+      let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
       let distance = this.isVisible || this.disableAnimation
         ? 0
         : (typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`)
@@ -89,12 +90,13 @@ const component = {
     containerClasses () {
       return {
         [this.customClass || '']: true,
-        [`dock-${this.dockOn}`]: true,
-        'visible': this.isVisible,
-        'enable-animation': !this.disableAnimation,
+        [`vue-slideout-dock-${this.dockOn}`]: true,
+        'vue-slideout-visible': this.isVisible,
+        'vue-slideout-enable-animation': !this.disableAnimation,
         'vue-slideout-show-header': this.title || this.$slots.header,
         'vue-slideout-show-footer': this.$slots.footer,
-        'vue-slideout-fixed': this.isFixed
+        'vue-slideout-fixed': this.isFixed,
+        'vue-slideout-fullscreen': this.fullscreen
       }
     },
     isFixed () {
@@ -157,6 +159,8 @@ const component = {
       this.isVisible = visible
       this.$el.focus()
       this.$emit('update:visible', visible)
+      // 若指定了 .sync 修饰，则关闭后退出全屏
+      this.$emit('update:fullscreen', false)
       // 触发关闭后的事件
       if (!visible) {
         this.emitCloseEvent()
@@ -201,6 +205,10 @@ const component = {
       }
     },
     mouseDownHandler (e) {
+      if (this.fullscreen) {
+        // 全屏时不允许改变大小
+        return
+      }
       this.mousedown = true
       this.mouseDownPosition = {
         x: e.pageX,
@@ -209,6 +217,10 @@ const component = {
       this.originSize = this.getMyOwnSize()
     },
     mouseMoveHandler (e) {
+      if (this.fullscreen) {
+        // 全屏时不允许改变大小
+        return
+      }
       // 鼠标未按下时，不能拖动
       if (!this.mousedown) {
         return

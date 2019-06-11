@@ -108,5 +108,12 @@ export default {
   lockScroll: {
     type: Boolean,
     default: false
+  },
+  /**
+   * 是否启用全屏显示
+   */
+  fullscreen: {
+    type: Boolean,
+    default: false
   }
 }

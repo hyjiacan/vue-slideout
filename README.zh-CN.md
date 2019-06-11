@@ -95,6 +95,7 @@ export default {
 |maxSize|Number|否|拖动大小的最大值限制，单位为 `px`， 设置为 `0` 表示不限制|0|
 |ignoreEsc|Boolean|否|是否忽略 `Esc` 键，设置为`false`或保持默认值时，按下`Esc`不会关闭|false|
 |lockScroll|Boolean|否|是否锁定页面(仅影响`body`元素)的滚动(slide内可正常滚动)|false|
+|fullscreen|Boolean|否|是否全屏显示(此时会禁用拖动改变尺寸功能)，可使用 `.sync` 修饰(此时在关闭后会退出全屏)|false|
 
 > 注意：在未设置`appendTo`时，Slide组件会以`position: fixed`的方式显示，并且锁定`body`滚动
 

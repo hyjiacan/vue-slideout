@@ -1,4 +1,4 @@
-import SlideOut from './SlideOut'
+import SlideOut from './Template'
 
 function setDefaultProps (customize) {
   for (let prop in customize) {

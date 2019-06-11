@@ -4,7 +4,7 @@
        tabindex="0">
     <div class="vue-slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="vue-slideout-layout" :style="layoutStyle" ref="layout">
-      <div class="vue-slideout-drag-handle" v-if="allowResize" @mousedown="mouseDownHandler"></div>
+      <div class="vue-slideout-drag-handle" v-if="allowResize && !fullscreen" @mousedown="mouseDownHandler"></div>
       <div class="vue-slideout-header" v-if="$slots.header || title">
         <slot name="header" :title="title">
           <div class="vue-slideout-title-text">
