@@ -53,7 +53,7 @@ Vue.use(SlideOut, {
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
+import from '@hyjiacan/vue-slideout/lib/slideout.css'
 
 export default {
     name: 'Foobar',
