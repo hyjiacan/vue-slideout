@@ -34,7 +34,7 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 ```javascript
 import Vue from 'vue'
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/vue-slideout.css'
+import from '@hyjiacan/vue-slideout/lib/slideout.css'
 
 // import SlideOut component, and set the defaults props
 Vue.use(SlideOut, {
