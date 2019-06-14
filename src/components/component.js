@@ -135,7 +135,7 @@ const component = {
       // 显示后触发事件
       if (visible) {
         this.setVisibleValue(true)
-        this.$emit('open')
+        this.$nextTick(this.emitOpenEvent)
         return
       }
       // 隐藏前触发事件
@@ -163,7 +163,7 @@ const component = {
       this.$emit('update:fullscreen', false)
       // 触发关闭后的事件
       if (!visible) {
-        this.emitCloseEvent()
+        this.$nextTick(this.emitCloseEvent)
       }
     },
     appendComponentTo () {
@@ -283,10 +283,22 @@ const component = {
       this.toggle(false)
       return false
     },
+    emitOpenEvent () {
+      if (this.disableAnimation) {
+        // 禁用动画时不需要等待
+        this.$emit('open', this.$refs.layout)
+        return
+      }
+      // 开启动画时，有个318ms的动画
+      setTimeout(() => {
+        this.$emit('open', this.$refs.layout)
+      }, 318)
+    },
     emitCloseEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('closed')
+        return
       }
       // 开启动画时，有个318ms的动画
       setTimeout(() => {
