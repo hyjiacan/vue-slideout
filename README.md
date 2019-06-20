@@ -86,6 +86,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |closeOnMaskClick|Boolean|NO|Whether to close slide while mask clicked|true|
 |customClass|String|NO|Customized stylesheet class name|-|
 |showMask|Boolean|NO|Is mask visible|true|
+|showClose|Boolean|NO|Is close button visible|true|
 |maskColor|String|NO|Mask color|rgba(0, 0, 0, 0.5)|
 |dock|String|NO|Slide dock position, optional values: `top`, `right`, `bottom`, `left`|right|
 |appendTo|String/HTMLElement|NO|Append slide into specified element.Both `string`(selector) and<br/>`HTMLElement`(DOM object) available|null|
@@ -104,6 +105,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |name|scope|description|
 |---|---|---|
 |header|`{title}`|Header content, take all the header bar, <br/>`title` will take no affected(and close button will be removed) if specified this，<br/>use `slot-scope="{ title }"` to get property `title`|
+|btn|-|Extend header buttons，placed left side of the **Close Button**|
 |default|-|Content|
 |footer|-|Footer content|
 

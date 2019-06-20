@@ -102,17 +102,22 @@
 }
 
 .vue-slideout-title-text {
-  padding-right: 40px;
   line-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.vue-slideout-btn-close {
+.vue-slideout-title-buttons {
   position: absolute;
-  right: 10px;
-  top: 8px;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+
+.vue-slideout-btn-close {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -168,20 +173,23 @@
 @drag-handle-bar-padding: -1px;
 @drag-handle-bar-size: 1px;
 @drag-handle-bar-size: 5px;
-@drag-handle-color: rgba(59, 56, 58, 0.28);
+@drag-handle-color: rgba(92, 143, 235, 0.63);
 .vue-slideout-drag-handle {
   position: absolute;
   z-index: 60;
   user-select: none;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   box-sizing: border-box;
+  background-clip: content-box;
 
   &:hover {
-    border-color: @drag-handle-color;
+    //border-color: @drag-handle-color;
+    background-color: darken(@drag-handle-color, 20%);
   }
 
   &:active {
-    border-color: darken(@drag-handle-color, 10%);
+    //border-color: darken(@drag-handle-color, 10%);
+    background-color: darken(@drag-handle-color, 30%);
   }
 }
 

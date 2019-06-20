@@ -18,7 +18,7 @@
     "Move the cursor onto this border to have a try": "将鼠标光标移动到这条边试一下",
     "makes it resizable": "使其可以拖动改变大小",
     "makes function <code>onResize</code> to accept <code>resize</code> event": "使函数 <code>onResize</code> 接收 <code>resize</code> 事件",
-    "Long header text turns out <b>ellipse</b> style.": "很长的头部文本会显示为<b>ellipse</b>(省略号)格式",
+    "Long header text turns out <b>ellipsis</b> style.": "很长的头部文本会显示为<b>ellipsis</b>(省略号)格式",
     "This makes slide ignore <code>Esc</code> key press.": "按下<code>Esc</code>键会被Slide忽略",
     "So you can not close slide by press <code>Esc</code> key.": "因此此时不能通过按<code>Esc</code>键来关闭",
     "No matter how many times you press <code>Esc</code> key, slide will always keep opened.": "无论你按多少次<code>Esc</code>键，Slide都不会关闭",
@@ -53,6 +53,7 @@
     "Hot key: Esc": "快捷键: Esc",
     "Fullscreen": "全屏",
     "Toggle fullscreen": "切换全屏",
-    "Click to toggle fullscreen": "点击以切换全屏"
+    "Click to toggle fullscreen": "点击以切换全屏",
+    "Customize header buttons": "自定义头部按钮"
   }
 }

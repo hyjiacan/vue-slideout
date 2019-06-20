@@ -19,7 +19,9 @@ const component = {
       // 调整大小时的值，单位为px
       resizeValue: 0,
       // 父级元素
-      parentElement: null
+      parentElement: null,
+      // 扩展按钮容器
+      extensionButtons: null
     }
   },
   watch: {
@@ -98,6 +100,17 @@ const component = {
         'vue-slideout-fixed': this.isFixed,
         'vue-slideout-fullscreen': this.fullscreen
       }
+    },
+    headerStyle () {
+      let style = {
+        paddingRight: '0'
+      }
+      if (!this.extensionButtons) {
+        return style
+      }
+      let btnStyle = window.getComputedStyle(this.extensionButtons)
+      style.paddingRight = `${parseInt(btnStyle.width) + 5}px`
+      return style
     },
     isFixed () {
       // 是否使用固定定位
@@ -225,6 +238,7 @@ const component = {
       if (!this.mousedown) {
         return
       }
+      e.preventDefault()
       // 获取鼠标的偏移量
       let x = e.pageX - this.mouseDownPosition.x
       let y = e.pageY - this.mouseDownPosition.y
@@ -316,6 +330,7 @@ const component = {
     if (!this.ignoreEsc) {
       this.$el.addEventListener('keydown', this.onKeydown)
     }
+    this.extensionButtons = this.$refs.buttons
   },
   beforeDestroy () {
     if (!this.ignoreEsc) {

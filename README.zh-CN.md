@@ -86,6 +86,7 @@ export default {
 |closeOnMaskClick|Boolean|否|是否在点击遮罩层时关闭|true|
 |customClass|String|否|自定义的样式类名称|-|
 |showMask|Boolean|否|遮罩层是否可见|true|
+|showClose|Boolean|否|是否显示关闭按钮|true|
 |maskColor|String|否|遮罩层的颜色|rgba(0, 0, 0, 0.5)|
 |dock|String|否|停靠位置，可选值为: `top`, `right`, `bottom`, `left`|right|
 |appendTo|String/HTMLElement|否|设置父元素，可使用字符串(选择器)和<br/>对象(DOM对象)|null|
@@ -104,6 +105,7 @@ export default {
 |名称|作用域|描述|
 |---|---|---|
 |header|`{title}`|头部内容，使用时会占据整个头部，此时属性`title`会无效，同时也不会显示关闭按钮<br/>使用`slot-scope="{ title }"`可以取到属性`title`的值|
+|btn|-|头部的扩展部分，放在**关闭按钮**左侧|
 |default|-|内容部分|
 |footer|-|底部内容|
 

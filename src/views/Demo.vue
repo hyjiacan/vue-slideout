@@ -18,9 +18,8 @@
       <div><code>size="200px"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo5Visible">
-      <div slot="header">{{text.header}}</div>
-      <div>{{text.content}}</div>
+    <slide-out :visible.sync="demo5Visible" :title="text.header" :show-close="false">
+      <div><code>:show-close="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo6Visible">
@@ -76,7 +75,7 @@
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo15Visible" title="And God said, let there be light, and there was light">
-      <div v-lang>Long header text turns out <b>ellipse</b> style.</div>
+      <div v-lang>Long header text turns out <b>ellipsis</b> style.</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo16Visible" :title="text.header" ignore-esc>
@@ -107,6 +106,14 @@
         <code>allow-resize :fullscreen="fullscreen"</code>
       </p>
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
+    </slide-out>
+    <slide-out :visible.sync="demo19Visible" :title="text.header">
+      <template slot="btn">
+        <button>Test</button>
+      </template>
+      <p>
+        <code>&lt;template slot="btn"&gt;&lt;button&gt;Test&lt;/button&gt;&lt;/template&gt;</code>
+      </p>
     </slide-out>
     <div class="demo-block">
       <h3 v-lang>Dock position</h3>
@@ -149,6 +156,9 @@
         </li>
         <li>
           <button @click="demo16Visible = true" v-lang>Ignore ESC key press</button>
+        </li>
+        <li>
+          <button @click="demo19Visible = true" v-lang>Customize header buttons</button>
         </li>
       </ul>
     </div>
@@ -233,7 +243,8 @@ export default {
       demo15Visible: false,
       demo16Visible: false,
       demo17Visible: false,
-      demo18Visible: false
+      demo18Visible: false,
+      demo19Visible: false
     }
   },
   methods: {

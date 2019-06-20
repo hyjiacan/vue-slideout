@@ -115,5 +115,12 @@ export default {
   fullscreen: {
     type: Boolean,
     default: false
+  },
+  /**
+   * 是否显示关闭按钮
+   */
+  showClose: {
+    type: Boolean,
+    default: true
   }
 }
