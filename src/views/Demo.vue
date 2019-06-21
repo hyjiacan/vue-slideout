@@ -76,9 +76,39 @@
         and event <code>closed</code> will be emitted after slide really closed
       </div>
     </slide-out>
-    <slide-out :visible.sync="demo14Visible" :dock="position" :title="text.header" allow-resize @resize="onResize">
+    <slide-out :visible.sync="demo14Visible" dock="top" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>allow-resize @resize="onResize"</code></p>
+        <p><code>dock="top" allow-resize @resize="onResize"</code></p>
+        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>@resize="onResize"</code> <span
+          v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
+      </div>
+      <div>Resize value: {{resizeValue}}px</div>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo23Visible" dock="right" :title="text.header" allow-resize @resize="onResize">
+      <div>
+        <p><code>dock="right" allow-resize @resize="onResize"</code></p>
+        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>@resize="onResize"</code> <span
+          v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
+      </div>
+      <div>Resize value: {{resizeValue}}px</div>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo24Visible" dock="bottom" :title="text.header" allow-resize @resize="onResize">
+      <div>
+        <p><code>dock="bottom" allow-resize @resize="onResize"</code></p>
+        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>@resize="onResize"</code> <span
+          v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
+      </div>
+      <div>Resize value: {{resizeValue}}px</div>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo25Visible" dock="left" :title="text.header" allow-resize @resize="onResize">
+      <div>
+        <p><code>dock="left" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
@@ -186,10 +216,10 @@
       <h3 v-lang>Allow Resize</h3>
       <ul>
         <li>
-          <button @click="showResizeDemo('top')" v-lang>Top</button>
-          <button @click="showResizeDemo('right')" v-lang>Right</button>
-          <button @click="showResizeDemo('bottom')" v-lang>Bottom</button>
-          <button @click="showResizeDemo('left')" v-lang>Left</button>
+          <button @click="showResizeDemo(14)" v-lang>Top</button>
+          <button @click="showResizeDemo(23)" v-lang>Right</button>
+          <button @click="showResizeDemo(24)" v-lang>Bottom</button>
+          <button @click="showResizeDemo(25)" v-lang>Left</button>
         </li>
       </ul>
     </div>
@@ -259,14 +289,16 @@ export default {
       demo19Visible: false,
       demo20Visible: false,
       demo21Visible: false,
-      demo22Visible: false
+      demo22Visible: false,
+      demo23Visible: false,
+      demo24Visible: false,
+      demo25Visible: false
     }
   },
   methods: {
-    showResizeDemo (position) {
+    showResizeDemo (name) {
       this.resizeValue = 0
-      this.position = position
-      this.demo14Visible = true
+      this[`demo${name}Visible`] = true
     },
     onOpen () {
       this.status = 1

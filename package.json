@@ -1,6 +1,6 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "lib/slideout.common.js",
   "scripts": {
