@@ -1,8 +1,20 @@
 <template>
   <div id="demo">
     <p class="standout" v-lang>You can press <code>ESC</code> key to close slide.</p>
-    <slide-out :visible.sync="demo1Visible" :dock="position" :title="text.header">
-      <code>:dock="{{position}}"</code>
+    <slide-out :visible.sync="demo1Visible" dock="top" :title="text.header">
+      <code>dock="top"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo20Visible" dock="right" :title="text.header">
+      <code>dock="right"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo21Visible" dock="bottom" :title="text.header">
+      <code>dock="bottom"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo22Visible" dock="left" :title="text.header">
+      <code>dock="left"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo2Visible">
@@ -119,10 +131,10 @@
       <h3 v-lang>Dock position</h3>
       <ul>
         <li>
-          <button @click="showDemo1('top')" v-lang>Top</button>
-          <button @click="showDemo1('right')" v-lang>Right</button>
-          <button @click="showDemo1('bottom')" v-lang>Bottom</button>
-          <button @click="showDemo1('left')" v-lang>Left</button>
+          <button @click="demo1Visible = true" v-lang>Top</button>
+          <button @click="demo20Visible = true" v-lang>Right</button>
+          <button @click="demo21Visible = true" v-lang>Bottom</button>
+          <button @click="demo22Visible = true" v-lang>Left</button>
         </li>
       </ul>
     </div>
@@ -244,14 +256,13 @@ export default {
       demo16Visible: false,
       demo17Visible: false,
       demo18Visible: false,
-      demo19Visible: false
+      demo19Visible: false,
+      demo20Visible: false,
+      demo21Visible: false,
+      demo22Visible: false
     }
   },
   methods: {
-    showDemo1 (position) {
-      this.position = position
-      this.demo1Visible = true
-    },
     showResizeDemo (position) {
       this.resizeValue = 0
       this.position = position
