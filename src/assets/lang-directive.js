@@ -1,6 +1,6 @@
 import languages from './langs.json'
 
-const langOrder = window.navigator.languages
+const langOrder = window.navigator.languages || [window.navigator.language]
 
 function getLang () {
   // 从浏览器读取默认的语言
