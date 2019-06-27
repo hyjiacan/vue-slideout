@@ -56,7 +56,7 @@ window.tagsCallback = function (response) {
   let tag = response.data[0]
   let latest = {
     version: tag.name,
-    tag: 'https://github.com/hyjiacan/ColorWanted/releases/tag/' + tag.name
+    tag: 'https://github.com/hyjiacan/vue-slideout/releases/tag/' + tag.name
   }
   let source = document.querySelector('#source')
   source.href = latest.tag
@@ -91,7 +91,7 @@ export default {
   mounted () {
     let isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
-    window.jsonp('https://api.github.com/repos/hyjiacan/ColorWanted/tags', 'tagsCallback')
+    window.jsonp('https://api.github.com/repos/hyjiacan/vue-slideout/tags', 'tagsCallback')
   }
 }
 </script>
