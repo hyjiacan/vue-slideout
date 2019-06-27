@@ -34,10 +34,7 @@
 
 <script>
 import component from './component'
+import './slideout.less'
 
 export default component
 </script>
-
-<style lang="less" scoped>
-@import "../assets/slideout";
-</style>

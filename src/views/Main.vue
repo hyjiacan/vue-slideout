@@ -49,8 +49,8 @@
       <div><code>disable-animation</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo10Visible" :title="text.header" mask-color="rgba(89, 150, 105, 0.5)">
-      <div><code>mask-color="rgba(89, 150, 105, 0.5)"</code></div>
+    <slide-out :visible.sync="demo10Visible" :title="text.header" mask-color="#FFFFFF">
+      <div><code>mask-color="#FFFFFF"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="demo11Visible" :title="text.header" :show-mask="false">
@@ -192,7 +192,7 @@
           <button @click="demo10Visible = true">
             <span v-lang>Mask color</span>
             <span
-              style="width: 14px;height: 14px;background: rgba(89, 150, 105, 0.5);display: inline-block;vertical-align: -2px;"></span>
+              style="width: 14px;height: 14px;background: #FFFFFF;display: inline-block;vertical-align: -2px;"></span>
           </button>
           <button @click="demo11Visible = true" v-lang>No Mask</button>
         </li>
@@ -331,9 +331,21 @@ export default {
   margin-bottom: 40px;
 }
 
+li{
+  list-style: none;
+}
+
 button {
-  padding: 5px;
+  padding: 8px 5px;
   min-width: 80px;
   margin: 5px;
+  border: 1px solid #fcfdf5;
+  background-color: #898d9d;
+  color: #f2f4e6;
+
+  &:hover {
+    border-color: #98bcf3;
+    background-color: #4a7ccf;
+  }
 }
 </style>
