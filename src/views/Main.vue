@@ -57,12 +57,11 @@
       <div><code>:show-mask="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" lock-scroll allow-resize>
+    <slide-out :visible.sync="demo12Visible" :title="text.header" append-to="#customize" allow-resize>
       <div>
-        <div><code>append-to="#customize" lock-scroll allow-resize</code></div>
+        <div><code>append-to="#customize" allow-resize</code></div>
         <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
         <p v-lang>Resize is available for this instance.</p>
-        <p v-lang><code>body</code> scroll is locked now, close slide to release it.</p>
         <p><span style="color: red;">&lt;-</span><span v-lang>Move the cursor onto this border to have a try</span></p>
       </div>
       <div slot="footer">{{text.footer}}</div>
@@ -143,9 +142,9 @@
         <code>div[contenteditable="true"]</code>
       </p>
     </slide-out>
-    <slide-out :visible.sync="demo18Visible" :title="text.header" allow-resize :fullscreen.sync="fullscreen">
+    <slide-out :visible.sync="demo18Visible" :title="text.header" size="600px" allow-resize :fullscreen.sync="fullscreen" append-to="body">
       <p>
-        <code>allow-resize :fullscreen="fullscreen"</code>
+        <code>allow-resize :fullscreen="fullscreen" append-to="body"</code>
       </p>
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
     </slide-out>

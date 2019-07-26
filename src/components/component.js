@@ -1,21 +1,17 @@
 import props from './props'
-import VScrollLock from 'v-scroll-lock'
-import Vue from 'vue'
-
-Vue.use(VScrollLock)
 
 const component = {
   name: 'SlideOut',
   props,
-  data () {
+  data() {
     return {
       isVisible: false,
       // 标识鼠标是否按下，仅按下时能拖动大小
       mousedown: false,
       // 鼠标按下时的位置
-      mouseDownPosition: { x: 0, y: 0 },
+      mouseDownPosition: {x: 0, y: 0},
       // 弹出的原始大小
-      originSize: { width: 0, height: 0 },
+      originSize: {width: 0, height: 0},
       // 调整大小时的值，单位为px
       resizeValue: 0,
       // 父级元素
@@ -25,15 +21,15 @@ const component = {
     }
   },
   watch: {
-    visible (visible) {
+    visible(visible) {
       this.toggle(visible)
     }
   },
   computed: {
-    dockOn () {
+    dockOn() {
       return this.dock || 'right'
     },
-    containerStyle () {
+    containerStyle() {
       let style = {
         // 2147483647 是允许的最大值
         'z-index': this.fullscreen ? 2147483647 : this.zIndex
@@ -58,12 +54,12 @@ const component = {
       }
       return style
     },
-    maskStyle () {
+    maskStyle() {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
-    layoutStyle () {
+    layoutStyle() {
       let style = {}
       let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
       let distance = this.isVisible || this.disableAnimation
@@ -89,7 +85,7 @@ const component = {
       }
       return style
     },
-    containerClasses () {
+    containerClasses() {
       return {
         [this.customClass || '']: true,
         [`vue-slideout-dock-${this.dockOn}`]: true,
@@ -101,7 +97,7 @@ const component = {
         'vue-slideout-fullscreen': this.fullscreen
       }
     },
-    headerStyle () {
+    headerStyle() {
       let style = {
         paddingRight: '0'
       }
@@ -112,7 +108,7 @@ const component = {
       style.paddingRight = `${parseInt(btnStyle.width) + 5}px`
       return style
     },
-    isFixed () {
+    isFixed() {
       // 是否使用固定定位
       // 设置了 appendTo 的时候，就不固定显示
       return !this.appendTo
@@ -122,13 +118,13 @@ const component = {
     /**
      * 获取关闭事件参数对象
      */
-    getArgs () {
+    getArgs() {
       let me = this
       // 通过使用 setter 以实现延迟操作
       return {
         // 是否等待操作
         wait: false,
-        set close (close) {
+        set close(close) {
           // 取消关闭
           if (!close) {
             return
@@ -136,12 +132,12 @@ const component = {
           // 关闭
           me.setVisibleValue(false)
         },
-        get close () {
+        get close() {
           return undefined
         }
       }
     },
-    toggle (visible) {
+    toggle(visible) {
       if (visible === this.isVisible) {
         return
       }
@@ -160,7 +156,7 @@ const component = {
       }
       this.setVisibleValue(false)
     },
-    setVisibleValue (visible) {
+    setVisibleValue(visible) {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible === visible) {
         return
@@ -179,7 +175,7 @@ const component = {
         this.$nextTick(this.emitCloseEvent)
       }
     },
-    appendComponentTo () {
+    appendComponentTo() {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -195,12 +191,12 @@ const component = {
       target.appendChild(this.$el)
       this.parentElement = target
     },
-    onMaskClick () {
+    onMaskClick() {
       if (this.closeOnMaskClick) {
         this.toggle(false)
       }
     },
-    getParentSize () {
+    getParentSize() {
       let rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -210,14 +206,14 @@ const component = {
     /**
      * 获取到此组件的大小（基于px）
      */
-    getMyOwnSize () {
+    getMyOwnSize() {
       let rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
-    mouseDownHandler (e) {
+    mouseDownHandler(e) {
       if (this.fullscreen) {
         // 全屏时不允许改变大小
         return
@@ -229,7 +225,7 @@ const component = {
       }
       this.originSize = this.getMyOwnSize()
     },
-    mouseMoveHandler (e) {
+    mouseMoveHandler(e) {
       if (this.fullscreen) {
         // 全屏时不允许改变大小
         return
@@ -244,6 +240,10 @@ const component = {
       let y = e.pageY - this.mouseDownPosition.y
 
       let parentSize = this.getParentSize()
+      let winSize = {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
       let size = this.originSize
       let newSize = 0
       switch (this.dock) {
@@ -252,11 +252,17 @@ const component = {
           if (newSize > parentSize.height) {
             newSize = parentSize.height
           }
+          if (newSize > winSize.height) {
+            newSize = winSize.height
+          }
           break
         case 'right':
           newSize = size.width - x
           if (newSize > parentSize.width) {
             newSize = parentSize.width
+          }
+          if (newSize > winSize.width) {
+            newSize = winSize.width
           }
           break
         case 'bottom':
@@ -264,11 +270,17 @@ const component = {
           if (newSize > parentSize.height) {
             newSize = parentSize.height
           }
+          if (newSize > winSize.height) {
+            newSize = winSize.height
+          }
           break
         case 'left':
           newSize = size.width + x
           if (newSize > parentSize.width) {
             newSize = parentSize.width
+          }
+          if (newSize > winSize.width) {
+            newSize = winSize.width
           }
           break
       }
@@ -277,13 +289,13 @@ const component = {
       }
       this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       this.$nextTick(() => {
-        this.$emit('resize', { size: this.resizeValue })
+        this.$emit('resize', {size: this.resizeValue})
       })
     },
-    mouseUpHandler () {
+    mouseUpHandler() {
       this.mousedown = false
     },
-    onKeydown (e) {
+    onKeydown(e) {
       if (!this.isVisible) {
         return
       }
@@ -297,7 +309,7 @@ const component = {
       this.toggle(false)
       return false
     },
-    emitOpenEvent () {
+    emitOpenEvent() {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('open', this.$refs.layout)
@@ -308,7 +320,7 @@ const component = {
         this.$emit('open', this.$refs.layout)
       }, 318)
     },
-    emitCloseEvent () {
+    emitCloseEvent() {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('closed')
@@ -320,7 +332,7 @@ const component = {
       }, 318)
     }
   },
-  mounted () {
+  mounted() {
     this.appendComponentTo()
     if (this.allowResize) {
       // 绑定鼠标事件
@@ -332,7 +344,7 @@ const component = {
     }
     this.extensionButtons = this.$refs.buttons
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (!this.ignoreEsc) {
       this.$el.removeEventListener('keydown', this.onKeydown)
     }

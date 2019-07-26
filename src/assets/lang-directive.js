@@ -2,7 +2,7 @@ import languages from './langs.json'
 
 const langOrder = window.navigator.languages || [window.navigator.language]
 
-function getLang () {
+function getLang() {
   // 从浏览器读取默认的语言
   for (let i = 0; i < langOrder.length; i++) {
     let lang = langOrder[i]
@@ -43,7 +43,7 @@ const directive = {
 }
 
 export default {
-  install (Vue) {
+  install(Vue) {
     Vue.directive('lang', directive)
   }
 }

@@ -93,7 +93,7 @@ export default {
    */
   minSize: {
     type: Number,
-    default: 60
+    default: 100
   },
   /**
    * 拖动改变大小时的最大尺寸，单位为px，指定为0时不限制，此值不影响size属性指定的大小
@@ -101,13 +101,6 @@ export default {
   maxSize: {
     type: Number,
     default: 0
-  },
-  /**
-   * 是否锁定页面滚动
-   */
-  lockScroll: {
-    type: Boolean,
-    default: false
   },
   /**
    * 是否启用全屏显示
