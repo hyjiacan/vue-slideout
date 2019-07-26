@@ -23,7 +23,6 @@
   "files": [
     "docs",
     "lib",
-    "src",
     "types",
     "README.md",
     "README.zh-CN.md"
