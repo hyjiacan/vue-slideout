@@ -111,7 +111,7 @@ const component = {
     isFixed() {
       // 是否使用固定定位
       // 设置了 appendTo 的时候，就不固定显示
-      return !this.appendTo
+      return this.fixed || !this.appendTo
     }
   },
   methods: {

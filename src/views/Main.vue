@@ -142,9 +142,12 @@
         <code>div[contenteditable="true"]</code>
       </p>
     </slide-out>
-    <slide-out :visible.sync="demo18Visible" :title="text.header" size="600px" allow-resize :fullscreen.sync="fullscreen" append-to="body">
+    <slide-out :visible.sync="demo18Visible" :title="text.header" size="600px" allow-resize :fullscreen.sync="fullscreen" append-to="body" fixed>
       <p>
-        <code>allow-resize :fullscreen="fullscreen" append-to="body"</code>
+        <code>allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
+      </p>
+      <p>
+        Property <code>fixed</code> can prevent page scroll.
       </p>
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
     </slide-out>

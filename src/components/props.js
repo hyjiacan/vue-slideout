@@ -115,5 +115,9 @@ export default {
   showClose: {
     type: Boolean,
     default: true
+  },
+  fixed: {
+    type: Boolean,
+    default: false
   }
 }
