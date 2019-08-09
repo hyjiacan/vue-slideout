@@ -17,12 +17,29 @@ const component = {
       // 父级元素
       parentElement: null,
       // 扩展按钮容器
-      extensionButtons: null
+      extensionButtons: null,
+      // body 的 overflow 值
+      bodyOverflowValue: null
     }
   },
   watch: {
     visible(visible) {
       this.toggle(visible)
+    },
+    isVisible(v) {
+      if (!this.isFixed) {
+        // 非固定时，不需要锁定滚动
+        return
+      }
+      if (!this.bodyOverflowValue) {
+        // 只需要获取一次
+        this.bodyOverflowValue = window.getComputedStyle(document.body).overflow
+      }
+      if (v) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = this.bodyOverflowValue
+      }
     }
   },
   computed: {
@@ -185,7 +202,7 @@ const component = {
       if (typeof target === 'string') {
         target = document.querySelector(target)
         if (!target) {
-          throw new Error(`SlideOut 找不到指定的 AppendTo 节点: ${this.appendTo}`)
+          throw new Error(`SlideOut cannot found the node to append to: ${this.appendTo}`)
         }
       }
       target.appendChild(this.$el)

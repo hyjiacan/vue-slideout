@@ -53,6 +53,7 @@
     "Fullscreen": "全屏",
     "Toggle fullscreen": "切换全屏",
     "Click to toggle fullscreen": "点击以切换全屏",
-    "Customize header buttons": "自定义头部按钮"
+    "Customize header buttons": "自定义头部按钮",
+    "Property <code>fixed</code> can prevent <code>body</code> scroll.": "属性<code>fixed</code>会阻止<code>body</code>滚动"
   }
 }

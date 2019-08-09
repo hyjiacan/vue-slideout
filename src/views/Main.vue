@@ -146,8 +146,8 @@
       <p>
         <code>allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
       </p>
-      <p>
-        Property <code>fixed</code> can prevent page scroll.
+      <p v-lang>
+        Property <code>fixed</code> can prevent <code>body</code> scroll.
       </p>
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
     </slide-out>
