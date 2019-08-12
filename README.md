@@ -95,6 +95,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 |maxSize|Number|NO|The max limit of drag-resize, value `0` makes no limit, value in `px`|0|
 |ignoreEsc|Boolean|NO|Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`|false|
 |fullscreen|Boolean|NO|Whether to enable fullscreen (resize is disabled if value is `true`)，modifier `.sync` is available (will exit fullscreen after close)|false|
+|fixed|Boolean|NO|Whether to use `position: fixed`|false|
 
 > Note: Slide uses style `position: fixed` if property `appendTo` not specified.
 

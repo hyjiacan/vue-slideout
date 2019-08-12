@@ -1,8 +1,5 @@
-import props from './props'
-
-const component = {
+export default {
   name: 'SlideOut',
-  props,
   data() {
     return {
       isVisible: false,
@@ -17,9 +14,7 @@ const component = {
       // 父级元素
       parentElement: null,
       // 扩展按钮容器
-      extensionButtons: null,
-      // body 的 overflow 值
-      bodyOverflowValue: null
+      extensionButtons: null
     }
   },
   watch: {
@@ -31,14 +26,10 @@ const component = {
         // 非固定时，不需要锁定滚动
         return
       }
-      if (!this.bodyOverflowValue) {
-        // 只需要获取一次
-        this.bodyOverflowValue = window.getComputedStyle(document.body).overflow
-      }
       if (v) {
-        document.body.style.overflow = 'hidden'
+        document.body.classList.add('vue-slideout-lock-scroll')
       } else {
-        document.body.style.overflow = this.bodyOverflowValue
+        document.body.classList.remove('vue-slideout-lock-scroll')
       }
     }
   },
@@ -376,5 +367,3 @@ const component = {
     this.setVisibleValue(false)
   }
 }
-
-export default component
