@@ -1,6 +1,6 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "2.1.14",
+  "version": "2.1.15",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "lib/slideout.common.js",
   "scripts": {
@@ -16,7 +16,8 @@
   },
   "keywords": [
     "vue",
-    "slide"
+    "slide",
+    "slideout"
   ],
   "author": "hyjiacan",
   "license": "MIT",
@@ -32,11 +33,7 @@
     "url": "https://github.com/hyjiacan/vue-slideout/issues"
   },
   "homepage": "https://hyjiacan.github.io/vue-slideout/",
-  "dependencies": {
-    "core-js": "^2.6.5",
-    "element-ui": "^2.8.2",
-    "vue": "^2.6.10"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli": "^3.7.0",
     "@vue/cli-plugin-babel": "^3.7.0",
@@ -44,10 +41,12 @@
     "@vue/cli-service": "^3.7.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.5.21"
   }
 }
