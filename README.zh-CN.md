@@ -33,7 +33,7 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 ```javascript
 import Vue from 'vue'
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 // 引入 SlideOut 组件，并设置组件默认值
 Vue.use(SlideOut, {
@@ -52,7 +52,7 @@ Vue.use(SlideOut, {
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 export default {
     name: 'Foobar',
