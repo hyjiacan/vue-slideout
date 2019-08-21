@@ -33,7 +33,7 @@ or [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zi
 ```javascript
 import Vue from 'vue'
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 // import SlideOut component, and set the defaults props
 Vue.use(SlideOut, {
@@ -52,7 +52,7 @@ Vue.use(SlideOut, {
 </slide-out>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
-import from '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 export default {
     name: 'Foobar',
