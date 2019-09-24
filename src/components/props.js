@@ -125,7 +125,7 @@ export default {
     default: false
   },
   /**
-   * 距离dock(停靠)边的偏移量，设置为 'auto' 时会让slide居中
+   * 距离dock(停靠)边的偏移量，单位可以是`px`或`%`
    */
   offset: {
     type: String,
