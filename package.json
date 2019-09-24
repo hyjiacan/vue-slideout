@@ -28,6 +28,9 @@
     "README.md",
     "README.zh-CN.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "typings": "types/index.d.ts",
   "bugs": {
     "url": "https://github.com/hyjiacan/vue-slideout/issues"

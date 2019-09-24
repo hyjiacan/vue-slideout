@@ -67,29 +67,56 @@ export default {
         'background-color': this.maskColor
       } : {}
     },
+    isSizeFixed() {
+      return Array.isArray(this.size)
+    },
     layoutStyle() {
       let style = {}
-      let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
-      let distance = this.isVisible || this.disableAnimation
-        ? 0
-        : (typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`)
-      switch (this.dockOn) {
-        case 'right':
-          style.width = size
-          style.right = distance
-          break
-        case 'left':
-          style.width = size
-          style.left = distance
-          break
-        case 'bottom':
-          style.height = size
-          style.bottom = distance
-          break
-        case 'top':
-          style.height = size
-          style.top = distance
-          break
+      if (this.isSizeFixed) {
+        // 指定大小
+        style.width = this.size[0]
+        style.height = this.size[this.size.length === 1 ? 0 : 1]
+        switch (this.dockOn) {
+          case 'right':
+            style.right = this.getInstance(style.width)
+            style.top = this.offset
+            break
+          case 'left':
+            style.left = this.getInstance(style.width)
+            style.top = this.offset
+            break
+          case 'bottom':
+            style.bottom = this.getInstance(style.height)
+            style.left = this.offset
+            break
+          case 'top':
+            style.top = this.getInstance(style.height)
+            style.left = this.offset
+            break
+        }
+      } else {
+        let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
+        let distance = this.isVisible || this.disableAnimation
+          ? 0
+          : (typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`)
+        switch (this.dockOn) {
+          case 'right':
+            style.width = size
+            style.right = distance
+            break
+          case 'left':
+            style.width = size
+            style.left = distance
+            break
+          case 'bottom':
+            style.height = size
+            style.bottom = distance
+            break
+          case 'top':
+            style.height = size
+            style.top = distance
+            break
+        }
       }
       return style
     },
@@ -221,6 +248,11 @@ export default {
         height: rect.height
       }
     },
+    getInstance(size) {
+      return this.isVisible || this.disableAnimation
+        ? 0
+        : (typeof size === 'number' || !(/%$/.test(size)) ? `${-parseInt(size)}px` : `${-parseInt(size)}%`)
+    },
     mouseDownHandler(e) {
       if (this.fullscreen) {
         // 全屏时不允许改变大小
@@ -307,7 +339,7 @@ export default {
       if (!this.isVisible) {
         return
       }
-      if (e.keyCode !== 27 && e.which !== 27) {
+      if (e.code !== 27 && e.keyCode !== 27 && e.which !== 27) {
         return
       }
       // 忽略输入组件
@@ -361,9 +393,15 @@ export default {
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)
     }
-    if (!this.isVisible) {
-      return
+    if (this.isVisible) {
+      this.setVisibleValue(false)
     }
-    this.setVisibleValue(false)
+    if (this.appendTo) {
+      try {
+        this.$el.parentElement.removeChild(this.$el)
+      } catch (e) {
+        // ignore
+      }
+    }
   }
 }

@@ -1,9 +1,10 @@
 export default {
   /**
-   * 滑出尺寸，单位为像素
+   * 滑出尺寸，单位为像素，当为数组时，表示设置宽度和高度
+   * 第一个值表示宽度，第二个值表示高度，数组只有一个值时，表示宽度和高度相同
    */
   size: {
-    type: [String, Number],
+    type: [String, Number, Array],
     default: 400
   },
   /**
@@ -116,8 +117,18 @@ export default {
     type: Boolean,
     default: true
   },
+  /**
+   * 是否固定显示（此时会隐藏滚动条）
+   */
   fixed: {
     type: Boolean,
     default: false
+  },
+  /**
+   * 距离dock(停靠)边的偏移量，设置为 'auto' 时会让slide居中
+   */
+  offset: {
+    type: String,
+    default: '0'
   }
 }

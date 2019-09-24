@@ -142,14 +142,16 @@
         <code>div[contenteditable="true"]</code>
       </p>
     </slide-out>
-    <slide-out :visible.sync="demo18Visible" :title="text.header" size="600px" allow-resize :fullscreen.sync="fullscreen" append-to="body" fixed>
+    <slide-out :visible.sync="demo18Visible" :title="text.header" size="600px" allow-resize
+               :fullscreen.sync="fullscreen" append-to="body" fixed>
       <p>
         <code>allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
       </p>
       <p v-lang>
         Property <code>fixed</code> can prevent <code>body</code> scroll.
       </p>
-      <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>Click to toggle fullscreen</p>
+      <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>
+        Click to toggle fullscreen</p>
     </slide-out>
     <slide-out :visible.sync="demo19Visible" :title="text.header">
       <template slot="btn">
@@ -158,6 +160,24 @@
       <p>
         <code>&lt;template slot="btn"&gt;&lt;button&gt;Test&lt;/button&gt;&lt;/template&gt;</code>
       </p>
+    </slide-out>
+    <slide-out :visible.sync="demo26Visible" :size="['480px', '200px']" offset="100px" dock="top" :title="text.header">
+      <code>:size="['480px', '200px']" offset="100px" dock="top"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo27Visible" :size="['480px', '200px']" offset="30%" dock="right"
+               :title="text.header">
+      <code>:size="['480px', '200px']" offset="30%" dock="right"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo28Visible" :size="['480px', '200px']" offset="30%" dock="bottom"
+               :title="text.header">
+      <code>:size="['480px', '200px']" offset="30%" dock="bottom"</code>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="demo29Visible" :size="['480px', '200px']" offset="100px" dock="left" :title="text.header">
+      <code>:size="['480px', '200px']" offset="100px" dock="left"</code>
+      <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <div class="demo-block">
       <h3 v-lang>Dock position</h3>
@@ -250,6 +270,17 @@
         </li>
       </ul>
     </div>
+    <div class="demo-block">
+      <h3 v-lang>Fixed size AND Offset</h3>
+      <ul>
+        <li>
+          <button @click="demo26Visible = true" v-lang>Top</button>
+          <button @click="demo27Visible = true" v-lang>Right</button>
+          <button @click="demo28Visible = true" v-lang>Bottom</button>
+          <button @click="demo29Visible = true" v-lang>Left</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -258,8 +289,8 @@ import SlideOut from '../components'
 
 export default {
   name: 'Demo',
-  components: { SlideOut },
-  data () {
+  components: {SlideOut},
+  data() {
     return {
       text: {
         header: 'Here is header',
@@ -294,18 +325,22 @@ export default {
       demo22Visible: false,
       demo23Visible: false,
       demo24Visible: false,
-      demo25Visible: false
+      demo25Visible: false,
+      demo26Visible: false,
+      demo27Visible: false,
+      demo28Visible: false,
+      demo29Visible: false
     }
   },
   methods: {
-    showResizeDemo (name) {
+    showResizeDemo(name) {
       this.resizeValue = 0
       this[`demo${name}Visible`] = true
     },
-    onOpen () {
+    onOpen() {
       this.status = 1
     },
-    onClose (e) {
+    onClose(e) {
       // prevent close and wait
       e.wait = true
       this.status = 0
@@ -315,10 +350,10 @@ export default {
         e.close = true
       }, 3000)
     },
-    onResize (e) {
+    onResize(e) {
       this.resizeValue = e.size
     },
-    onClosed () {
+    onClosed() {
       this.$emit('show-tip', 'Aha, I am really closed')
     }
   }
@@ -333,7 +368,7 @@ export default {
   margin-bottom: 40px;
 }
 
-li{
+li {
   list-style: none;
 }
 

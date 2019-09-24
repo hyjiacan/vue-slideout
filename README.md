@@ -78,7 +78,7 @@ For more usage, see https://hyjiacan.github.io/vue-slideout/
 
 |name|type|required|description|default|
 |---|---|---|---|---|
-|size|String/Number|NO|The size of slide, both `px` and `%` available|400px|
+|size|String/Number/Array|NO|The size of slide, both `px` and `%` available; If it is array, element-0 is the width, and elemenet-1 is the height, if there is only one element, that means width equals with height|400px|
 |zIndex|Number|NO|The z-index of slide|1997|
 |visible|Boolean|YES|Is the slide visible，modifier `.sync` is available|false|
 |title|String|NO|Slide `title` text, if this is empty and `slot=header` is empty too,<br/>the header would be hidden|-|

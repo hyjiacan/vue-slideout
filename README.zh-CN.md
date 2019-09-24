@@ -78,7 +78,7 @@ export default {
 
 |名称|类型|必填|描述|默认值|
 |---|---|---|---|---|
-|size|String/Number|否|显示的尺寸, 可以使用单位`px`和`%`|400px|
+|size|String/Number/Array|否|显示的尺寸, 可以使用单位`px`和`%`；当为数组时，第一个值表示宽度，第二个值表示高度，数组只有一个值时，表示宽度和高度相同|400px|
 |zIndex|Number|否|z-index 值|1997|
 |visible|Boolean|是|是否可见，可使用 `.sync` 修饰|false|
 |title|String|否|标题文本，如果此属性为空，`slot=header` 也为空,<br/>那么头部会被隐藏|-|
