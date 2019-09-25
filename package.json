@@ -1,6 +1,6 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "lib/slideout.common.js",
   "scripts": {
@@ -26,7 +26,9 @@
     "types",
     "LICENSE",
     "README.md",
-    "README.zh-CN.md"
+    "README.zh-CN.md",
+    "API.md",
+    "API.zh-CN.md"
   ],
   "publishConfig": {
     "access": "public"
