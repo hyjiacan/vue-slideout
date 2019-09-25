@@ -1,5 +1,15 @@
 # SlideOut
 
+![NPM](https://img.shields.io/npm/l/@hyjiacan/vue-slideout?style=flat-square)
+
+![Travis (.org)](https://img.shields.io/travis/hyjiacan/vue-slideout?style=flat-square)
+
+![npm (scoped)](https://img.shields.io/npm/v/@hyjiacan/vue-slideout?style=flat-square)
+
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@hyjiacan/vue-slideout?style=flat-square)
+
+![npm](https://img.shields.io/npm/dm/@hyjiacan/vue-slideout?style=flat-square)
+
 A Slide-Out component for Vue.js 2.0
 
 ### Dependencies
