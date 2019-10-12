@@ -175,6 +175,13 @@
 
 ## Events
 
+#### before-open
+
+- args e: `{cancel: Boolean}`
+
+> Invoke before slide open, in callback function,
+> assign `e.cancel=true` to prevent open
+
 #### open  
 
 - args `-`
@@ -183,7 +190,7 @@
 
 #### close  
 
-- args `e: `{close: Boolean, wait: Boolean}``
+- args e: `{close: Boolean, wait: Boolean}`
 
 > Invoke before slide close, in callback function,
 > assign `e.wait=true` to prevent close, and assign `e.close=true` to close (async supported)

@@ -18,14 +18,17 @@ export default {
     }
   },
   watch: {
+    // 当从外部改变visible时，切换显示状态
     visible(visible) {
       this.toggle(visible)
     },
+    // 当从内部改变 isVisible时
     isVisible(v) {
       if (!this.isFixed) {
         // 非固定时，不需要锁定滚动
         return
       }
+      // 切换锁定样式类
       if (v) {
         document.body.classList.add('vue-slideout-lock-scroll')
       } else {
@@ -34,9 +37,11 @@ export default {
     }
   },
   computed: {
+    // 停靠边，当未指定时，设置为默认值 right
     dockOn() {
       return this.dock || 'right'
     },
+    // SlideOut 容器样式
     containerStyle() {
       let style = {
         // 2147483647 是允许的最大值
@@ -62,64 +67,78 @@ export default {
       }
       return style
     },
+    // SlideOut 遮罩层样式
     maskStyle() {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
+    // 是否使用固定大小，判断依据：指定的大小是一个数组
     isSizeFixed() {
       return Array.isArray(this.size)
     },
+    // 获取带上单位的size值
+    sizeWithUnit() {
+      return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${parseInt(this.size)}px` : `${parseInt(this.size)}%`
+    },
+    // 隐藏时 size 的大小
+    hiddenSizeWithUnit() {
+      return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`
+    },
+    // SlideOut 内容样式
     layoutStyle() {
       let style = {}
       if (this.isSizeFixed) {
         // 指定大小
-        style.width = this.size[0]
-        style.height = this.size[this.size.length === 1 ? 0 : 1]
+        style.width = this.fullscreen ? '100%' : this.size[0]
+        style.height = this.fullscreen ? '100%' : this.size[this.size.length === 1 ? 0 : 1]
+        // 偏移量，当全屏时偏移量为 0
+        let offset = this.fullscreen ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
             style.right = this.getInstance(style.width)
-            style.top = this.offset
+            style.top = offset
             break
           case 'left':
             style.left = this.getInstance(style.width)
-            style.top = this.offset
+            style.top = offset
             break
           case 'bottom':
             style.bottom = this.getInstance(style.height)
-            style.left = this.offset
+            style.left = offset
             break
           case 'top':
             style.top = this.getInstance(style.height)
-            style.left = this.offset
+            style.left = offset
             break
         }
-      } else {
-        let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : typeof this.size === 'number' ? `${this.size}px` : this.size
-        let distance = this.isVisible || this.disableAnimation
-          ? 0
-          : (typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`)
-        switch (this.dockOn) {
-          case 'right':
-            style.width = size
-            style.right = distance
-            break
-          case 'left':
-            style.width = size
-            style.left = distance
-            break
-          case 'bottom':
-            style.height = size
-            style.bottom = distance
-            break
-          case 'top':
-            style.height = size
-            style.top = distance
-            break
-        }
+        return style
+      }
+      // 内容显示大小
+      let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
+      // 内容到边的距离
+      let distance = this.isVisible || this.disableAnimation ? 0 : this.hiddenSizeWithUnit
+      switch (this.dockOn) {
+        case 'right':
+          style.width = size
+          style.right = distance
+          break
+        case 'left':
+          style.width = size
+          style.left = distance
+          break
+        case 'bottom':
+          style.height = size
+          style.bottom = distance
+          break
+        case 'top':
+          style.height = size
+          style.top = distance
+          break
       }
       return style
     },
+    // 容器需要应用的样式类
     containerClasses() {
       return {
         [this.customClass || '']: true,
@@ -132,6 +151,7 @@ export default {
         'vue-slideout-fullscreen': this.fullscreen
       }
     },
+    // 头部样式
     headerStyle() {
       let style = {
         paddingRight: '0'
@@ -143,8 +163,8 @@ export default {
       style.paddingRight = `${parseInt(btnStyle.width) + 5}px`
       return style
     },
+    // 是否使用固定定位
     isFixed() {
-      // 是否使用固定定位
       // 设置了 appendTo 的时候，就不固定显示
       return this.fixed || !this.appendTo
     }
@@ -153,7 +173,7 @@ export default {
     /**
      * 获取关闭事件参数对象
      */
-    getArgs() {
+    getCloseArgs() {
       let me = this
       // 通过使用 setter 以实现延迟操作
       return {
@@ -172,18 +192,31 @@ export default {
         }
       }
     },
+    /**
+     * 切换显示状态
+     * @param {Boolean} [visible] 指定显示状态，不指定时切换状态
+     */
     toggle(visible) {
       if (visible === this.isVisible) {
         return
       }
-      // 显示后触发事件
       if (visible) {
+        // 显示前触发事件
+        let args = {
+          cancel: false
+        }
+        this.$emit('before-open', args)
+        // 取消打开
+        if (args.cancel) {
+          return
+        }
         this.setVisibleValue(true)
+        // 显示后触发事件
         this.$nextTick(this.emitOpenEvent)
         return
       }
       // 隐藏前触发事件
-      let args = this.getArgs()
+      let args = this.getCloseArgs()
       this.$emit('close', args)
       if (args.wait) {
         // 需要等待，最终是否关闭要看 args.close 是否为 true
@@ -191,6 +224,10 @@ export default {
       }
       this.setVisibleValue(false)
     },
+    /**
+     * 设置显示状态
+     * @param {Boolean} visible 显示状态
+     */
     setVisibleValue(visible) {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible === visible) {
@@ -210,6 +247,9 @@ export default {
         this.$nextTick(this.emitCloseEvent)
       }
     },
+    /**
+     * 计算出组件在DOM中的父元素
+     */
     appendComponentTo() {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
@@ -226,11 +266,18 @@ export default {
       target.appendChild(this.$el)
       this.parentElement = target
     },
+    /**
+     * 点击遮罩层时的事件处理
+     */
     onMaskClick() {
       if (this.closeOnMaskClick) {
         this.toggle(false)
       }
     },
+    /**
+     * 获取父元素的尺寸
+     * @return {{width: Number, height: Number}}
+     */
     getParentSize() {
       let rect = this.parentElement.getClientRects()[0]
       return {
@@ -240,6 +287,7 @@ export default {
     },
     /**
      * 获取到此组件的大小（基于px）
+     * @return {{width: Number, height: Number}}
      */
     getMyOwnSize() {
       let rect = this.$refs.layout.getClientRects()[0]
@@ -248,6 +296,11 @@ export default {
         height: rect.height
       }
     },
+    /**
+     * 计算当前显示的大小
+     * @param size
+     * @return {Number|String}
+     */
     getInstance(size) {
       return this.isVisible || this.disableAnimation
         ? 0
@@ -373,6 +426,11 @@ export default {
     }
   },
   mounted() {
+    // 检查传入的  dock 值是否有效
+    const docks = ['top', 'right', 'bottom', 'left']
+    if (this.dock && docks.indexOf(this.dock) === -1) {
+      throw new Error(`Invalid dock value "${this.dock}", Optional: ${docks.join(',')} `)
+    }
     this.appendComponentTo()
     if (this.allowResize) {
       // 绑定鼠标事件

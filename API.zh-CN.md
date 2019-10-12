@@ -11,7 +11,7 @@
 > 当为数组时:
 > - 第一个值表示宽度，第二个值表示高度;
 > 当数组只有一个值时，表示宽度和高度相同
-> - 属性 `allowResize`, `minSize`, `maxSize`  值会被忽略
+> - 属性 `allowResize`, `minSize`, `maxSize`  值会被忽略，即不允许改变大小
 
 #### zIndex (选填)
 
@@ -162,6 +162,12 @@
 > 底部内容
 
 ## 事件
+
+#### before-open
+
+- 参数 e: `{cancel: Boolean}`
+
+> 在打开前调用,在回调函数内, 设置`e.cancel=true` 可以阻止打开
 
 #### open
 
