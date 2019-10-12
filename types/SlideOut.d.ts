@@ -3,8 +3,9 @@ export type DockPosition = 'top' | 'right' | 'bottom' | 'left'
 declare class SlideOut {
   /**
    * The size of slide, both `px` and `%` available, default is `400px`
+   * Properties `minSize` and `maxSize` are ignored if this is an Array
    */
-  size: string | number;
+  size: string | number | [string | number, string | number];
   /**
    * The z-index of slide, default is `1997`
    */
@@ -60,20 +61,42 @@ declare class SlideOut {
   /**
    * Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`, default is `false`
    */
-  ignoreEsc: Boolean;
+  ignoreEsc: boolean;
   /**
-   * Whether to lock page scroll (except slide self), default is `false`
+   * Offset from dock side, value in `px` or `%`, work when property `size` is an Array
    */
-  lockScroll: Boolean;
+  offset: boolean;
+
+  /**
+   * Fullscreen
+   */
+  fullscreen: boolean;
+
+  /**
+   * Whether to show close button
+   */
+  showClose: boolean;
+
+  /**
+   * Whether to display as fixed (Will hide the close button)
+   */
+  fixed: boolean;
+
+  /**
+   * Event emitted before slide open, you can prevent it by e.cancel=true
+   */
+  on(eventName: 'before-open', e: { cancel: boolean }): void;
 
   /**
    * Event emitted after slide opened
    */
   on(eventName: 'open'): void;
+
   /**
    * Event emitted after before close, you can prevent it by e.wait=true, and e.close=true to close
    */
   on(eventName: 'close', e: { close: boolean, wait: boolean }): void;
+
   /**
    * Event emitted after slide closed
    */

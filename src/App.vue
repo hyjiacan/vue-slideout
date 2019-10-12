@@ -31,13 +31,16 @@
              v-lang>Demo Source</a></li>
     </ul>
     <h2 v-lang>Samples</h2>
-    <main-page @show-tip="onShowTip"/>
-    <div id="tip" v-show="tipVisible">{{tipText}}</div>
+    <main-page/>
+    <div id="tip" v-show="tipVisible">
+      {{tipText}}
+    </div>
   </main>
 </template>
 
 <script>
 import MainPage from './views/Main'
+import Vue from 'vue'
 
 window.jsonp = function (url, callback) {
   let script = document.createElement('script')
@@ -71,24 +74,33 @@ export default {
   components: {
     MainPage
   },
-  data () {
+  data() {
     return {
+      ebus: new Vue(),
       tipVisible: false,
-      tipText: null
+      tipText: ''
+    }
+  },
+  provide() {
+    return {
+      ebus: this.ebus
     }
   },
   methods: {
-    onShowTip (tip) {
+    showTip(tip) {
       this.tipText = tip
       this.tipVisible = true
       this.$nextTick(() => {
         setTimeout(() => {
           this.tipVisible = false
+          this.tipText = ''
         }, 3000)
       })
     }
   },
-  mounted () {
+  mounted() {
+    console.log(this.ebus)
+    this.ebus.$on('tip', this.showTip)
     let isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
     window.jsonp('https://api.github.com/repos/hyjiacan/vue-slideout/tags', 'tagsCallback')
@@ -129,9 +141,11 @@ a, a:visited, a:link, a:active {
   color: #4160aa;
   font-weight: 600;
 }
+
 a:focus, a:hover {
   color: #45c153;
 }
+
 h1 small {
   font-size: 16px;
   color: #666;
@@ -154,6 +168,7 @@ h3 {
 
   & + ul {
     border-left: 3px solid transparent;
+
     &:hover {
       border-color: #b3b0a9;
     }
@@ -192,7 +207,7 @@ code {
   }
 }
 
-main > code{
+main > code {
   padding: 15px 10px;
   margin: 10px 0;
   display: block;
@@ -220,10 +235,10 @@ main > code{
   position: fixed;
   top: 5px;
   right: 5px;
-  background-color: rgba(100, 149, 213, 0.79);
+  background-color: rgb(57, 137, 255);
   color: #FFF;
-  box-shadow: 0 0 3px 3px rgba(100, 149, 213, 0.64);
-  padding: 20px 15px;
+  box-shadow: 0 0 2px 2px rgba(100, 149, 213, 0.64);
+  padding: 20px;
 }
 
 .content-loaded .mask {
@@ -257,27 +272,35 @@ main > code{
 .zh .mask:before {
   content: '正在加载内容...';
 }
+
 .zh .latest-text:before {
   content: '最新版本:';
 }
+
 .zh .release-text:before {
   content: '发布于 ';
 }
+
 .zh .pending:before {
   content: '加载中...';
 }
+
 .en .mask:before {
   content: 'Loading content...';
 }
+
 .en .latest-text:before {
   content: 'Latest: ';
 }
+
 .en .release-text:before {
   content: ' released at ';
 }
+
 .en .pending:before {
   content: 'Loading...';
 }
+
 #source {
   margin-left: 5px;
   margin-right: 15px;
