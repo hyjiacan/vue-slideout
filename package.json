@@ -8,7 +8,8 @@
     "build": "node version.js & npx vue-cli-service build --target lib --dest=lib --formats=commonjs --name slideout src/components/index.js",
     "build:docs": "npx vue-cli-service build --dest=docs",
     "release": "yarn run lint & yarn run build & yarn run build:docs",
-    "lint": "npx vue-cli-service lint"
+    "lint": "npx vue-cli-service lint",
+    "test": "npx vue-cli-service lint & npx vue-cli-service build"
   },
   "repository": {
     "type": "git",
