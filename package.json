@@ -24,6 +24,7 @@
   "license": "MIT",
   "files": [
     "lib",
+    "src",
     "types",
     "LICENSE",
     "README.md",

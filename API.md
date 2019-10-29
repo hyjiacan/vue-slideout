@@ -139,8 +139,8 @@
 
 #### offset (可选)
 
-- 类型 `Boolean`
-- 默认值 `false`
+- 类型 `String`
+- 默认值 `0`
 
 > The offset from `dock` side, both `px` and `%` available.
  > (Take affect only if property `size` is an Array)
