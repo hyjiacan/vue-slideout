@@ -13,7 +13,7 @@
 > 当数组只有一个值时，表示宽度和高度相同
 > - 属性 `allowResize`, `minSize`, `maxSize`  值会被忽略，即不允许改变大小
 
-#### zIndex (选填)
+#### z-index (选填)
 
 - 类型 `Number`
 - 默认值 `1997`
@@ -34,42 +34,44 @@
 
 > 标题文本，如果此属性为空，`slot=header` 也为空,(br/>那么头部会被隐藏
 
-#### closeOnMaskClick  (可选)
+#### close-on-mask-click  (可选)
 
 - 类型 `Boolean`
 - 默认值 `true`
 
 > 是否在点击遮罩层时关闭
 
-#### customClass  (可选)
+#### custom-class  (可选)
 
 - 类型 `String`
 - 默认值 `-`
 
 > 自定义的样式类名称
 
-#### showMask  (可选)
+#### show-mask  (可选)
 
 - 类型 `Boolean`
 - 默认值 `true`
 
 > 遮罩层是否可见
 
-#### showClose  (可选)
+#### show-close  (可选)
 
 - 类型 `Boolean`
 - 默认值 `true`
 
 > 是否显示关闭按钮
 
-#### showFullscreen  (可选)
+#### show-fullscreen  (可选)
+
+> `since 2.3.0`
 
 - 类型 `Boolean`
 - 默认值 `false`
 
 > 是否显示全屏按钮
 
-#### maskColor  (可选)
+#### mask-color  (可选)
 
 - 类型 `String`
 - 默认值 `rgba(0, 0, 0, 0.5)`
@@ -83,7 +85,7 @@
 
 > 停靠位置，可选值为: `top`, `right`, `bottom`, `left`
 
-#### appendTo  (可选)
+#### append-to  (可选)
 
 - 类型 `String/HTMLElement`
 - 默认值 `null`
@@ -91,35 +93,39 @@
 > 设置父元素，可使用字符串(选择器)和(br/>对象(DOM对象)。
 > 在未设置`appendTo`时，Slide组件会以`position: fixed`的方式显示
 
-#### disableAnimation  (可选)
+#### disable-animation  (可选)
 
 - 类型 `Boolean`
 - 默认值 `false`
 
 > 是否禁用显示和隐藏的动画
 
-#### allowResize  (可选)
+#### allow-resize  (可选)
+
+> `since 1.4.0`
 
 - 类型 `Boolean`
 - 默认值 `false`
 
 > 是否允许鼠标挺拖动改变尺寸
 
-#### minSize  (可选)
+#### min-size  (可选)
 
 - 类型 `Number`
 - 默认值 `60`
 
 > 拖动大小的最小值限制，单位为 `px`
 
-#### maxSize  (可选)
+#### max-size  (可选)
 
 - 类型 `Number`
 - 默认值 `0`
 
 > 拖动大小的最大值限制，单位为 `px`， 设置为 `0` 表示不限制
 
-#### ignoreEsc  (可选)
+#### ignore-esc  (可选)
+
+> `since 2.0.0`
 
 - 类型 `Boolean`
 - 默认值 `false`
@@ -128,12 +134,16 @@
 
 #### fullscreen  (可选)
 
+> `since 2.1.3`
+
 - 类型 `Boolean`
 - 默认值 `false`
 
 > 是否全屏显示(此时会禁用拖动改变尺寸功能)，可使用 `.sync` 修饰(此时在关闭后会退出全屏)
 
 #### fixed  (可选)
+
+> `since 2.1.12`
 
 - 类型 `Boolean`
 - 默认值 `false`
@@ -142,12 +152,16 @@
 
 #### offset (可选)
 
+> `since 2.2.0`
+
 - 类型 `String`
 - 默认值 `0`
 
 > 距离dock(停靠)边的偏移量，单位可以是`px`或`%` (仅当`size`是数组时生效)
 
-#### arrowButton (可选)
+#### arrow-button (可选)
+
+> `since 2.3.0`
 
 - 类型 `Boolean`
 - 默认值 `true`
@@ -165,6 +179,8 @@
 
 #### btn
 
+> `since 2.1.7`
+
 > 头部的扩展部分，放在**关闭按钮**左侧
 
 #### default
@@ -178,6 +194,8 @@
 ## 事件
 
 #### before-open
+
+> `since 2.2.5`
 
 - 参数 e: `{cancel: Boolean}`
 
