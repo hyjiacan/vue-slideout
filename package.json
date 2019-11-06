@@ -24,7 +24,7 @@
   "license": "MIT",
   "files": [
     "lib",
-    "src",
+    "src/components",
     "LICENSE",
     "README.md",
     "README.zh-CN.md",

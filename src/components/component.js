@@ -441,6 +441,11 @@ export default {
       setTimeout(() => {
         this.$emit('closed')
       }, 318)
+    },
+    _removeKeyboardEvent() {
+      if (!this.ignoreEsc) {
+        this.$el.removeEventListener('keydown', this.onKeydown)
+      }
     }
   },
   mounted() {
@@ -455,15 +460,11 @@ export default {
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
-    if (!this.ignoreEsc) {
-      this.$el.addEventListener('keydown', this.onKeydown)
-    }
+    this._removeKeyboardEvent()
     this.extensionButtons = this.$refs.buttons
   },
   beforeDestroy() {
-    if (!this.ignoreEsc) {
-      this.$el.removeEventListener('keydown', this.onKeydown)
-    }
+    this._removeKeyboardEvent()
     if (this.allowResize) {
       // 移除事件
       document.removeEventListener('mousemove', this.mouseUpHandler)
