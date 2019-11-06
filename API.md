@@ -63,6 +63,13 @@
 
 > Is close button visible
 
+#### showFullscreen  (optional)
+
+- type `Boolean`
+- default `false`
+
+> Is fullscreen button visible
+
 #### maskColor  (optional)
 
 - type `String`
@@ -137,13 +144,20 @@
 > Whether to use `position: fixed`
 
 
-#### offset (可选)
+#### offset (optional)
 
-- 类型 `String`
-- 默认值 `0`
+- type `String`
+- default `0`
 
 > The offset from `dock` side, both `px` and `%` available.
  > (Take affect only if property `size` is an Array)
+
+#### arrowButton (optional)
+
+- type `Boolean`
+- default `true`
+
+> Display close button as `arrow`(->) if true, otherwise display as `cross` (x)
 
 ## Slots
 

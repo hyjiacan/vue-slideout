@@ -33,6 +33,35 @@
     top: 0;
     right: 0;
     bottom: 0;
+
+    .vue-slideout-btn-fullscreen {
+      svg:first-child {
+        top: -32px;
+      }
+
+      svg:last-child {
+        top: 7px;
+      }
+    }
+  }
+}
+
+.vue-slideout-btn-fullscreen {
+  position: relative;
+  overflow: hidden;
+  float: left;
+
+  svg {
+    position: absolute;
+    left: 7px;
+  }
+
+  svg:first-child {
+    top: 7px;
+  }
+
+  svg:last-child {
+    top: 32px;
   }
 }
 
@@ -43,6 +72,12 @@
   &.vue-slideout-visible {
     opacity: 1;
     transition: opacity @duration, left 1ms, top 1ms, bottom 1ms, right 1ms;
+  }
+
+  .vue-slideout-btn-fullscreen {
+    svg {
+      transition: top 618ms;
+    }
   }
 
   .vue-slideout-layout {
@@ -117,7 +152,7 @@
   box-sizing: border-box;
 }
 
-.vue-slideout-btn-close {
+.vue-slideout-btn-close, .vue-slideout-btn-fullscreen {
   width: 32px;
   height: 32px;
   line-height: 32px;

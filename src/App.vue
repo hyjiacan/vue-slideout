@@ -99,7 +99,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.ebus)
     this.ebus.$on('tip', this.showTip)
     let isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')

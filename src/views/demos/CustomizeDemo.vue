@@ -17,6 +17,10 @@
       <div><code>:show-close="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
+    <slide-out :visible.sync="v14" :title="text.header" :arrow-button="false">
+      <div><code>:arrow-button="false"</code></div>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
     <slide-out :visible.sync="v5">
       <div>{{text.content}}</div>
       <div slot="footer">{{text.footer}}</div>
@@ -79,6 +83,7 @@
         </li>
         <li>
           <button @click="v4 = true" v-lang>No close button</button>
+          <button @click="v14 = true" v-lang>Display close button as cross</button>
           <button @click="v5 = true" v-lang>No Header</button>
           <button @click="v6 = true" v-lang>No Footer</button>
         </li>

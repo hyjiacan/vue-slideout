@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <slide-out :visible.sync="v1" :title="text.header" size="600px" allow-resize
-               :fullscreen.sync="fullscreen" append-to="body" fixed>
+               :fullscreen.sync="fullscreen" append-to="body" show-fullscreen fixed>
       <p>
         <code>allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
       </p>

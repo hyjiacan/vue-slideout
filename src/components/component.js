@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       isVisible: false,
+      isFullscreen: false,
       // 标识鼠标是否按下，仅按下时能拖动大小
       mousedown: false,
       // 鼠标按下时的位置
@@ -20,7 +21,11 @@ export default {
   watch: {
     // 当从外部改变visible时，切换显示状态
     visible(visible) {
-      this.toggle(visible)
+      this.toggleVisible(visible)
+    },
+    // 当从外部改变fullscreen时，切换显示状态
+    fullscreen(fullscreen) {
+      this.toggleFullscreen(fullscreen)
     },
     // 当从内部改变 isVisible时
     isVisible(v) {
@@ -45,7 +50,7 @@ export default {
     containerStyle() {
       let style = {
         // 2147483647 是允许的最大值
-        'z-index': this.fullscreen ? 2147483647 : this.zIndex
+        'z-index': this.isFullscreen ? 2147483647 : this.zIndex
       }
       if (this.mousedown) {
         style.userSelect = 'none'
@@ -90,10 +95,10 @@ export default {
       let style = {}
       if (this.isSizeFixed) {
         // 指定大小
-        style.width = this.fullscreen ? '100%' : this.size[0]
-        style.height = this.fullscreen ? '100%' : this.size[this.size.length === 1 ? 0 : 1]
+        style.width = this.isFullscreen ? '100%' : this.size[0]
+        style.height = this.isFullscreen ? '100%' : this.size[this.size.length === 1 ? 0 : 1]
         // 偏移量，当全屏时偏移量为 0
-        let offset = this.fullscreen ? 0 : this.offset
+        let offset = this.isFullscreen ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
             style.right = this.getInstance(style.width)
@@ -115,7 +120,7 @@ export default {
         return style
       }
       // 内容显示大小
-      let size = this.fullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
+      let size = this.isFullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
       // 内容到边的距离
       let distance = this.isVisible || this.disableAnimation ? 0 : this.hiddenSizeWithUnit
       switch (this.dockOn) {
@@ -148,7 +153,7 @@ export default {
         'vue-slideout-show-header': this.title || this.$slots.header,
         'vue-slideout-show-footer': this.$slots.footer,
         'vue-slideout-fixed': this.isFixed,
-        'vue-slideout-fullscreen': this.fullscreen
+        'vue-slideout-fullscreen': this.isFullscreen
       }
     },
     // 头部样式
@@ -196,7 +201,7 @@ export default {
      * 切换显示状态
      * @param {Boolean} [visible] 指定显示状态，不指定时切换状态
      */
-    toggle(visible) {
+    toggleVisible(visible) {
       if (visible === this.isVisible) {
         return
       }
@@ -223,6 +228,19 @@ export default {
         return
       }
       this.setVisibleValue(false)
+    },
+    /**
+     * 切换全屏
+     */
+    toggleFullscreen(fullscreen) {
+      if (fullscreen === undefined) {
+        this.isFullscreen = !this.isFullscreen
+      } else if (this.isFullscreen === fullscreen) {
+        return
+      } else {
+        this.isFullscreen = fullscreen
+      }
+      this.$emit('update:fullscreen', this.isFullscreen)
     },
     /**
      * 设置显示状态
@@ -271,7 +289,7 @@ export default {
      */
     onMaskClick() {
       if (this.closeOnMaskClick) {
-        this.toggle(false)
+        this.toggleVisible(false)
       }
     },
     /**
@@ -307,7 +325,7 @@ export default {
         : (typeof size === 'number' || !(/%$/.test(size)) ? `${-parseInt(size)}px` : `${-parseInt(size)}%`)
     },
     mouseDownHandler(e) {
-      if (this.fullscreen) {
+      if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
       }
@@ -319,7 +337,7 @@ export default {
       this.originSize = this.getMyOwnSize()
     },
     mouseMoveHandler(e) {
-      if (this.fullscreen) {
+      if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
       }
@@ -399,7 +417,7 @@ export default {
       if (['INPUT', 'TEXTAREA'].indexOf(e.target.tagName) !== -1 || e.target.contentEditable === 'true') {
         return
       }
-      this.toggle(false)
+      this.toggleVisible(false)
       return false
     },
     emitOpenEvent() {
@@ -454,6 +472,8 @@ export default {
     if (this.isVisible) {
       this.setVisibleValue(false)
     }
+    // 取消滚动锁定
+    document.body.classList.remove('vue-slideout-lock-scroll')
     if (this.appendTo) {
       try {
         this.$el.parentElement.removeChild(this.$el)
