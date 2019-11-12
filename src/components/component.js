@@ -1,6 +1,154 @@
 export default {
   name: 'SlideOut',
-  data() {
+  props: {
+    /**
+     * 滑出尺寸，单位为像素，当为数组时，表示设置宽度和高度
+     * 第一个值表示宽度，第二个值表示高度，数组只有一个值时，表示宽度和高度相同
+     */
+    size: {
+      type: [String, Number, Array],
+      default: 400
+    },
+    /**
+     * 层叠索引
+     */
+    zIndex: {
+      type: Number,
+      default: 1997
+    },
+    /**
+     * 是否可见，可使用 .sync 修饰符
+     */
+    visible: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 显示的标题，传空时不显示标题栏
+     */
+    title: {
+      type: String
+    },
+    /**
+     * 是否在点击mask时关闭
+     */
+    closeOnMaskClick: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * 是否忽略ESC键，不忽略时按下ESC会关闭
+     */
+    ignoreEsc: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 自定义样式类
+     */
+    customClass: {
+      type: String
+    },
+    /**
+     * 是否显示遮罩层
+     */
+    showMask: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * 遮罩层颜色
+     */
+    maskColor: {
+      type: String,
+      default: null
+    },
+    /**
+     * 停靠方向，默认右侧
+     */
+    dock: {
+      type: String,
+      default: 'right'
+    },
+    /**
+     * 将元素放置到指定元素下
+     */
+    appendTo: {
+      type: [String, HTMLElement],
+      default: null
+    },
+    /**
+     * 是否禁用滑出动画，默认为false
+     */
+    disableAnimation: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 是否允许拖动弹出大小
+     */
+    allowResize: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 拖动改变大小时的最小尺寸，单位为px，此值不影响size属性指定的大小
+     */
+    minSize: {
+      type: Number,
+      default: 100
+    },
+    /**
+     * 拖动改变大小时的最大尺寸，单位为px，指定为0时不限制，此值不影响size属性指定的大小
+     */
+    maxSize: {
+      type: Number,
+      default: 0
+    },
+    /**
+     * 是否启用全屏显示
+     */
+    fullscreen: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 是否显示关闭按钮
+     */
+    showClose: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * 是否显示全屏按钮
+     */
+    showFullscreen: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 是否固定显示（此时会隐藏滚动条）
+     */
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 距离dock(停靠)边的偏移量，单位可以是`px`或`%`
+     */
+    offset: {
+      type: String,
+      default: '0'
+    },
+    /**
+     * 以箭头方式显示关闭按钮
+     */
+    arrowButton: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data () {
     return {
       isVisible: false,
       isFullscreen: false,
@@ -20,15 +168,15 @@ export default {
   },
   watch: {
     // 当从外部改变visible时，切换显示状态
-    visible(visible) {
+    visible (visible) {
       this.toggleVisible(visible)
     },
     // 当从外部改变fullscreen时，切换显示状态
-    fullscreen(fullscreen) {
+    fullscreen (fullscreen) {
       this.toggleFullscreen(fullscreen)
     },
     // 当从内部改变 isVisible时
-    isVisible(v) {
+    isVisible (v) {
       if (!this.isFixed) {
         // 非固定时，不需要锁定滚动
         return
@@ -43,11 +191,11 @@ export default {
   },
   computed: {
     // 停靠边，当未指定时，设置为默认值 right
-    dockOn() {
+    dockOn () {
       return this.dock || 'right'
     },
     // SlideOut 容器样式
-    containerStyle() {
+    containerStyle () {
       let style = {
         // 2147483647 是允许的最大值
         'z-index': this.isFullscreen ? 2147483647 : this.zIndex
@@ -73,25 +221,25 @@ export default {
       return style
     },
     // SlideOut 遮罩层样式
-    maskStyle() {
+    maskStyle () {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
     // 是否使用固定大小，判断依据：指定的大小是一个数组
-    isSizeFixed() {
+    isSizeFixed () {
       return Array.isArray(this.size)
     },
     // 获取带上单位的size值
-    sizeWithUnit() {
+    sizeWithUnit () {
       return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${parseInt(this.size)}px` : `${parseInt(this.size)}%`
     },
     // 隐藏时 size 的大小
-    hiddenSizeWithUnit() {
+    hiddenSizeWithUnit () {
       return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`
     },
     // SlideOut 内容样式
-    layoutStyle() {
+    layoutStyle () {
       let style = {}
       if (this.isSizeFixed) {
         // 指定大小
@@ -144,7 +292,7 @@ export default {
       return style
     },
     // 容器需要应用的样式类
-    containerClasses() {
+    containerClasses () {
       return {
         [this.customClass || '']: true,
         [`vue-slideout-dock-${this.dockOn}`]: true,
@@ -157,7 +305,7 @@ export default {
       }
     },
     // 头部样式
-    headerStyle() {
+    headerStyle () {
       let style = {
         paddingRight: '0'
       }
@@ -169,7 +317,7 @@ export default {
       return style
     },
     // 是否使用固定定位
-    isFixed() {
+    isFixed () {
       // 设置了 appendTo 的时候，就不固定显示
       return this.fixed || !this.appendTo
     }
@@ -178,13 +326,13 @@ export default {
     /**
      * 获取关闭事件参数对象
      */
-    getCloseArgs() {
+    getCloseArgs () {
       let me = this
       // 通过使用 setter 以实现延迟操作
       return {
         // 是否等待操作
         wait: false,
-        set close(close) {
+        set close (close) {
           // 取消关闭
           if (!close) {
             return
@@ -192,7 +340,7 @@ export default {
           // 关闭
           me.setVisibleValue(false)
         },
-        get close() {
+        get close () {
           return undefined
         }
       }
@@ -201,7 +349,7 @@ export default {
      * 切换显示状态
      * @param {Boolean} [visible] 指定显示状态，不指定时切换状态
      */
-    toggleVisible(visible) {
+    toggleVisible (visible) {
       if (visible === this.isVisible) {
         return
       }
@@ -232,7 +380,7 @@ export default {
     /**
      * 切换全屏
      */
-    toggleFullscreen(fullscreen) {
+    toggleFullscreen (fullscreen) {
       if (fullscreen === undefined) {
         this.isFullscreen = !this.isFullscreen
       } else if (this.isFullscreen === fullscreen) {
@@ -246,7 +394,7 @@ export default {
      * 设置显示状态
      * @param {Boolean} visible 显示状态
      */
-    setVisibleValue(visible) {
+    setVisibleValue (visible) {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible === visible) {
         return
@@ -268,7 +416,7 @@ export default {
     /**
      * 计算出组件在DOM中的父元素
      */
-    appendComponentTo() {
+    appendComponentTo () {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -287,7 +435,7 @@ export default {
     /**
      * 点击遮罩层时的事件处理
      */
-    onMaskClick() {
+    onMaskClick () {
       if (this.closeOnMaskClick) {
         this.toggleVisible(false)
       }
@@ -296,7 +444,7 @@ export default {
      * 获取父元素的尺寸
      * @return {{width: Number, height: Number}}
      */
-    getParentSize() {
+    getParentSize () {
       let rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -307,7 +455,7 @@ export default {
      * 获取到此组件的大小（基于px）
      * @return {{width: Number, height: Number}}
      */
-    getMyOwnSize() {
+    getMyOwnSize () {
       let rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
@@ -319,12 +467,12 @@ export default {
      * @param size
      * @return {Number|String}
      */
-    getInstance(size) {
+    getInstance (size) {
       return this.isVisible || this.disableAnimation
         ? 0
         : (typeof size === 'number' || !(/%$/.test(size)) ? `${-parseInt(size)}px` : `${-parseInt(size)}%`)
     },
-    mouseDownHandler(e) {
+    mouseDownHandler (e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -336,7 +484,7 @@ export default {
       }
       this.originSize = this.getMyOwnSize()
     },
-    mouseMoveHandler(e) {
+    mouseMoveHandler (e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -403,10 +551,10 @@ export default {
         this.$emit('resize', {size: this.resizeValue})
       })
     },
-    mouseUpHandler() {
+    mouseUpHandler () {
       this.mousedown = false
     },
-    onKeydown(e) {
+    onKeydown (e) {
       if (!this.isVisible) {
         return
       }
@@ -420,7 +568,7 @@ export default {
       this.toggleVisible(false)
       return false
     },
-    emitOpenEvent() {
+    emitOpenEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('open', this.$refs.layout)
@@ -431,7 +579,7 @@ export default {
         this.$emit('open', this.$refs.layout)
       }, 318)
     },
-    emitCloseEvent() {
+    emitCloseEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('closed')
@@ -442,13 +590,13 @@ export default {
         this.$emit('closed')
       }, 318)
     },
-    _removeKeyboardEvent() {
+    _removeKeyboardEvent () {
       if (!this.ignoreEsc) {
         this.$el.removeEventListener('keydown', this.onKeydown)
       }
     }
   },
-  mounted() {
+  mounted () {
     // 检查传入的  dock 值是否有效
     const docks = ['top', 'right', 'bottom', 'left']
     if (this.dock && docks.indexOf(this.dock) === -1) {
@@ -463,7 +611,7 @@ export default {
     this._removeKeyboardEvent()
     this.extensionButtons = this.$refs.buttons
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this._removeKeyboardEvent()
     if (this.allowResize) {
       // 移除事件
