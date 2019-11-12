@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import LangDirective from './assets/lang-directive'
-import SlideOut from './components'
+import SlideOut from './components/index'
 
 Vue.config.productionTip = false
 
 Vue.use(LangDirective)
-Vue.component('SlideOut', SlideOut)
+Vue.use(SlideOut, {})
 
 new Vue({
   render: h => h(App)
