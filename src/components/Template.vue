@@ -41,12 +41,15 @@ import IconArrow from './icon/IconArrow'
 import IconCross from './icon/IconCross'
 import IconFullscreen from './icon/IconFullscreen'
 import IconFullscreenExit from './icon/IconFullscreenExit'
-import component from './component'
 import './slideout.less'
+import computed from './computed'
+import data from './data'
+import methods from './methods'
+import watch from './watch'
 
 export default {
   name: 'SlideOut',
-  mixins: [component],
+  mixins: [computed, data, methods, watch],
   components: {IconArrow, IconCross, IconFullscreen, IconFullscreenExit},
   props: {
     /**
@@ -194,6 +197,41 @@ export default {
     arrowButton: {
       type: Boolean,
       default: true
+    }
+  },
+  mounted () {
+    // 检查传入的  dock 值是否有效
+    const docks = ['top', 'right', 'bottom', 'left']
+    if (this.dock && docks.indexOf(this.dock) === -1) {
+      throw new Error(`Invalid dock value "${this.dock}", Optional: ${docks.join(',')} `)
+    }
+    this.appendComponentTo()
+    if (this.allowResize) {
+      // 绑定鼠标事件
+      document.addEventListener('mousemove', this.mouseMoveHandler)
+      document.addEventListener('mouseup', this.mouseUpHandler)
+    }
+    this._removeKeyboardEvent()
+    this.extensionButtons = this.$refs.buttons
+  },
+  beforeDestroy () {
+    this._removeKeyboardEvent()
+    if (this.allowResize) {
+      // 移除事件
+      document.removeEventListener('mousemove', this.mouseUpHandler)
+      document.removeEventListener('mouseup', this.mouseMoveHandler)
+    }
+    if (this.isVisible) {
+      this.setVisibleValue(false)
+    }
+    // 取消滚动锁定
+    document.body.classList.remove('vue-slideout-lock-scroll')
+    if (this.appendTo) {
+      try {
+        this.$el.parentElement.removeChild(this.$el)
+      } catch (e) {
+        // ignore
+      }
     }
   }
 }
