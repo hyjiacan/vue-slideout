@@ -38,6 +38,8 @@ export default {
         this.$emit('before-open', args)
         // 取消打开
         if (args.cancel) {
+          // 取消时，重置原值为 false
+          this.$emit('update:visible', false)
           return
         }
         this.setVisibleValue(true)
@@ -49,6 +51,8 @@ export default {
       let args = this.getCloseArgs()
       this.$emit('close', args)
       if (args.wait) {
+        // 取消时，重置原值为 true
+        this.$emit('update:visible', true)
         // 需要等待，最终是否关闭要看 args.close 是否为 true
         return
       }
