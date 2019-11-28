@@ -129,7 +129,8 @@ export default {
     // 是否使用固定定位
     isFixed () {
       // 设置了 appendTo 的时候，就不固定显示
-      return this.fixed || !this.appendTo
+      // 但是如果父元素为 body 时，也需要固定显示
+      return this.fixed || this.parentElement === document.body || !this.appendTo
     }
   }
 }

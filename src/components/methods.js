@@ -267,6 +267,11 @@ export default {
         this.$emit('closed')
       }, 318)
     },
+    _bindKeyboardEvent () {
+      if (!this.ignoreEsc) {
+        this.$el.addEventListener('keydown', this.onKeydown)
+      }
+    },
     _removeKeyboardEvent () {
       if (!this.ignoreEsc) {
         this.$el.removeEventListener('keydown', this.onKeydown)

@@ -211,7 +211,7 @@ export default {
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
-    this._removeKeyboardEvent()
+    this._bindKeyboardEvent()
     this.extensionButtons = this.$refs.buttons
   },
   beforeDestroy () {

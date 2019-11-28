@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" dock="top" :title="text.header" allow-resize @resize="onResize">
+    <slide-out :visible.sync="v1" append-to="body" dock="top" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>dock="top" allow-resize @resize="onResize"</code></p>
+        <p><code>append-to="body" dock="top" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
@@ -10,9 +10,9 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v2" dock="right" :title="text.header" allow-resize @resize="onResize">
+    <slide-out :visible.sync="v2" append-to="body" dock="right" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>dock="right" allow-resize @resize="onResize"</code></p>
+        <p><code>append-to="body" dock="right" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
@@ -20,9 +20,9 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v3" dock="bottom" :title="text.header" allow-resize @resize="onResize">
+    <slide-out :visible.sync="v3" append-to="body" dock="bottom" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>dock="bottom" allow-resize @resize="onResize"</code></p>
+        <p><code>append-to="body" dock="bottom" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
@@ -30,9 +30,9 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v4" dock="left" :title="text.header" allow-resize @resize="onResize">
+    <slide-out :visible.sync="v4" append-to="body" dock="left" :title="text.header" allow-resize @resize="onResize">
       <div>
-        <p><code>dock="left" allow-resize @resize="onResize"</code></p>
+        <p><code>append-to="body" dock="left" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
@@ -50,6 +50,10 @@
           <button @click="showResizeDemo(4)" v-lang>Left</button>
         </li>
       </ul>
+      <blockquote>
+        <div v-lang>Because the height of their parent element is less than 200px, resize cannot be demonstrated here</div>
+        <div v-lang>So these four components get <code>append-to="body"</code></div>
+      </blockquote>
     </div>
   </div>
 </template>
@@ -60,16 +64,16 @@ import mixins from './mixin'
 export default {
   name: 'ResizeDemo',
   mixins: [mixins],
-  data() {
+  data () {
     return {
       resizeValue: 0
     }
   },
   methods: {
-    onResize(e) {
+    onResize (e) {
       this.resizeValue = e.size
     },
-    showResizeDemo(name) {
+    showResizeDemo (name) {
       this.resizeValue = 0
       this[`v${name}`] = true
     }

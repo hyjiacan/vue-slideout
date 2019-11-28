@@ -62,4 +62,13 @@ li {
     }
   }
 }
+
+blockquote {
+  color: #888888;
+  font-size: 13px;
+  background-color: #fafafa;
+  padding: 5px 10px;
+  border-left: 3px solid #CCCCCC;
+  line-height: 2;
+}
 </style>

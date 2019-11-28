@@ -10,6 +10,7 @@
   font-size: 14px;
   font-weight: normal;
   outline: none;
+  will-change: auto;
 
   &-fixed {
     position: fixed;
@@ -68,6 +69,7 @@
 .vue-slideout-enable-animation {
   opacity: 0;
   transition: opacity @duration, left 1ms @duration, top 1ms @duration, bottom 1ms @duration, right 1ms @duration;
+  will-change: opacity, left, top, bottom, right;
 
   &.vue-slideout-visible {
     opacity: 1;
@@ -83,6 +85,7 @@
   .vue-slideout-layout {
     transition-property: left, right, top, bottom;
     transition-duration: @duration;
+    will-change: left, top, bottom, right;
   }
 
   .vue-slideout-drag-handle {
@@ -98,6 +101,7 @@
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #DDD;
   border-left: 1px solid #DDD;
+  will-change: auto;
 }
 
 .vue-slideout-mask {
