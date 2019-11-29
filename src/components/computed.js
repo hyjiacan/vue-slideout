@@ -75,7 +75,8 @@ export default {
         [this.customClass || '']: true,
         [`vue-slideout-dock-${this.dockOn}`]: true,
         'vue-slideout-visible': this.activeVisibleClass,
-        'vue-slideout-enable-animation': !this.disableAnimation,
+        // 鼠标按下拖动大小时，禁用动画，以提高视觉流畅度
+        'vue-slideout-enable-animation': !this.mousedown && !this.disableAnimation,
         'vue-slideout-show-header': this.title || this.$slots.header,
         'vue-slideout-show-footer': this.$slots.footer,
         'vue-slideout-fixed': this.isFixed,
