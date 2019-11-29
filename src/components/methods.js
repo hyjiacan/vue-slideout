@@ -87,10 +87,20 @@ export default {
       this.isVisible = visible
       this.$el.focus()
       this.$emit('update:visible', visible)
-      // 若指定了 .sync 修饰，则关闭后退出全屏
-      this.$emit('update:fullscreen', false)
-      // 触发关闭后的事件
-      if (!visible) {
+
+      if (visible) {
+        this.styleDisplay = true
+        this.$nextTick(() => {
+          // 延时应用动画
+          setTimeout(() => {
+            this.activeVisibleClass = true
+          }, 10)
+        })
+      } else {
+        // 若指定了 .sync 修饰，则关闭后退出全屏
+        this.$emit('update:fullscreen', false)
+        this.activeVisibleClass = false
+        // 触发关闭后的事件
         this.$nextTick(this.emitCloseEvent)
       }
     },
@@ -255,21 +265,23 @@ export default {
         this.$emit('open', this.$refs.layout)
         return
       }
-      // 开启动画时，有个318ms的动画
+      // 开启动画时，有个this.animationDuration ms的动画
       setTimeout(() => {
         this.$emit('open', this.$refs.layout)
-      }, 318)
+      }, this.animationDuration)
     },
     emitCloseEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
+        this.styleDisplay = false
         this.$emit('closed')
         return
       }
-      // 开启动画时，有个318ms的动画
+      // 开启动画时，有个this.animationDuration / 2 ms的动画
       setTimeout(() => {
+        this.styleDisplay = false
         this.$emit('closed')
-      }, 318)
+      }, this.animationDuration / 2)
     },
     _bindKeyboardEvent () {
       if (!this.ignoreEsc) {

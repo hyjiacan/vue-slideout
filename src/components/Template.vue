@@ -212,7 +212,7 @@ export default {
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
     this._bindKeyboardEvent()
-    this.extensionButtons = this.$refs.buttons
+    this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
   beforeDestroy () {
     this._removeKeyboardEvent()

@@ -1,4 +1,4 @@
-@duration: 318ms;
+@duration: 312ms;
 
 .vue-slideout {
   position: absolute;
@@ -10,6 +10,7 @@
   font-size: 14px;
   font-weight: normal;
   outline: none;
+  display: none;
   will-change: auto;
 
   &-fixed {
@@ -17,13 +18,13 @@
   }
 
   &-show-header {
-    .vue-slideout-content {
+    > .vue-slideout-layout > .vue-slideout-content {
       top: 48px;
     }
   }
 
   &-show-footer {
-    .vue-slideout-content {
+    > .vue-slideout-layout > .vue-slideout-content {
       bottom: 48px;
     }
   }
@@ -35,13 +36,19 @@
     right: 0;
     bottom: 0;
 
-    .vue-slideout-btn-fullscreen {
-      svg:first-child {
-        top: -32px;
-      }
+    > .vue-slideout-layout {
+      transform: translate(0, 0);
+      width: 100%;
+      height: 100%;
 
-      svg:last-child {
-        top: 7px;
+      > .vue-slideout-header .vue-slideout-btn-fullscreen {
+        svg:first-child {
+          top: -32px;
+        }
+
+        svg:last-child {
+          top: 7px;
+        }
       }
     }
   }
@@ -52,44 +59,50 @@
   overflow: hidden;
   float: left;
 
-  svg {
-    position: absolute;
-    left: 7px;
-  }
+  > .vue-slideout-layout > .vue-slideout-header {
+    svg {
+      position: absolute;
+      left: 7px;
+    }
 
-  svg:first-child {
-    top: 7px;
-  }
+    svg:first-child {
+      top: 7px;
+    }
 
-  svg:last-child {
-    top: 32px;
+    svg:last-child {
+      top: 32px;
+    }
   }
 }
 
 .vue-slideout-enable-animation {
   opacity: 0;
-  transition: opacity @duration, left 1ms @duration, top 1ms @duration, bottom 1ms @duration, right 1ms @duration;
-  will-change: opacity, left, top, bottom, right;
+  transition: opacity @duration;
+  will-change: opacity;
 
   &.vue-slideout-visible {
     opacity: 1;
-    transition: opacity @duration, left 1ms, top 1ms, bottom 1ms, right 1ms;
-  }
+    transition-duration: @duration / 2;
+    transition-timing-function: ease-out;
 
-  .vue-slideout-btn-fullscreen {
-    svg {
-      transition: top 618ms;
+    > .vue-slideout-layout {
+      transition-duration: @duration / 2;
     }
   }
 
-  .vue-slideout-layout {
-    transition-property: left, right, top, bottom;
-    transition-duration: @duration;
-    will-change: left, top, bottom, right;
-  }
+  > .vue-slideout-layout {
+    will-change: transform;
+    transition: transform @duration, width @duration, height @duration;
 
-  .vue-slideout-drag-handle {
-    transition: background-color 318ms;
+    > .vue-slideout-header .vue-slideout-btn-fullscreen {
+      svg {
+        transition: top @duration;
+      }
+    }
+
+    > .vue-slideout-drag-handle {
+      transition: background-color @duration;
+    }
   }
 }
 
@@ -163,7 +176,7 @@
   text-align: center;
   border: 1px solid transparent;
   border-radius: 50%;
-  transition: border-color 318ms;
+  transition: border-color @duration;
   outline: none;
   background: none;
 
@@ -233,35 +246,52 @@
 }
 
 .vue-slideout-dock-top {
-  .vue-slideout-drag-handle {
-    bottom: @drag-handle-bar-padding;
-    left: 0;
-    right: 0;
-    height: @drag-handle-bar-size;
-    cursor: ns-resize;
+  > .vue-slideout-layout {
+    top: 0;
+    transform: translateY(-100%);
+
+    .vue-slideout-drag-handle {
+      bottom: @drag-handle-bar-padding;
+      left: 0;
+      right: 0;
+      height: @drag-handle-bar-size;
+      cursor: ns-resize;
+    }
   }
 }
 
 .vue-slideout-dock-right {
-  .vue-slideout-btn-close {
-    transform: rotate(90deg);
-  }
+  > .vue-slideout-layout {
+    right: 0;
+    transform: translateX(100%);
 
-  .vue-slideout-drag-handle {
-    top: 0;
-    bottom: 0;
-    left: @drag-handle-bar-padding;
-    width: @drag-handle-bar-size;
-    cursor: ew-resize;
+    > .vue-slideout-header .vue-slideout-btn-close {
+      transform: rotate(90deg);
+    }
+
+    > .vue-slideout-drag-handle {
+      top: 0;
+      bottom: 0;
+      left: @drag-handle-bar-padding;
+      width: @drag-handle-bar-size;
+      cursor: ew-resize;
+    }
   }
 }
 
 .vue-slideout-dock-bottom {
-  .vue-slideout-btn-close svg {
-    transform: rotate(180deg);
+  > .vue-slideout-layout {
+    bottom: 0;
+    transform: translateY(100%);
+
+    > .vue-slideout-header {
+      .vue-slideout-btn-close svg {
+        transform: rotate(180deg);
+      }
+    }
   }
 
-  .vue-slideout-drag-handle {
+  > .vue-slideout-drag-handle {
     top: @drag-handle-bar-padding;
     left: 0;
     right: 0;
@@ -271,19 +301,40 @@
 }
 
 .vue-slideout-dock-left {
-  .vue-slideout-btn-close svg {
-    transform: rotate(-90deg);
-  }
+  > .vue-slideout-layout {
+    left: 0;
+    transform: translateX(-100%);
 
-  .vue-slideout-drag-handle {
-    top: 0;
-    right: @drag-handle-bar-padding;
-    bottom: 0;
-    width: @drag-handle-bar-size;
-    cursor: ew-resize;
+    > .vue-slideout-header {
+      .vue-slideout-btn-close svg {
+        transform: rotate(-90deg);
+      }
+    }
+
+    > .vue-slideout-drag-handle {
+      top: 0;
+      right: @drag-handle-bar-padding;
+      bottom: 0;
+      width: @drag-handle-bar-size;
+      cursor: ew-resize;
+    }
   }
 }
 
 .vue-slideout-lock-scroll {
   overflow: hidden !important;
+}
+
+.vue-slideout-visible {
+  &.vue-slideout-dock-top, &.vue-slideout-dock-bottom {
+    > .vue-slideout-layout {
+      transform: translateY(0);
+    }
+  }
+
+  &.vue-slideout-dock-left, &.vue-slideout-dock-right {
+    > .vue-slideout-layout {
+      transform: translateX(0);
+    }
+  }
 }

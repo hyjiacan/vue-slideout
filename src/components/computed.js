@@ -8,25 +8,11 @@ export default {
     containerStyle () {
       let style = {
         // 2147483647 是允许的最大值
-        'z-index': this.isFullscreen ? 2147483647 : this.zIndex
+        'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
+        display: this.styleDisplay ? 'block' : 'none'
       }
       if (this.mousedown) {
         style.userSelect = 'none'
-      }
-      let distance = this.isVisible ? '0' : '100%'
-      switch (this.dockOn) {
-        case 'left':
-          style.right = distance
-          break
-        case 'right':
-          style.left = distance
-          break
-        case 'top':
-          style.bottom = distance
-          break
-        case 'bottom':
-          style.top = distance
-          break
       }
       return style
     },
@@ -44,10 +30,6 @@ export default {
     sizeWithUnit () {
       return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${parseInt(this.size)}px` : `${parseInt(this.size)}%`
     },
-    // 隐藏时 size 的大小
-    hiddenSizeWithUnit () {
-      return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${-parseInt(this.size)}px` : `${-parseInt(this.size)}%`
-    },
     // SlideOut 内容样式
     layoutStyle () {
       let style = {}
@@ -59,19 +41,11 @@ export default {
         let offset = this.isFullscreen ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
-            style.right = this.getInstance(style.width)
-            style.top = offset
-            break
           case 'left':
-            style.left = this.getInstance(style.width)
             style.top = offset
             break
           case 'bottom':
-            style.bottom = this.getInstance(style.height)
-            style.left = offset
-            break
           case 'top':
-            style.top = this.getInstance(style.height)
             style.left = offset
             break
         }
@@ -79,24 +53,18 @@ export default {
       }
       // 内容显示大小
       let size = this.isFullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
-      // 内容到边的距离
-      let distance = this.isVisible || this.disableAnimation ? 0 : this.hiddenSizeWithUnit
       switch (this.dockOn) {
         case 'right':
           style.width = size
-          style.right = distance
           break
         case 'left':
           style.width = size
-          style.left = distance
           break
         case 'bottom':
           style.height = size
-          style.bottom = distance
           break
         case 'top':
           style.height = size
-          style.top = distance
           break
       }
       return style
@@ -106,7 +74,7 @@ export default {
       return {
         [this.customClass || '']: true,
         [`vue-slideout-dock-${this.dockOn}`]: true,
-        'vue-slideout-visible': this.isVisible,
+        'vue-slideout-visible': this.activeVisibleClass,
         'vue-slideout-enable-animation': !this.disableAnimation,
         'vue-slideout-show-header': this.title || this.$slots.header,
         'vue-slideout-show-footer': this.$slots.footer,
@@ -117,14 +85,25 @@ export default {
     // 头部样式
     headerStyle () {
       let style = {
-        paddingRight: '0'
+        paddingRight: `${this.defaultButtonsWidth}px`
       }
-      if (!this.extensionButtons) {
+      if (!this.headerButtons) {
         return style
       }
-      let btnStyle = window.getComputedStyle(this.extensionButtons)
-      style.paddingRight = `${parseInt(btnStyle.width) + 5}px`
+      let btnStyle = window.getComputedStyle(this.headerButtons)
+      style.paddingRight = `${this.defaultButtonsWidth + parseInt(btnStyle.width) + 5}px`
       return style
+    },
+    defaultButtonsWidth () {
+      // 20: padding 的值
+      let w = 20
+      if (this.showClose) {
+        w += 32
+      }
+      if (this.showFullscreen) {
+        w += 32
+      }
+      return w
     },
     // 是否使用固定定位
     isFixed () {

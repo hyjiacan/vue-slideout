@@ -14,7 +14,12 @@ export default {
       // 父级元素
       parentElement: null,
       // 扩展按钮容器
-      extensionButtons: null
+      headerButtons: null,
+      // 动画时长
+      animationDuration: 312,
+      // 是否激活 active 类
+      activeVisibleClass: false,
+      styleDisplay: false
     }
   }
 }
