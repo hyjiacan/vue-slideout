@@ -1,0 +1,69 @@
+@drag-handle-bar-padding: -1px;
+@drag-handle-bar-size: 1px;
+@drag-handle-bar-size: 5px;
+@drag-handle-color: rgba(92, 143, 235, 0.63);
+
+.vue-slideout-drag-handle {
+  position: absolute;
+  z-index: 60;
+  user-select: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  background-clip: content-box;
+
+  &:hover {
+    background-color: darken(@drag-handle-color, 20%);
+  }
+
+  &:active {
+    background-color: darken(@drag-handle-color, 30%);
+  }
+}
+
+.vue-slideout-dock-top {
+  > .vue-slideout-layout {
+    > .vue-slideout-drag-handle {
+      bottom: @drag-handle-bar-padding;
+      left: 0;
+      right: 0;
+      height: @drag-handle-bar-size;
+      cursor: ns-resize;
+    }
+  }
+}
+
+.vue-slideout-dock-right {
+  > .vue-slideout-layout {
+    > .vue-slideout-drag-handle {
+      top: 0;
+      bottom: 0;
+      left: @drag-handle-bar-padding;
+      width: @drag-handle-bar-size;
+      cursor: ew-resize;
+    }
+  }
+}
+
+.vue-slideout-dock-bottom {
+  > .vue-slideout-layout {
+    > .vue-slideout-drag-handle {
+      top: @drag-handle-bar-padding;
+      left: 0;
+      right: 0;
+      height: @drag-handle-bar-size;
+      cursor: ns-resize;
+    }
+  }
+}
+
+.vue-slideout-dock-left {
+  > .vue-slideout-layout {
+    > .vue-slideout-drag-handle {
+      top: 0;
+      right: @drag-handle-bar-padding;
+      bottom: 0;
+      width: @drag-handle-bar-size;
+      cursor: ew-resize;
+    }
+  }
+}

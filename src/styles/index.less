@@ -1,0 +1,129 @@
+
+.vue-slideout {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: normal;
+  outline: none;
+  display: none;
+  will-change: auto;
+
+  &-fixed {
+    position: fixed;
+  }
+
+  &-show-header {
+    > .vue-slideout-layout > .vue-slideout-content {
+      top: 48px;
+    }
+  }
+
+  &-show-footer {
+    > .vue-slideout-layout > .vue-slideout-content {
+      bottom: 48px;
+    }
+  }
+}
+
+.vue-slideout-layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+  will-change: auto;
+}
+
+.vue-slideout-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.vue-slideout-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: auto;
+  z-index: 30;
+}
+
+.vue-slideout-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  padding: 5px 10px;
+  line-height: 36px;
+  box-sizing: border-box;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #DDD;
+  z-index: 50;
+}
+
+.vue-slideout-dock-top {
+  > .vue-slideout-layout {
+    top: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.vue-slideout-dock-right {
+  > .vue-slideout-layout {
+    right: 0;
+    transform: translateX(100%);
+  }
+}
+
+.vue-slideout-dock-bottom {
+  > .vue-slideout-layout {
+    bottom: 0;
+    transform: translateY(100%);
+  }
+}
+
+.vue-slideout-dock-left {
+  > .vue-slideout-layout {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.vue-slideout-lock-scroll {
+  overflow: hidden !important;
+}
+
+.vue-slideout-visible {
+  &.vue-slideout-dock-top, &.vue-slideout-dock-bottom {
+    > .vue-slideout-layout {
+      transform: translateY(0);
+    }
+  }
+
+  &.vue-slideout-dock-left, &.vue-slideout-dock-right {
+    > .vue-slideout-layout {
+      transform: translateX(0);
+    }
+  }
+}
+
+@import "header";
+@import "animation";
+@import "fullscreen";
+@import "drag";

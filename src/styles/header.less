@@ -1,0 +1,89 @@
+
+.vue-slideout-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #EEE;
+  z-index: 50;
+}
+
+.vue-slideout-title-text {
+  line-height: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vue-slideout-title-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+
+.vue-slideout-btn-close, .vue-slideout-btn-fullscreen {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  outline: none;
+  background: none;
+
+  svg {
+    fill: #5d616f;
+    vertical-align: -2px;
+  }
+
+  &:hover {
+    border-color: rgba(146, 146, 154, 0.63);
+
+    svg {
+      fill: #1C1F2E;
+    }
+  }
+
+  &:active {
+    background-color: rgba(146, 146, 154, 0.63);
+
+    svg {
+      fill: #222326;
+    }
+  }
+}
+
+.vue-slideout-dock-right {
+  > .vue-slideout-layout {
+    > .vue-slideout-header .vue-slideout-btn-close svg {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.vue-slideout-dock-bottom {
+  > .vue-slideout-layout {
+    > .vue-slideout-header {
+      .vue-slideout-btn-close svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.vue-slideout-dock-left {
+  > .vue-slideout-layout {
+    > .vue-slideout-header {
+      .vue-slideout-btn-close svg {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
