@@ -35,7 +35,7 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 
 ## Usage
 
-### Global (recommend)
+### Global (recommended)
 
 *main.js*
 ```javascript
