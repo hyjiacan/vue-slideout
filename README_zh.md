@@ -79,7 +79,7 @@ export default {
 </script>
 ```
 
-- 更多的用法，参见 https://hyjiacan.github.io/vue-slideout/
+- 更多的用法，参见 http://hyjiacan.gitee.io/vue-slideout
 - API文档参见 [API.zh-CN.md](./API.zh-CN.md)
 
 ## 开发
