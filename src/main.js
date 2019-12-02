@@ -8,7 +8,9 @@ import SlideOut from './components/index'
 Vue.config.productionTip = false
 
 Vue.use(LangDirective)
-Vue.use(SlideOut, {})
+Vue.use(SlideOut, {
+  size: 300
+})
 
 new Vue({
   render: h => h(App)

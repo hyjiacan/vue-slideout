@@ -131,7 +131,7 @@ html, body {
 
 @media screen and (min-width: 800px) {
   #app {
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
   }
 }
