@@ -85,9 +85,15 @@ export default {
     },
     // 头部样式
     headerStyle () {
-      let style = {
-        paddingRight: `${this.defaultButtonsWidth}px`
+      let style = {}
+
+      // 当自定义 header 时，不需要计算
+      if (this.$slots.header) {
+        return style
       }
+
+      style.paddingRight = `${this.defaultButtonsWidth}px`
+
       if (!this.headerButtons) {
         return style
       }

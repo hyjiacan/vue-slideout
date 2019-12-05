@@ -2,7 +2,7 @@
   <div class="demo">
     <slide-out :visible.sync="v1">
       <div slot="header">{{text.header}}</div>
-      <div v-lang>Close button would be removed while use <code>slot="header"</code></div>
+      <div v-lang>Close/Fullscreen button would be removed while use <code>slot="header"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="v2" size="50%" :title="text.header">
