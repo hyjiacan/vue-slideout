@@ -1,0 +1,33 @@
+.vue-slideout-autosize {
+  > .vue-slideout-layout {
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    > .vue-slideout-content {
+      left: unset;
+      top: unset;
+      right: unset;
+      bottom: unset;
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      overflow: auto;
+    }
+  }
+
+  &.vue-slideout-show-header {
+    > .vue-slideout-layout {
+      padding-top: 48px;
+    }
+  }
+
+  &.vue-slideout-show-footer {
+    > .vue-slideout-layout {
+      padding-bottom: 48px;
+    }
+  }
+}

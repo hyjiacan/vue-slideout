@@ -227,7 +227,9 @@ export default {
       if (this.maxSize > 0 && this.maxSize < newSize) {
         newSize = this.maxSize
       }
-      this.resizeValue = newSize < this.minSize ? this.minSize : newSize
+      requestAnimationFrame(() => {
+        this.resizeValue = newSize < this.minSize ? this.minSize : newSize
+      })
       this.$nextTick(() => {
         this.$emit('resize', {size: this.resizeValue})
       })
@@ -284,7 +286,7 @@ export default {
       }
     },
     _fixSizeUnit (val) {
-      return `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
+      return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
     }
   }
 }

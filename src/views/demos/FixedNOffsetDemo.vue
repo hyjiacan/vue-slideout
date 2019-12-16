@@ -1,7 +1,8 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :size="['480px', '200px']" offset="100px" dock="top" :title="text.header">
-      <code>:size="['480px', '200px']" offset="100px" dock="top"</code>
+    <slide-out :visible.sync="v1" :size="['480px', '200px']" offset="100px" dock="top"
+               :title="text.header" show-fullscreen fullscreen>
+      <code>:size="['480px', '200px']" offset="100px" dock="top" show-fullscreen</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
     <slide-out :visible.sync="v2" :size="['480px', '200px']" offset="30%" dock="right"

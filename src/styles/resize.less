@@ -67,3 +67,17 @@
     }
   }
 }
+
+.vue-slideout-allow-resize {
+  &.vue-slideout-dock-left, &.vue-slideout-dock-right {
+    > .vue-slideout-layout {
+      will-change: width;
+    }
+  }
+
+  &.vue-slideout-dock-top, &.vue-slideout-dock-bottom {
+    > .vue-slideout-layout {
+      will-change: height;
+    }
+  }
+}

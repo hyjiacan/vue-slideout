@@ -2,17 +2,17 @@
   <main id="app">
     <h1>
       SlideOut
-      <small v-lang>A Slide-Out component for Vue.js 2.0</small>
+      <small v-lang>A Slide-Out component for Vue.js 2.x</small>
       <span id="metas">
-        <span class="latest-text"></span>
+        <span class="latest-text"/>
         <span class="loaded">
           <span>
-              <a href="" id="source"></a>
+              <a href="" id="source"/>
           </span>
-          <span class="release-text"></span>
-          <span id="date"></span>
+          <span class="release-text"/>
+          <span id="date"/>
         </span>
-        <span class="pending"></span>
+        <span class="pending"/>
       </span>
     </h1>
     <h2 v-lang>Install</h2>
@@ -74,20 +74,20 @@ export default {
   components: {
     MainPage
   },
-  data() {
+  data () {
     return {
       ebus: new Vue(),
       tipVisible: false,
       tipText: ''
     }
   },
-  provide() {
+  provide () {
     return {
       ebus: this.ebus
     }
   },
   methods: {
-    showTip(tip) {
+    showTip (tip) {
       this.tipText = tip
       this.tipVisible = true
       this.$nextTick(() => {
@@ -98,11 +98,14 @@ export default {
       })
     }
   },
-  mounted() {
+  mounted () {
     this.ebus.$on('tip', this.showTip)
     let isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
-    window.jsonp('https://api.github.com/repos/hyjiacan/vue-slideout/tags', 'tagsCallback')
+
+    if (!this.$devMode) {
+      window.jsonp('https://api.github.com/repos/hyjiacan/vue-slideout/tags', 'tagsCallback')
+    }
   }
 }
 </script>

@@ -4,6 +4,12 @@ export default {
     dockOn () {
       return this.dock || 'right'
     },
+    showHeader () {
+      return this.title || this.$slots.header
+    },
+    showFooter () {
+      return this.$slots.footer
+    },
     // SlideOut 容器样式
     containerStyle () {
       let style = {
@@ -25,6 +31,12 @@ export default {
     // 是否使用固定大小，判断依据：指定的大小是一个数组
     isSizeFixed () {
       return Array.isArray(this.size)
+    },
+    isAutoSize () {
+      if (this.isSizeFixed) {
+        return !this.size.every(i => i.toString() !== '0')
+      }
+      return this.size.toString() === '0'
     },
     /**
      * 获取带上单位的size值
@@ -61,16 +73,41 @@ export default {
       let size = this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
       switch (this.dockOn) {
         case 'right':
-          style.width = size
-          break
         case 'left':
           style.width = size
           break
         case 'bottom':
-          style.height = size
-          break
         case 'top':
           style.height = size
+          break
+      }
+      return style
+    },
+    contentStyles () {
+      let style = {}
+      if (!this.isAutoSize) {
+        return style
+      }
+
+      switch (this.dockOn) {
+        case 'right':
+        case 'left':
+          break
+        case 'bottom':
+        case 'top':
+          let padding = 0
+          if (this.showHeader) {
+            padding += 48
+          }
+          if (this.showFooter) {
+            padding += 48
+          }
+          if (this.maxSize) {
+            style.maxHeight = `${this.maxSize - padding}px`
+          }
+          if (this.minSize) {
+            style.minHeight = `${this.minSize - padding}px`
+          }
           break
       }
       return style
@@ -83,10 +120,12 @@ export default {
         'vue-slideout-visible': this.activeVisibleClass,
         // 鼠标按下拖动大小时，禁用动画，以提高视觉流畅度
         'vue-slideout-enable-animation': !this.mousedown && !this.disableAnimation,
-        'vue-slideout-show-header': this.title || this.$slots.header,
+        'vue-slideout-show-header': this.showHeader,
         'vue-slideout-show-footer': this.$slots.footer,
+        'vue-slideout-allow-resize': this.allowResize,
         'vue-slideout-fixed': this.isFixed,
-        'vue-slideout-fullscreen': this.isFullscreen
+        'vue-slideout-fullscreen': this.isFullscreen,
+        'vue-slideout-autosize': this.isAutoSize
       }
     },
     // 头部样式

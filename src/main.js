@@ -12,6 +12,8 @@ Vue.use(SlideOut, {
   size: 300
 })
 
+Vue.prototype.$devMode = process.env.NODE_ENV === 'development'
+
 new Vue({
   render: h => h(App)
 }).$mount('#app')

@@ -8,10 +8,9 @@
 - default `400px`
 
 > The size of slide, both `px` and `%` available;
-> If it is an array, then:
-> - The 1st element is the width, and the 2nd element is the height,
-> if there is only one element, that makes width equals with height.
-> - Properties `allowResize`, `minSize`, `maxSize` will be ignore. 
+> - If it is an array, then: The 1st element is the width, and the 2nd element is the height,
+> - if there is only one element: that makes width equals with height. Properties `allow-resize`, `min-size`, `max-size` are not available.
+> - ( **auto size supported** `since 2.3.5` )You can set value `0/[0]/[0,size]/[size,0]` to make slideout auto fit content size. Properties `min-size`, `max-size` are available. 
 
 #### z-index  (optional)
 
