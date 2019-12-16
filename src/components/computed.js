@@ -26,17 +26,23 @@ export default {
     isSizeFixed () {
       return Array.isArray(this.size)
     },
-    // 获取带上单位的size值
+    /**
+     * 获取带上单位的size值
+     * @return {Array|String}
+     */
     sizeWithUnit () {
-      return typeof this.size === 'number' || !(/%$/.test(this.size)) ? `${parseInt(this.size)}px` : `${parseInt(this.size)}%`
+      if (!this.isSizeFixed) {
+        return this._fixSizeUnit(this.size)
+      }
+      return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
     // SlideOut 内容样式
     layoutStyle () {
       let style = {}
       if (this.isSizeFixed) {
         // 指定大小
-        style.width = this.isFullscreen ? '100%' : this.size[0]
-        style.height = this.isFullscreen ? '100%' : this.size[this.size.length === 1 ? 0 : 1]
+        style.width = this.sizeWithUnit[0]
+        style.height = this.sizeWithUnit[1]
         // 偏移量，当全屏时偏移量为 0
         let offset = this.isFullscreen ? 0 : this.offset
         switch (this.dockOn) {
@@ -52,7 +58,7 @@ export default {
         return style
       }
       // 内容显示大小
-      let size = this.isFullscreen ? '100%' : this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
+      let size = this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
       switch (this.dockOn) {
         case 'right':
           style.width = size

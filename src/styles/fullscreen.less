@@ -1,4 +1,4 @@
-.vue-slideout-btn-fullscreen {
+.vue-slideout-fullscreen {
   position: fixed;
   overflow: hidden;
   left: 0;
@@ -8,32 +8,22 @@
 
   > .vue-slideout-layout {
     transform: translate(0, 0);
-    width: 100%;
-    height: 100%;
 
     > .vue-slideout-header .vue-slideout-btn-fullscreen {
       svg:first-child {
-        top: -32px;
+        display: none;
       }
 
       svg:last-child {
-        top: 7px;
+        display: inline-block;
       }
     }
   }
 
-  > .vue-slideout-layout > .vue-slideout-header {
-    svg {
-      position: absolute;
-      left: 7px;
-    }
-
-    svg:first-child {
-      top: 7px;
-    }
-
-    svg:last-child {
-      top: 32px;
+  &.vue-slideout-visible {
+    > .vue-slideout-layout {
+      width: 100% !important;
+      height: 100% !important;
     }
   }
 }

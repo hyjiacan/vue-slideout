@@ -153,16 +153,6 @@ export default {
         height: rect.height
       }
     },
-    /**
-     * 计算当前显示的大小
-     * @param size
-     * @return {Number|String}
-     */
-    getInstance (size) {
-      return this.isVisible || this.disableAnimation
-        ? 0
-        : (typeof size === 'number' || !(/%$/.test(size)) ? `${-parseInt(size)}px` : `${-parseInt(size)}%`)
-    },
     mouseDownHandler (e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
@@ -292,6 +282,9 @@ export default {
       if (!this.ignoreEsc) {
         this.$el.removeEventListener('keydown', this.onKeydown)
       }
+    },
+    _fixSizeUnit (val) {
+      return `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
     }
   }
 }

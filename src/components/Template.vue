@@ -61,6 +61,27 @@ export default {
       default: 400
     },
     /**
+     * 是否允许拖动弹出大小
+     */
+    allowResize: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 拖动改变大小时的最小尺寸，单位为px，此值不影响size属性指定的大小
+     */
+    minSize: {
+      type: Number,
+      default: 100
+    },
+    /**
+     * 拖动改变大小时的最大尺寸，单位为px，指定为0时不限制，此值不影响size属性指定的大小
+     */
+    maxSize: {
+      type: Number,
+      default: 0
+    },
+    /**
      * 层叠索引
      */
     zIndex: {
@@ -79,20 +100,6 @@ export default {
      */
     title: {
       type: String
-    },
-    /**
-     * 是否在点击mask时关闭
-     */
-    closeOnMaskClick: {
-      type: Boolean,
-      default: true
-    },
-    /**
-     * 是否忽略ESC键，不忽略时按下ESC会关闭
-     */
-    ignoreEsc: {
-      type: Boolean,
-      default: false
     },
     /**
      * 自定义样式类
@@ -115,6 +122,20 @@ export default {
       default: null
     },
     /**
+     * 是否在点击mask时关闭
+     */
+    closeOnMaskClick: {
+      type: Boolean,
+      default: true
+    },
+    /**
+     * 是否忽略ESC键，不忽略时按下ESC会关闭
+     */
+    ignoreEsc: {
+      type: Boolean,
+      default: false
+    },
+    /**
      * 停靠方向，默认右侧
      */
     dock: {
@@ -134,27 +155,6 @@ export default {
     disableAnimation: {
       type: Boolean,
       default: false
-    },
-    /**
-     * 是否允许拖动弹出大小
-     */
-    allowResize: {
-      type: Boolean,
-      default: false
-    },
-    /**
-     * 拖动改变大小时的最小尺寸，单位为px，此值不影响size属性指定的大小
-     */
-    minSize: {
-      type: Number,
-      default: 100
-    },
-    /**
-     * 拖动改变大小时的最大尺寸，单位为px，指定为0时不限制，此值不影响size属性指定的大小
-     */
-    maxSize: {
-      type: Number,
-      default: 0
     },
     /**
      * 是否启用全屏显示
@@ -205,6 +205,7 @@ export default {
     if (this.dock && docks.indexOf(this.dock) === -1) {
       throw new Error(`Invalid dock value "${this.dock}", Optional: ${docks.join(',')} `)
     }
+    this.isFullscreen = this.fullscreen
     this.appendComponentTo()
     if (this.allowResize) {
       // 绑定鼠标事件
