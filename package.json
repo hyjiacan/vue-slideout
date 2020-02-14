@@ -3,9 +3,11 @@
   "version": "2.3.5",
   "description": "A Slide-Out component for Vue.js 2.0",
   "main": "lib/slideout.common.js",
+  "unpkg": "lib/slideout.umd.js",
+  "jsdelivr": "lib/slideout.umd.js",
   "scripts": {
     "serve": "npx vue-cli-service serve",
-    "build": "npx vue-cli-service build --target lib --dest=lib --formats=commonjs --name slideout src/components/index.js",
+    "build": "npx vue-cli-service build --target lib --dest=lib --name slideout src/components/index.js",
     "build:docs": "npx vue-cli-service build --dest=docs",
     "release": "yarn run lint & yarn run build & yarn run build:docs & node version.js",
     "lint": "npx vue-cli-service lint",

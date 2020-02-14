@@ -6,6 +6,7 @@
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@hyjiacan/vue-slideout?style=flat-square)
 [![npm](https://img.shields.io/npm/dm/@hyjiacan/vue-slideout?style=flat-square)](https://npmcharts.com/compare/@hyjiacan/vue-slideout?minimal=true)
 [![Coverage Status](https://coveralls.io/repos/github/hyjiacan/vue-slideout/badge.svg?branch=master)](https://coveralls.io/github/hyjiacan/vue-slideout?branch=master)
+[![](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
 
 A Slide-Out component for Vue.js 2.0
 
@@ -14,6 +15,8 @@ A Slide-Out component for Vue.js 2.0
 - Less
 
 ## Install
+
+### NodeJS ENV (commonjs)
 
 ```bash
 npm i @hyjiacan/vue-slideout
@@ -32,6 +35,26 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 ```
 
 or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
+
+### Browser ENV (umd)
+
+Unlike node env, a lowercase global `slideout` will be exploded.
+
+The newest version
+```html
+<script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"></script>
+```
+
+Specified version
+```html
+<script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"></script>
+```
+
+> **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*
+
+> And you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js* 
 
 ## Usage
 

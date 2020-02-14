@@ -1,5 +1,10 @@
 module.exports = {
   publicPath: './',
   productionSourceMap: false,
-  filenameHashing: false
+  filenameHashing: false,
+  configureWebpack: {
+    output: {
+      libraryExport: 'default'
+    }
+  }
 }

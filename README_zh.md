@@ -6,6 +6,7 @@
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@hyjiacan/vue-slideout?style=flat-square)
 [![npm](https://img.shields.io/npm/dm/@hyjiacan/vue-slideout?style=flat-square)](https://npmcharts.com/compare/@hyjiacan/vue-slideout?minimal=true)
 [![Coverage Status](https://coveralls.io/repos/github/hyjiacan/vue-slideout/badge.svg?branch=master)](https://coveralls.io/github/hyjiacan/vue-slideout?branch=master)
+[![](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
 
 一个 Vue.js 2.0 的侧滑组件
 
@@ -14,6 +15,8 @@
 - Less
 
 ## 安装
+
+### Node 环境 (commonjs)
 
 ```bash
 npm i @hyjiacan/vue-slideout
@@ -31,6 +34,26 @@ yarn add @hyjiacan/vue-slideout
 git clone https://github.com/hyjiacan/vue-slideout.git
 ```
 或 [下载归档](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
+
+### 浏览器环境 (umd)
+
+与 node 环境不同, 此时会暴露一个小写的全局 `slideout`。
+
+使用最新版本
+```html
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"></script>
+```
+
+使用指定版本
+```html
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"></script>
+```
+
+> **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com* 
+
+> 可以通过替换 *slideout.umd.min.js* 为 *slideout.umd.js* 使用未被压缩的文件来 
 
 ## 使用
 
