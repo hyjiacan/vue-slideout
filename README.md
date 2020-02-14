@@ -38,6 +38,8 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 
 ### Browser ENV (umd)
 
+> Since version 2.4.0
+ 
 Unlike node env, a lowercase global `slideout` will be exploded.
 
 The newest version

@@ -37,6 +37,8 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 
 ### 浏览器环境 (umd)
 
+> 从 2.4.0 开始可用。
+
 与 node 环境不同, 此时会暴露一个小写的全局 `slideout`。
 
 使用最新版本
