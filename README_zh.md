@@ -44,13 +44,13 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 使用最新版本
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css" />
 ```
 
 使用指定版本
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
 ```
 
 > **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com* 

@@ -45,13 +45,13 @@ Unlike node env, a lowercase global `slideout` will be exploded.
 The newest version
 ```html
 <script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css" />
 ```
 
 Specified version
 ```html
 <script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
 ```
 
 > **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*
