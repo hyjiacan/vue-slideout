@@ -167,6 +167,15 @@
 
 > 设置为`true`时，以箭头方式显示关闭按钮; 否则显示为 X 符号
 
+#### render-when-visible (可选)
+
+> `since 2.5.0`
+
+- 类型 `Boolean`
+- 默认值 `false`
+
+> 是否仅在 `visible` 为 `true` 时才渲染内容 
+
 ## 插槽
 
 #### header

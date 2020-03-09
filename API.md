@@ -172,6 +172,15 @@
 
 > Display close button as `arrow`(->) if true, otherwise display as `cross` (x)
 
+#### render-when-visible (optional)
+
+> `since 2.5.0`
+
+- type `Boolean`
+- default `false`
+
+> Whether to render the slideout content when `visible` is `true`
+
 ## Slots
 
 #### default  

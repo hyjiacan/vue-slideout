@@ -120,7 +120,8 @@ export default {
           throw new Error(`SlideOut cannot found the node to append to: ${this.appendTo}`)
         }
       }
-      target.appendChild(this.$el)
+      // @see https://vuejs.org/v2/api/index.html#vm-mount
+      target.appendChild(this.$mount().$el)
       this.parentElement = target
     },
     /**

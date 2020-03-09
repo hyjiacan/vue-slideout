@@ -1,7 +1,7 @@
 <template>
   <div class="vue-slideout" :style="containerStyle" :class="containerClasses" tabindex="0">
     <div class="vue-slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
-    <div class="vue-slideout-layout" :style="layoutStyle" ref="layout">
+    <div class="vue-slideout-layout" v-if="!renderWhenVisible || visible" :style="layoutStyle" ref="layout">
       <div class="vue-slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
            @mousedown="mouseDownHandler"></div>
       <div class="vue-slideout-header" :style="headerStyle" v-if="showHeader">
@@ -197,6 +197,13 @@ export default {
     arrowButton: {
       type: Boolean,
       default: true
+    },
+    /**
+     * 是否在可见时才渲染内容
+     */
+    renderWhenVisible: {
+      type: Boolean,
+      default: false
     }
   },
   mounted () {
