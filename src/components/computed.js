@@ -70,7 +70,8 @@ export default {
         return style
       }
       // 内容显示大小
-      let size = this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit
+      // 当全屏时，设置为 100%
+      let size = this.isFullscreen ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
       switch (this.dockOn) {
         case 'right':
         case 'left':
