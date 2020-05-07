@@ -14,7 +14,8 @@ export default {
     containerStyle () {
       let style = {
         // 2147483647 是允许的最大值
-        'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
+        // 'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
+        'z-index': this.zIndex,
         display: this.styleDisplay ? 'block' : 'none'
       }
       if (this.mousedown) {
