@@ -34,7 +34,8 @@
     "API.zh-CN.md"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.com"
   },
   "bugs": {
     "url": "https://github.com/hyjiacan/vue-slideout/issues"
