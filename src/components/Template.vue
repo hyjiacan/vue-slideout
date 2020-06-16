@@ -140,7 +140,8 @@ export default {
      */
     dock: {
       type: String,
-      default: 'right'
+      default: 'right',
+      validator: value => ['top', 'right', 'bottom', 'left'].indexOf(value) >= 0
     },
     /**
      * 将元素放置到指定元素下
@@ -206,12 +207,7 @@ export default {
       default: false
     }
   },
-  mounted () {
-    // 检查传入的  dock 值是否有效
-    const docks = ['top', 'right', 'bottom', 'left']
-    if (this.dock && docks.indexOf(this.dock) === -1) {
-      throw new Error(`Invalid dock value "${this.dock}", Optional: ${docks.join(',')} `)
-    }
+  mounted() {
     this.isFullscreen = this.fullscreen
     this.appendComponentTo()
     if (this.allowResize) {
@@ -222,7 +218,8 @@ export default {
     this._bindKeyboardEvent()
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
-  beforeDestroy () {
+  beforeDestroy() {
+    this.showContainer = false
     this._removeKeyboardEvent()
     if (this.allowResize) {
       // 移除事件

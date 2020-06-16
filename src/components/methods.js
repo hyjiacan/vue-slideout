@@ -89,7 +89,7 @@ export default {
       this.$emit('update:visible', visible)
 
       if (visible) {
-        this.styleDisplay = true
+        this.showContainer = true
         this.$nextTick(() => {
           // 延时应用动画
           setTimeout(() => {
@@ -117,7 +117,7 @@ export default {
       if (typeof target === 'string') {
         target = document.querySelector(target)
         if (!target) {
-          throw new Error(`SlideOut cannot found the node to append to: ${this.appendTo}`)
+          throw new Error(`[vue-slideout] Cannot find the node to append: ${this.appendTo}`)
         }
       }
       // @see https://vuejs.org/v2/api/index.html#vm-mount
@@ -266,15 +266,15 @@ export default {
     emitCloseEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
-        this.styleDisplay = false
+        this.showContainer = false
         this.$emit('closed')
         return
       }
       // 开启动画时，有个this.animationDuration / 2 ms的动画
       setTimeout(() => {
-        this.styleDisplay = false
+        this.showContainer = false
         this.$emit('closed')
-      }, this.animationDuration / 2)
+      }, this.animationDuration)
     },
     _bindKeyboardEvent () {
       if (!this.ignoreEsc) {

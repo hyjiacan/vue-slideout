@@ -19,7 +19,7 @@ export default {
       animationDuration: 312,
       // 是否激活 active 类
       activeVisibleClass: false,
-      styleDisplay: false
+      showContainer: false
     }
   }
 }
