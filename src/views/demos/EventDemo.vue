@@ -37,7 +37,7 @@ export default {
       e.cancel = !confirm('Open it ?')
       if (e.cancel) {
         // prevent open
-        this.emitTip('Open operation is canceled')
+        this.emitTip('The open operation is canceled')
       }
     },
     onOpen() {
@@ -47,7 +47,7 @@ export default {
       // prevent close and wait
       e.wait = true
       this.status = 0
-      this.emitTip('Close operation is waiting...')
+      this.emitTip('The close operation is pending...')
       // close after 3 seconds
       setTimeout(() => {
         // assign true to close, do nothing or assign false to cancel close.

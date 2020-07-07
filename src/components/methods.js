@@ -3,13 +3,13 @@ export default {
     /**
      * 获取关闭事件参数对象
      */
-    getCloseArgs () {
+    getCloseArgs() {
       let me = this
       // 通过使用 setter 以实现延迟操作
       return {
         // 是否等待操作
         wait: false,
-        set close (close) {
+        set close(close) {
           // 取消关闭
           if (!close) {
             return
@@ -17,7 +17,7 @@ export default {
           // 关闭
           me.setVisibleValue(false)
         },
-        get close () {
+        get close() {
           return undefined
         }
       }
@@ -26,7 +26,7 @@ export default {
      * 切换显示状态
      * @param {Boolean} [visible] 指定显示状态，不指定时切换状态
      */
-    toggleVisible (visible) {
+    toggleVisible(visible) {
       if (visible === this.isVisible) {
         return
       }
@@ -44,7 +44,11 @@ export default {
         }
         this.setVisibleValue(true)
         // 显示后触发事件
-        this.$nextTick(this.emitOpenEvent)
+        this.$nextTick(() => {
+          this.emitOpenEvent()
+          // 在组件显示后让组件获取焦点
+          this.$el.focus()
+        })
         return
       }
       // 隐藏前触发事件
@@ -61,7 +65,7 @@ export default {
     /**
      * 切换全屏
      */
-    toggleFullscreen (fullscreen) {
+    toggleFullscreen(fullscreen) {
       if (fullscreen === undefined) {
         this.isFullscreen = !this.isFullscreen
       } else if (this.isFullscreen === fullscreen) {
@@ -75,7 +79,7 @@ export default {
      * 设置显示状态
      * @param {Boolean} visible 显示状态
      */
-    setVisibleValue (visible) {
+    setVisibleValue(visible) {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible === visible) {
         return
@@ -85,7 +89,6 @@ export default {
         this.resizeValue = 0
       }
       this.isVisible = visible
-      this.$el.focus()
       this.$emit('update:visible', visible)
 
       if (visible) {
@@ -107,7 +110,7 @@ export default {
     /**
      * 计算出组件在DOM中的父元素
      */
-    appendComponentTo () {
+    appendComponentTo() {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -127,7 +130,7 @@ export default {
     /**
      * 点击遮罩层时的事件处理
      */
-    onMaskClick () {
+    onMaskClick() {
       if (this.closeOnMaskClick) {
         this.toggleVisible(false)
       }
@@ -136,7 +139,7 @@ export default {
      * 获取父元素的尺寸
      * @return {{width: Number, height: Number}}
      */
-    getParentSize () {
+    getParentSize() {
       let rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -147,14 +150,14 @@ export default {
      * 获取到此组件的大小（基于px）
      * @return {{width: Number, height: Number}}
      */
-    getMyOwnSize () {
+    getMyOwnSize() {
       let rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
-    mouseDownHandler (e) {
+    mouseDownHandler(e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -166,7 +169,7 @@ export default {
       }
       this.originSize = this.getMyOwnSize()
     },
-    mouseMoveHandler (e) {
+    mouseMoveHandler(e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -235,10 +238,10 @@ export default {
         this.$emit('resize', {size: this.resizeValue})
       })
     },
-    mouseUpHandler () {
+    mouseUpHandler() {
       this.mousedown = false
     },
-    onKeydown (e) {
+    onKeydown(e) {
       if (!this.isVisible) {
         return
       }
@@ -252,7 +255,7 @@ export default {
       this.toggleVisible(false)
       return false
     },
-    emitOpenEvent () {
+    emitOpenEvent() {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.$emit('open', this.$refs.layout)
@@ -263,7 +266,7 @@ export default {
         this.$emit('open', this.$refs.layout)
       }, this.animationDuration)
     },
-    emitCloseEvent () {
+    emitCloseEvent() {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.showContainer = false
@@ -276,17 +279,17 @@ export default {
         this.$emit('closed')
       }, this.animationDuration)
     },
-    _bindKeyboardEvent () {
+    _bindKeyboardEvent() {
       if (!this.ignoreEsc) {
         this.$el.addEventListener('keydown', this.onKeydown)
       }
     },
-    _removeKeyboardEvent () {
+    _removeKeyboardEvent() {
       if (!this.ignoreEsc) {
         this.$el.removeEventListener('keydown', this.onKeydown)
       }
     },
-    _fixSizeUnit (val) {
+    _fixSizeUnit(val) {
       return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
     }
   }
