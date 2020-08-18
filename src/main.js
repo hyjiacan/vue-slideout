@@ -9,7 +9,8 @@ Vue.config.productionTip = false
 
 Vue.use(LangDirective)
 Vue.use(SlideOut, {
-  size: 300
+  size: 300,
+  renderWhenVisible: true
 })
 
 Vue.prototype.$devMode = process.env.NODE_ENV === 'development'

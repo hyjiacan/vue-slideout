@@ -88,11 +88,11 @@ export default {
       if (visible) {
         this.resizeValue = 0
       }
-      this.isVisible = visible
       this.$emit('update:visible', visible)
 
       if (visible) {
         this.showContainer = true
+        this.isVisible = true
         this.$nextTick(() => {
           // 延时应用动画
           setTimeout(() => {
@@ -270,12 +270,14 @@ export default {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
         this.showContainer = false
+        this.isVisible = false
         this.$emit('closed')
         return
       }
       // 开启动画时，有个this.animationDuration / 2 ms的动画
       setTimeout(() => {
         this.showContainer = false
+        this.isVisible = false
         this.$emit('closed')
       }, this.animationDuration)
     },
