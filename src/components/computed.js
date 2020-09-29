@@ -62,10 +62,12 @@ export default {
           case 'right':
           case 'left':
             style.top = offset
+            style.maxHeight = `calc(100% - ${offset})`
             break
           case 'bottom':
           case 'top':
             style.left = offset
+            style.maxWidth = `calc(100% - ${offset})`
             break
         }
         return style
