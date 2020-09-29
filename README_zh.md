@@ -116,3 +116,25 @@ yarn serve
 # 构建仓库
 yarn release
 ```
+
+## 已知问题
+
+### 溢出问题
+
+情景：当指定了属性 `offset` ，`size` 的高度参数为 `0` (自动适应高度)， 并且 `dock=left/right` 时，
+内容太高会导致溢出（无滚动条）。
+
+解决方案：显式地给内容指定最大高度为确定的值（注意，不要超出可见区域），如：
+
+```html
+<slide-out dock="left" :size="[300, 0]" offset="100px">
+  <div style="max-height: 540px;overflow: auto">
+    <!-- contents -->
+  </div>
+</slide-out>
+```
+
+其中的 `max-height: 540px;overflow: auto` 即可解决此问题。
+`max-height` 可以通过 js 计算得到。
+
+> 注意: 可能还需要考虑监听 `window.resize` 事件，以适应浏览器大小的变化。
