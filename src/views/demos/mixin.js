@@ -20,7 +20,9 @@ export default {
       v11: false,
       v12: false,
       v13: false,
-      v14: false
+      v14: false,
+      v15: false,
+      v16: false
     }
   },
   methods: {

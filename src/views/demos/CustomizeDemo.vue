@@ -13,6 +13,18 @@
       <div><code>size="200px"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
+    <slide-out :visible.sync="v15" size="120%" dock="right" :title="text.header">
+      <div><code>size="120%" dock="right"</code></div>
+      <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
+      <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
+    <slide-out :visible.sync="v16" size="120%" dock="top" :title="text.header">
+      <div><code>size="120%" dock="top"</code></div>
+      <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
+      <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
+      <div slot="footer">{{text.footer}}</div>
+    </slide-out>
     <slide-out :visible.sync="v4" :title="text.header" :show-close="false">
       <div><code>:show-close="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
@@ -80,6 +92,8 @@
         <li>
           <button @click="v2 = true" v-lang>Size: 50%</button>
           <button @click="v3 = true" v-lang>Size: 200px</button>
+          <button @click="v15 = true" v-lang>Size: 120% (right)</button>
+          <button @click="v16 = true" v-lang>Size: 120% (top)</button>
         </li>
         <li>
           <button @click="v4 = true" v-lang>No close button</button>

@@ -31,6 +31,8 @@
     "Append to specified element <b>#customize</b>": "放到<b>#customize</b>元素中",
     "Size: 50%": "尺寸: 50%",
     "Size: 200px": "尺寸: 200px",
+    "Size: 120% (right)": "尺寸: 120% (右侧)",
+    "Size: 120% (top)": "尺寸: 120% (顶部)",
     "No close button": "没有关闭按钮",
     "Display close button as cross": "关闭按钮显示为X",
     "No Header": "没有头部",
