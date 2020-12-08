@@ -40,17 +40,17 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 
 > Since version 2.4.0
  
-Unlike node env, a lowercase global `slideout` will be exploded.
+Unlike node env, a global `slideout` (**lowercase**) will be exploded.
 
 The newest version
 ```html
-<script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css" />
 ```
 
 Specified version
 ```html
-<script src="https://cdn.jsdelivr.com/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
 ```
 
