@@ -38,9 +38,14 @@
       <li><a href="https://gitee.com/hyjiacan/vue-slideout.git">Source code on Gitee</a></li>
       <li><a href="https://github.com/hyjiacan/vue-slideout/tree/master/src/views"
              target="_blank" v-lang>Samples source code on Github</a></li>
-      <li><a href="https://github.com/hyjiacan/vue-slideout/tree/master/src/views"
+      <li><a href="https://gitee.com/hyjiacan/vue-slideout/tree/master/src/views"
              target="_blank" v-lang>Samples source code on Gitee</a></li>
     </ul>
+    <p>
+      <span v-lang>There are some breaking changes at 3.0.0, see migrations on</span>
+      <a style="margin-left: 10px;" href="https://github.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Github</a>
+      <a style="margin-left: 10px;" href="https://gitee.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Gitee</a>
+    </p>
     <h2 v-lang>Samples</h2>
     <main-page/>
     <div id="tip" v-show="tipVisible">

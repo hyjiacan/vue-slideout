@@ -65,6 +65,7 @@
     "Scrolling": "滚动条",
     "Fullscreen as default": "默认为全屏",
     "Component has limited the max value of <code>size</code> as <code>100%</code>.": "组件限制了 <code>size</code> 的最大值为 <code>100%</code>。",
-    "The <code>size=\"120%\"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.": "此处指定的值 <code>size=\"120%\"</code> 大于 <code>100%</code>, 因此其不会如期起作用。"
+    "The <code>size=\"120%\"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.": "此处指定的值 <code>size=\"120%\"</code> 大于 <code>100%</code>, 因此其不会如期起作用。",
+    "There are some breaking changes at 3.0.0, see migrations on": "版本 3.0.0 发生不兼容的变化，可以在这里找到迁移信息"
   }
 }
