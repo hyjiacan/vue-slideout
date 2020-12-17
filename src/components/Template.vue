@@ -1,13 +1,14 @@
 <template>
-  <div class="slideout" :style="containerStyle" :class="containerClasses" tabindex="0">
+  <div class="slideout" :style="containerStyle" :class="containerClasses"
+       tabindex="0" v-if="!renderWhenVisible || isVisible">
     <div class="slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
-    <div class="slideout-layout" v-if="!renderWhenVisible || isVisible" :style="layoutStyle" ref="layout">
+    <div class="slideout-layout" :style="layoutStyle" ref="layout">
       <div class="slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
            @mousedown="mouseDownHandler"></div>
       <div class="slideout-header" :style="headerStyle" v-if="showHeader">
         <slot name="header" :title="title">
           <div class="slideout-title-text">
-            {{title}}
+            {{ title }}
           </div>
           <div class="slideout-title-buttons" ref="buttons">
             <span class="slideout-custom-buttons">
@@ -50,7 +51,12 @@ import watch from './watch'
 export default {
   name: 'Slideout',
   mixins: [computed, data, methods, watch],
-  components: {IconArrow, IconCross, IconFullscreen, IconFullscreenExit},
+  components: {
+    IconArrow,
+    IconCross,
+    IconFullscreen,
+    IconFullscreenExit
+  },
   props: {
     /**
      * 滑出尺寸，单位为像素，当为数组时，表示设置宽度和高度
@@ -211,7 +217,7 @@ export default {
     prop: 'visible',
     event: 'change'
   },
-  mounted() {
+  mounted () {
     this.isFullscreen = this.fullscreen
     this.appendComponentTo()
     if (this.allowResize) {
@@ -222,7 +228,7 @@ export default {
     this._bindKeyboardEvent()
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.showContainer = false
     this._removeKeyboardEvent()
     if (this.allowResize) {

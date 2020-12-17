@@ -7,7 +7,7 @@
       </p>
       <div v-show="status === 0" v-lang>I will close after 3 seconds...</div>
       <div v-show="status === 1" v-lang>I am opened, I will close after 3 seconds while click <code>close</code> button,
-        and event <code>closed</code> will be emitted after slide actually closed
+        and event <code>closed</code> will be emitted after component actually closed
       </div>
     </slideout>
     <div class="demo-block">

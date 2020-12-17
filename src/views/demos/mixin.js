@@ -3,9 +3,9 @@ export default {
   data() {
     return {
       text: {
-        header: 'Here is header',
-        content: 'Here is content',
-        footer: 'Here is footer'
+        header: 'Here is the header',
+        content: 'Here is the content',
+        footer: 'Here is the footer'
       },
       v1: false,
       v2: false,

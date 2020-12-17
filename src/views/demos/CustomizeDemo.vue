@@ -68,9 +68,9 @@
     <slideout v-model="v12" size="480px" :title="text.header" ignore-esc>
       <div>
         <p><code>ignore-esc</code></p>
-        <p v-lang>This makes slide ignore <code>Esc</code> key press.</p>
-        <p v-lang>So you can not close slide by press <code>Esc</code> key.</p>
-        <p v-lang>No matter how many times you press <code>Esc</code> key, slide will always keep opened.</p>
+        <p v-lang>This makes component ignore <code>Esc</code> key press.</p>
+        <p v-lang>So you can not close component by press <code>Esc</code> key.</p>
+        <p v-lang>No matter how many times you press <code>Esc</code> key, component will always keep opened.</p>
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slideout>

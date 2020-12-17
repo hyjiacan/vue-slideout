@@ -18,7 +18,7 @@
       <h3 v-lang>Hot key: Esc</h3>
       <ul>
         <li>
-          <button @click="v1 = true" v-lang>Press Esc in <code>editable element</code> will not close slide
+          <button @click="v1 = true" v-lang>Press Esc in <code>editable element</code> will not close component
           </button>
         </li>
       </ul>
