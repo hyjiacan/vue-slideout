@@ -1,30 +1,10 @@
 import languages from './langs.json'
-
-const langOrder = window.navigator.languages || [window.navigator.language]
-
-function getLang () {
-  // 从浏览器读取默认的语言
-  for (let i = 0; i < langOrder.length; i++) {
-    let lang = langOrder[i]
-    if (languages.hasOwnProperty(lang)) {
-      return lang
-    }
-    // 找不到完全匹配的语言，使用语言系（如：zh-CN，zh 表示语言系）
-    lang = lang.split('-')[0]
-    if (languages.hasOwnProperty(lang)) {
-      return lang
-    }
-  }
-  // 默认设置为英文
-  return 'en'
-}
-
-const langId = getLang()
+import util from '@/assets/util'
 
 const directive = {
   inserted: el => {
     // value 是 langId
-    const define = languages[langId]
+    const define = languages[util.getLanguage()]
     if (!define) {
       // 不支持此语言，啥也不做
       return

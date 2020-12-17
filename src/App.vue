@@ -15,20 +15,31 @@
         <span class="pending"/>
       </span>
     </h1>
+    <p class="languages">
+      <span v-lang>Language:</span>
+      <a class="lang" href="?lang=zh" v-if="currentLang !== 'zh'">中文</a>
+      <span class="lang" v-else>中文</span>
+      <a class="lang" href="?lang=en" v-if="currentLang !== 'en'">English</a>
+      <span class="lang" v-else>English</span>
+    </p>
     <h2 v-lang>Install</h2>
     <code>npm install @hyjiacan/vue-slideout</code>
     <p v-lang>or</p>
     <code>yarn add @hyjiacan/vue-slideout</code>
     <p v-lang>For the latest code, you can:</p>
     <code>git clone https://github.com/hyjiacan/vue-slideout.git</code>
-    <p><span v-lang>or</span> <a href="https://github.com/hyjiacan/vue-slideout/archive/master.zip"
-                                 v-lang>download archive</a></p>
+    <p>
+      <span v-lang>or</span>
+      <a href="https://github.com/hyjiacan/vue-slideout/archive/master.zip" v-lang>download archive</a>
+    </p>
     <h2 v-lang>Source</h2>
     <ul>
-      <li><a href="https://github.com/hyjiacan/vue-slideout.git">Github</a></li>
-      <li><a href="https://gitee.com/hyjiacan/vue-slideout.git">Gitee</a></li>
-      <li><a href="https://github.com/hyjiacan/vue-slideout/blob/master/src/components/Demo.vue" target="_blank"
-             v-lang>Demo Source</a></li>
+      <li><a href="https://github.com/hyjiacan/vue-slideout.git">Source code on Github</a></li>
+      <li><a href="https://gitee.com/hyjiacan/vue-slideout.git">Source code on Gitee</a></li>
+      <li><a href="https://github.com/hyjiacan/vue-slideout/tree/master/src/views"
+             target="_blank" v-lang>Samples source code on Github</a></li>
+      <li><a href="https://github.com/hyjiacan/vue-slideout/tree/master/src/views"
+             target="_blank" v-lang>Samples source code on Gitee</a></li>
     </ul>
     <h2 v-lang>Samples</h2>
     <main-page/>
@@ -41,6 +52,7 @@
 <script>
 import MainPage from './views/Main'
 import Vue from 'vue'
+import util from '@/assets/util'
 
 window.jsonp = function (url, callback) {
   const script = document.createElement('script')
@@ -78,7 +90,8 @@ export default {
     return {
       eventBus: new Vue(),
       tipVisible: false,
-      tipText: ''
+      tipText: '',
+      currentLang: util.getLanguage()
     }
   },
   provide () {
@@ -306,5 +319,11 @@ main > code {
 #source {
   margin-left: 5px;
   margin-right: 15px;
+}
+
+.languages {
+  .lang {
+    margin-left: 10px;
+  }
 }
 </style>
