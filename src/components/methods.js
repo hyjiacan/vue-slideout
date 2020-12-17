@@ -155,14 +155,17 @@ export default {
      * 切换全屏
      */
     toggleFullscreen (fullscreen) {
+      if (this.isFullscreen === fullscreen) {
+        return
+      }
       if (fullscreen === undefined) {
         this.isFullscreen = !this.isFullscreen
-      } else if (this.isFullscreen === fullscreen) {
-        return
       } else {
         this.isFullscreen = fullscreen
       }
-      this.$emit('update:fullscreen', this.isFullscreen)
+      if (this.isFullscreen !== this.fullscreen) {
+        this.$emit('update:fullscreen', this.isFullscreen)
+      }
     },
     /**
      * 计算出组件在DOM中的父元素
