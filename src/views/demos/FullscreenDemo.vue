@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <slideout v-model="v1" :title="text.header" size="400px" allow-resize
-               :fullscreen.sync="fullscreen" append-to="body" show-fullscreen fixed>
+              :fullscreen.sync="fullscreen" append-to="body" show-fullscreen fixed>
       <p>
         <code>size="400px" allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
       </p>
@@ -37,7 +37,7 @@ import mixins from './mixin'
 export default {
   name: 'FullscreenDemo',
   mixins: [mixins],
-  data() {
+  data () {
     return {
       fullscreen: false
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <slideout v-model="v1" :title="text.header" size="480px"
-               @opening="onOpening" @opened="onOpened" @closing="onClosing" @closed="onClosed">
+              @opening="onOpening" @opened="onOpened" @closing="onClosing" @closed="onClosed">
       <p>
         <code>@opening="onOpening" @opened="onOpened" @close="onClosing" @closed="onClosed"</code>
       </p>

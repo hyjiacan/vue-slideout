@@ -1,23 +1,31 @@
 <template>
   <div class="demo">
     <slideout v-model="v1" :size="['480px', '200px']" offset="100px" dock="top"
-               :title="text.header" show-fullscreen fullscreen>
+              :title="text.header" show-fullscreen fullscreen>
       <code>:size="['480px', '200px']" offset="100px" dock="top" show-fullscreen fullscreen</code>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v2" :size="['480px', '200px']" offset="30%" dock="right"
-               :title="text.header">
+              :title="text.header">
       <code>:size="['480px', '200px']" offset="30%" dock="right"</code>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v3" :size="['480px', '200px']" offset="30%" dock="bottom"
-               :title="text.header">
+              :title="text.header">
       <code>:size="['480px', '200px']" offset="30%" dock="bottom"</code>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v4" :size="['480px', '200px']" offset="100px" dock="left" :title="text.header">
       <code>:size="['480px', '200px']" offset="100px" dock="left"</code>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <div class="demo-block">
       <h3 v-lang>Fixed size AND Offset</h3>

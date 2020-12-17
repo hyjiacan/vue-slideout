@@ -1,6 +1,6 @@
 export default {
-  inject: ['ebus'],
-  data() {
+  inject: ['eventBus'],
+  data () {
     return {
       text: {
         header: 'Here is the header',
@@ -26,8 +26,8 @@ export default {
     }
   },
   methods: {
-    emitTip(msg) {
-      this.ebus.$emit('tip', msg)
+    emitTip (msg) {
+      this.eventBus.$emit('tip', msg)
     }
   }
 }

@@ -6,7 +6,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slideout>
     <slideout dock="right" :size="0" v-model="v2" :title="text.header">
@@ -15,7 +15,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slideout>
     <slideout dock="bottom" :size="[0]" offset="100px" v-model="v3" :title="text.header">
@@ -24,7 +24,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slideout>
     <slideout dock="left" :size="[300, 0]" offset="100px" v-model="v4" :title="text.header">
@@ -35,7 +35,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slideout>
     <slideout dock="top" :size="0" v-model="v5" :min-size="400" :max-size="500" :title="text.header">
@@ -45,7 +45,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slideout>
     <div class="demo-block">
@@ -71,7 +71,7 @@ import InputControl from './InputControl'
 
 export default {
   name: 'AutoSizeDemo',
-  components: {InputControl},
+  components: { InputControl },
   mixins: [mixin]
 }
 </script>

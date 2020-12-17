@@ -63,6 +63,8 @@
     "So these four components get <code>append-to=\"body\"</code>": "所以这四个组件都设置了 <code>append-to=\"body\"</code>",
     "Auto size (wrap content)": "自适应尺寸（包围内容）",
     "Scrolling": "滚动条",
-    "Fullscreen as default": "默认为全屏"
+    "Fullscreen as default": "默认为全屏",
+    "Component has limited the max value of <code>size</code> as <code>100%</code>.": "组件限制了 <code>size</code> 的最大值为 <code>100%</code>。",
+    "The <code>size=\"120%\"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.": "此处指定的值 <code>size=\"120%\"</code> 大于 <code>100%</code>, 因此其不会如期起作用。"
   }
 }

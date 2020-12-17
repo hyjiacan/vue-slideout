@@ -2,7 +2,7 @@
   <div>
     <div>Enter any text to change the visual size (Press <code>ENTER</code> to input newline):</div>
     <textarea cols="30" rows="4" v-model="inputText"/>
-    <pre>{{inputText}}</pre>
+    <pre>{{ inputText }}</pre>
   </div>
 </template>
 

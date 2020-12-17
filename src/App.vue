@@ -33,7 +33,7 @@
     <h2 v-lang>Samples</h2>
     <main-page/>
     <div id="tip" v-show="tipVisible">
-      {{tipText}}
+      {{ tipText }}
     </div>
   </main>
 </template>
@@ -76,14 +76,14 @@ export default {
   },
   data () {
     return {
-      ebus: new Vue(),
+      eventBus: new Vue(),
       tipVisible: false,
       tipText: ''
     }
   },
   provide () {
     return {
-      ebus: this.ebus
+      eventBus: this.eventBus
     }
   },
   methods: {
@@ -99,7 +99,7 @@ export default {
     }
   },
   mounted () {
-    this.ebus.$on('tip', this.showTip)
+    this.eventBus.$on('tip', this.showTip)
     const isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
 
@@ -186,7 +186,7 @@ li {
   padding: 10px 0;
 }
 
-.vue-slideout-content {
+.slideout-content {
   padding: 10px;
 }
 

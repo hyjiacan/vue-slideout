@@ -1,60 +1,88 @@
 <template>
   <div class="demo">
     <slideout v-model="v1" size="480px">
-      <div slot="header">{{text.header}}</div>
+      <template #header>
+        <div>{{ text.header }}</div>
+      </template>
       <div v-lang>Close/Fullscreen button would be removed while use <code>slot="header"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v2" size="50%" :title="text.header">
       <div><code> size="50%"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v3" size="200px" :title="text.header">
       <div><code>size="200px"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v15" size="120%" dock="right" :title="text.header">
       <div><code>size="120%" dock="right"</code></div>
-      <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
-      <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
-      <div slot="footer">{{text.footer}}</div>
+      <p v-lang>Component has limited the max value of <code>size</code> as <code>100%</code>.</p>
+      <p v-lang>The <code>size="120%"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as
+        expected.</p>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v16" size="120%" dock="top" :title="text.header">
       <div><code>size="120%" dock="top"</code></div>
-      <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
-      <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
-      <div slot="footer">{{text.footer}}</div>
+      <p v-lang>Component has limited the max value of <code>size</code> as <code>100%</code>.</p>
+      <p v-lang>The <code>size="120%"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as
+        expected.</p>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v4" :title="text.header" :show-close="false">
       <div><code>:show-close="false"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v14" :title="text.header" :arrow-button="false">
       <div><code>:arrow-button="false"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v5">
-      <div>{{text.content}}</div>
-      <div slot="footer">{{text.footer}}</div>
+      <div>{{ text.content }}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v6" :title="text.header">
-      <div>{{text.content}}</div>
+      <div>{{ text.content }}</div>
     </slideout>
     <slideout v-model="v7" :close-on-mask-click="false" :title="text.header">
       <div><code>:close-on-mask-click="false"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v8" :title="text.header" disable-animation>
       <div><code>disable-animation</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
-    <slideout v-model="v9" :title="text.header" mask-color="#FFFFFF">
-      <div><code>mask-color="#FFFFFF"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+    <slideout v-model="v9" :title="text.header" mask-color="#00ff0055">
+      <div><code>mask-color="#00ff0055"</code></div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v10" :title="text.header" :show-mask="false">
       <div><code>:show-mask="false"</code></div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v11" size="480px" :title="text.header" append-to="#customize" allow-resize>
       <div>
@@ -63,7 +91,9 @@
         <p v-lang>Resize is available for this instance.</p>
         <p><span style="color: red;">&lt;-</span><span v-lang>Move the cursor onto this border to have a try</span></p>
       </div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v12" size="480px" :title="text.header" ignore-esc>
       <div>
@@ -72,15 +102,23 @@
         <p v-lang>So you can not close component by press <code>Esc</code> key.</p>
         <p v-lang>No matter how many times you press <code>Esc</code> key, component will always keep opened.</p>
       </div>
-      <div slot="footer">{{text.footer}}</div>
+      <template #footer>
+        <div>{{ text.footer }}</div>
+      </template>
     </slideout>
     <slideout v-model="v13" size="480px" :title="text.header">
       <template slot="btn">
         <button>Test</button>
       </template>
-      <p>
-        <code>&lt;template slot="btn"&gt;&lt;button&gt;Test&lt;/button&gt;&lt;/template&gt;</code>
-      </p>
+      <div>
+        <code>&lt;template slot="btn"&gt;</code>
+      </div>
+      <div>
+        <code>&lt;button&gt;Test&lt;/button&gt;</code>
+      </div>
+      <div>
+        <code>&lt;/template&gt;</code>
+      </div>
     </slideout>
     <div class="demo-block" id="customize">
       <h3 v-lang>Customize</h3>
@@ -109,7 +147,7 @@
           <button @click="v9 = true">
             <span v-lang>Mask color</span>
             <span
-              style="width: 14px;height: 14px;background: #FFFFFF;display: inline-block;vertical-align: -2px;"></span>
+              style="width: 14px;height: 14px;background: #00ff0055;display: inline-block;vertical-align: -2px;"></span>
           </button>
           <button @click="v10 = true" v-lang>No Mask</button>
         </li>
