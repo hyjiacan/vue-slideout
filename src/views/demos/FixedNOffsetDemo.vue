@@ -1,21 +1,21 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :size="['480px', '200px']" offset="100px" dock="top"
+    <slide-out v-model="v1" :size="['480px', '200px']" offset="100px" dock="top"
                :title="text.header" show-fullscreen fullscreen>
       <code>:size="['480px', '200px']" offset="100px" dock="top" show-fullscreen fullscreen</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v2" :size="['480px', '200px']" offset="30%" dock="right"
+    <slide-out v-model="v2" :size="['480px', '200px']" offset="30%" dock="right"
                :title="text.header">
       <code>:size="['480px', '200px']" offset="30%" dock="right"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v3" :size="['480px', '200px']" offset="30%" dock="bottom"
+    <slide-out v-model="v3" :size="['480px', '200px']" offset="30%" dock="bottom"
                :title="text.header">
       <code>:size="['480px', '200px']" offset="30%" dock="bottom"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v4" :size="['480px', '200px']" offset="100px" dock="left" :title="text.header">
+    <slide-out v-model="v4" :size="['480px', '200px']" offset="100px" dock="left" :title="text.header">
       <code>:size="['480px', '200px']" offset="100px" dock="left"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>

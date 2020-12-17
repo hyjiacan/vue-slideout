@@ -43,7 +43,7 @@ export default {
         this.setVisibleValue(true)
       }, () => {
         // 取消时，重置原值为 false
-        this.$emit('update:visible', false)
+        this._updateVisibleValue(false)
       })
 
       this.$emit('opening', args)
@@ -65,7 +65,7 @@ export default {
         this.setVisibleValue(false)
       }, () => {
         // 取消时，重置原值为 true
-        this.$emit('update:visible', true)
+        this._updateVisibleValue(true)
       })
 
       this.$emit('closing', args)
@@ -114,7 +114,7 @@ export default {
         // 禁用动画时不需要等待
         this.$emit('opened', this.$refs.layout)
         if (this.visible !== this.isVisible) {
-          this.$emit('update:visible', true)
+          this._updateVisibleValue(true)
         }
         // 在组件显示后让组件获取焦点
         this.$el.focus()
@@ -124,7 +124,7 @@ export default {
       setTimeout(() => {
         this.$emit('opened', this.$refs.layout)
         if (this.visible !== this.isVisible) {
-          this.$emit('update:visible', true)
+          this._updateVisibleValue(true)
         }
         // 在组件显示后让组件获取焦点
         this.$el.focus()
@@ -137,7 +137,7 @@ export default {
         this.isVisible = false
         this.$emit('closed')
         if (this.visible !== this.isVisible) {
-          this.$emit('update:visible', false)
+          this._updateVisibleValue(false)
         }
         return
       }
@@ -147,7 +147,7 @@ export default {
         this.isVisible = false
         this.$emit('closed')
         if (this.visible !== this.isVisible) {
-          this.$emit('update:visible', false)
+          this._updateVisibleValue(false)
         }
       }, this.animationDuration)
     },
@@ -327,6 +327,9 @@ export default {
     },
     _fixSizeUnit (val) {
       return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
+    },
+    _updateVisibleValue (value) {
+      this.$emit('change', value)
     }
   }
 }

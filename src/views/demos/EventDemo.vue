@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :title="text.header" size="480px"
+    <slide-out v-model="v1" :title="text.header" size="480px"
                @opening="onOpening" @opened="onOpened" @closing="onClosing" @closed="onClosed">
       <p>
         <code>@opening="onOpening" @opened="onOpened" @close="onClosing" @closed="onClosed"</code>

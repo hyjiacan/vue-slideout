@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :title="text.header" size="400px" allow-resize
+    <slide-out v-model="v1" :title="text.header" size="400px" allow-resize
                :fullscreen.sync="fullscreen" append-to="body" show-fullscreen fixed>
       <p>
         <code>size="400px" allow-resize :fullscreen="fullscreen" append-to="body" fixed</code>
@@ -11,7 +11,7 @@
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fullscreen = !fullscreen" v-lang>
         Click to toggle fullscreen</p>
     </slide-out>
-    <slide-out :visible.sync="v2" dock="top" :title="text.header" size="600px" allow-resize fullscreen>
+    <slide-out v-model="v2" dock="top" :title="text.header" size="600px" allow-resize fullscreen>
       <p>
         <code>size="600px" allow-resize fullscreen</code>
       </p>

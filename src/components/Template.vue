@@ -207,6 +207,10 @@ export default {
       default: false
     }
   },
+  model: {
+    prop: 'visible',
+    event: 'change'
+  },
   mounted() {
     this.isFullscreen = this.fullscreen
     this.appendComponentTo()

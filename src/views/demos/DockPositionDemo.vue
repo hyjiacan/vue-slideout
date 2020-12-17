@@ -1,18 +1,18 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" dock="top" :title="text.header">
+    <slide-out v-model="v1" dock="top" :title="text.header">
       <code>dock="top"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v2" dock="right" :title="text.header">
+    <slide-out v-model="v2" dock="right" :title="text.header">
       <code>dock="right"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v3" dock="bottom" :title="text.header">
+    <slide-out v-model="v3" dock="bottom" :title="text.header">
       <code>dock="bottom"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v4" dock="left" :title="text.header">
+    <slide-out v-model="v4" dock="left" :title="text.header">
       <code>dock="left"</code>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>

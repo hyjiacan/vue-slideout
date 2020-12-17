@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" append-to="body" dock="top" :title="text.header" allow-resize @resize="onResize">
+    <slide-out v-model="v1" append-to="body" dock="top" :title="text.header" allow-resize @resize="onResize">
       <div>
         <p><code>append-to="body" dock="top" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
@@ -10,7 +10,7 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v2" append-to="body" dock="right" :title="text.header" allow-resize @resize="onResize">
+    <slide-out v-model="v2" append-to="body" dock="right" :title="text.header" allow-resize @resize="onResize">
       <div>
         <p><code>append-to="body" dock="right" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
@@ -20,7 +20,7 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v3" append-to="body" dock="bottom" :title="text.header" allow-resize @resize="onResize">
+    <slide-out v-model="v3" append-to="body" dock="bottom" :title="text.header" allow-resize @resize="onResize">
       <div>
         <p><code>append-to="body" dock="bottom" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
@@ -30,7 +30,7 @@
       <div>Resize value: {{resizeValue}}px</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v4" append-to="body" dock="left" :title="text.header" allow-resize @resize="onResize">
+    <slide-out v-model="v4" append-to="body" dock="left" :title="text.header" allow-resize @resize="onResize">
       <div>
         <p><code>append-to="body" dock="left" allow-resize @resize="onResize"</code></p>
         <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>

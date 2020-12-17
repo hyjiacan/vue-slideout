@@ -2,7 +2,7 @@
 
 ## Properties
 
-#### size  (optional)
+#### size (optional)
 
 - type `String/Number/Array`
 - default `400px`
@@ -10,85 +10,95 @@
 > The size of component, both `px` and `%` are available;
 > - If it is an array, then: The 1st element is the width, and the 2nd element is the height,
 > - if there is only one element: that makes width equals with height.
-    In this situation, props `allow-resize`, `min-size`, `max-size` are not available.
-> - ( **Auto-fit size supported** `since 2.3.5` )
-    You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size.
-    In this situation, props `min-size`, `max-size` are available. 
+  In this situation, props `allow-resize`, `min-size`, `max-size` are not available.
+> - ( **Auto-fit size supported** `since 2.3.5` ).
+  You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size.
+  In this situation, props `min-size`, `max-size` are available. 
 
-#### z-index  (optional)
+#### z-index (optional)
 
 - type `Number`
 - default `1997`
 
-> The z-index of component
+> The z-index of component.
 
-#### visible  (required)
+#### ~~visible~~ (required)
+
+> Removed since _3.0.0_, use `v-model` instead.
 
 - type `Boolean`
 - default `false`
 
-> Is the component visible, modifier `.sync` is available
+> The visible state of component, modifier `.sync` is available.
 
-#### title  (optional)
+#### v-model (required)
+
+> Since `3.0.0`
+
+- type `Boolean`
+
+> The visible state of component.
+
+#### title (optional)
 
 - type `String`
 
 
 > The `title` text of component,
-> if this is empty and `slot=header` is empty too,the header would be hidden
+> if this is empty and `slot=header` is empty too,the header would be hidden.
 
-#### close-on-mask-click  (optional)
+#### close-on-mask-click (optional)
 
 - type `Boolean`
 - default `true`
 
-> Whether to close component while the mask clicked
+> Whether to close component while the mask clicked.
 
-#### custom-class  (optional)
+#### custom-class (optional)
 
 - type `String`
 
 
-> Customized stylesheet class name
+> Customized the css class name.
 
-#### show-mask  (optional)
-
-- type `Boolean`
-- default `true`
-
-> Is mask visible
-
-#### show-close  (optional)
+#### show-mask (optional)
 
 - type `Boolean`
 - default `true`
 
-> Is close button visible
+> Is the mask visible.
 
-#### show-fullscreen  (optional)
+#### show-close (optional)
+
+- type `Boolean`
+- default `true`
+
+> Is the close button visible.
+
+#### show-fullscreen (optional)
 
 > `since 2.3.0`
 
 - type `Boolean`
 - default `false`
 
-> Is fullscreen button visible
+> Is the fullscreen button visible.
 
-#### mask-color  (optional)
+#### mask-color (optional)
 
 - type `String`
 - default `rgba(0, 0, 0, 0.5)`
 
-> Mask color
+> The color of mask layer.
 
-#### dock  (optional)
+#### dock (optional)
 
 - type `String`
 - default `right`
 
-> The dock position of component, optional values are `top`, `right`, `bottom`, `left`
+> The dock position of component, optional values are `top`, `right`, `bottom`, `left`.
 
-#### append-to  (optional)
+#### append-to (optional)
 
 - type `String/HTMLElement`
 - default `null`
@@ -97,46 +107,46 @@
 > Both `string`(selector) and `HTMLElement`(DOM object) available.
 > Use style `position: fixed` if prop `appendTo` not specified.
 
-#### disable-animation  (optional)
+#### disable-animation (optional)
 
 - type `Boolean`
 - default `false`
 
-> Whether to disable animation
+> Whether to disable animation.
 
-#### allow-resize  (optional)
+#### allow-resize (optional)
 
 > `since 1.4.0`
 
 - type `Boolean`
 - default `false`
 
-> Whether to allow drag-resize
+> Whether to allow drag-resize.
 
-#### min-size  (optional)
+#### min-size (optional)
 
 - type `Number`
 - default `60`
 
-> The min limit of drag-resize, value in `px`
+> The min limit of drag-resize, value in `px`.
 
-#### max-size  (optional)
+#### max-size (optional)
 
 - type `Number`
 - default `0`
 
-> The max limit of drag-resize, value `0` makes no limit, value in `px`
+> The max limit of drag-resize, value `0` makes no limit, value in `px`.
 
-#### ignore-esc  (optional)
+#### ignore-esc (optional)
 
 > `since 2.0.0`
 
 - type `Boolean`
 - default `false`
 
-> Whether to ignore `esc` key, set `false` or keep default to close component while press `ESC`
+> Whether to ignore `esc` key, set `false` or keep default to close component while press `ESC`.
 
-#### fullscreen  (optional)
+#### fullscreen (optional)
 
 > `since 2.1.3`
 
@@ -144,17 +154,16 @@
 - default `false`
 
 > Whether to enable fullscreen (resize is disabled if value is `true`),
-> modifier `.sync` is available (will exit fullscreen after close)
+> modifier `.sync` is available (will exit fullscreen after close).
 
-#### fixed  (optional)
+#### fixed (optional)
 
 > `since 2.1.12`
 
 - type `Boolean`
 - default `false`
 
-> Whether to use `position: fixed`
-
+> Whether to use `position: fixed`.
 
 #### offset (optional)
 
@@ -164,7 +173,7 @@
 - default `0`
 
 > The offset from `dock` side, both `px` and `%` available.
- > (Take effect only if prop `size` is an array)
+> (Take effect only if prop `size` is an array).
 
 #### arrow-button (optional)
 
@@ -173,7 +182,7 @@
 - type `Boolean`
 - default `true`
 
-> Display close button as `arrow`(->) if true, otherwise display as `cross` (x)
+> Display close button as `arrow`(->) if true, otherwise display as `cross` (x).
 
 #### render-when-visible (optional)
 
@@ -182,33 +191,33 @@
 - type `Boolean`
 - default `false` / `true` after _3.0.0_
 
-> DON'T render the content when `visible` is `false`
+> DON'T render the content when `visible` is `false`.
 
 ## Slots
 
-#### default  
+#### default 
 
 - args `-`
 
 > The content slot.
 
-#### header  
+#### header 
 
 - args `{title}`
 
 > The header slot, replaces all the header bar, 
 > `title` will take no affected(and close button will be removed) if specified this,
-> use `slot-scope="{ title }"` to get prop `title`
+> use `slot-scope="{ title }"` to get prop `title`.
 
-#### btn  
+#### btn 
 
 > `since 2.1.7`
 
 - args `-`
 
-> Extend header buttons, placed left side of the **Close Button**
+> Extend header buttons, placed left side of the **Close Button**.
 
-#### footer  
+#### footer 
 
 - args `-`
 
@@ -223,7 +232,7 @@
 - args e: `{pause: Boolean, resume: Boolean}`
 
 > Emitted before component open, in callback function,
-> assign `e.pause=true` to pause open, and assign `e.resume=true` to resume open (async supported)
+> assign `e.pause=true` to pause open, and assign `e.resume=true` to resume open (async supported).
 
 #### opened
 
@@ -231,7 +240,7 @@
 
 - args `-`
 
-> Emitted after opened (and after the animation completed)
+> Emitted after opened (and after the animation completed).
 
 #### closing
 
@@ -240,9 +249,9 @@
 - args e: `{pause: Boolean, resume: Boolean}`
 
 > Emitted before component close, in callback function,
-> assign `e.pause=true` to pause close, and assign `e.resume=true` to resume close (async supported)
+> assign `e.pause=true` to pause close, and assign `e.resume=true` to resume close (async supported).
 
-#### closed  
+#### closed 
 
 - args `-`
 
@@ -250,7 +259,7 @@
 
 #### ~~before-open~~
 
-> Deprecate since _3.0.0_, use [opening](#opening) instead.
+> Removed since _3.0.0_, use [opening](#opening) instead.
 
 > `since 2.2.5`
 
@@ -261,7 +270,7 @@
 
 #### ~~open~~
 
-> Deprecate since _3.0.0_, use [opened](#opened) instead.
+> Removed since _3.0.0_, use [opened](#opened) instead.
 
 - args `-`
 
@@ -269,9 +278,9 @@
 
 #### ~~close~~
 
-> Deprecate since _3.0.0_, use [closing](#closing) instead.
+> Removed since _3.0.0_, use [closing](#closing) instead.
 
 - args e: `{close: Boolean, wait: Boolean}`
 
 > Emitted before component close, in callback function,
-> assign `e.wait=true` to prevent close, and assign `e.close=true` to close (async supported)
+> assign `e.wait=true` to prevent close, and assign `e.close=true` to close (async supported).

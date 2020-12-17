@@ -1,62 +1,62 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" size="480px">
+    <slide-out v-model="v1" size="480px">
       <div slot="header">{{text.header}}</div>
       <div v-lang>Close/Fullscreen button would be removed while use <code>slot="header"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v2" size="50%" :title="text.header">
+    <slide-out v-model="v2" size="50%" :title="text.header">
       <div><code> size="50%"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v3" size="200px" :title="text.header">
+    <slide-out v-model="v3" size="200px" :title="text.header">
       <div><code>size="200px"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v15" size="120%" dock="right" :title="text.header">
+    <slide-out v-model="v15" size="120%" dock="right" :title="text.header">
       <div><code>size="120%" dock="right"</code></div>
       <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
       <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v16" size="120%" dock="top" :title="text.header">
+    <slide-out v-model="v16" size="120%" dock="top" :title="text.header">
       <div><code>size="120%" dock="top"</code></div>
       <p>Slideout has limited the max value of <code>size</code> as <code>100%</code>.</p>
       <p>The <code>size</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.</p>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v4" :title="text.header" :show-close="false">
+    <slide-out v-model="v4" :title="text.header" :show-close="false">
       <div><code>:show-close="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v14" :title="text.header" :arrow-button="false">
+    <slide-out v-model="v14" :title="text.header" :arrow-button="false">
       <div><code>:arrow-button="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v5">
+    <slide-out v-model="v5">
       <div>{{text.content}}</div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v6" :title="text.header">
+    <slide-out v-model="v6" :title="text.header">
       <div>{{text.content}}</div>
     </slide-out>
-    <slide-out :visible.sync="v7" :close-on-mask-click="false" :title="text.header">
+    <slide-out v-model="v7" :close-on-mask-click="false" :title="text.header">
       <div><code>:close-on-mask-click="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v8" :title="text.header" disable-animation>
+    <slide-out v-model="v8" :title="text.header" disable-animation>
       <div><code>disable-animation</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v9" :title="text.header" mask-color="#FFFFFF">
+    <slide-out v-model="v9" :title="text.header" mask-color="#FFFFFF">
       <div><code>mask-color="#FFFFFF"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v10" :title="text.header" :show-mask="false">
+    <slide-out v-model="v10" :title="text.header" :show-mask="false">
       <div><code>:show-mask="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v11" size="480px" :title="text.header" append-to="#customize" allow-resize>
+    <slide-out v-model="v11" size="480px" :title="text.header" append-to="#customize" allow-resize>
       <div>
         <div><code>append-to="#customize" allow-resize</code></div>
         <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
@@ -65,7 +65,7 @@
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v12" size="480px" :title="text.header" ignore-esc>
+    <slide-out v-model="v12" size="480px" :title="text.header" ignore-esc>
       <div>
         <p><code>ignore-esc</code></p>
         <p v-lang>This makes slide ignore <code>Esc</code> key press.</p>
@@ -74,7 +74,7 @@
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v13" size="480px" :title="text.header">
+    <slide-out v-model="v13" size="480px" :title="text.header">
       <template slot="btn">
         <button>Test</button>
       </template>

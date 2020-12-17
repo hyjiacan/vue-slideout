@@ -1,8 +1,10 @@
 # Migrations
 
-## Upgrade to 3.x 
+## Upgrade to 3.x
 
-This section will guide you to upgrade Slideout to version 3.x. 
+This section will guide you to upgrade Slideout to version 3.x.
+
+**IMPORTANT BREAKING** Component name is changed to `Slideout` (The old name is `SlideOut`).
 
 ### Props
 

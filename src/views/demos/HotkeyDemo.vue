@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :title="text.header" size="600px">
+    <slide-out v-model="v1" :title="text.header" size="600px">
       <div style="padding-top: 20px;">
         <input type="text" style="margin-bottom: 10px;display: block;" value="input"/>
         <textarea name="" id="" cols="30" rows="10" style="margin-bottom: 10px;display: block;">textarea</textarea>

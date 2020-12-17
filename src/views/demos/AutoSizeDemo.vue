@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out dock="top" size="0" :visible.sync="v1" :title="text.header">
+    <slide-out dock="top" size="0" v-model="v1" :title="text.header">
       <ul>
         <li><code>dock="top" size="0"</code></li>
       </ul>
@@ -9,7 +9,7 @@
         {{text.footer}}
       </template>
     </slide-out>
-    <slide-out dock="right" :size="0" :visible.sync="v2" :title="text.header">
+    <slide-out dock="right" :size="0" v-model="v2" :title="text.header">
       <ul>
         <li><code>dock="right" :size="0"</code></li>
       </ul>
@@ -18,7 +18,7 @@
         {{text.footer}}
       </template>
     </slide-out>
-    <slide-out dock="bottom" :size="[0]" offset="100px" :visible.sync="v3" :title="text.header">
+    <slide-out dock="bottom" :size="[0]" offset="100px" v-model="v3" :title="text.header">
       <ul>
         <li><code>dock="bottom" :size="[0]" offset="100px"</code></li>
       </ul>
@@ -27,7 +27,7 @@
         {{text.footer}}
       </template>
     </slide-out>
-    <slide-out dock="left" :size="[300, 0]" offset="100px" :visible.sync="v4" :title="text.header">
+    <slide-out dock="left" :size="[300, 0]" offset="100px" v-model="v4" :title="text.header">
       <ul>
         <li><code>dock="left"</code></li>
         <li><code>:size="[300, 0]"</code></li>
@@ -38,9 +38,9 @@
         {{text.footer}}
       </template>
     </slide-out>
-    <slide-out dock="top" :size="0" :visible.sync="v5" :min-size="400" :max-size="500" :title="text.header">
+    <slide-out dock="top" :size="0" v-model="v5" :min-size="400" :max-size="500" :title="text.header">
       <ul>
-        <li><code>dock="top" :size="0" :visible.sync="v5" :min-size="400" :max-size="500"</code></li>
+        <li><code>dock="top" :size="0" v-model="v5" :min-size="400" :max-size="500"</code></li>
         <li>Use `min-size` and `max-size` to limit the size, and enable scrolling</li>
       </ul>
       <input-control/>
