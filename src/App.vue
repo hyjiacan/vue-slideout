@@ -46,6 +46,10 @@
       <a style="margin-left: 10px;" href="https://github.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Github</a>
       <a style="margin-left: 10px;" href="https://gitee.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Gitee</a>
     </p>
+    <p>
+      <span>Try 2.x on <a href="https://codepen.io/hyjiacan/pen/YzGVRvR">CodePen</a> on the fly</span>
+      <span>Try 3.x on <a href="https://codepen.io/hyjiacan/pen/LYRZONE">CodePen</a> on the fly</span>
+    </p>
     <h2 v-lang>Samples</h2>
     <main-page/>
     <div id="tip" v-show="tipVisible">

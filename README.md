@@ -1,4 +1,4 @@
-# SlideOut
+# Slideout
 
 [![NPM](https://img.shields.io/npm/l/@hyjiacan/vue-slideout?style=flat-square)](https://github.com/hyjiacan/vue-slideout/blob/master/LICENSE)
 [![Travis (.org)](https://img.shields.io/travis/hyjiacan/vue-slideout?style=flat-square)](https://www.travis-ci.org/hyjiacan/vue-slideout)
@@ -74,9 +74,9 @@ import Vue from 'vue'
 import Slideout from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
 
-// import SlideOut component, and set the defaults props
+// import Slideout component, and set the defaults props
 Vue.use(Slideout, {
-  // set props here
+  // set default props here
 })
 ```
 
@@ -119,6 +119,10 @@ export default {
 
 - For more usage, see https://hyjiacan.github.io/vue-slideout/
 - API reference: [API.md](./API.md)
+
+Try 2.x on <a href="https://codepen.io/hyjiacan/pen/YzGVRvR">CodePen</a> on the fly.
+
+Try 3.x on <a href="https://codepen.io/hyjiacan/pen/LYRZONE">CodePen</a> on the fly.
 
 ## Development
 

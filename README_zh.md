@@ -1,4 +1,4 @@
-# SlideOut
+# Slideout
 
 [![NPM](https://img.shields.io/npm/l/@hyjiacan/vue-slideout?style=flat-square)](https://github.com/hyjiacan/vue-slideout/blob/master/LICENSE)
 [![Travis (.org)](https://img.shields.io/travis/hyjiacan/vue-slideout?style=flat-square)](https://www.travis-ci.org/hyjiacan/vue-slideout)
@@ -71,11 +71,11 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 
 ```javascript
 import Vue from 'vue'
-import SlideOut from '@hyjiacan/vue-slideout'
+import Slideout from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
 
-// 引入 SlideOut 组件，并设置组件默认值
-Vue.use(SlideOut, {
+// 引入 Slideout 组件，并设置组件默认值
+Vue.use(Slideout, {
   // 在此处填写默认的属性值
 })
 ```
@@ -85,6 +85,7 @@ Vue.use(SlideOut, {
 *Foobar.vue*
 
 ```html
+
 <template>
   <slideout @closing="onClosing" v-model="visible" title="The title">
     <div>content</div>
@@ -119,6 +120,10 @@ export default {
 
 - 更多的用法，参见 http://hyjiacan.gitee.io/vue-slideout
 - API文档参见 [API.zh-CN.md](./API.zh-CN.md)
+
+马上去 [CodePen](https://codepen.io/hyjiacan/pen/YzGVRvR) 试试 2.x。
+
+马上去 [CodePen](https://codepen.io/hyjiacan/pen/LYRZONE) 试试 3.x。
 
 ## 开发
 
