@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out v-model="v1" :title="text.header" size="480px"
+    <slideout v-model="v1" :title="text.header" size="480px"
                @opening="onOpening" @opened="onOpened" @closing="onClosing" @closed="onClosed">
       <p>
         <code>@opening="onOpening" @opened="onOpened" @close="onClosing" @closed="onClosed"</code>
@@ -9,7 +9,7 @@
       <div v-show="status === 1" v-lang>I am opened, I will close after 3 seconds while click <code>close</code> button,
         and event <code>closed</code> will be emitted after slide actually closed
       </div>
-    </slide-out>
+    </slideout>
     <div class="demo-block">
       <h3 v-lang>Event</h3>
       <ul>

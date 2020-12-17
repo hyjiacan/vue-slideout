@@ -1,21 +1,21 @@
 <template>
   <div class="demo">
-    <slide-out v-model="v1" dock="top" :title="text.header">
+    <slideout v-model="v1" dock="top" :title="text.header">
       <code>dock="top"</code>
       <div slot="footer">{{text.footer}}</div>
-    </slide-out>
-    <slide-out v-model="v2" dock="right" :title="text.header">
+    </slideout>
+    <slideout v-model="v2" dock="right" :title="text.header">
       <code>dock="right"</code>
       <div slot="footer">{{text.footer}}</div>
-    </slide-out>
-    <slide-out v-model="v3" dock="bottom" :title="text.header">
+    </slideout>
+    <slideout v-model="v3" dock="bottom" :title="text.header">
       <code>dock="bottom"</code>
       <div slot="footer">{{text.footer}}</div>
-    </slide-out>
-    <slide-out v-model="v4" dock="left" :title="text.header">
+    </slideout>
+    <slideout v-model="v4" dock="left" :title="text.header">
       <code>dock="left"</code>
       <div slot="footer">{{text.footer}}</div>
-    </slide-out>
+    </slideout>
     <div class="demo-block">
       <h3 v-lang>Dock position</h3>
       <ul>

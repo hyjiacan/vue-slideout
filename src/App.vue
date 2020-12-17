@@ -1,8 +1,8 @@
 <template>
   <main id="app">
     <h1>
-      SlideOut
-      <small v-lang>A Slide-Out component for Vue.js 2.x</small>
+      Slideout
+      <small v-lang>A slide-out component for Vue.js 2.x</small>
       <span id="metas">
         <span class="latest-text"/>
         <span class="loaded">

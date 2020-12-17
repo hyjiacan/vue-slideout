@@ -1,9 +1,9 @@
 <template>
   <div class="demo">
-    <slide-out v-model="v1" title="And God said, let there be light, and there was light">
+    <slideout v-model="v1" title="And God said, let there be light, and there was light">
       <div v-lang>Long header text turns out <b>ellipsis</b> style.</div>
       <div slot="footer">{{text.footer}}</div>
-    </slide-out>
+    </slideout>
     <div class="demo-block">
       <h3 v-lang>Long header text</h3>
       <ul>

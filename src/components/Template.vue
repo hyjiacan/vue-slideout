@@ -48,7 +48,7 @@ import methods from './methods'
 import watch from './watch'
 
 export default {
-  name: 'SlideOut',
+  name: 'Slideout',
   mixins: [computed, data, methods, watch],
   components: {IconArrow, IconCross, IconFullscreen, IconFullscreenExit},
   props: {

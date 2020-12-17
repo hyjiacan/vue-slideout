@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out v-model="v1" :title="text.header" size="600px">
+    <slideout v-model="v1" :title="text.header" size="600px">
       <div style="padding-top: 20px;">
         <input type="text" style="margin-bottom: 10px;display: block;" value="input"/>
         <textarea name="" id="" cols="30" rows="10" style="margin-bottom: 10px;display: block;">textarea</textarea>
@@ -9,11 +9,11 @@
         </div>
       </div>
       <p v-lang>
-        Slide will not close if you press <code>Esc</code> key in editable element,
+        Component will not close if you press <code>Esc</code> key in editable element,
         such as <code>input</code>, <code>textarea</code>,
         <code>div[contenteditable="true"]</code>
       </p>
-    </slide-out>
+    </slideout>
     <div class="demo-block">
       <h3 v-lang>Hot key: Esc</h3>
       <ul>

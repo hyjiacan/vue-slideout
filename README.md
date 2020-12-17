@@ -11,6 +11,7 @@
 A Slide-Out component for Vue.js 2.0
 
 ### Dependencies
+
 - Vue.js 2.x
 - Less
 
@@ -39,37 +40,42 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 ### Browser ENV (umd)
 
 > Since `2.4.0`
- 
+
 Unlike node-env, a global `slideout` (**lowercase**) will be exploded.
 
 The newest version
+
 ```html
+
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"/>
 ```
 
 Specified version
+
 ```html
+
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"/>
 ```
 
 > **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*.
 
-> Also, you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js* 
+> Also, you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js*
 
 ## Usage
 
 ### Global (recommended)
 
 *main.js*
+
 ```javascript
 import Vue from 'vue'
-import SlideOut from '@hyjiacan/vue-slideout'
+import Slideout from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 // import SlideOut component, and set the defaults props
-Vue.use(SlideOut, {
+Vue.use(Slideout, {
   // set props here
 })
 ```
@@ -77,30 +83,36 @@ Vue.use(SlideOut, {
 ### In Component
 
 *Foobar.vue*
+
 ```html
-<slide-out @close="onClose">
-    <div slot="header" slot-scope="{title}">
-    </div>
-    content
-</slide-out>
+<template>
+  <slideout @closing="onClosing" v-model="visible" title="The title">
+    <div>content</div>
+  </slideout>
+</template>
 <script>
-import SlideOut from '@hyjiacan/vue-slideout'
+import Slideout from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 export default {
-    name: 'Foobar',
-    components: {SlideOut},
-    methods: {
-        onClose (e) {
-            // prevent close and wait
-            e.wait = true
-            // close after 3 seconds
-            setTimeout(() => {
-                // assign true to close, do nothing or assign false to cancel close.
-                e.close = true
-            }, 3000)
-        }
+  name: 'Foobar',
+  components: { Slideout },
+  data () {
+    return {
+      visible: false
     }
+  },
+  methods: {
+    onClosing (e) {
+      // prevent close and wait
+      e.wait = true
+      // close after 3 seconds
+      setTimeout(() => {
+        // assign true to close, do nothing or assign false to cancel close.
+        e.close = true
+      }, 3000)
+    }
+  }
 }
 </script>
 ```

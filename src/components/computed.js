@@ -10,7 +10,7 @@ export default {
     showFooter () {
       return this.$slots.footer
     },
-    // SlideOut 容器样式
+    // Slideout 容器样式
     containerStyle () {
       const style = {
         // 2147483647 是允许的最大值
@@ -23,7 +23,7 @@ export default {
       }
       return style
     },
-    // SlideOut 遮罩层样式
+    // Slideout 遮罩层样式
     maskStyle () {
       return this.maskColor ? {
         'background-color': this.maskColor
@@ -49,7 +49,7 @@ export default {
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
-    // SlideOut 内容样式
+    // Slideout 内容样式
     layoutStyle () {
       const style = {}
       if (this.isSizeFixed) {

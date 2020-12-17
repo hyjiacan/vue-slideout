@@ -1,4 +1,4 @@
-import SlideOut from './Template'
+import Slideout from './Template'
 
 function setDefaultProps (customize) {
   for (let prop in customize) {
@@ -9,10 +9,10 @@ function setDefaultProps (customize) {
     prop = prop.replace(/-[a-z]/g, match => {
       return match[1].toUpperCase()
     })
-    if (!SlideOut.props.hasOwnProperty(prop)) {
+    if (!Slideout.props.hasOwnProperty(prop)) {
       continue
     }
-    SlideOut.props[prop]['default'] = customize[prop]
+    Slideout.props[prop]['default'] = customize[prop]
   }
 }
 
@@ -21,11 +21,11 @@ function setDefaultProps (customize) {
  * @param Vue
  * @param defaults 通过 Vue.use 注册组件时，设置的组件默认值
  */
-SlideOut.install = (Vue, defaults) => {
+Slideout.install = (Vue, defaults) => {
   if (defaults) {
     setDefaultProps(defaults)
   }
-  Vue.component(SlideOut.name, SlideOut)
+  Vue.component(Slideout.name, Slideout)
 }
 
-export default SlideOut
+export default Slideout

@@ -11,6 +11,7 @@
 一个 Vue.js 2.0 的侧滑组件
 
 ### 依赖
+
 - Vue.js 2.x
 - Less
 
@@ -33,6 +34,7 @@ yarn add @hyjiacan/vue-slideout
 ```bash
 git clone https://github.com/hyjiacan/vue-slideout.git
 ```
+
 或 [下载归档](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
 
 ### 浏览器环境 (umd)
@@ -42,26 +44,31 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 与 node 环境不同, 此时会暴露一个小写的全局 `slideout`。
 
 使用最新版本
+
 ```html
+
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"/>
 ```
 
 使用指定版本
+
 ```html
+
 <script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"/>
 ```
 
-> **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com* 
+> **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com*
 
-> 可以通过替换 *slideout.umd.min.js* 为 *slideout.umd.js* 使用未被压缩的文件来 
+> 可以通过替换 *slideout.umd.min.js* 为 *slideout.umd.js* 使用未被压缩的文件来
 
 ## 使用
 
 ### 全局引用 (推荐)
 
 *main.js*
+
 ```javascript
 import Vue from 'vue'
 import SlideOut from '@hyjiacan/vue-slideout'
@@ -76,30 +83,36 @@ Vue.use(SlideOut, {
 ### 组件内引用
 
 *Foobar.vue*
+
 ```html
-<slide-out @close="onClose">
-    <div slot="header" slot-scope="{title}">
-    </div>
-    这里是内容
-</slide-out>
+<template>
+  <slideout @closing="onClosing" v-model="visible" title="The title">
+    <div>content</div>
+  </slideout>
+</template>
 <script>
-import SlideOut from '@hyjiacan/vue-slideout'
+import Slideout from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
 
 export default {
-    name: 'Foobar',
-    components: {SlideOut},
-    methods: {
-        onClose (e) {
-            // 阻止关闭，等待同步或异步的操作
-            e.wait = true
-            // 3秒后关闭slide
-            setTimeout(() => {
-                // 设置 close 为 true 以关闭，设置为 false 为什么也不做保持打开状态
-                e.close = true
-            }, 3000)
-        }
+  name: 'Foobar',
+  components: { Slideout },
+  data () {
+    return {
+      visible: false
     }
+  },
+  methods: {
+    onClosing (e) {
+      // 阻止关闭，等待同步或异步的操作
+      e.wait = true
+      // 3秒后关闭slide
+      setTimeout(() => {
+        // 设置 close 为 true 以关闭，设置为 false 为什么也不做保持打开状态
+        e.close = true
+      }, 3000)
+    }
+  }
 }
 </script>
 ```
@@ -121,12 +134,12 @@ yarn release
 
 ### 溢出问题
 
-情景：当指定了属性 `offset` ，`size` 的高度参数为 `0` (自动适应高度)， 并且 `dock=left/right` 时，
-内容太高会导致溢出（无滚动条）。
+情景：当指定了属性 `offset` ，`size` 的高度参数为 `0` (自动适应高度)， 并且 `dock=left/right` 时， 内容太高会导致溢出（无滚动条）。
 
 解决方案：显式地给内容指定最大高度为确定的值（注意，不要超出可见区域），如：
 
 ```html
+
 <slide-out dock="left" :size="[300, 0]" offset="100px">
   <div style="max-height: 540px;overflow: auto">
     <!-- contents -->

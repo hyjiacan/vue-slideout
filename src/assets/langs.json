@@ -1,7 +1,7 @@
 {
   "en": {},
   "zh": {
-    "A Slide-Out component for Vue.js 2.x": "一个 Vue.js 2.x 的侧滑组件",
+    "A slide-out component for Vue.js 2.x": "一个 Vue.js 2.x 的侧滑组件",
     "Language:": "选择语言:",
     "Install": "安装",
     "or": "或",
@@ -51,7 +51,7 @@
     "I will close after 3 seconds...": "我会在 3 秒后关闭",
     "Press Esc in <code>editable element</code> will not close slide": "在<code>可编辑元素</code>内按下ESC不会关闭Slide",
     "This is an editable <code>DIV</code> element with attribute <code>contenteditable=\"true\"</code>": "这是一个设置了属性 <code>contenteditable=\"true\"</code> 的 <code>DIV</code> 元素",
-    "Slide will not close if you press <code>Esc</code> key in editable element, such as <code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>": "如果你在可编辑元素(<code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>)内按下 <code>Esc</code> 键时，Slide 不会关闭",
+    "Component will not close if you press <code>Esc</code> key in editable element, such as <code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>": "如果你在可编辑元素(<code>input</code>, <code>textarea</code>, <code>div[contenteditable=\"true\"]</code>)内按下 <code>Esc</code> 键时，Slide 不会关闭",
     "Hot key: Esc": "快捷键: Esc",
     "Fullscreen": "全屏",
     "Toggle fullscreen": "切换全屏",
