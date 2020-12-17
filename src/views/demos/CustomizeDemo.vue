@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1">
+    <slide-out :visible.sync="v1" size="480px">
       <div slot="header">{{text.header}}</div>
       <div v-lang>Close/Fullscreen button would be removed while use <code>slot="header"</code></div>
       <div slot="footer">{{text.footer}}</div>
@@ -56,7 +56,7 @@
       <div><code>:show-mask="false"</code></div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v11" :title="text.header" append-to="#customize" allow-resize>
+    <slide-out :visible.sync="v11" size="480px" :title="text.header" append-to="#customize" allow-resize>
       <div>
         <div><code>append-to="#customize" allow-resize</code></div>
         <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
@@ -65,7 +65,7 @@
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v12" :title="text.header" ignore-esc>
+    <slide-out :visible.sync="v12" size="480px" :title="text.header" ignore-esc>
       <div>
         <p><code>ignore-esc</code></p>
         <p v-lang>This makes slide ignore <code>Esc</code> key press.</p>
@@ -74,7 +74,7 @@
       </div>
       <div slot="footer">{{text.footer}}</div>
     </slide-out>
-    <slide-out :visible.sync="v13" :title="text.header">
+    <slide-out :visible.sync="v13" size="480px" :title="text.header">
       <template slot="btn">
         <button>Test</button>
       </template>

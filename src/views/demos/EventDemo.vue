@@ -1,13 +1,13 @@
 <template>
   <div class="demo">
-    <slide-out :visible.sync="v1" :title="text.header" @before-open="onBeforeOpen" @open="onOpen" @close="onClose"
-               @closed="onClosed">
+    <slide-out :visible.sync="v1" :title="text.header" size="480px"
+               @opening="onOpening" @opened="onOpened" @closing="onClosing" @closed="onClosed">
       <p>
-        <code>@before-open="onBeforeOpen" @open="onOpen" @close="onClose" @closed="onClosed"</code>
+        <code>@opening="onOpening" @opened="onOpened" @close="onClosing" @closed="onClosed"</code>
       </p>
       <div v-show="status === 0" v-lang>I will close after 3 seconds...</div>
       <div v-show="status === 1" v-lang>I am opened, I will close after 3 seconds while click <code>close</code> button,
-        and event <code>closed</code> will be emitted after slide really closed
+        and event <code>closed</code> will be emitted after slide actually closed
       </div>
     </slide-out>
     <div class="demo-block">
@@ -27,34 +27,34 @@ import mixins from './mixin'
 export default {
   name: 'EventDemo',
   mixins: [mixins],
-  data() {
+  data () {
     return {
       status: 0
     }
   },
   methods: {
-    onBeforeOpen(e) {
+    onOpening (e) {
       e.cancel = !confirm('Open it ?')
       if (e.cancel) {
         // prevent open
-        this.emitTip('The open operation is canceled')
+        this.emitTip('The open operation is paused')
       }
     },
-    onOpen() {
+    onOpened () {
       this.status = 1
     },
-    onClose(e) {
+    onClosing (e) {
       // prevent close and wait
-      e.wait = true
+      e.pause = true
       this.status = 0
       this.emitTip('The close operation is pending...')
       // close after 3 seconds
       setTimeout(() => {
         // assign true to close, do nothing or assign false to cancel close.
-        e.close = true
+        e.resume = true
       }, 3000)
     },
-    onClosed() {
+    onClosed () {
       this.emitTip('Aha, I am closed now')
     }
   }

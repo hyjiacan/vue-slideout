@@ -7,31 +7,34 @@
 - type `String/Number/Array`
 - default `400px`
 
-> The size of slide, both `px` and `%` available;
+> The size of component, both `px` and `%` are available;
 > - If it is an array, then: The 1st element is the width, and the 2nd element is the height,
-> - if there is only one element: that makes width equals with height. Properties `allow-resize`, `min-size`, `max-size` are not available.
-> - ( **auto size supported** `since 2.3.5` )You can set value `0/[0]/[0,size]/[size,0]` to make slideout auto fit content size. Properties `min-size`, `max-size` are available. 
+> - if there is only one element: that makes width equals with height.
+    In this situation, props `allow-resize`, `min-size`, `max-size` are not available.
+> - ( **Auto-fit size supported** `since 2.3.5` )
+    You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size.
+    In this situation, props `min-size`, `max-size` are available. 
 
 #### z-index  (optional)
 
 - type `Number`
 - default `1997`
 
-> The z-index of slide
+> The z-index of component
 
 #### visible  (required)
 
 - type `Boolean`
 - default `false`
 
-> Is the slide visible, modifier `.sync` is available
+> Is the component visible, modifier `.sync` is available
 
 #### title  (optional)
 
 - type `String`
 
 
-> Slide `title` text,
+> The `title` text of component,
 > if this is empty and `slot=header` is empty too,the header would be hidden
 
 #### close-on-mask-click  (optional)
@@ -39,7 +42,7 @@
 - type `Boolean`
 - default `true`
 
-> Whether to close slide while mask clicked
+> Whether to close component while the mask clicked
 
 #### custom-class  (optional)
 
@@ -83,16 +86,16 @@
 - type `String`
 - default `right`
 
-> Slide dock position, optional values: `top`, `right`, `bottom`, `left`
+> The dock position of component, optional values are `top`, `right`, `bottom`, `left`
 
 #### append-to  (optional)
 
 - type `String/HTMLElement`
 - default `null`
 
-> Append slide into specified element.
+> Append component into the specified element.
 > Both `string`(selector) and `HTMLElement`(DOM object) available.
-> Slide uses style `position: fixed` if property `appendTo` not specified.
+> Use style `position: fixed` if prop `appendTo` not specified.
 
 #### disable-animation  (optional)
 
@@ -131,7 +134,7 @@
 - type `Boolean`
 - default `false`
 
-> Whether to ignore `esc` key, set `false` or keep default to close slide while press `ESC`
+> Whether to ignore `esc` key, set `false` or keep default to close component while press `ESC`
 
 #### fullscreen  (optional)
 
@@ -161,7 +164,7 @@
 - default `0`
 
 > The offset from `dock` side, both `px` and `%` available.
- > (Take affect only if property `size` is an Array)
+ > (Take effect only if prop `size` is an array)
 
 #### arrow-button (optional)
 
@@ -177,9 +180,9 @@
 > `since 2.5.0`
 
 - type `Boolean`
-- default `false`
+- default `false` / `true` after _3.0.0_
 
-> Whether to render the slideout content when `visible` is `true`
+> DON'T render the content when `visible` is `false`
 
 ## Slots
 
@@ -195,7 +198,7 @@
 
 > The header slot, replaces all the header bar, 
 > `title` will take no affected(and close button will be removed) if specified this,
-> use `slot-scope="{ title }"` to get property `title`
+> use `slot-scope="{ title }"` to get prop `title`
 
 #### btn  
 
@@ -213,30 +216,62 @@
 
 ## Events
 
-#### before-open
+#### opening
 
-> `since 2.2.5`
+> `since 3.0.0`
 
-- args e: `{cancel: Boolean}`
+- args e: `{pause: Boolean, resume: Boolean}`
 
-> Invoke before slide open, in callback function,
-> assign `e.cancel=true` to prevent open
+> Emitted before component open, in callback function,
+> assign `e.pause=true` to pause open, and assign `e.resume=true` to resume open (async supported)
 
-#### open  
+#### opened
+
+> `since 3.0.0`
 
 - args `-`
 
-> Invoke after slide opened
+> Emitted after opened (and after the animation completed)
 
-#### close  
+#### closing
 
-- args e: `{close: Boolean, wait: Boolean}`
+> `since 3.0.0`
 
-> Invoke before slide close, in callback function,
-> assign `e.wait=true` to prevent close, and assign `e.close=true` to close (async supported)
+- args e: `{pause: Boolean, resume: Boolean}`
+
+> Emitted before component close, in callback function,
+> assign `e.pause=true` to pause close, and assign `e.resume=true` to resume close (async supported)
 
 #### closed  
 
 - args `-`
 
-> Invoke after slide really closed, it's emit after event `close`
+> Emitted after component closed, it's emitted after event `closing`
+
+#### ~~before-open~~
+
+> Deprecate since _3.0.0_, use [opening](#opening) instead.
+
+> `since 2.2.5`
+
+- args e: `{cancel: Boolean}`
+
+> Emitted before component open, in callback function,
+> assign `e.cancel=true` to prevent open
+
+#### ~~open~~
+
+> Deprecate since _3.0.0_, use [opened](#opened) instead.
+
+- args `-`
+
+> Emitted after component opened
+
+#### ~~close~~
+
+> Deprecate since _3.0.0_, use [closing](#closing) instead.
+
+- args e: `{close: Boolean, wait: Boolean}`
+
+> Emitted before component close, in callback function,
+> assign `e.wait=true` to prevent close, and assign `e.close=true` to close (async supported)

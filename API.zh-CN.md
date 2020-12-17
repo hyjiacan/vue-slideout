@@ -172,7 +172,7 @@
 > `since 2.5.0`
 
 - 类型 `Boolean`
-- 默认值 `false`
+- 默认值 `false` / 在版本 _3.0.0_ 后为 true`
 
 > 是否仅在 `visible` 为 `true` 时才渲染内容 
 
@@ -201,7 +201,41 @@
 
 ## 事件
 
-#### before-open
+#### opening
+
+> `since 3.0.0`
+
+- 参数 e: `{pause: Boolean, resume: Boolean}`
+
+> 在打开前调用,在回调函数内, 设置`e.pause=true` 可以阻止打开，
+> 设置 `e.continue=true` 可以继续打开(支持异步)
+
+#### opened
+
+> `since 3.0.0`
+
+- 参数 `无`
+
+> 在打开后(动画完成)调用
+
+#### closing
+
+> `since 3.0.0`
+
+- 参数 e: `{pause: Boolean, resume: Boolean}`
+
+> 在关闭前调用,在回调函数内, 设置`e.pause=true` 可以阻止关闭，
+> 设置 `e.continue=true` 可以继续关闭(支持异步)
+
+#### closed
+
+- 参数 '无'
+
+> 在真正关闭后调用, 它在事件 `closing` 后才会被触发
+
+#### ~~before-open~~
+
+> 在 _3.0.0_ 后不再建议使用此事件，改用 [opening](#opening) 代替
 
 > `since 2.2.5`
 
@@ -209,21 +243,19 @@
 
 > 在打开前调用,在回调函数内, 设置`e.cancel=true` 可以阻止打开
 
-#### open
+#### ~~open~~
+
+> 在 _3.0.0_ 后不再建议使用此事件，改用 [opened](#opened) 代替
 
 - 参数 `无`
 
 > 在打开后立即调用
 
-#### close
+#### ~~close~~
+
+> 在 _3.0.0_ 后不再建议使用此事件，改用 [closing](#closing) 代替
 
 - 参数 e: `{close: Boolean, wait: Boolean}`
 
-> 在关闭前调用,在回调函数内, 设置`e.wait=true` 可以阻止关闭，
+> 在关闭前调用,在回调函数内, 设置 `e.wait=true` 可以阻止关闭，
 > 设置 `e.close=true` 可以继续关闭(支持异步关闭)
-
-#### closed
-
-- 参数 '无'
-
-> 在slide真正关闭后调用,它在事件`close`后才会被触发

@@ -1,71 +1,160 @@
 export default {
   methods: {
-    /**
-     * 获取关闭事件参数对象
-     */
-    getCloseArgs() {
-      const me = this
-      // 通过使用 setter 以实现延迟操作
+    makeBeforeEventArgs (resumeCallback, cancelCallback) {
+      const vm = this
+      let canceled = false
       return {
-        // 是否等待操作
-        wait: false,
-        set close(close) {
-          // 取消关闭
-          if (!close) {
+        // 是否暂停操作
+        pause: false,
+        set resume (value) {
+          // 取消操作
+          if (!value) {
             return
           }
-          // 关闭
-          me.setVisibleValue(false)
+          // 继续操作
+          vm.$nextTick(() => {
+            resumeCallback()
+          })
         },
-        get close() {
+        get resume () {
           return undefined
+        },
+        set cancel (value) {
+          canceled = value
+          if (!value) {
+            return
+          }
+          vm.$nextTick(() => {
+            cancelCallback()
+          })
+        },
+        get cancel () {
+          return canceled
         }
       }
     },
-    /**
-     * 切换显示状态
-     * @param {Boolean} [visible] 指定显示状态，不指定时切换状态
-     */
-    toggleVisible(visible) {
-      if (visible === this.isVisible) {
+    tryShow () {
+      // 如果显示状态相同，则啥也不做
+      if (this.isVisible) {
         return
       }
-      if (visible) {
-        // 显示前触发事件
-        const args = {
-          cancel: false
-        }
-        this.$emit('before-open', args)
-        // 取消打开
-        if (args.cancel) {
-          // 取消时，重置原值为 false
-          this.$emit('update:visible', false)
-          return
-        }
+      // 显示前触发事件
+      const args = this.makeBeforeEventArgs(() => {
         this.setVisibleValue(true)
-        // 显示后触发事件
-        this.$nextTick(() => {
-          this.emitOpenEvent()
-          // 在组件显示后让组件获取焦点
-          this.$el.focus()
-        })
+      }, () => {
+        // 取消时，重置原值为 false
+        this.$emit('update:visible', false)
+      })
+
+      this.$emit('opening', args)
+
+      // 暂停打开
+      if (args.pause || args.cancel) {
         return
       }
-      // 隐藏前触发事件
-      const args = this.getCloseArgs()
-      this.$emit('close', args)
-      if (args.wait) {
+
+      this.setVisibleValue(true)
+    },
+    tryHide () {
+      // 如果显示状态相同，则啥也不做
+      if (!this.isVisible) {
+        return
+      }
+      // 显示前触发事件
+      const args = this.makeBeforeEventArgs(() => {
+        this.setVisibleValue(false)
+      }, () => {
         // 取消时，重置原值为 true
         this.$emit('update:visible', true)
-        // 需要等待，最终是否关闭要看 args.close 是否为 true
+      })
+
+      this.$emit('closing', args)
+
+      // 暂停关闭
+      if (args.pause || args.cancel) {
         return
       }
+
       this.setVisibleValue(false)
+    },
+    /**
+     * 设置显示状态
+     * @param {Boolean} visible 显示状态
+     */
+    setVisibleValue (visible) {
+      // 显示时重置大小
+      if (visible) {
+        this.resizeValue = 0
+      }
+
+      if (visible) {
+        this.showContainer = true
+        this.isVisible = true
+        this.$nextTick(() => {
+          // 延时应用动画
+          setTimeout(() => {
+            this.activeVisibleClass = true
+            this.emitOpenedEvent()
+          }, 10)
+        })
+      } else {
+        if (this.isFullscreen) {
+          // 若指定了 .sync 修饰，则关闭后退出全屏
+          this.$emit('update:fullscreen', false)
+        }
+        this.activeVisibleClass = false
+        // 触发关闭后的事件
+        this.$nextTick(() => {
+          this.emitClosedEvent()
+        })
+      }
+    },
+    emitOpenedEvent () {
+      if (this.disableAnimation) {
+        // 禁用动画时不需要等待
+        this.$emit('opened', this.$refs.layout)
+        if (this.visible !== this.isVisible) {
+          this.$emit('update:visible', true)
+        }
+        // 在组件显示后让组件获取焦点
+        this.$el.focus()
+        return
+      }
+      // 开启动画时，有个this.animationDuration ms的动画
+      setTimeout(() => {
+        this.$emit('opened', this.$refs.layout)
+        if (this.visible !== this.isVisible) {
+          this.$emit('update:visible', true)
+        }
+        // 在组件显示后让组件获取焦点
+        this.$el.focus()
+      }, this.animationDuration)
+    },
+    emitClosedEvent () {
+      if (this.disableAnimation) {
+        // 禁用动画时不需要等待
+        this.showContainer = false
+        this.isVisible = false
+        this.$emit('closed')
+        if (this.visible !== this.isVisible) {
+          this.$emit('update:visible', false)
+        }
+        return
+      }
+      // 开启动画时，有个this.animationDuration / 2 ms的动画
+      setTimeout(() => {
+        this.showContainer = false
+        this.isVisible = false
+        this.$emit('closed')
+        if (this.visible !== this.isVisible) {
+          this.$emit('update:visible', false)
+        }
+      }, this.animationDuration)
     },
     /**
      * 切换全屏
      */
-    toggleFullscreen(fullscreen) {
+    toggleFullscreen (fullscreen) {
       if (fullscreen === undefined) {
         this.isFullscreen = !this.isFullscreen
       } else if (this.isFullscreen === fullscreen) {
@@ -76,41 +165,9 @@ export default {
       this.$emit('update:fullscreen', this.isFullscreen)
     },
     /**
-     * 设置显示状态
-     * @param {Boolean} visible 显示状态
-     */
-    setVisibleValue(visible) {
-      // 如果显示状态相同，则啥也不做
-      if (this.isVisible === visible) {
-        return
-      }
-      // 显示时重置大小
-      if (visible) {
-        this.resizeValue = 0
-      }
-      this.$emit('update:visible', visible)
-
-      if (visible) {
-        this.showContainer = true
-        this.isVisible = true
-        this.$nextTick(() => {
-          // 延时应用动画
-          setTimeout(() => {
-            this.activeVisibleClass = true
-          }, 10)
-        })
-      } else {
-        // 若指定了 .sync 修饰，则关闭后退出全屏
-        this.$emit('update:fullscreen', false)
-        this.activeVisibleClass = false
-        // 触发关闭后的事件
-        this.$nextTick(this.emitCloseEvent)
-      }
-    },
-    /**
      * 计算出组件在DOM中的父元素
      */
-    appendComponentTo() {
+    appendComponentTo () {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -130,16 +187,16 @@ export default {
     /**
      * 点击遮罩层时的事件处理
      */
-    onMaskClick() {
+    onMaskClick () {
       if (this.closeOnMaskClick) {
-        this.toggleVisible(false)
+        this.tryHide()
       }
     },
     /**
      * 获取父元素的尺寸
      * @return {{width: Number, height: Number}}
      */
-    getParentSize() {
+    getParentSize () {
       const rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -150,14 +207,14 @@ export default {
      * 获取到此组件的大小（基于px）
      * @return {{width: Number, height: Number}}
      */
-    getMyOwnSize() {
+    getMyOwnSize () {
       const rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
-    mouseDownHandler(e) {
+    mouseDownHandler (e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -169,7 +226,7 @@ export default {
       }
       this.originSize = this.getMyOwnSize()
     },
-    mouseMoveHandler(e) {
+    mouseMoveHandler (e) {
       if (this.isFullscreen) {
         // 全屏时不允许改变大小
         return
@@ -235,13 +292,13 @@ export default {
         this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       })
       this.$nextTick(() => {
-        this.$emit('resize', {size: this.resizeValue})
+        this.$emit('resize', { size: this.resizeValue })
       })
     },
-    mouseUpHandler() {
+    mouseUpHandler () {
       this.mousedown = false
     },
-    onKeydown(e) {
+    onKeydown (e) {
       if (!this.isVisible) {
         return
       }
@@ -252,46 +309,20 @@ export default {
       if (['INPUT', 'TEXTAREA'].indexOf(e.target.tagName) !== -1 || e.target.contentEditable === 'true') {
         return
       }
-      this.toggleVisible(false)
+      this.tryHide()
       return false
     },
-    emitOpenEvent() {
-      if (this.disableAnimation) {
-        // 禁用动画时不需要等待
-        this.$emit('open', this.$refs.layout)
-        return
-      }
-      // 开启动画时，有个this.animationDuration ms的动画
-      setTimeout(() => {
-        this.$emit('open', this.$refs.layout)
-      }, this.animationDuration)
-    },
-    emitCloseEvent() {
-      if (this.disableAnimation) {
-        // 禁用动画时不需要等待
-        this.showContainer = false
-        this.isVisible = false
-        this.$emit('closed')
-        return
-      }
-      // 开启动画时，有个this.animationDuration / 2 ms的动画
-      setTimeout(() => {
-        this.showContainer = false
-        this.isVisible = false
-        this.$emit('closed')
-      }, this.animationDuration)
-    },
-    _bindKeyboardEvent() {
+    _bindKeyboardEvent () {
       if (!this.ignoreEsc) {
         this.$el.addEventListener('keydown', this.onKeydown)
       }
     },
-    _removeKeyboardEvent() {
+    _removeKeyboardEvent () {
       if (!this.ignoreEsc) {
         this.$el.removeEventListener('keydown', this.onKeydown)
       }
     },
-    _fixSizeUnit(val) {
+    _fixSizeUnit (val) {
       return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
     }
   }

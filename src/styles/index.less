@@ -1,5 +1,5 @@
 
-.vue-slideout {
+.slideout {
   position: absolute;
   left: 0;
   right: 0;
@@ -17,19 +17,19 @@
   }
 
   &-show-header {
-    > .vue-slideout-layout > .vue-slideout-content {
+    > .slideout-layout > .slideout-content {
       top: 48px;
     }
   }
 
   &-show-footer {
-    > .vue-slideout-layout > .vue-slideout-content {
+    > .slideout-layout > .slideout-content {
       bottom: 48px;
     }
   }
 }
 
-.vue-slideout-layout {
+.slideout-layout {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -40,7 +40,7 @@
   will-change: auto;
 }
 
-.vue-slideout-mask {
+.slideout-mask {
   position: absolute;
   left: 0;
   right: 0;
@@ -49,7 +49,7 @@
   background-color: rgba(0, 0, 0, .5);
 }
 
-.vue-slideout-content {
+.slideout-content {
   position: absolute;
   left: 0;
   top: 0;
@@ -62,7 +62,7 @@
   z-index: 30;
 }
 
-.vue-slideout-footer {
+.slideout-footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -76,47 +76,47 @@
   background: inherit;
 }
 
-.vue-slideout-dock-top {
-  > .vue-slideout-layout {
+.slideout-dock-top {
+  > .slideout-layout {
     top: 0;
     transform: translateY(-100%);
   }
 }
 
-.vue-slideout-dock-right {
-  > .vue-slideout-layout {
+.slideout-dock-right {
+  > .slideout-layout {
     right: 0;
     transform: translateX(100%);
   }
 }
 
-.vue-slideout-dock-bottom {
-  > .vue-slideout-layout {
+.slideout-dock-bottom {
+  > .slideout-layout {
     bottom: 0;
     transform: translateY(100%);
   }
 }
 
-.vue-slideout-dock-left {
-  > .vue-slideout-layout {
+.slideout-dock-left {
+  > .slideout-layout {
     left: 0;
     transform: translateX(-100%);
   }
 }
 
-.vue-slideout-lock-scroll {
+.slideout-lock-scroll {
   overflow: hidden !important;
 }
 
-.vue-slideout-visible {
-  &.vue-slideout-dock-top, &.vue-slideout-dock-bottom {
-    > .vue-slideout-layout {
+.slideout-visible {
+  &.slideout-dock-top, &.slideout-dock-bottom {
+    > .slideout-layout {
       transform: translateY(0);
     }
   }
 
-  &.vue-slideout-dock-left, &.vue-slideout-dock-right {
-    > .vue-slideout-layout {
+  &.slideout-dock-left, &.slideout-dock-right {
+    > .slideout-layout {
       transform: translateX(0);
     }
   }

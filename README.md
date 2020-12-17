@@ -38,9 +38,9 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 
 ### Browser ENV (umd)
 
-> Since version 2.4.0
+> Since `2.4.0`
  
-Unlike node env, a global `slideout` (**lowercase**) will be exploded.
+Unlike node-env, a global `slideout` (**lowercase**) will be exploded.
 
 The newest version
 ```html
@@ -54,9 +54,9 @@ Specified version
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css" />
 ```
 
-> **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*
+> **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*.
 
-> And you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js* 
+> Also, you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js* 
 
 ## Usage
 

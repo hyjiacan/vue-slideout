@@ -1,5 +1,5 @@
 
-.vue-slideout-header {
+.slideout-header {
   position: absolute;
   left: 0;
   right: 0;
@@ -13,14 +13,14 @@
   background: inherit;
 }
 
-.vue-slideout-title-text {
+.slideout-title-text {
   line-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.vue-slideout-title-buttons {
+.slideout-title-buttons {
   position: absolute;
   right: 0;
   top: 0;
@@ -29,7 +29,7 @@
   box-sizing: border-box;
 }
 
-.vue-slideout-btn-close, .vue-slideout-btn-fullscreen {
+.slideout-btn-close, .slideout-btn-fullscreen {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -61,7 +61,7 @@
   }
 }
 
-.vue-slideout-btn-fullscreen {
+.slideout-btn-fullscreen {
   svg:first-child {
     display: inline-block;
   }
@@ -71,28 +71,28 @@
   }
 }
 
-.vue-slideout-dock-right {
-  > .vue-slideout-layout {
-    > .vue-slideout-header .vue-slideout-btn-close svg {
+.slideout-dock-right {
+  > .slideout-layout {
+    > .slideout-header .slideout-btn-close svg {
       transform: rotate(90deg);
     }
   }
 }
 
-.vue-slideout-dock-bottom {
-  > .vue-slideout-layout {
-    > .vue-slideout-header {
-      .vue-slideout-btn-close svg {
+.slideout-dock-bottom {
+  > .slideout-layout {
+    > .slideout-header {
+      .slideout-btn-close svg {
         transform: rotate(180deg);
       }
     }
   }
 }
 
-.vue-slideout-dock-left {
-  > .vue-slideout-layout {
-    > .vue-slideout-header {
-      .vue-slideout-btn-close svg {
+.slideout-dock-left {
+  > .slideout-layout {
+    > .slideout-header {
+      .slideout-btn-close svg {
         transform: rotate(-90deg);
       }
     }

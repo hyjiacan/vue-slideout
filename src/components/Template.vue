@@ -1,24 +1,24 @@
 <template>
-  <div class="vue-slideout" :style="containerStyle" :class="containerClasses" tabindex="0">
-    <div class="vue-slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
-    <div class="vue-slideout-layout" v-if="!renderWhenVisible || isVisible" :style="layoutStyle" ref="layout">
-      <div class="vue-slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
+  <div class="slideout" :style="containerStyle" :class="containerClasses" tabindex="0">
+    <div class="slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
+    <div class="slideout-layout" v-if="!renderWhenVisible || isVisible" :style="layoutStyle" ref="layout">
+      <div class="slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
            @mousedown="mouseDownHandler"></div>
-      <div class="vue-slideout-header" :style="headerStyle" v-if="showHeader">
+      <div class="slideout-header" :style="headerStyle" v-if="showHeader">
         <slot name="header" :title="title">
-          <div class="vue-slideout-title-text">
+          <div class="slideout-title-text">
             {{title}}
           </div>
-          <div class="vue-slideout-title-buttons" ref="buttons">
-            <span class="vue-slideout-custom-buttons">
+          <div class="slideout-title-buttons" ref="buttons">
+            <span class="slideout-custom-buttons">
               <slot name="btn"/>
             </span>
-            <span class="vue-slideout-default-buttons">
-              <button class="vue-slideout-btn-fullscreen" @click="toggleFullscreen()" v-if="showFullscreen">
+            <span class="slideout-default-buttons">
+              <button class="slideout-btn-fullscreen" @click="toggleFullscreen()" v-if="showFullscreen">
                 <icon-fullscreen/>
                 <icon-fullscreen-exit/>
               </button>
-              <button class="vue-slideout-btn-close" @click="toggleVisible(false)" v-if="showClose">
+              <button class="slideout-btn-close" @click="tryHide()" v-if="showClose">
                 <icon-arrow v-if="arrowButton"/>
                 <icon-cross v-else/>
               </button>
@@ -26,10 +26,10 @@
           </div>
         </slot>
       </div>
-      <div class="vue-slideout-content" :style="contentStyles">
+      <div class="slideout-content" :style="contentStyles">
         <slot/>
       </div>
-      <div class="vue-slideout-footer" v-show="$slots.footer">
+      <div class="slideout-footer" v-show="$slots.footer">
         <slot name="footer"/>
       </div>
     </div>
@@ -227,7 +227,7 @@ export default {
       document.removeEventListener('mouseup', this.mouseMoveHandler)
     }
     if (this.isVisible) {
-      this.setVisibleValue(false)
+      this.tryHide()
     }
     // 取消滚动锁定
     document.body.classList.remove('vue-slideout-lock-scroll')
