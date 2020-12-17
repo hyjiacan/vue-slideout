@@ -33,7 +33,7 @@ export default {
         }
       }
     },
-    tryShow () {
+    tryOpen () {
       // 如果显示状态相同，则啥也不做
       if (this.isVisible) {
         return
@@ -55,7 +55,7 @@ export default {
 
       this.setVisibleValue(true)
     },
-    tryHide () {
+    tryClose () {
       // 如果显示状态相同，则啥也不做
       if (!this.isVisible) {
         return
@@ -112,44 +112,38 @@ export default {
     emitOpenedEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
-        this.$emit('opened', this.$refs.layout)
-        if (this.visible !== this.isVisible) {
-          this._updateVisibleValue(true)
-        }
-        // 在组件显示后让组件获取焦点
-        this.$el.focus()
+        this._doOpen()
         return
       }
       // 开启动画时，有个this.animationDuration ms的动画
       setTimeout(() => {
-        this.$emit('opened', this.$refs.layout)
-        if (this.visible !== this.isVisible) {
-          this._updateVisibleValue(true)
-        }
-        // 在组件显示后让组件获取焦点
-        this.$el.focus()
+        this._doOpen()
       }, this.animationDuration)
     },
     emitClosedEvent () {
       if (this.disableAnimation) {
         // 禁用动画时不需要等待
-        this.showContainer = false
-        this.isVisible = false
-        this.$emit('closed')
-        if (this.visible !== this.isVisible) {
-          this._updateVisibleValue(false)
-        }
+        this._doClose()
         return
       }
       // 开启动画时，有个this.animationDuration / 2 ms的动画
       setTimeout(() => {
-        this.showContainer = false
-        this.isVisible = false
-        this.$emit('closed')
-        if (this.visible !== this.isVisible) {
-          this._updateVisibleValue(false)
-        }
+        this._doClose()
       }, this.animationDuration)
+    },
+    _doOpen () {
+      this.$emit('opened', this.$refs.layout)
+      if (this.visible !== this.isVisible) {
+        this._updateVisibleValue(true)
+      }
+    },
+    _doClose () {
+      this.showContainer = false
+      this.isVisible = false
+      this.$emit('closed')
+      if (this.visible !== this.isVisible) {
+        this._updateVisibleValue(false)
+      }
     },
     /**
      * 切换全屏
@@ -192,7 +186,7 @@ export default {
      */
     onMaskClick () {
       if (this.closeOnMaskClick) {
-        this.tryHide()
+        this.tryClose()
       }
     },
     /**
@@ -312,16 +306,17 @@ export default {
       if (['INPUT', 'TEXTAREA'].indexOf(e.target.tagName) !== -1 || e.target.contentEditable === 'true') {
         return
       }
-      this.tryHide()
+      this.tryClose()
       return false
     },
     _bindKeyboardEvent () {
-      if (!this.ignoreEsc) {
+      if (!this.ignoreEsc && this.$el) {
+        this.$el.focus()
         this.$el.addEventListener('keydown', this.onKeydown)
       }
     },
     _removeKeyboardEvent () {
-      if (!this.ignoreEsc) {
+      if (!this.ignoreEsc && this.$el) {
         this.$el.removeEventListener('keydown', this.onKeydown)
       }
     },

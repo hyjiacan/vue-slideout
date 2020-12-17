@@ -6,9 +6,9 @@ export default {
         return
       }
       if (visible) {
-        this.tryShow()
+        this.tryOpen()
       } else {
-        this.tryHide()
+        this.tryClose()
       }
     },
     // 当从外部改变fullscreen时，切换显示状态
@@ -20,6 +20,13 @@ export default {
     },
     // 当从内部改变 isVisible时
     isVisible (v) {
+      this.$nextTick(() => {
+        this._removeKeyboardEvent()
+        if (v) {
+          this._bindKeyboardEvent()
+        }
+      })
+
       if (!this.isFixed) {
         // 非固定时，不需要锁定滚动
         return

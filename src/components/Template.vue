@@ -19,7 +19,7 @@
                 <icon-fullscreen/>
                 <icon-fullscreen-exit/>
               </button>
-              <button class="slideout-btn-close" @click="tryHide()" v-if="showClose">
+              <button class="slideout-btn-close" @click="tryClose()" v-if="showClose">
                 <icon-arrow v-if="arrowButton"/>
                 <icon-cross v-else/>
               </button>
@@ -225,7 +225,6 @@ export default {
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
-    this._bindKeyboardEvent()
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
   beforeDestroy () {
@@ -237,7 +236,7 @@ export default {
       document.removeEventListener('mouseup', this.mouseMoveHandler)
     }
     if (this.isVisible) {
-      this.tryHide()
+      this.tryClose()
     }
     // 取消滚动锁定
     document.body.classList.remove('vue-slideout-lock-scroll')
