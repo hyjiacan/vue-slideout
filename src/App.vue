@@ -43,25 +43,25 @@ import MainPage from './views/Main'
 import Vue from 'vue'
 
 window.jsonp = function (url, callback) {
-  let script = document.createElement('script')
+  const script = document.createElement('script')
   script.setAttribute('src', url + '?callback=' + callback)
   script.setAttribute('type', 'text/javascript')
   document.head.appendChild(script)
 }
 
 window.dateCallback = function (response) {
-  let date = response.data.commit.author.date
+  const date = response.data.commit.author.date
   document.querySelector('#date').innerHTML = new Date(Date.parse(date)).toLocaleString()
   document.querySelector('#metas').classList.add('loaded')
 }
 
 window.tagsCallback = function (response) {
-  let tag = response.data[0]
-  let latest = {
+  const tag = response.data[0]
+  const latest = {
     version: tag.name,
     tag: 'https://github.com/hyjiacan/vue-slideout/releases/tag/' + tag.name
   }
-  let source = document.querySelector('#source')
+  const source = document.querySelector('#source')
   source.href = latest.tag
   source.innerHTML = latest.version
 
@@ -100,7 +100,7 @@ export default {
   },
   mounted () {
     this.ebus.$on('tip', this.showTip)
-    let isZH = /^zh/i.test(navigator.language)
+    const isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
 
     if (!this.$devMode) {

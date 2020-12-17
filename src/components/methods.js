@@ -4,7 +4,7 @@ export default {
      * 获取关闭事件参数对象
      */
     getCloseArgs() {
-      let me = this
+      const me = this
       // 通过使用 setter 以实现延迟操作
       return {
         // 是否等待操作
@@ -32,7 +32,7 @@ export default {
       }
       if (visible) {
         // 显示前触发事件
-        let args = {
+        const args = {
           cancel: false
         }
         this.$emit('before-open', args)
@@ -52,7 +52,7 @@ export default {
         return
       }
       // 隐藏前触发事件
-      let args = this.getCloseArgs()
+      const args = this.getCloseArgs()
       this.$emit('close', args)
       if (args.wait) {
         // 取消时，重置原值为 true
@@ -140,7 +140,7 @@ export default {
      * @return {{width: Number, height: Number}}
      */
     getParentSize() {
-      let rect = this.parentElement.getClientRects()[0]
+      const rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
@@ -151,7 +151,7 @@ export default {
      * @return {{width: Number, height: Number}}
      */
     getMyOwnSize() {
-      let rect = this.$refs.layout.getClientRects()[0]
+      const rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
@@ -180,15 +180,15 @@ export default {
       }
       e.preventDefault()
       // 获取鼠标的偏移量
-      let x = e.pageX - this.mouseDownPosition.x
-      let y = e.pageY - this.mouseDownPosition.y
+      const x = e.pageX - this.mouseDownPosition.x
+      const y = e.pageY - this.mouseDownPosition.y
 
-      let parentSize = this.getParentSize()
-      let winSize = {
+      const parentSize = this.getParentSize()
+      const winSize = {
         width: window.innerWidth,
         height: window.innerHeight
       }
-      let size = this.originSize
+      const size = this.originSize
       let newSize = 0
       switch (this.dock) {
         case 'top':

@@ -15,6 +15,7 @@ Vue.use(SlideOut, {
 
 Vue.prototype.$devMode = process.env.NODE_ENV === 'development'
 
+// eslint-disable-next-line
 new Vue({
   render: h => h(App)
 }).$mount('#app')

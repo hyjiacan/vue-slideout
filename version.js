@@ -2,7 +2,7 @@
  * Auto update version
  */
 const fs = require('fs')
-let pkg = require('./package.json')
+const pkg = require('./package.json')
 
 const LOCK = false
 
@@ -11,7 +11,7 @@ if (LOCK) {
   process.exit()
 }
 
-let temp = pkg.version.split('.')
+const temp = pkg.version.split('.')
 let last = temp.pop()
 last = parseInt(last) + 1
 temp.push(last)

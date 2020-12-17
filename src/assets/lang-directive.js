@@ -19,7 +19,7 @@ function getLang() {
   return 'en'
 }
 
-let langId = getLang()
+const langId = getLang()
 
 const directive = {
   inserted: el => {

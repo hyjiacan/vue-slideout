@@ -12,7 +12,7 @@ export default {
     },
     // SlideOut 容器样式
     containerStyle () {
-      let style = {
+      const style = {
         // 2147483647 是允许的最大值
         // 'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
         'z-index': this.zIndex,
@@ -51,13 +51,13 @@ export default {
     },
     // SlideOut 内容样式
     layoutStyle () {
-      let style = {}
+      const style = {}
       if (this.isSizeFixed) {
         // 指定大小
         style.width = this.sizeWithUnit[0]
         style.height = this.sizeWithUnit[1]
         // 偏移量，当全屏时偏移量为 0
-        let offset = this.isFullscreen ? 0 : this.offset
+        const offset = this.isFullscreen ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
           case 'left':
@@ -74,7 +74,7 @@ export default {
       }
       // 内容显示大小
       // 当全屏时，设置为 100%
-      let size = this.isFullscreen ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
+      const size = this.isFullscreen ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
       switch (this.dockOn) {
         case 'right':
         case 'left':
@@ -88,7 +88,7 @@ export default {
       return style
     },
     contentStyles () {
-      let style = {}
+      const style = {}
       if (!this.isAutoSize) {
         return style
       }
@@ -134,7 +134,7 @@ export default {
     },
     // 头部样式
     headerStyle () {
-      let style = {}
+      const style = {}
 
       // 当自定义 header 时，不需要计算
       if (this.$slots.header) {
@@ -146,7 +146,7 @@ export default {
       if (!this.headerButtons) {
         return style
       }
-      let btnStyle = window.getComputedStyle(this.headerButtons)
+      const btnStyle = window.getComputedStyle(this.headerButtons)
       style.paddingRight = `${this.defaultButtonsWidth + parseInt(btnStyle.width) + 5}px`
       return style
     },
