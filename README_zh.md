@@ -121,9 +121,7 @@ export default {
 - 更多的用法，参见 http://hyjiacan.gitee.io/vue-slideout
 - API文档参见 [API.zh-CN.md](./API.zh-CN.md)
 
-马上去 [CodePen](https://codepen.io/hyjiacan/pen/YzGVRvR) 试试 2.x。
-
-马上去 [CodePen](https://codepen.io/hyjiacan/pen/LYRZONE) 试试 3.x。
+马上到 CodePen 试试 [2.x](https://codepen.io/hyjiacan/pen/YzGVRvR) [3.x](https://codepen.io/hyjiacan/pen/LYRZONE)。
 
 ## 开发
 

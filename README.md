@@ -120,9 +120,7 @@ export default {
 - For more usage, see https://hyjiacan.github.io/vue-slideout/
 - API reference: [API.md](./API.md)
 
-Try 2.x on <a href="https://codepen.io/hyjiacan/pen/YzGVRvR">CodePen</a> on the fly.
-
-Try 3.x on <a href="https://codepen.io/hyjiacan/pen/LYRZONE">CodePen</a> on the fly.
+Try it on CodePen on the fly [2.x](https://codepen.io/hyjiacan/pen/YzGVRvR) [3.x](https://codepen.io/hyjiacan/pen/LYRZONE).
 
 ## Development
 
