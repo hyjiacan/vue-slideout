@@ -41,7 +41,7 @@ or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/mast
 
 > Since `2.4.0`
 
-Unlike node-env, a global `slideout` (**lowercase**) will be exploded.
+Like node-env, a global `Slideout` will be attached onto `window`.
 
 The newest version
 

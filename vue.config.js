@@ -4,6 +4,7 @@ module.exports = {
   filenameHashing: false,
   configureWebpack: {
     output: {
+      library: 'Slideout',
       libraryExport: 'default'
     }
   }
