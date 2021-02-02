@@ -5,7 +5,7 @@ function setDefaultProps (customize) {
     if (!customize.hasOwnProperty(prop)) {
       continue
     }
-    // 处理带下划线格式成驼峰
+    // Parse property name like "abc_xyz" into "abcXyz".
     prop = prop.replace(/-[a-z]/g, match => {
       return match[1].toUpperCase()
     })
@@ -19,7 +19,7 @@ function setDefaultProps (customize) {
 /**
  *
  * @param Vue
- * @param defaults 通过 Vue.use 注册组件时，设置的组件默认值
+ * @param {Object} defaults The defaults value
  */
 Slideout.install = (Vue, defaults) => {
   if (defaults) {

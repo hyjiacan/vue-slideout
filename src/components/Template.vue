@@ -59,7 +59,12 @@ export default {
   },
   props: {
     /**
-     * 滑出尺寸，单位为像素，当为数组时，表示设置宽度和高度
+     * The size of slideout.
+     * If the value if an Array, then:
+     * the 1st value is the width,
+     * the 2nd value is the height.
+     * If there is only one item in the array, then:
+     * the width equals with the height.
      * 第一个值表示宽度，第二个值表示高度，数组只有一个值时，表示宽度和高度相同
      */
     size: {
@@ -67,82 +72,83 @@ export default {
       default: 400
     },
     /**
-     * 是否允许拖动弹出大小
+     * If to allow resize operation.
      */
     allowResize: {
       type: Boolean,
       default: false
     },
     /**
-     * 拖动改变大小时的最小尺寸，单位为px，此值不影响size属性指定的大小
+     * The minimize value for resizing.
+     * This does not limit the value of size.
      */
     minSize: {
       type: Number,
       default: 100
     },
     /**
-     * 拖动改变大小时的最大尺寸，单位为px，指定为0时不限制，此值不影响size属性指定的大小
+     * The minimize value for resizing.
+     * 0 means there is no limit.
+     * This does not limit the value of size.
      */
     maxSize: {
       type: Number,
       default: 0
     },
-    /**
-     * 层叠索引
-     */
     zIndex: {
       type: Number,
       default: 1997
     },
     /**
-     * 是否可见，可使用 .sync 修饰符
+     * Is slideout visible.
+     * Do not specify this directly, use v-model instead.
      */
     visible: {
       type: Boolean,
       default: false
     },
     /**
-     * 显示的标题，传空时不显示标题栏
+     * The title text
      */
     title: {
       type: String
     },
     /**
-     * 自定义样式类
+     * Custom class for slideout.
      */
     customClass: {
       type: String
     },
     /**
-     * 是否显示遮罩层
+     * If to show the mask layer.
      */
     showMask: {
       type: Boolean,
       default: true
     },
     /**
-     * 遮罩层颜色
+     * The background color of mask layer.
      */
     maskColor: {
       type: String,
       default: null
     },
     /**
-     * 是否在点击mask时关闭
+     * If to close slideout while mask is clicked.
      */
     closeOnMaskClick: {
       type: Boolean,
       default: true
     },
     /**
-     * 是否忽略ESC键，不忽略时按下ESC会关闭
+     * Whether to ignore ESC.
      */
     ignoreEsc: {
       type: Boolean,
       default: false
     },
     /**
-     * 停靠方向，默认右侧
+     * The dock side, the default value is "right".
      */
     dock: {
       type: String,
@@ -150,63 +156,57 @@ export default {
       validator: value => ['top', 'right', 'bottom', 'left'].indexOf(value) >= 0
     },
     /**
-     * 将元素放置到指定元素下
+     * Specify the parent element to append slideout to.
      */
     appendTo: {
       type: [String, HTMLElement],
       default: null
     },
-    /**
-     * 是否禁用滑出动画，默认为false
-     */
     disableAnimation: {
       type: Boolean,
       default: false
     },
-    /**
-     * 是否启用全屏显示
-     */
     fullscreen: {
       type: Boolean,
       default: false
     },
     /**
-     * 是否显示关闭按钮
+     * Whether to show the close button.
      */
     showClose: {
       type: Boolean,
       default: true
     },
     /**
-     * 是否显示全屏按钮
+     * Whether to show the fullscreen button.
      */
     showFullscreen: {
       type: Boolean,
       default: false
     },
     /**
-     * 是否固定显示（此时会隐藏滚动条）
+     * Display slideout as fixed (The scroll will be locked)
      */
     fixed: {
       type: Boolean,
       default: false
     },
     /**
-     * 距离dock(停靠)边的偏移量，单位可以是`px`或`%`
+     * The offset to dock side. ("px" or "%)
      */
     offset: {
       type: String,
       default: '0'
     },
     /**
-     * 以箭头方式显示关闭按钮
+     * Whether to show the close button as arrow.
      */
     arrowButton: {
       type: Boolean,
       default: true
     },
     /**
-     * 是否在可见时才渲染内容
+     * Render content while "visible" is "true".
      */
     renderWhenVisible: {
       type: Boolean,
@@ -221,7 +221,7 @@ export default {
     this.isFullscreen = this.fullscreen
     this.appendComponentTo()
     if (this.allowResize) {
-      // 绑定鼠标事件
+      // Bind the mouse events for resizing.
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
     }
@@ -231,14 +231,14 @@ export default {
     this.showContainer = false
     this._removeKeyboardEvent()
     if (this.allowResize) {
-      // 移除事件
+      // Remove the mouse events for resizing.
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)
     }
     if (this.isVisible) {
       this.tryClose()
     }
-    // 取消滚动锁定
+    // Cancel the scroll lock.
     document.body.classList.remove('vue-slideout-lock-scroll')
     if (this.appendTo) {
       try {

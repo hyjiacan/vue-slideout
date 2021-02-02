@@ -1,20 +1,22 @@
 export default {
   computed: {
-    // 停靠边，当未指定时，设置为默认值 right
+    // The side to dock on.
+    // The default value is right.
     dockOn () {
       return this.dock || 'right'
     },
+    // If to show the header bar or not.
+    // This depends on the title property and the header slot.
     showHeader () {
       return this.title || this.$slots.header
     },
+    // If to show the footer bar or not.
+    // This depends on the footer slot.
     showFooter () {
       return this.$slots.footer
     },
-    // Slideout 容器样式
     containerStyle () {
       const style = {
-        // 2147483647 是允许的最大值
-        // 'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
         'z-index': this.zIndex,
         display: this.showContainer ? 'block' : 'none'
       }
@@ -23,16 +25,19 @@ export default {
       }
       return style
     },
-    // Slideout 遮罩层样式
     maskStyle () {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
-    // 是否使用固定大小，判断依据：指定的大小是一个数组
+    // If to use the fixed size or not:
+    // true if the value of size is an Array
     isSizeFixed () {
       return Array.isArray(this.size)
     },
+    // Should I fit the size automatically ?
+    // If the value of size is 0 or [0, 0],
+    // then make it auto.
     isAutoSize () {
       if (this.isSizeFixed) {
         return !this.size.every(i => i.toString() !== '0')
@@ -40,7 +45,7 @@ export default {
       return this.size.toString() === '0'
     },
     /**
-     * 获取带上单位的size值
+     * Get the value of size with unit px or "%"
      * @return {Array|String}
      */
     sizeWithUnit () {
@@ -49,14 +54,17 @@ export default {
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
-    // Slideout 内容样式
+    // The styles of layout panel
     layoutStyle () {
       const style = {}
+
+      // Styles for fixed
       if (this.isSizeFixed) {
-        // 指定大小
+        // Set size
         style.width = this.sizeWithUnit[0]
         style.height = this.sizeWithUnit[1]
-        // 偏移量，当全屏时偏移量为 0
+        // The offset of slideout content,
+        // the value is 0 while fullscreen.
         const offset = this.isFullscreen ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
@@ -72,8 +80,7 @@ export default {
         }
         return style
       }
-      // 内容显示大小
-      // 当全屏时，设置为 100%
+      // Set 100% while fullscreen
       const size = this.isFullscreen ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
       switch (this.dockOn) {
         case 'right':
@@ -116,13 +123,13 @@ export default {
       }
       return style
     },
-    // 容器需要应用的样式类
     containerClasses () {
       return {
         [this.customClass || '']: true,
         [`slideout-dock-${this.dockOn}`]: true,
         'slideout-visible': this.activeVisibleClass,
-        // 鼠标按下拖动大小时，禁用动画，以提高视觉流畅度
+        // Disable the animations while mouse button pressed,
+        // to make the operation smoothly.
         'slideout-enable-animation': !this.mousedown && !this.disableAnimation,
         'slideout-show-header': this.showHeader,
         'slideout-show-footer': this.$slots.footer,
@@ -132,7 +139,6 @@ export default {
         'slideout-autosize': this.isAutoSize
       }
     },
-    // 头部样式
     headerStyle () {
       const style = {}
 
@@ -151,7 +157,7 @@ export default {
       return style
     },
     defaultButtonsWidth () {
-      // 20: padding 的值
+      // 20: padding
       let w = 20
       if (this.showClose) {
         w += 32
@@ -161,10 +167,10 @@ export default {
       }
       return w
     },
-    // 是否使用固定定位
+    // If to use fixed position.
     isFixed () {
-      // 设置了 appendTo 的时候，就不固定显示
-      // 但是如果父元素为 body 时，也需要固定显示
+      // False if appendTo specified,
+      // except the parent element is document.body.
       return this.fixed || this.parentElement === document.body || !this.appendTo
     }
   }

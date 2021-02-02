@@ -4,14 +4,16 @@ export default {
       const vm = this
       let canceled = false
       return {
-        // 是否暂停操作
+        // If to pause the open/close operation.
         pause: false,
+        // setter
+        // Resume the paused operation.
         set resume (value) {
-          // 取消操作
+          // Cancel the operation if the value is falsy.
           if (!value) {
             return
           }
-          // 继续操作
+          // Continue the operation.
           vm.$nextTick(() => {
             resumeCallback()
           })
@@ -34,43 +36,46 @@ export default {
       }
     },
     tryOpen () {
-      // 如果显示状态相同，则啥也不做
+      // Do nothing if slideout is visible.
       if (this.isVisible) {
         return
       }
-      // 显示前触发事件
+      // The arguments of event "opening".
       const args = this.makeBeforeEventArgs(() => {
         this.setVisibleValue(true)
       }, () => {
-        // 取消时，重置原值为 false
+        // Reset the value of visible to "false" while operation canceled.
         this._updateVisibleValue(false)
       })
 
+      // Trigger the "opening" event with "args".
       this.$emit('opening', args)
 
-      // 暂停打开
+      // If the open operation is paused or canceled, just return.
       if (args.pause || args.cancel) {
         return
       }
 
+      // Show slideout.
       this.setVisibleValue(true)
     },
     tryClose () {
-      // 如果显示状态相同，则啥也不做
+      // Do nothing if slideout is invisible.
       if (!this.isVisible) {
         return
       }
-      // 显示前触发事件
+      // The arguments of event "opening".
       const args = this.makeBeforeEventArgs(() => {
         this.setVisibleValue(false)
       }, () => {
-        // 取消时，重置原值为 true
+        // Reset the value of visible to "true" while operation canceled.
         this._updateVisibleValue(true)
       })
 
+      // Trigger the "closing" event with "args".
       this.$emit('closing', args)
 
-      // 暂停关闭
+      // If the open operation is paused or canceled, just return.
       if (args.pause || args.cancel) {
         return
       }
@@ -78,11 +83,11 @@ export default {
       this.setVisibleValue(false)
     },
     /**
-     * 设置显示状态
-     * @param {Boolean} visible 显示状态
+     * Update the value of isVisible.
+     * @param {Boolean} visible The visible state
      */
     setVisibleValue (visible) {
-      // 显示时重置大小
+      // Reset the size while slideout is brought into visible.
       if (visible) {
         this.resizeValue = 0
       }
@@ -91,7 +96,7 @@ export default {
         this.showContainer = true
         this.isVisible = true
         this.$nextTick(() => {
-          // 延时应用动画
+          // Delay the animation.
           setTimeout(() => {
             this.activeVisibleClass = true
             this.emitOpenedEvent()
@@ -99,11 +104,10 @@ export default {
         })
       } else {
         if (this.isFullscreen) {
-          // 若指定了 .sync 修饰，则关闭后退出全屏
+          // Update the value of "fullscreen" for "fullscreen.sync" to exit fullscreen after slideout closed.
           this.$emit('update:fullscreen', false)
         }
         this.activeVisibleClass = false
-        // 触发关闭后的事件
         this.$nextTick(() => {
           this.emitClosedEvent()
         })
@@ -111,22 +115,22 @@ export default {
     },
     emitOpenedEvent () {
       if (this.disableAnimation) {
-        // 禁用动画时不需要等待
+        // The animation is disabled.
         this._doOpen()
         return
       }
-      // 开启动画时，有个this.animationDuration ms的动画
+      // Applying the animation.
       setTimeout(() => {
         this._doOpen()
       }, this.animationDuration)
     },
     emitClosedEvent () {
       if (this.disableAnimation) {
-        // 禁用动画时不需要等待
+        // The animation is disabled.
         this._doClose()
         return
       }
-      // 开启动画时，有个this.animationDuration / 2 ms的动画
+      // Applying the animation.
       setTimeout(() => {
         this._doClose()
       }, this.animationDuration)
@@ -145,9 +149,6 @@ export default {
         this._updateVisibleValue(false)
       }
     },
-    /**
-     * 切换全屏
-     */
     toggleFullscreen (fullscreen) {
       if (this.isFullscreen === fullscreen) {
         return
@@ -162,7 +163,7 @@ export default {
       }
     },
     /**
-     * 计算出组件在DOM中的父元素
+     * Get the actual parent element of Slideout
      */
     appendComponentTo () {
       if (!this.appendTo) {
@@ -182,7 +183,7 @@ export default {
       this.parentElement = target
     },
     /**
-     * 点击遮罩层时的事件处理
+     * The handler for mask click.
      */
     onMaskClick () {
       if (this.closeOnMaskClick) {
@@ -190,7 +191,6 @@ export default {
       }
     },
     /**
-     * 获取父元素的尺寸
      * @return {{width: Number, height: Number}}
      */
     getParentSize () {
@@ -201,10 +201,9 @@ export default {
       }
     },
     /**
-     * 获取到此组件的大小（基于px）
      * @return {{width: Number, height: Number}}
      */
-    getMyOwnSize () {
+    getMyownSize () {
       const rect = this.$refs.layout.getClientRects()[0]
       return {
         width: rect.width,
@@ -213,7 +212,7 @@ export default {
     },
     mouseDownHandler (e) {
       if (this.isFullscreen) {
-        // 全屏时不允许改变大小
+        // Resize is disabled while fullscreen.
         return
       }
       this.mousedown = true
@@ -221,19 +220,19 @@ export default {
         x: e.pageX,
         y: e.pageY
       }
-      this.originSize = this.getMyOwnSize()
+      this.originSize = this.getMyownSize()
     },
     mouseMoveHandler (e) {
       if (this.isFullscreen) {
-        // 全屏时不允许改变大小
+        // Resize is disabled while fullscreen.
         return
       }
-      // 鼠标未按下时，不能拖动
+      // Resize is disabled while the mouse button is not pressed.
       if (!this.mousedown) {
         return
       }
       e.preventDefault()
-      // 获取鼠标的偏移量
+      // The offset of mouse movement.
       const x = e.pageX - this.mouseDownPosition.x
       const y = e.pageY - this.mouseDownPosition.y
 
@@ -295,14 +294,19 @@ export default {
     mouseUpHandler () {
       this.mousedown = false
     },
+    /**
+     * Close slideout after ESC pressed.
+     * @param {KeyboardEvent} e
+     */
     onKeydown (e) {
       if (!this.isVisible) {
         return
       }
+      // 27: Escape key
       if (e.code !== 27 && e.keyCode !== 27 && e.which !== 27) {
         return
       }
-      // 忽略输入组件
+      // Ignore input controls.
       if (['INPUT', 'TEXTAREA'].indexOf(e.target.tagName) !== -1 || e.target.contentEditable === 'true') {
         return
       }

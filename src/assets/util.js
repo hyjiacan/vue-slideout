@@ -1,3 +1,6 @@
+/**
+ * This file used to provide localization support for the sample page.
+ */
 import languages from '@/assets/langs.json'
 
 function getLang () {
@@ -8,13 +11,13 @@ function getLang () {
     if (languages.hasOwnProperty(lang)) {
       return lang
     }
-    // 找不到完全匹配的语言，使用语言系（如：zh-CN，zh 表示语言系）
+    // Try to match zh-CN en-US
     lang = lang.split('-')[0]
     if (languages.hasOwnProperty(lang)) {
       return lang
     }
   }
-  // 默认设置为英文
+  // If the browser does not return the language name, use English as default.
   return 'en'
 }
 
