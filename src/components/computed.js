@@ -99,6 +99,7 @@ export default {
       if (!this.isAutoSize) {
         return style
       }
+      let padding = 0
 
       switch (this.dockOn) {
         case 'right':
@@ -106,7 +107,6 @@ export default {
           break
         case 'bottom':
         case 'top':
-          let padding = 0
           if (this.showHeader) {
             padding += 48
           }
@@ -125,6 +125,7 @@ export default {
     },
     containerClasses () {
       return {
+        'slideout': true,
         [this.customClass || '']: true,
         [`slideout-dock-${this.dockOn}`]: true,
         'slideout-visible': this.activeVisibleClass,

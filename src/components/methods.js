@@ -150,11 +150,10 @@ export default {
       }
     },
     toggleFullscreen (fullscreen) {
-      if (this.isFullscreen === fullscreen) {
-        return
-      }
-      if (fullscreen === undefined) {
+      if (typeof fullscreen !== 'boolean') {
         this.isFullscreen = !this.isFullscreen
+      } else if (this.isFullscreen === fullscreen) {
+        return
       } else {
         this.isFullscreen = fullscreen
       }
@@ -165,7 +164,7 @@ export default {
     /**
      * Get the actual parent element of Slideout
      */
-    appendComponentTo () {
+    updateParentElement () {
       if (!this.appendTo) {
         this.parentElement = this.$el.parentElement
         return
@@ -178,8 +177,6 @@ export default {
           throw new Error(`[vue-slideout] Cannot find the node to append: ${this.appendTo}`)
         }
       }
-      // @see https://vuejs.org/v2/api/index.html#vm-mount
-      target.appendChild(this.$mount().$el)
       this.parentElement = target
     },
     /**
@@ -328,7 +325,7 @@ export default {
       return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
     },
     _updateVisibleValue (value) {
-      this.$emit('change', value)
+      this.$emit('update:modelValue', value)
     }
   }
 }

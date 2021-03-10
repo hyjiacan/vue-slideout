@@ -1,62 +1,23 @@
-<template>
-  <div class="slideout" :style="containerStyle" :class="containerClasses"
-       tabindex="0" v-if="!renderWhenVisible || isVisible">
-    <div class="slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
-    <div class="slideout-layout" :style="layoutStyle" ref="layout">
-      <div class="slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
-           @mousedown="mouseDownHandler"></div>
-      <div class="slideout-header" :style="headerStyle" v-if="showHeader">
-        <slot name="header" :title="title">
-          <div class="slideout-title-text">
-            {{ title }}
-          </div>
-          <div class="slideout-title-buttons" ref="buttons">
-            <span class="slideout-custom-buttons">
-              <slot name="btn"/>
-            </span>
-            <span class="slideout-default-buttons">
-              <button class="slideout-btn-fullscreen" @click="toggleFullscreen()" v-if="showFullscreen">
-                <icon-fullscreen/>
-                <icon-fullscreen-exit/>
-              </button>
-              <button class="slideout-btn-close" @click="tryClose()" v-if="showClose">
-                <icon-arrow v-if="arrowButton"/>
-                <icon-cross v-else/>
-              </button>
-            </span>
-          </div>
-        </slot>
-      </div>
-      <div class="slideout-content" :style="contentStyles">
-        <slot/>
-      </div>
-      <div class="slideout-footer" v-show="$slots.footer">
-        <slot name="footer"/>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import IconArrow from './icon/IconArrow'
-import IconCross from './icon/IconCross'
-import IconFullscreen from './icon/IconFullscreen'
-import IconFullscreenExit from './icon/IconFullscreenExit'
 import '../styles/index.less'
 import computed from './computed'
 import data from './data'
 import methods from './methods'
 import watch from './watch'
+import renderer from './renderer'
 
 export default {
   name: 'Slideout',
-  mixins: [computed, data, methods, watch],
-  components: {
-    IconArrow,
-    IconCross,
-    IconFullscreen,
-    IconFullscreenExit
-  },
+  inheritAttrs: false,
+  mixins: [computed, data, methods, watch, renderer],
+  emits: [
+    'opening',
+    'opened',
+    'closing',
+    'closed',
+    'resize',
+    'update:fullscreen',
+    'update:modelValue'
+  ],
   props: {
     /**
      * The size of slideout.
@@ -65,7 +26,6 @@ export default {
      * the 2nd value is the height.
      * If there is only one item in the array, then:
      * the width equals with the height.
-     * 第一个值表示宽度，第二个值表示高度，数组只有一个值时，表示宽度和高度相同
      */
     size: {
       type: [String, Number, Array],
@@ -103,7 +63,7 @@ export default {
      * Is slideout visible.
      * Do not specify this directly, use v-model instead.
      */
-    visible: {
+    modelValue: {
       type: Boolean,
       default: false
     },
@@ -213,13 +173,9 @@ export default {
       default: false
     }
   },
-  model: {
-    prop: 'visible',
-    event: 'change'
-  },
   mounted () {
     this.isFullscreen = this.fullscreen
-    this.appendComponentTo()
+    this.updateParentElement()
     if (this.allowResize) {
       // Bind the mouse events for resizing.
       document.addEventListener('mousemove', this.mouseMoveHandler)
@@ -227,7 +183,7 @@ export default {
     }
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
-  beforeDestroy () {
+  beforeUnmount () {
     this.showContainer = false
     this._removeKeyboardEvent()
     if (this.allowResize) {
@@ -240,13 +196,5 @@ export default {
     }
     // Cancel the scroll lock.
     document.body.classList.remove('vue-slideout-lock-scroll')
-    if (this.appendTo) {
-      try {
-        this.$el.parentElement.removeChild(this.$el)
-      } catch (e) {
-        // ignore
-      }
-    }
   }
 }
-</script>

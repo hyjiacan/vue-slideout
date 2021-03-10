@@ -1,8 +1,8 @@
 <template>
   <main id="app">
     <h1>
-      Slideout
-      <small v-lang>A slide-out component for Vue.js 2.x</small>
+      <span>Slideout</span>
+      <small v-lang>A slide-out component for Vue.js 2/3</small>
       <span id="metas">
         <span class="latest-text"/>
         <span class="loaded">
@@ -43,13 +43,19 @@
     </ul>
     <p>
       <span v-lang>There are some breaking changes at 3.0.0, see migrations on</span>
-      <a style="margin-left: 10px;" href="https://github.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Github</a>
-      <a style="margin-left: 10px;" href="https://gitee.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Gitee</a>
+      <a style="margin-left: 10px;"
+         href="https://github.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Github</a>
+      <a style="margin-left: 10px;"
+         href="https://gitee.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Gitee</a>
     </p>
-    <p>
-      <span>Try 2.x on <a href="https://codepen.io/hyjiacan/pen/YzGVRvR">CodePen</a> on the fly</span>
-      <span>Try 3.x on <a href="https://codepen.io/hyjiacan/pen/LYRZONE">CodePen</a> on the fly</span>
-    </p>
+    <ul>
+      <li>
+        <a href="https://codepen.io/hyjiacan/pen/YzGVRvR" target="_blank">Try 2.x on the fly.</a>
+      </li>
+      <li>
+        <a href="https://codepen.io/hyjiacan/pen/LYRZONE" target="_blank">Try 3.x on the fly.</a>
+      </li>
+    </ul>
     <h2 v-lang>Samples</h2>
     <main-page/>
     <div id="tip" v-show="tipVisible">
@@ -60,7 +66,6 @@
 
 <script>
 import MainPage from './views/Main'
-import Vue from 'vue'
 import util from '@/assets/util'
 
 window.jsonp = function (url, callback) {
@@ -97,7 +102,6 @@ export default {
   },
   data () {
     return {
-      eventBus: new Vue(),
       tipVisible: false,
       tipText: '',
       currentLang: util.getLanguage()
@@ -105,27 +109,26 @@ export default {
   },
   provide () {
     return {
-      eventBus: this.eventBus
+      showTip: this.showTip
     }
   },
   methods: {
-    showTip (tip) {
+    showTip (tip, timeout = 3000) {
       this.tipText = tip
       this.tipVisible = true
       this.$nextTick(() => {
         setTimeout(() => {
           this.tipVisible = false
           this.tipText = ''
-        }, 3000)
+        }, timeout)
       })
     }
   },
   mounted () {
-    this.eventBus.$on('tip', this.showTip)
     const isZH = /^zh/i.test(navigator.language)
     document.body.classList.add(isZH ? 'zh' : 'en')
 
-    if (!this.$devMode) {
+    if (process.env.NODE_ENV !== 'development') {
       window.jsonp('https://api.github.com/repos/hyjiacan/vue-slideout/tags', 'tagsCallback')
     }
   }
@@ -167,13 +170,14 @@ a, a:visited, a:link, a:active {
 }
 
 a:focus, a:hover {
-  color: #45c153;
+  color: #ff7b00;
 }
 
 h1 small {
   font-size: 16px;
   color: #666;
   font-weight: normal;
+  margin-left: 20px;
 }
 
 h1 {

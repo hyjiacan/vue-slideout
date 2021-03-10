@@ -9,11 +9,8 @@
 
 > The size of component, both `px` and `%` are available;
 > - If it is an array, then: The 1st element is the width, and the 2nd element is the height,
-> - if there is only one element: that makes width equals with height.
-  In this situation, props `allow-resize`, `min-size`, `max-size` are not available.
-> - ( **Auto-fit size supported** `since 2.3.5` ).
-  You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size.
-  In this situation, props `min-size`, `max-size` are available. 
+> - if there is only one element: that makes width equals with height. In this situation, props `allow-resize`, `min-size`, `max-size` are not available.
+> - ( **Auto-fit size supported** `since 2.3.5` ). You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size. In this situation, props `min-size`, `max-size` are available.
 
 #### z-index (optional)
 
@@ -43,7 +40,6 @@
 
 - type `String`
 
-
 > The `title` text of component,
 > if this is empty and `slot=header` is empty too,the header would be hidden.
 
@@ -57,7 +53,6 @@
 #### custom-class (optional)
 
 - type `String`
-
 
 > Customized the css class name.
 
@@ -106,6 +101,11 @@
 > Append component into the specified element.
 > Both `string`(selector) and `HTMLElement`(DOM object) available.
 > Use style `position: fixed` if prop `appendTo` not specified.
+>
+> Note the target element must exist before the component is mounted
+>
+> i.e. the target cannot be rendered by the component itself,
+> and ideally should be outside of the entire Vue component tree.
 
 #### disable-animation (optional)
 
@@ -195,21 +195,21 @@
 
 ## Slots
 
-#### default 
+#### default
 
 - args `-`
 
 > The content slot.
 
-#### header 
+#### header
 
 - args `{title}`
 
-> The header slot, replaces all the header bar, 
+> The header slot, replaces all the header bar,
 > `title` will take no affected(and close button will be removed) if specified this,
 > use `slot-scope="{ title }"` to get prop `title`.
 
-#### btn 
+#### btn
 
 > `since 2.1.7`
 
@@ -217,7 +217,7 @@
 
 > Extend header buttons, placed left side of the **Close Button**.
 
-#### footer 
+#### footer
 
 - args `-`
 
@@ -251,7 +251,7 @@
 > Emitted before component close, in callback function,
 > assign `e.pause=true` to pause close, and assign `e.resume=true` to resume close (async supported).
 
-#### closed 
+#### closed
 
 - args `-`
 

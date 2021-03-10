@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo" id="customize">
     <slideout v-model="v1" size="480px">
       <template #header>
         <div>{{ text.header }}</div>
@@ -107,7 +107,7 @@
       </template>
     </slideout>
     <slideout v-model="v13" size="480px" :title="text.header">
-      <template slot="btn">
+      <template #btn>
         <button>Test</button>
       </template>
       <div>
@@ -120,7 +120,7 @@
         <code>&lt;/template&gt;</code>
       </div>
     </slideout>
-    <div class="demo-block" id="customize">
+    <div class="demo-block">
       <h3 v-lang>Customize</h3>
       <ul>
         <li>

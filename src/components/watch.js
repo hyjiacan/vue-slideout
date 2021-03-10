@@ -1,6 +1,6 @@
 export default {
   watch: {
-    visible (visible) {
+    modelValue (visible) {
       if (visible === this.isVisible) {
         return
       }

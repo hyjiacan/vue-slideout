@@ -1,13 +1,13 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "3.0.0-beta1",
+  "version": "3.0.0-beta2",
   "description": "A Slide-Out component for Vue.js 2.0",
-  "main": "lib/slideout.common.js",
-  "unpkg": "lib/slideout.umd.js",
-  "jsdelivr": "lib/slideout.umd.js",
+  "main": "dist/slideout.common.js",
+  "unpkg": "dist/slideout.umd.js",
+  "jsdelivr": "dist/slideout.umd.js",
   "scripts": {
-    "serve": "npx vue-cli-service serve",
-    "build": "npx vue-cli-service build --target lib --dest=lib --name slideout src/components/index.js",
+    "serve": "vue-cli-service serve",
+    "build": "npx vue-cli-service build --target lib --dest=dist --name slideout src/components/index.js",
     "build:docs": "npx vue-cli-service build --dest=docs",
     "release": "yarn run lint & yarn run build & yarn run build:docs & node version.js",
     "lint": "npx vue-cli-service lint",
@@ -41,20 +41,50 @@
     "url": "https://github.com/hyjiacan/vue-slideout/issues"
   },
   "homepage": "https://hyjiacan.github.io/vue-slideout/",
-  "dependencies": {},
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0"
+  },
   "devDependencies": {
-    "@vue/cli": "^3.7.0",
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "core-js": "^2.6.5",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "less": "^3.9.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.5.21"
+    "lint-staged": "^9.5.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-prototype-builtins": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   }
 }

@@ -1,7 +1,7 @@
 {
   "en": {},
   "zh": {
-    "A slide-out component for Vue.js 2.x": "一个 Vue.js 2.x 的侧滑组件",
+    "A slide-out component for Vue.js 2/3": "一个 Vue.js 2/3 的侧滑组件",
     "Language:": "选择语言:",
     "Install": "安装",
     "or": "或",
@@ -12,7 +12,7 @@
     "Samples": "示例",
     "You can press <code>ESC</code> key to close component.": "可以通过按下<code>ESC</code>键来关闭组件",
     "Close/Fullscreen button would be removed while use <code>slot=\"header\"</code>": "当使用<code>slot=\"header\"</code>时，关闭/全屏按钮会被移除",
-    "Element <code>#customize</code><b>SHOULD NOT</b> be <code>position: static</code>": "元素<code>#customize</code> <b>不能</b> 设置为 <code>position: static</code>",
+    "Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code>": "元素<code>#customize</code> <b>不能</b> 设置为 <code>position: static</code>",
     "Resize is available for this instance.": "此实例支持拖动改变大小",
     "Move the cursor onto this border to have a try": "将鼠标光标移动到这条边试一下",
     "makes it resizable": "使其可以拖动改变大小",

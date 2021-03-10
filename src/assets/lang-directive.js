@@ -2,7 +2,7 @@ import languages from './langs.json'
 import util from '@/assets/util'
 
 const directive = {
-  inserted: el => {
+  mounted: el => {
     // value: langId
     const define = languages[util.getLanguage()]
     if (!define) {
@@ -19,8 +19,4 @@ const directive = {
   }
 }
 
-export default {
-  install (Vue) {
-    Vue.directive('lang', directive)
-  }
-}
+export default directive

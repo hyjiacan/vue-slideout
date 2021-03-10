@@ -41,7 +41,7 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 
 > 从 2.4.0 开始可用。
 
-与 node 环境不同, 此时会暴露一个小写的全局 `slideout`。
+与 node 环境一样, 此时会暴露一个全局 `Slideout`。
 
 使用最新版本
 

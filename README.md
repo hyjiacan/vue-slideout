@@ -60,8 +60,8 @@ Specified version
 ```
 
 > **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*.
-
-> Also, you can use the uncompressed by instead *slideout.umd.min.js* with *slideout.umd.js*
+>
+> Also, you can use the uncompressed dist by instead *slideout.umd.min.js* with *slideout.umd.js*
 
 ## Usage
 

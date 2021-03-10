@@ -1,4 +1,4 @@
-import Slideout from './Template'
+import Slideout from './Slideout.js'
 
 function setDefaultProps (customize) {
   for (let prop in customize) {
@@ -18,14 +18,14 @@ function setDefaultProps (customize) {
 
 /**
  *
- * @param Vue
+ * @param app
  * @param {Object} defaults The defaults value
  */
-Slideout.install = (Vue, defaults) => {
-  if (defaults) {
-    setDefaultProps(defaults)
+export default {
+  install (app, defaults) {
+    if (defaults) {
+      setDefaultProps(defaults)
+    }
+    app.component('Slideout', Slideout)
   }
-  Vue.component(Slideout.name, Slideout)
 }
-
-export default Slideout

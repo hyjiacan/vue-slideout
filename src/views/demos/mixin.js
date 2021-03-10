@@ -1,5 +1,5 @@
 export default {
-  inject: ['eventBus'],
+  inject: ['showTip'],
   data () {
     return {
       text: {
@@ -23,11 +23,6 @@ export default {
       v14: false,
       v15: false,
       v16: false
-    }
-  },
-  methods: {
-    emitTip (msg) {
-      this.eventBus.$emit('tip', msg)
     }
   }
 }

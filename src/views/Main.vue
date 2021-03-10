@@ -14,6 +14,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import DockPositionDemo from './demos/DockPositionDemo'
 import FixedNOffsetDemo from './demos/FixedNOffsetDemo'
 import FullscreenDemo from './demos/FullscreenDemo'
