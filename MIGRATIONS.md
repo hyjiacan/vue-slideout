@@ -86,7 +86,7 @@ The CSS class name changes:
 |slideout-show-footer|slideout-footer--visible|
 |slideout-allow-resize|slideout-resize--enabled|
 |slideout-fixed|slideout-is--fixed|
-|slideout-fullscreen|slideout-is--fillparent|
+|slideout-fullscreen|slideout-is--filled|
 |slideout-is-autosize|slideout-is--autosize|
 |slideout-layout|slideout-panel|
 |slideout-title-text|slideout-header--text|

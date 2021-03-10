@@ -166,7 +166,7 @@ export default {
      */
     updateParentElement () {
       if (!this.appendTo) {
-        this.parentElement = this.$el.parentElement
+        this.parentElement = this.$refs.container.parentElement
         return
       }
       let target = this.appendTo
@@ -296,6 +296,9 @@ export default {
      * @param {KeyboardEvent} e
      */
     onKeydown (e) {
+      if (this.ignoreEsc) {
+        return
+      }
       if (!this.isVisible) {
         return
       }
@@ -309,17 +312,6 @@ export default {
       }
       this.tryClose()
       return false
-    },
-    _bindKeyboardEvent () {
-      if (!this.ignoreEsc && this.$el) {
-        this.$el.focus()
-        this.$el.addEventListener('keydown', this.onKeydown)
-      }
-    },
-    _removeKeyboardEvent () {
-      if (!this.ignoreEsc && this.$el) {
-        this.$el.removeEventListener('keydown', this.onKeydown)
-      }
     },
     _fixSizeUnit (val) {
       return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`

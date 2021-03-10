@@ -135,13 +135,6 @@ export default {
 }
 </script>
 <style lang="less">
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
 ::-webkit-scrollbar {
   background-color: rgba(200, 200, 200, .2);
   width: 8px;

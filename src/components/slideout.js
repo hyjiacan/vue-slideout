@@ -120,7 +120,7 @@ export default {
      */
     appendTo: {
       type: [String, HTMLElement],
-      default: null
+      default: 'body'
     },
     disableAnimation: {
       type: Boolean,

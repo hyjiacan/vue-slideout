@@ -17,12 +17,11 @@ export default {
       this.toggleFillparent(fillparent)
     },
     isVisible (v) {
-      this.$nextTick(() => {
-        this._removeKeyboardEvent()
-        if (v) {
-          this._bindKeyboardEvent()
-        }
-      })
+      if (v) {
+        this.$nextTick(() => {
+          this.$refs.container.focus()
+        })
+      }
 
       // Do not lock the scroll while slideout is not fixed.
       if (!this.isFixed) {

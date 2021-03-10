@@ -1,4 +1,4 @@
-import { h } from 'vue'
+import { h, Teleport } from 'vue'
 
 import IconArrow from './icon/IconArrow'
 import IconCross from './icon/IconCross'
@@ -93,7 +93,9 @@ export default {
       return this.div({
         class: this.containerClasses,
         style: this.containerStyle,
-        tabindex: 0
+        tabindex: 0,
+        ref: 'container',
+        onKeydown: this.onKeydown
       }, children)
     },
     div (props, children) {
@@ -119,8 +121,8 @@ export default {
     const container = this.renderContainer(children)
 
     if (this.appendTo) {
-      return h('teleport', {
-        to: this.parentElement
+      return h(Teleport, {
+        to: this.appendTo
       }, container)
     }
     return container
