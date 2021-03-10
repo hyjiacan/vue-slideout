@@ -10,11 +10,11 @@ export default {
         this.tryClose()
       }
     },
-    fillparent (fillparent) {
-      if (fillparent === this.isFillparent) {
+    fillParent (value) {
+      if (value === this.isFilled) {
         return
       }
-      this.toggleFillparent(fillparent)
+      this.toggleFillState(value)
     },
     isVisible (v) {
       if (v) {

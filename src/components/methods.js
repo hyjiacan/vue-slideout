@@ -103,9 +103,9 @@ export default {
           }, 10)
         })
       } else {
-        if (this.isFillparent) {
-          // Update the value of "fillparent" for "fillparent.sync" to exit fillparent after slideout closed.
-          this.$emit('update:fillparent', false)
+        if (this.isFilled) {
+          // Update the value of "fill-parent" for "v-model:fill-parent" to exit fill-parent after slideout closed.
+          this.$emit('update:fill-parent', false)
         }
         this.activeVisibleClass = false
         this.$nextTick(() => {
@@ -149,32 +149,32 @@ export default {
         this._updateVisibleValue(false)
       }
     },
-    toggleFillparent (fillparent) {
+    toggleFillState (fillparent) {
       if (typeof fillparent !== 'boolean') {
-        this.isFillparent = !this.isFillparent
-      } else if (this.isFillparent === fillparent) {
+        this.isFilled = !this.isFilled
+      } else if (this.isFilled === fillparent) {
         return
       } else {
-        this.isFillparent = fillparent
+        this.isFilled = fillparent
       }
-      if (this.isFillparent !== this.fillparent) {
-        this.$emit('update:fillparent', this.isFillparent)
+      if (this.isFilled !== this.fillParent) {
+        this.$emit('update:fill-parent', this.isFilled)
       }
     },
     /**
      * Get the actual parent element of Slideout
      */
     updateParentElement () {
-      if (!this.appendTo) {
+      if (!this.target) {
         this.parentElement = this.$refs.container.parentElement
         return
       }
-      let target = this.appendTo
+      let target = this.target
       // handle selector
       if (typeof target === 'string') {
         target = document.querySelector(target)
         if (!target) {
-          throw new Error(`[vue-slideout] Cannot find the node to append: ${this.appendTo}`)
+          throw new Error(`[vue-slideout] Cannot find the node to append: ${this.target}`)
         }
       }
       this.parentElement = target
@@ -208,7 +208,7 @@ export default {
       }
     },
     mouseDownHandler (e) {
-      if (this.isFillparent) {
+      if (this.isFilled) {
         // Resize is disabled while fillparent.
         return
       }
@@ -220,7 +220,7 @@ export default {
       this.originSize = this.getMyownSize()
     },
     mouseMoveHandler (e) {
-      if (this.isFillparent) {
+      if (this.isFilled) {
         // Resize is disabled while fillparent.
         return
       }

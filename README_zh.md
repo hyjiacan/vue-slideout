@@ -8,11 +8,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/hyjiacan/vue-slideout/badge.svg?branch=master)](https://coveralls.io/github/hyjiacan/vue-slideout?branch=master)
 [![](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
 
-一个 Vue.js 2.0 的侧滑组件
+一个 Vue3 的侧滑组件
 
 ### 依赖
 
-- Vue.js 2.x
+- Vue.js 3.x
 - Less
 
 ## 安装
@@ -29,6 +29,8 @@ npm i @hyjiacan/vue-slideout
 yarn add @hyjiacan/vue-slideout
 ```
 
+你若想要兼容 Vue.js 2.x，那么使用版本 `@hyjiacan/vue-slideout@2`。
+
 可以通过以下方式获取最新代码:
 
 ```bash
@@ -38,8 +40,6 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 或 [下载归档](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
 
 ### 浏览器环境 (umd)
-
-> 从 2.4.0 开始可用。
 
 与 node 环境一样, 此时会暴露一个全局 `Slideout`。
 

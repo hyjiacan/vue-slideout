@@ -1,9 +1,9 @@
 <template>
   <div class="demo">
-    <slideout v-model="v1" append-to="body" dock="top" :title="text.header" allow-resize @resize="onResize">
+    <slideout v-model="v1" target="body" dock="top" :title="text.header" resizable @resize="onResize">
       <div>
-        <p><code>append-to="body" dock="top" allow-resize @resize="onResize"</code></p>
-        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>target="body" dock="top" resizable @resize="onResize"</code></p>
+        <p><code>resizable</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
       </div>
@@ -12,10 +12,10 @@
         <div>{{ text.footer }}</div>
       </template>
     </slideout>
-    <slideout v-model="v2" append-to="body" dock="right" :title="text.header" allow-resize @resize="onResize">
+    <slideout v-model="v2" target="body" dock="right" :title="text.header" resizable @resize="onResize">
       <div>
-        <p><code>append-to="body" dock="right" allow-resize @resize="onResize"</code></p>
-        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>target="body" dock="right" resizable @resize="onResize"</code></p>
+        <p><code>resizable</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
       </div>
@@ -24,10 +24,10 @@
         <div>{{ text.footer }}</div>
       </template>
     </slideout>
-    <slideout v-model="v3" append-to="body" dock="bottom" :title="text.header" allow-resize @resize="onResize">
+    <slideout v-model="v3" target="body" dock="bottom" :title="text.header" resizable @resize="onResize">
       <div>
-        <p><code>append-to="body" dock="bottom" allow-resize @resize="onResize"</code></p>
-        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>target="body" dock="bottom" resizable @resize="onResize"</code></p>
+        <p><code>resizable</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
       </div>
@@ -36,10 +36,10 @@
         <div>{{ text.footer }}</div>
       </template>
     </slideout>
-    <slideout v-model="v4" append-to="body" dock="left" :title="text.header" allow-resize @resize="onResize">
+    <slideout v-model="v4" target="body" dock="left" :title="text.header" resizable @resize="onResize">
       <div>
-        <p><code>append-to="body" dock="left" allow-resize @resize="onResize"</code></p>
-        <p><code>allow-resize</code><span v-lang>makes it resizable</span></p>
+        <p><code>target="body" dock="left" resizable @resize="onResize"</code></p>
+        <p><code>resizable</code><span v-lang>makes it resizable</span></p>
         <p><code>@resize="onResize"</code> <span
           v-lang>makes function <code>onResize</code> to accept <code>resize</code> event</span></p>
       </div>
@@ -61,7 +61,7 @@
       <blockquote>
         <div v-lang>Because the height of their parent element is less than 200px, resize cannot be demonstrated here
         </div>
-        <div v-lang>So these four components get <code>append-to="body"</code></div>
+        <div v-lang>So these four components get <code>target="body"</code></div>
       </blockquote>
     </div>
   </div>

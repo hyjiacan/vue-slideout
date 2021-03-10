@@ -14,7 +14,7 @@ export default {
       if (this.showFillButton) {
         buttons.push(h('button', {
           class: 'slideout-btn--fill',
-          onClick: this.toggleFillparent
+          onClick: this.toggleFillState
         }, [h(IconFill), h(IconExitFill)]))
       }
       if (this.showClose) {
@@ -48,7 +48,7 @@ export default {
         }, [
           this.span({
             class: 'slideout-header--buttons-custom'
-          }, this.$slots.btn ? this.$slots.btn() : []),
+          }, this.$slots.buttons ? this.$slots.buttons() : []),
           this.renderDefaultButtons()
         ])
       ])
@@ -66,7 +66,7 @@ export default {
     },
     renderLayout () {
       const children = []
-      if (this.allowResize && !this.isFillparent && !this.isSizeFixed) {
+      if (this.resizable && !this.isFilled && !this.isSizeFixed) {
         children.push(this.renderResizeHandle())
       }
       if (this.showHeader) {
@@ -120,9 +120,9 @@ export default {
 
     const container = this.renderContainer(children)
 
-    if (this.appendTo) {
+    if (this.target) {
       return h(Teleport, {
-        to: this.appendTo
+        to: this.target
       }, container)
     }
     return container

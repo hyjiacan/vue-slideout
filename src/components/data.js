@@ -2,7 +2,7 @@ export default {
   data () {
     return {
       isVisible: false,
-      isFillparent: false,
+      isFilled: false,
       mousedown: false,
       // The position of where the mouse button down
       mouseDownPosition: {

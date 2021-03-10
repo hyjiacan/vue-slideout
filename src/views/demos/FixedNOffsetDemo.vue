@@ -1,8 +1,8 @@
 <template>
   <div class="demo">
     <slideout v-model="v1" :size="['480px', '200px']" offset="100px" dock="top"
-              :title="text.header" show-fillparent>
-      <code>:size="['480px', '200px']" offset="100px" dock="top" show-fillparent</code>
+              :title="text.header" show-fill-button>
+      <code>:size="['480px', '200px']" offset="100px" dock="top" show-fill-button</code>
       <template #footer>
         <div>{{ text.footer }}</div>
       </template>

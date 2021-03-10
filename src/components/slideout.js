@@ -15,7 +15,7 @@ export default {
     'closing',
     'closed',
     'resize',
-    'update:fillparent',
+    'update:fill-parent',
     'update:modelValue'
   ],
   props: {
@@ -34,7 +34,7 @@ export default {
     /**
      * If to allow resize operation.
      */
-    allowResize: {
+    resizable: {
       type: Boolean,
       default: false
     },
@@ -118,7 +118,7 @@ export default {
     /**
      * Specify the parent element to append slideout to.
      */
-    appendTo: {
+    target: {
       type: [String, HTMLElement],
       default: 'body'
     },
@@ -126,7 +126,7 @@ export default {
       type: Boolean,
       default: false
     },
-    fillparent: {
+    fillParent: {
       type: Boolean,
       default: false
     },
@@ -174,9 +174,9 @@ export default {
     }
   },
   mounted () {
-    this.isFillparent = this.fillparent
+    this.isFilled = this.fillParent
     this.updateParentElement()
-    if (this.allowResize) {
+    if (this.resizable) {
       // Bind the mouse events for resizing.
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
@@ -186,7 +186,7 @@ export default {
   beforeUnmount () {
     this.showContainer = false
     this._removeKeyboardEvent()
-    if (this.allowResize) {
+    if (this.resizable) {
       // Remove the mouse events for resizing.
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)

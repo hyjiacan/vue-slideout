@@ -64,8 +64,8 @@ export default {
         style.width = this.sizeWithUnit[0]
         style.height = this.sizeWithUnit[1]
         // The offset of slideout content,
-        // the value is 0 while fillparent.
-        const offset = this.isFillparent ? 0 : this.offset
+        // the value is 0 while fill-parent.
+        const offset = this.isFilled ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
           case 'left':
@@ -80,8 +80,8 @@ export default {
         }
         return style
       }
-      // Set 100% while fillparent
-      const size = this.isFillparent ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
+      // Set 100% while fill-parent
+      const size = this.isFilled ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
       switch (this.dockOn) {
         case 'right':
         case 'left':
@@ -134,9 +134,9 @@ export default {
         'slideout-animation--enabled': !this.mousedown && !this.disableAnimation,
         'slideout-header--visible': this.showHeader,
         'slideout-footer--visible': this.$slots.footer,
-        'slideout-resize--enabled': this.allowResize,
+        'slideout-is--resizable': this.resizable,
         'slideout-is--fixed': this.isFixed,
-        'slideout-is--filled': this.isFillparent,
+        'slideout-is--filled': this.isFilled,
         'slideout-is--autosize': this.isAutoSize
       }
     },
@@ -170,9 +170,9 @@ export default {
     },
     // If to use fixed position.
     isFixed () {
-      // False if appendTo specified,
+      // False if target specified,
       // except the parent element is document.body.
-      return this.fixed || this.parentElement === document.body || !this.appendTo
+      return this.fixed || this.parentElement === document.body || !this.target
     }
   }
 }

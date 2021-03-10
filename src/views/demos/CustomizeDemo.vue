@@ -84,9 +84,9 @@
         <div>{{ text.footer }}</div>
       </template>
     </slideout>
-    <slideout v-model="v11" size="480px" :title="text.header" append-to="#customize" allow-resize>
+    <slideout v-model="v11" size="480px" :title="text.header" target="#customize" resizable>
       <div>
-        <div><code>append-to="#customize" allow-resize</code></div>
+        <div><code>target="#customize" resizable</code></div>
         <p v-lang>Element <code>#customize</code> <b>SHOULD NOT</b> be <code>position: static</code></p>
         <p v-lang>Resize is available for this instance.</p>
         <p><span style="color: red;">&lt;-</span><span v-lang>Move the cursor onto this border to have a try</span></p>

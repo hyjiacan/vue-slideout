@@ -1,14 +1,14 @@
 {
   "name": "@hyjiacan/vue-slideout",
   "version": "3.0.0-beta2",
-  "description": "A Slide-Out component for Vue.js 2.0",
+  "description": "A Slide-Out component for Vue3",
   "main": "dist/slideout.common.js",
   "unpkg": "dist/slideout.umd.js",
   "jsdelivr": "dist/slideout.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "npx vue-cli-service build --target lib --dest=dist --name slideout src/components/index.js",
-    "build:docs": "npx vue-cli-service build --dest=docs",
+    "build:docs": "npx vue-cli-service build --dest=docs/3.x",
     "release": "yarn run lint & yarn run build & yarn run build:docs & node version.js",
     "lint": "npx vue-cli-service lint",
     "test": "npx vue-cli-service lint & npx vue-cli-service build"

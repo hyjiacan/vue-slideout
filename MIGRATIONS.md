@@ -2,7 +2,7 @@
 
 ## Upgrade to 3.x
 
-This section will guide you to upgrade Slideout to version 3.x.
+This section will guide you to upgrade Slideout from 2.x to version 3.x.
 
 **IMPORTANT BREAKING**
 
@@ -33,11 +33,31 @@ Vue.use(Slideout, {
 })
 ```
 
-#### fillparent
+#### fullscreen
 
 > **BREAKING**
 
-This property has changed to `fill`.
+This property has changed to `fill-parent`.
+
+You should use `v-model:fill-parent` to synchronize the value.
+
+#### showFullscreen
+
+> **BREAKING**
+
+This property has changed to `show-fill-button`.
+
+#### allow-resize
+
+> **BREAKING**
+
+This property has changed to `resizable`.
+
+#### append-to
+
+> **BREAKING**
+
+This property has changed to `target`.
 
 ### Events
 
@@ -69,6 +89,12 @@ Also, `e.close` is no longer exists, use `e.resume` instead.
 
 For more information, see [Event closing](./API.md#closing).
 
+### Slots
+
+#### btn
+
+This slot has change to 'buttons'.
+
 ### CSS
 
 > **BREAKING**
@@ -84,7 +110,7 @@ The CSS class name changes:
 |slideout-enable-animation|slideout-animation--enabled|
 |slideout-show-header|slideout-header--visible|
 |slideout-show-footer|slideout-footer--visible|
-|slideout-allow-resize|slideout-resize--enabled|
+|slideout-resizable|slideout-is--resizable|
 |slideout-fixed|slideout-is--fixed|
 |slideout-fullscreen|slideout-is--filled|
 |slideout-is-autosize|slideout-is--autosize|

@@ -8,11 +8,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/hyjiacan/vue-slideout/badge.svg?branch=master)](https://coveralls.io/github/hyjiacan/vue-slideout?branch=master)
 [![](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
 
-A Slide-Out component for Vue.js 2.0
+A Slide-Out component for Vue3
 
 ### Dependencies
 
-- Vue.js 2.x
+- Vue.js 3.x
 - Less
 
 ## Install
@@ -29,6 +29,8 @@ or
 yarn add @hyjiacan/vue-slideout
 ```
 
+If you need compatible with Vue.js 2.x, use version `@hyjiacan/vue-slideout@2`.
+
 You can get the latest code:
 
 ```bash
@@ -38,8 +40,6 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 or just [download archive](https://github.com/hyjiacan/vue-slideout/archive/master.zip)
 
 ### Browser ENV (umd)
-
-> Since `2.4.0`
 
 Like node-env, a global `Slideout` will be attached onto `window`.
 
