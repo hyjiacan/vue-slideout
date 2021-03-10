@@ -48,15 +48,10 @@
       <a style="margin-left: 10px;"
          href="https://gitee.com/hyjiacan/vue-slideout/blob/master/MIGRATIONS.md#upgrade-to-3x">Gitee</a>
     </p>
-    <ul>
-      <li>
-        <a href="https://codepen.io/hyjiacan/pen/YzGVRvR" target="_blank">Try 2.x on the fly.</a>
-      </li>
-      <li>
-        <a href="https://codepen.io/hyjiacan/pen/LYRZONE" target="_blank">Try 3.x on the fly.</a>
-      </li>
-    </ul>
     <h2 v-lang>Samples</h2>
+    <p>
+      <a href="https://codepen.io/hyjiacan/pen/LYRZONE" target="_blank" v-lang>Try it on the fly.</a>
+    </p>
     <main-page/>
     <div id="tip" v-show="tipVisible">
       {{ tipText }}
@@ -238,8 +233,10 @@ main > code {
 }
 
 .standout {
-  font-weight: bold;
-  color: #aa0000;
+  color: #cf0a0a;
+  background-color: #f8f8f8;
+  padding: 10px;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 800px) {

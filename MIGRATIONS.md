@@ -1,26 +1,22 @@
 # Migrations
 
+The migrations contain some **breaking changes**. 
+
 ## Upgrade to 3.x
 
-This section will guide you to upgrade Slideout from 2.x to version 3.x.
+This section will guide you to upgrade Slideout from 2.x to 3.x.
 
-**IMPORTANT BREAKING**
-
-The component name has been changed to `Slideout` (From `SlideOut`).
+The component name has been renamed to `Slideout` (From `SlideOut`).
 
 ### Props
 
 #### visible
 
-> **BREAKING**
-
-This prop `visible` has been removed, use `v-model` instead.
+It has been removed, use `v-model` instead.
 
 #### render-when-visible
 
-> **BREAKING**
-
-The default value of `render-when-visible` has been changed to `true`.
+The default value has been changed to `true`.
 
 You can use the follow codes to keep it in `false`:
 
@@ -35,35 +31,27 @@ Vue.use(Slideout, {
 
 #### fullscreen
 
-> **BREAKING**
-
-This property has changed to `fill-parent`.
+It has been renamed to `fill-parent`.
 
 You should use `v-model:fill-parent` to synchronize the value.
 
 #### showFullscreen
 
-> **BREAKING**
-
-This property has changed to `show-fill-button`.
+It has been renamed to `show-fill-button`.
 
 #### allow-resize
 
-> **BREAKING**
-
-This property has changed to `resizable`.
+It has been renamed to `resizable`.
 
 #### append-to
 
-> **BREAKING**
-
-This property has changed to `target`.
+It has been renamed to `target`.
 
 ### Events
 
 #### before-open
 
-Event `before-open` is removed, use `opening` instead.
+It has been removed, use `opening` instead.
 
 You can just replace event `v-on:before-open` with `v-on:opening`.
 
@@ -71,7 +59,7 @@ For more information, see [Event opening](./API.md#opening).
 
 #### open
 
-Event `open` is removed, use `opened` instead.
+It has been removed, use `opened` instead.
 
 You can just replace event `v-on:open` with `v-on:opened`.
 
@@ -79,7 +67,7 @@ For more information, see [Event opened](./API.md#opened).
 
 #### close
 
-Event `close` is removed, use `closing` instead.
+It has been removed, use `closing` instead.
 
 With event `closing`, You should replace event `v-on:close` with `v-on:closing`.
 
@@ -93,27 +81,25 @@ For more information, see [Event closing](./API.md#closing).
 
 #### btn
 
-This slot has change to 'buttons'.
+It has been renamed to 'buttons'.
 
 ### CSS
 
-> **BREAKING**
+All the css class prefix `vue-slideout` has been renamed to `slideout`.
 
-All the css class prefix `vue-slideout` has been changed to `slideout`.
+Here is the changelist of CSS class name:
 
-The CSS class name changes:
-
-|Old|New|
+|Old(2.x)|New(3.x)|
 |---|---|
 |slideout-dock-*|slideout-dock--*|
 |slideout-visible|slideout-is--visible|
 |slideout-enable-animation|slideout-animation--enabled|
 |slideout-show-header|slideout-header--visible|
 |slideout-show-footer|slideout-footer--visible|
-|slideout-resizable|slideout-is--resizable|
+|slideout-allow-resize|slideout-is--resizable|
 |slideout-fixed|slideout-is--fixed|
 |slideout-fullscreen|slideout-is--filled|
-|slideout-is-autosize|slideout-is--autosize|
+|slideout-autosize|slideout-is--autosize|
 |slideout-layout|slideout-panel|
 |slideout-title-text|slideout-header--text|
 |slideout-title-buttons|slideout-header--buttons|
