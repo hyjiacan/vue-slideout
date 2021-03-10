@@ -20,13 +20,13 @@ A Slide-Out component for Vue3
 ### NodeJS ENV (commonjs)
 
 ```bash
-npm i @hyjiacan/vue-slideout
+npm i @hyjiacan/vue-slideout@3
 ```
 
 or
 
 ```bash
-yarn add @hyjiacan/vue-slideout
+yarn add @hyjiacan/vue-slideout@3
 ```
 
 If you need compatible with Vue.js 2.x, use version `@hyjiacan/vue-slideout@2`.
@@ -105,11 +105,11 @@ export default {
   methods: {
     onClosing (e) {
       // prevent close and wait
-      e.wait = true
+      e.pause = true
       // close after 3 seconds
       setTimeout(() => {
         // assign true to close, do nothing or assign false to cancel close.
-        e.close = true
+        e.resume = true
       }, 3000)
     }
   }
@@ -120,7 +120,9 @@ export default {
 - For more usage, see https://hyjiacan.github.io/vue-slideout/
 - API reference: [API.md](./API.md)
 
-Try it on CodePen on the fly [2.x](https://codepen.io/hyjiacan/pen/YzGVRvR) [3.x](https://codepen.io/hyjiacan/pen/LYRZONE).
+Try it on the fly [CodePen][codepen]
+
+[codepen]: https://codepen.io/hyjiacan/pen/LYRZONE
 
 ## Development
 

@@ -20,13 +20,13 @@
 ### Node 环境 (commonjs)
 
 ```bash
-npm i @hyjiacan/vue-slideout
+npm i @hyjiacan/vue-slideout@3
 ```
 
 或
 
 ```bash
-yarn add @hyjiacan/vue-slideout
+yarn add @hyjiacan/vue-slideout@3
 ```
 
 你若想要兼容 Vue.js 2.x，那么使用版本 `@hyjiacan/vue-slideout@2`。
@@ -106,11 +106,11 @@ export default {
   methods: {
     onClosing (e) {
       // 阻止关闭，等待同步或异步的操作
-      e.wait = true
+      e.pause = true
       // 3秒后关闭slide
       setTimeout(() => {
         // 设置 close 为 true 以关闭，设置为 false 为什么也不做保持打开状态
-        e.close = true
+        e.resume = true
       }, 3000)
     }
   }
@@ -121,7 +121,9 @@ export default {
 - 更多的用法，参见 http://hyjiacan.gitee.io/vue-slideout
 - API文档参见 [API.zh-CN.md](./API.zh-CN.md)
 
-马上到 CodePen 试试 [2.x](https://codepen.io/hyjiacan/pen/YzGVRvR) [3.x](https://codepen.io/hyjiacan/pen/LYRZONE)。
+马上到 [CodePen][codepen]
+
+[codepen]: https://codepen.io/hyjiacan/pen/LYRZONE
 
 ## 开发
 

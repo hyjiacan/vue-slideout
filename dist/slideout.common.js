@@ -3041,7 +3041,7 @@ var es_array_concat = __webpack_require__("99af");
     },
 
     /**
-     * Close slideout after ESC pressed.
+     * Close slideout after Esc pressed.
      * @param {KeyboardEvent} e
      */
     onKeydown: function onKeydown(e) {
@@ -3455,7 +3455,7 @@ IconExitFill_script.render = IconExitFillvue_type_template_id_96553b5a_render
     },
 
     /**
-     * Whether to ignore ESC.
+     * Whether to ignore Esc.
      */
     ignoreEsc: {
       type: Boolean,
