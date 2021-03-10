@@ -70,14 +70,14 @@
 
 > Is the close button visible.
 
-#### show-fullscreen (optional)
+#### show-fill-button (optional)
 
 > `since 2.3.0`
 
 - type `Boolean`
 - default `false`
 
-> Is the fullscreen button visible.
+> Is the fill button visible.
 
 #### mask-color (optional)
 
@@ -146,15 +146,15 @@
 
 > Whether to ignore `esc` key, set `false` or keep default to close component while press `ESC`.
 
-#### fullscreen (optional)
+#### fillparent (optional)
 
 > `since 2.1.3`
 
 - type `Boolean`
 - default `false`
 
-> Whether to enable fullscreen (resize is disabled if value is `true`),
-> modifier `.sync` is available (will exit fullscreen after close).
+> Whether to enable fillparent (resize is disabled if value is `true`),
+> modifier `.sync` is available (will exit fillparent after close).
 
 #### fixed (optional)
 

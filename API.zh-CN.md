@@ -70,7 +70,7 @@
 
 > 是否显示关闭按钮。
 
-#### show-fullscreen  (可选)
+#### show-fill-button  (可选)
 
 > `since 2.3.0`
 
@@ -144,7 +144,7 @@
 
 > 是否忽略 `Esc` 键，设置为`false`或保持默认值时，按下`Esc`不会关闭。
 
-#### fullscreen  (可选)
+#### fillparent  (可选)
 
 > `since 2.1.3`
 

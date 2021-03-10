@@ -7,7 +7,7 @@
     <resize-demo/>
     <long-header-demo/>
     <hotkey-demo/>
-    <fullscreen-demo/>
+    <fillparent-demo/>
     <fixed-n-offset-demo/>
     <auto-size-demo/>
   </div>
@@ -17,7 +17,7 @@
 /* eslint-disable */
 import DockPositionDemo from './demos/DockPositionDemo'
 import FixedNOffsetDemo from './demos/FixedNOffsetDemo'
-import FullscreenDemo from './demos/FullscreenDemo'
+import FillparentDemo from './demos/FillparentDemo'
 import HotkeyDemo from './demos/HotkeyDemo'
 import LongHeaderDemo from './demos/LongHeaderDemo'
 import ResizeDemo from './demos/ResizeDemo'
@@ -34,7 +34,7 @@ export default {
     ResizeDemo,
     LongHeaderDemo,
     HotkeyDemo,
-    FullscreenDemo,
+    FillparentDemo,
     FixedNOffsetDemo,
     DockPositionDemo
   }

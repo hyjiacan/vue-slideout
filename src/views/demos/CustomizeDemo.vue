@@ -4,7 +4,7 @@
       <template #header>
         <div>{{ text.header }}</div>
       </template>
-      <div v-lang>Close/Fullscreen button would be removed while use <code>slot="header"</code></div>
+      <div v-lang>Close/Fill-parent button would be removed while use <code>slot="header"</code></div>
       <template #footer>
         <div>{{ text.footer }}</div>
       </template>

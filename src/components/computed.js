@@ -54,8 +54,8 @@ export default {
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
-    // The styles of layout panel
-    layoutStyle () {
+    // The styles of panel panel
+    panelStyle () {
       const style = {}
 
       // Styles for fixed
@@ -64,8 +64,8 @@ export default {
         style.width = this.sizeWithUnit[0]
         style.height = this.sizeWithUnit[1]
         // The offset of slideout content,
-        // the value is 0 while fullscreen.
-        const offset = this.isFullscreen ? 0 : this.offset
+        // the value is 0 while fillparent.
+        const offset = this.isFillparent ? 0 : this.offset
         switch (this.dockOn) {
           case 'right':
           case 'left':
@@ -80,8 +80,8 @@ export default {
         }
         return style
       }
-      // Set 100% while fullscreen
-      const size = this.isFullscreen ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
+      // Set 100% while fillparent
+      const size = this.isFillparent ? '100%' : (this.resizeValue > 0 ? `${this.resizeValue}px` : this.sizeWithUnit)
       switch (this.dockOn) {
         case 'right':
         case 'left':
@@ -127,17 +127,17 @@ export default {
       return {
         'slideout': true,
         [this.customClass || '']: true,
-        [`slideout-dock-${this.dockOn}`]: true,
-        'slideout-visible': this.activeVisibleClass,
+        [`slideout-dock--${this.dockOn}`]: true,
+        'slideout-is--visible': this.activeVisibleClass,
         // Disable the animations while mouse button pressed,
         // to make the operation smoothly.
-        'slideout-enable-animation': !this.mousedown && !this.disableAnimation,
-        'slideout-show-header': this.showHeader,
-        'slideout-show-footer': this.$slots.footer,
-        'slideout-allow-resize': this.allowResize,
-        'slideout-fixed': this.isFixed,
-        'slideout-fullscreen': this.isFullscreen,
-        'slideout-autosize': this.isAutoSize
+        'slideout-animation--enabled': !this.mousedown && !this.disableAnimation,
+        'slideout-header--visible': this.showHeader,
+        'slideout-footer--visible': this.$slots.footer,
+        'slideout-resize--enabled': this.allowResize,
+        'slideout-is--fixed': this.isFixed,
+        'slideout-is--filled': this.isFillparent,
+        'slideout-is--autosize': this.isAutoSize
       }
     },
     headerStyle () {
@@ -163,7 +163,7 @@ export default {
       if (this.showClose) {
         w += 32
       }
-      if (this.showFullscreen) {
+      if (this.showFillButton) {
         w += 32
       }
       return w

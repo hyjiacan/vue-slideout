@@ -1,4 +1,4 @@
-.slideout-fullscreen {
+.slideout-is--filled {
   position: fixed;
   overflow: hidden;
   left: 0;
@@ -6,8 +6,8 @@
   right: 0;
   bottom: 0;
 
-  > .slideout-layout {
-    > .slideout-header .slideout-btn-fullscreen {
+  > .slideout-panel {
+    > .slideout-header .slideout-btn--fill {
       svg:first-child {
         display: none;
       }
@@ -18,8 +18,8 @@
     }
   }
 
-  &.slideout-visible {
-    > .slideout-layout {
+  &.slideout-is--visible {
+    > .slideout-panel {
       width: 100% !important;
       height: 100% !important;
     }

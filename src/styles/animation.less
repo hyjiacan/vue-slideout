@@ -1,31 +1,31 @@
 @duration: 312ms;
 
-.slideout-enable-animation {
+.slideout-animation--enabled {
   opacity: 0;
   transition: opacity @duration;
   will-change: opacity;
 
-  &.slideout-visible {
+  &.slideout-is--visible {
     opacity: 1;
     transition-duration: @duration / 2;
     transition-timing-function: ease-out;
 
-    > .slideout-layout {
+    > .slideout-panel {
       transition-duration: @duration / 2;
     }
   }
 
-  > .slideout-layout {
+  > .slideout-panel {
     will-change: transform;
     transition: transform @duration, width @duration, height @duration;
 
     > .slideout-header {
-      .slideout-btn-close, .slideout-btn-fullscreen {
+      .slideout-btn--close, .slideout-btn--fill {
         transition: border-color @duration;
       }
     }
 
-    > .slideout-drag-handle {
+    > .slideout-resize--handle {
       transition: background-color @duration;
     }
   }

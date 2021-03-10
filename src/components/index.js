@@ -1,4 +1,4 @@
-import Slideout from './Slideout.js'
+import Slideout from './slideout.js'
 
 function setDefaultProps (customize) {
   for (let prop in customize) {
@@ -26,6 +26,6 @@ export default {
     if (defaults) {
       setDefaultProps(defaults)
     }
-    app.component('Slideout', Slideout)
+    app.component(Slideout.name, Slideout)
   }
 }

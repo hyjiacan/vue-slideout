@@ -2,7 +2,7 @@ export default {
   data () {
     return {
       isVisible: false,
-      isFullscreen: false,
+      isFillparent: false,
       mousedown: false,
       // The position of where the mouse button down
       mouseDownPosition: {

@@ -12,24 +12,24 @@
   display: none;
   will-change: auto;
 
-  &-fixed {
+  &--fixed {
     position: fixed;
   }
 
-  &-show-header {
-    > .slideout-layout > .slideout-content {
+  &-header--visible {
+    > .slideout-panel > .slideout-content {
       top: 48px;
     }
   }
 
-  &-show-footer {
-    > .slideout-layout > .slideout-content {
+  &-footer--visible {
+    > .slideout-panel > .slideout-content {
       bottom: 48px;
     }
   }
 }
 
-.slideout-layout {
+.slideout-panel {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -78,47 +78,47 @@
   background: inherit;
 }
 
-.slideout-dock-top {
-  > .slideout-layout {
+.slideout-dock--top {
+  > .slideout-panel {
     top: 0;
     transform: translateY(-100%);
   }
 }
 
-.slideout-dock-right {
-  > .slideout-layout {
+.slideout-dock--right {
+  > .slideout-panel {
     right: 0;
     transform: translateX(100%);
   }
 }
 
-.slideout-dock-bottom {
-  > .slideout-layout {
+.slideout-dock--bottom {
+  > .slideout-panel {
     bottom: 0;
     transform: translateY(100%);
   }
 }
 
-.slideout-dock-left {
-  > .slideout-layout {
+.slideout-dock--left {
+  > .slideout-panel {
     left: 0;
     transform: translateX(-100%);
   }
 }
 
-.slideout-lock-scroll {
+.slideout-helper--scroll-locker {
   overflow: hidden !important;
 }
 
-.slideout-visible {
-  &.slideout-dock-top, &.slideout-dock-bottom {
-    > .slideout-layout {
+.slideout-is--visible {
+  &.slideout-dock--top, &.slideout-dock--bottom {
+    > .slideout-panel {
       transform: translateY(0);
     }
   }
 
-  &.slideout-dock-left, &.slideout-dock-right {
-    > .slideout-layout {
+  &.slideout-dock--left, &.slideout-dock--right {
+    > .slideout-panel {
       transform: translateX(0);
     }
   }
@@ -126,6 +126,6 @@
 
 @import "header";
 @import "animation";
-@import "fullscreen";
+@import "fillparent";
 @import "resize";
 @import "autosize";

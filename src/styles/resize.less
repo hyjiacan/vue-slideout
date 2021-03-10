@@ -3,7 +3,7 @@
 @drag-handle-bar-size: 5px;
 @drag-handle-color: rgba(92, 143, 235, 0.63);
 
-.slideout-drag-handle {
+.slideout-resize--handle {
   position: absolute;
   z-index: 60;
   user-select: none;
@@ -20,9 +20,9 @@
   }
 }
 
-.slideout-dock-top {
-  > .slideout-layout {
-    > .slideout-drag-handle {
+.slideout-dock--top {
+  > .slideout-panel {
+    > .slideout-resize--handle {
       bottom: @drag-handle-bar-padding;
       left: 0;
       right: 0;
@@ -32,9 +32,9 @@
   }
 }
 
-.slideout-dock-right {
-  > .slideout-layout {
-    > .slideout-drag-handle {
+.slideout-dock--right {
+  > .slideout-panel {
+    > .slideout-resize--handle {
       top: 0;
       bottom: 0;
       left: @drag-handle-bar-padding;
@@ -44,9 +44,9 @@
   }
 }
 
-.slideout-dock-bottom {
-  > .slideout-layout {
-    > .slideout-drag-handle {
+.slideout-dock--bottom {
+  > .slideout-panel {
+    > .slideout-resize--handle {
       top: @drag-handle-bar-padding;
       left: 0;
       right: 0;
@@ -56,9 +56,9 @@
   }
 }
 
-.slideout-dock-left {
-  > .slideout-layout {
-    > .slideout-drag-handle {
+.slideout-dock--left {
+  > .slideout-panel {
+    > .slideout-resize--handle {
       top: 0;
       right: @drag-handle-bar-padding;
       bottom: 0;
@@ -68,15 +68,15 @@
   }
 }
 
-.slideout-allow-resize {
-  &.slideout-dock-left, &.slideout-dock-right {
-    > .slideout-layout {
+.slideout-resize-enabled {
+  &.slideout-dock--left, &.slideout-dock--right {
+    > .slideout-panel {
       will-change: width;
     }
   }
 
-  &.slideout-dock-top, &.slideout-dock-bottom {
-    > .slideout-layout {
+  &.slideout-dock--top, &.slideout-dock--bottom {
+    > .slideout-panel {
       will-change: height;
     }
   }

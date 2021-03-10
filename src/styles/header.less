@@ -12,14 +12,14 @@
   background: inherit;
 }
 
-.slideout-title-text {
+.slideout-header--text {
   line-height: 36px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.slideout-title-buttons {
+.slideout-header--buttons {
   position: absolute;
   right: 0;
   top: 0;
@@ -28,7 +28,7 @@
   box-sizing: border-box;
 }
 
-.slideout-btn-close, .slideout-btn-fullscreen {
+.slideout-btn--close, .slideout-btn--fill {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -60,7 +60,7 @@
   }
 }
 
-.slideout-btn-fullscreen {
+.slideout-btn--fill {
   svg:first-child {
     display: inline-block;
   }
@@ -70,28 +70,28 @@
   }
 }
 
-.slideout-dock-right {
-  > .slideout-layout {
-    > .slideout-header .slideout-btn-close svg {
+.slideout-dock--right {
+  > .slideout-panel {
+    > .slideout-header .slideout-btn--close svg {
       transform: rotate(90deg);
     }
   }
 }
 
-.slideout-dock-bottom {
-  > .slideout-layout {
+.slideout-dock--bottom {
+  > .slideout-panel {
     > .slideout-header {
-      .slideout-btn-close svg {
+      .slideout-btn--close svg {
         transform: rotate(180deg);
       }
     }
   }
 }
 
-.slideout-dock-left {
-  > .slideout-layout {
+.slideout-dock--left {
+  > .slideout-panel {
     > .slideout-header {
-      .slideout-btn-close svg {
+      .slideout-btn--close svg {
         transform: rotate(-90deg);
       }
     }

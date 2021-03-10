@@ -10,11 +10,11 @@ export default {
         this.tryClose()
       }
     },
-    fullscreen (fullscreen) {
-      if (fullscreen === this.isFullscreen) {
+    fillparent (fillparent) {
+      if (fillparent === this.isFillparent) {
         return
       }
-      this.toggleFullscreen(fullscreen)
+      this.toggleFillparent(fillparent)
     },
     isVisible (v) {
       this.$nextTick(() => {
@@ -31,9 +31,9 @@ export default {
 
       // Toggle the scroll class.
       if (v) {
-        document.body.classList.add('slideout-lock-scroll')
+        document.body.classList.add('slideout-helper--scroll-locker')
       } else {
-        document.body.classList.remove('slideout-lock-scroll')
+        document.body.classList.remove('slideout-helper--scroll-locker')
       }
     }
   }

@@ -3,34 +3,34 @@ import { h } from 'vue'
 import IconArrow from './icon/IconArrow'
 import IconCross from './icon/IconCross'
 
-import IconFullscreen from './icon/IconFullscreen'
-import IconFullscreenExit from './icon/IconFullscreenExit'
+import IconFill from './icon/IconFill'
+import IconExitFill from './icon/IconExitFill'
 
 export default {
   methods: {
     renderDefaultButtons () {
       const buttons = []
 
-      if (this.showFullscreen) {
+      if (this.showFillButton) {
         buttons.push(h('button', {
-          class: 'slideout-btn-fullscreen',
-          onClick: this.toggleFullscreen
-        }, [h(IconFullscreen), h(IconFullscreenExit)]))
+          class: 'slideout-btn--fill',
+          onClick: this.toggleFillparent
+        }, [h(IconFill), h(IconExitFill)]))
       }
       if (this.showClose) {
         buttons.push(h('button', {
-          class: 'slideout-btn-close',
+          class: 'slideout-btn--close',
           onClick: this.tryClose
         }, this.arrowButton ? h(IconArrow) : h(IconCross)))
       }
 
       return this.span({
-        class: 'slideout-default-buttons'
+        class: 'slideout-header--buttons-default'
       }, buttons)
     },
     renderResizeHandle () {
       return this.div({
-        class: 'slideout-drag-handle',
+        class: 'slideout-resize--handle',
         onMousedown: this.mouseDownHandler
       })
     },
@@ -40,14 +40,14 @@ export default {
         style: this.headerStyle
       }, this.$slots.header ? this.$slots.header() : [
         this.div({
-          class: 'slideout-title-text'
+          class: 'slideout-header--text'
         }, this.title),
         this.div({
-          class: 'slideout-title-buttons',
+          class: 'slideout-header--buttons',
           ref: 'buttons'
         }, [
           this.span({
-            class: 'slideout-custom-buttons'
+            class: 'slideout-header--buttons-custom'
           }, this.$slots.btn ? this.$slots.btn() : []),
           this.renderDefaultButtons()
         ])
@@ -66,7 +66,7 @@ export default {
     },
     renderLayout () {
       const children = []
-      if (this.allowResize && !this.isFullscreen && !this.isSizeFixed) {
+      if (this.allowResize && !this.isFillparent && !this.isSizeFixed) {
         children.push(this.renderResizeHandle())
       }
       if (this.showHeader) {
@@ -77,9 +77,9 @@ export default {
         children.push(this.renderFooter())
       }
       return this.div({
-        class: 'slideout-layout',
-        style: this.layoutStyle,
-        ref: 'layout'
+        class: 'slideout-panel',
+        style: this.panelStyle,
+        ref: 'panel'
       }, children)
     },
     renderMask () {
@@ -104,6 +104,10 @@ export default {
     }
   },
   render () {
+    if (this.renderWhenVisible && !this.modelValue) {
+      return null
+    }
+
     const children = []
 
     if (this.showMask) {
@@ -114,15 +118,11 @@ export default {
 
     const container = this.renderContainer(children)
 
-    return h('teleport', {
-      to: this.appendTo,
-      disabled: this.appendTo
-    }, container)
-    // if (this.appendTo) {
-    //   return h('teleport', {
-    //     to: this.parentElement
-    //   }, container)
-    // }
-    // return container
+    if (this.appendTo) {
+      return h('teleport', {
+        to: this.parentElement
+      }, container)
+    }
+    return container
   }
 }

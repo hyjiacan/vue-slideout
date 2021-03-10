@@ -103,9 +103,9 @@ export default {
           }, 10)
         })
       } else {
-        if (this.isFullscreen) {
-          // Update the value of "fullscreen" for "fullscreen.sync" to exit fullscreen after slideout closed.
-          this.$emit('update:fullscreen', false)
+        if (this.isFillparent) {
+          // Update the value of "fillparent" for "fillparent.sync" to exit fillparent after slideout closed.
+          this.$emit('update:fillparent', false)
         }
         this.activeVisibleClass = false
         this.$nextTick(() => {
@@ -136,7 +136,7 @@ export default {
       }, this.animationDuration)
     },
     _doOpen () {
-      this.$emit('opened', this.$refs.layout)
+      this.$emit('opened', this.$refs.panel)
       if (this.visible !== this.isVisible) {
         this._updateVisibleValue(true)
       }
@@ -149,16 +149,16 @@ export default {
         this._updateVisibleValue(false)
       }
     },
-    toggleFullscreen (fullscreen) {
-      if (typeof fullscreen !== 'boolean') {
-        this.isFullscreen = !this.isFullscreen
-      } else if (this.isFullscreen === fullscreen) {
+    toggleFillparent (fillparent) {
+      if (typeof fillparent !== 'boolean') {
+        this.isFillparent = !this.isFillparent
+      } else if (this.isFillparent === fillparent) {
         return
       } else {
-        this.isFullscreen = fullscreen
+        this.isFillparent = fillparent
       }
-      if (this.isFullscreen !== this.fullscreen) {
-        this.$emit('update:fullscreen', this.isFullscreen)
+      if (this.isFillparent !== this.fillparent) {
+        this.$emit('update:fillparent', this.isFillparent)
       }
     },
     /**
@@ -201,15 +201,15 @@ export default {
      * @return {{width: Number, height: Number}}
      */
     getMyownSize () {
-      const rect = this.$refs.layout.getClientRects()[0]
+      const rect = this.$refs.panel.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
     mouseDownHandler (e) {
-      if (this.isFullscreen) {
-        // Resize is disabled while fullscreen.
+      if (this.isFillparent) {
+        // Resize is disabled while fillparent.
         return
       }
       this.mousedown = true
@@ -220,8 +220,8 @@ export default {
       this.originSize = this.getMyownSize()
     },
     mouseMoveHandler (e) {
-      if (this.isFullscreen) {
-        // Resize is disabled while fullscreen.
+      if (this.isFillparent) {
+        // Resize is disabled while fillparent.
         return
       }
       // Resize is disabled while the mouse button is not pressed.

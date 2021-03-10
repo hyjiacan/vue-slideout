@@ -15,7 +15,7 @@ export default {
     'closing',
     'closed',
     'resize',
-    'update:fullscreen',
+    'update:fillparent',
     'update:modelValue'
   ],
   props: {
@@ -126,7 +126,7 @@ export default {
       type: Boolean,
       default: false
     },
-    fullscreen: {
+    fillparent: {
       type: Boolean,
       default: false
     },
@@ -138,9 +138,9 @@ export default {
       default: true
     },
     /**
-     * Whether to show the fullscreen button.
+     * Whether to show the fill-parent button.
      */
-    showFullscreen: {
+    showFillButton: {
       type: Boolean,
       default: false
     },
@@ -174,7 +174,7 @@ export default {
     }
   },
   mounted () {
-    this.isFullscreen = this.fullscreen
+    this.isFillparent = this.fillparent
     this.updateParentElement()
     if (this.allowResize) {
       // Bind the mouse events for resizing.
@@ -195,6 +195,6 @@ export default {
       this.tryClose()
     }
     // Cancel the scroll lock.
-    document.body.classList.remove('vue-slideout-lock-scroll')
+    document.body.classList.remove('slideout-helper--scroll-locker')
   }
 }
