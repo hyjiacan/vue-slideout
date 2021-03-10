@@ -152,7 +152,7 @@
           <button @click="v10 = true" v-lang>No Mask</button>
         </li>
         <li>
-          <button @click="v12 = true" v-lang>Ignore ESC key press</button>
+          <button @click="v12 = true" v-lang>Ignore Esc key press</button>
         </li>
         <li>
           <button @click="v13 = true" v-lang>Customize header buttons</button>

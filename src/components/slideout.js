@@ -101,7 +101,7 @@ export default {
       default: true
     },
     /**
-     * Whether to ignore ESC.
+     * Whether to ignore Esc.
      */
     ignoreEsc: {
       type: Boolean,

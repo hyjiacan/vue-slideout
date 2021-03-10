@@ -163,7 +163,7 @@
 - type `Boolean`
 - default `false`
 
-> Whether to ignore `esc` key, set `false` or keep default to close component while press `ESC`.
+> Whether to ignore `esc` key, set `false` or keep default to close component while press `Esc`.
 
 #### arrow-button (optional)
 

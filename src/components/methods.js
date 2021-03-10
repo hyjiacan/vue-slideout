@@ -292,7 +292,7 @@ export default {
       this.mousedown = false
     },
     /**
-     * Close slideout after ESC pressed.
+     * Close slideout after Esc pressed.
      * @param {KeyboardEvent} e
      */
     onKeydown (e) {

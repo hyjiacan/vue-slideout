@@ -1,6 +1,6 @@
 <template>
   <div id="demo">
-    <p class="standout" v-lang>You can press <code>ESC</code> key to close component.</p>
+    <p class="standout" v-lang>You can press <code>Esc</code> key to close component.</p>
     <dock-position-demo/>
     <customize-demo/>
     <event-demo/>
