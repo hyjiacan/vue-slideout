@@ -25,13 +25,14 @@
   "author": "hyjiacan",
   "license": "MIT",
   "files": [
-    "lib",
-    "src/components",
+    "dist",
+    "src",
     "LICENSE",
     "README.md",
     "README.zh-CN.md",
     "API.md",
-    "API.zh-CN.md"
+    "API.zh-CN.md",
+    "MIGRATIONS.md"
   ],
   "publishConfig": {
     "access": "public",
