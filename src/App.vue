@@ -86,7 +86,7 @@ window.tagsCallback = function (response) {
   source.href = latest.tag
   source.innerHTML = latest.version
 
-  // 加载日期
+  // Load the release date
   window.jsonp(tag.commit.url, 'dateCallback')
 }
 

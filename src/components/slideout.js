@@ -185,7 +185,6 @@ export default {
   },
   beforeUnmount () {
     this.showContainer = false
-    this._removeKeyboardEvent()
     if (this.resizable) {
       // Remove the mouse events for resizing.
       document.removeEventListener('mousemove', this.mouseUpHandler)

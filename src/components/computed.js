@@ -143,7 +143,7 @@ export default {
     headerStyle () {
       const style = {}
 
-      // 当自定义 header 时，不需要计算
+      // No need to compute the header style while the header slot is specified
       if (this.$slots.header) {
         return style
       }

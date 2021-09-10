@@ -5,7 +5,7 @@ import languages from '@/assets/langs.json'
 
 function getLang () {
   const langOrder = window.navigator.languages || [window.navigator.language]
-  // 从浏览器读取默认的语言
+  // Read the default language from browser options
   for (let i = 0; i < langOrder.length; i++) {
     let lang = langOrder[i]
     if (languages.hasOwnProperty(lang)) {

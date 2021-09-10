@@ -303,7 +303,7 @@ export default {
         return
       }
       // 27: Escape key
-      if (e.code !== 27 && e.keyCode !== 27 && e.which !== 27) {
+      if (e.code !== 'Escape' && e.keyCode !== 27 && e.which !== 27) {
         return
       }
       // Ignore input controls.
