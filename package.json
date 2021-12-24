@@ -1,6 +1,6 @@
 {
   "name": "@hyjiacan/vue-slideout",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A Slide-Out component for Vue3",
   "main": "dist/slideout.common.js",
   "unpkg": "dist/slideout.umd.js",
