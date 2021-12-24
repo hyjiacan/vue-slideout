@@ -1,15 +1,14 @@
 
 .slideout-header {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
   height: 48px;
   padding: 5px 10px;
   box-sizing: border-box;
   border-bottom: 1px solid #EEE;
-  z-index: 50;
   background: inherit;
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .slideout-header--text {
@@ -20,12 +19,8 @@
 }
 
 .slideout-header--buttons {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 48px;
-  padding: 6px 10px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .slideout-btn--close, .slideout-btn--fill {

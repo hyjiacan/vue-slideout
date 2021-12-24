@@ -16,18 +16,6 @@
   &-is--fixed {
     position: fixed;
   }
-
-  &-header--visible {
-    > .slideout-panel > .slideout-content {
-      top: 48px;
-    }
-  }
-
-  &-footer--visible {
-    > .slideout-panel > .slideout-content {
-      bottom: 48px;
-    }
-  }
 }
 
 .slideout-panel {
@@ -42,6 +30,8 @@
   border: 1px solid #EEE;
   box-sizing: border-box;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .slideout-mask {
@@ -55,30 +45,25 @@
 }
 
 .slideout-content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: auto;
-  z-index: 30;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  flex: 1 1 auto;
 }
 
 .slideout-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   height: 48px;
   padding: 5px 10px;
   line-height: 36px;
   box-sizing: border-box;
   border-top: 1px solid #EEE;
-  z-index: 50;
   background: inherit;
+  flex: 0 0 auto;
 }
 
 .slideout-dock--top {

@@ -54,7 +54,7 @@ export default {
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
-    // The styles of panel panel
+    // The styles of panel
     panelStyle () {
       const style = {}
 
@@ -94,35 +94,6 @@ export default {
       }
       return style
     },
-    contentStyles () {
-      const style = {}
-      if (!this.isAutoSize) {
-        return style
-      }
-      let padding = 0
-
-      switch (this.dockOn) {
-        case 'right':
-        case 'left':
-          break
-        case 'bottom':
-        case 'top':
-          if (this.showHeader) {
-            padding += 48
-          }
-          if (this.showFooter) {
-            padding += 48
-          }
-          if (this.maxSize) {
-            style.maxHeight = `${this.maxSize - padding}px`
-          }
-          if (this.minSize) {
-            style.minHeight = `${this.minSize - padding}px`
-          }
-          break
-      }
-      return style
-    },
     containerClasses () {
       return {
         'slideout': true,
@@ -139,34 +110,6 @@ export default {
         'slideout-is--filled': this.isFilled,
         'slideout-is--autosize': this.isAutoSize
       }
-    },
-    headerStyle () {
-      const style = {}
-
-      // No need to compute the header style while the header slot is specified
-      if (this.$slots.header) {
-        return style
-      }
-
-      style.paddingRight = `${this.defaultButtonsWidth}px`
-
-      if (!this.headerButtons) {
-        return style
-      }
-      const btnStyle = window.getComputedStyle(this.headerButtons)
-      style.paddingRight = `${this.defaultButtonsWidth + parseInt(btnStyle.width) + 5}px`
-      return style
-    },
-    defaultButtonsWidth () {
-      // 20: padding
-      let w = 20
-      if (this.showClose) {
-        w += 32
-      }
-      if (this.showFillButton) {
-        w += 32
-      }
-      return w
     },
     // If to use fixed position.
     isFixed () {

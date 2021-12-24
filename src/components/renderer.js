@@ -1,4 +1,4 @@
-import { h, Teleport } from 'vue'
+import {h, Teleport} from 'vue'
 
 import IconArrow from './icon/IconArrow'
 import IconCross from './icon/IconCross'
@@ -8,7 +8,7 @@ import IconExitFill from './icon/IconExitFill'
 
 export default {
   methods: {
-    renderDefaultButtons () {
+    renderDefaultButtons() {
       const buttons = []
 
       if (this.showFillButton) {
@@ -28,16 +28,15 @@ export default {
         class: 'slideout-header--buttons-default'
       }, buttons)
     },
-    renderResizeHandle () {
+    renderResizeHandle() {
       return this.div({
         class: 'slideout-resize--handle',
         onMousedown: this.mouseDownHandler
       })
     },
-    renderHeader () {
+    renderHeader() {
       return this.div({
-        class: 'slideout-header',
-        style: this.headerStyle
+        class: 'slideout-header'
       }, this.$slots.header ? this.$slots.header() : [
         this.div({
           class: 'slideout-header--text'
@@ -53,18 +52,17 @@ export default {
         ])
       ])
     },
-    renderContent () {
+    renderContent() {
       return this.div({
         class: 'slideout-content',
-        style: this.contentStyles
       }, this.$slots.default())
     },
-    renderFooter () {
+    renderFooter() {
       return this.div({
         class: 'slideout-footer'
       }, this.$slots.footer ? this.$slots.footer() : [])
     },
-    renderLayout () {
+    renderLayout() {
       const children = []
       if (this.resizable && !this.isFilled && !this.isSizeFixed) {
         children.push(this.renderResizeHandle())
@@ -82,14 +80,14 @@ export default {
         ref: 'panel'
       }, children)
     },
-    renderMask () {
+    renderMask() {
       return this.div({
         class: 'slideout-mask',
         style: this.maskStyle,
         onClick: this.onMaskClick
       })
     },
-    renderContainer (children) {
+    renderContainer(children) {
       return this.div({
         class: this.containerClasses,
         style: this.containerStyle,
@@ -98,14 +96,14 @@ export default {
         onKeydown: this.onKeydown
       }, children)
     },
-    div (props, children) {
+    div(props, children) {
       return h('div', props, children)
     },
-    span (props, children) {
+    span(props, children) {
       return h('span', props, children)
     }
   },
-  render () {
+  render() {
     if (this.renderWhenVisible && !this.modelValue) {
       return null
     }

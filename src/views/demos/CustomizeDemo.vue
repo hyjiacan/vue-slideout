@@ -107,7 +107,7 @@
       </template>
     </slideout>
     <slideout v-model="v13" size="480px" :title="text.header">
-      <template #btn>
+      <template #buttons>
         <button>Test</button>
       </template>
       <div>

@@ -11,9 +11,9 @@
       <p style="color: #6278ff;text-decoration: underline;cursor: pointer;" @click="fillparent = !fillparent" v-lang>
         Click to toggle fill parent</p>
     </slideout>
-    <slideout v-model="v2" dock="top" :title="text.header" size="600px" resizable fillparent>
+    <slideout v-model="v2" dock="top" :title="text.header" size="600px" resizable fill-parent>
       <p>
-        <code>size="600px" resizable fillparent</code>
+        <code>size="600px" resizable fill-parent</code>
       </p>
       <p v-lang>
         Property <code>fixed</code> can prevent <code>body</code> scroll.
