@@ -38,6 +38,8 @@
   background-color: #FFFFFF;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   will-change: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .vue-slideout-mask {
@@ -50,30 +52,22 @@
 }
 
 .vue-slideout-content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   overflow: auto;
   z-index: 30;
+  flex: 1 1 auto;
 }
 
 .vue-slideout-footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 48px;
   padding: 5px 10px;
   line-height: 36px;
   box-sizing: border-box;
   border-top: 1px solid #EEE;
   z-index: 50;
   background: inherit;
+  flex: 0 0 auto;
 }
 
 .vue-slideout-dock-top {

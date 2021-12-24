@@ -4,7 +4,7 @@
     <div class="vue-slideout-layout" v-if="!renderWhenVisible || isVisible" :style="layoutStyle" ref="layout">
       <div class="vue-slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
            @mousedown="mouseDownHandler"></div>
-      <div class="vue-slideout-header" :style="headerStyle" v-if="showHeader">
+      <div class="vue-slideout-header" v-if="showHeader">
         <slot name="header" :title="title">
           <div class="vue-slideout-title-text">
             {{title}}
@@ -26,7 +26,7 @@
           </div>
         </slot>
       </div>
-      <div class="vue-slideout-content" :style="contentStyles">
+      <div class="vue-slideout-content">
         <slot/>
       </div>
       <div class="vue-slideout-footer" v-show="$slots.footer">

@@ -87,35 +87,6 @@ export default {
       }
       return style
     },
-    contentStyles () {
-      let style = {}
-      if (!this.isAutoSize) {
-        return style
-      }
-
-      switch (this.dockOn) {
-        case 'right':
-        case 'left':
-          break
-        case 'bottom':
-        case 'top':
-          let padding = 0
-          if (this.showHeader) {
-            padding += 48
-          }
-          if (this.showFooter) {
-            padding += 48
-          }
-          if (this.maxSize) {
-            style.maxHeight = `${this.maxSize - padding}px`
-          }
-          if (this.minSize) {
-            style.minHeight = `${this.minSize - padding}px`
-          }
-          break
-      }
-      return style
-    },
     // 容器需要应用的样式类
     containerClasses () {
       return {
@@ -131,35 +102,6 @@ export default {
         'vue-slideout-fullscreen': this.isFullscreen,
         'vue-slideout-autosize': this.isAutoSize
       }
-    },
-    // 头部样式
-    headerStyle () {
-      let style = {}
-
-      // 当自定义 header 时，不需要计算
-      if (this.$slots.header) {
-        return style
-      }
-
-      style.paddingRight = `${this.defaultButtonsWidth}px`
-
-      if (!this.headerButtons) {
-        return style
-      }
-      let btnStyle = window.getComputedStyle(this.headerButtons)
-      style.paddingRight = `${this.defaultButtonsWidth + parseInt(btnStyle.width) + 5}px`
-      return style
-    },
-    defaultButtonsWidth () {
-      // 20: padding 的值
-      let w = 20
-      if (this.showClose) {
-        w += 32
-      }
-      if (this.showFullscreen) {
-        w += 32
-      }
-      return w
     },
     // 是否使用固定定位
     isFixed () {
