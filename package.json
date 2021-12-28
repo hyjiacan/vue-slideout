@@ -26,13 +26,14 @@
   "license": "MIT",
   "files": [
     "lib",
-    "src/components",
+    "types",
     "LICENSE",
     "README.md",
     "README.zh-CN.md",
     "API.md",
     "API.zh-CN.md"
   ],
+  "types": "types/slideout.d.ts",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
