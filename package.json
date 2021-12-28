@@ -27,6 +27,7 @@
   "files": [
     "dist",
     "src",
+    "types",
     "LICENSE",
     "README.md",
     "README.zh-CN.md",
@@ -34,6 +35,7 @@
     "API.zh-CN.md",
     "MIGRATIONS.md"
   ],
+  "types": "types/slideout.d.ts",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
