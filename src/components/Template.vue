@@ -7,7 +7,7 @@
       <div class="vue-slideout-header" v-if="showHeader">
         <slot name="header" :title="title">
           <div class="vue-slideout-title-text">
-            {{title}}
+            <span>{{title}}</span>
           </div>
           <div class="vue-slideout-title-buttons" ref="buttons">
             <span class="vue-slideout-custom-buttons">

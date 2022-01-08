@@ -20,3 +20,4 @@ yarn-error.log*
 *.sw?
 /lib/demo.html
 /lib
+/dist
