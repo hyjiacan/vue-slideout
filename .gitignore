@@ -21,3 +21,4 @@ yarn-error.log*
 /lib/demo.html
 /lib
 /dist
+/yarn.lock
