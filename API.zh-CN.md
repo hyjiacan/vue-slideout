@@ -201,7 +201,7 @@
 - 参数 e: `{pause: Boolean, resume: Boolean}`
 
 > 在打开前调用,在回调函数内, 设置`e.pause=true` 可以阻止打开，
-> 设置 `e.continue=true` 可以继续打开(支持异步)。
+> 设置 `e.resume=true` 可以继续打开(支持异步)。
 
 #### opened
 
@@ -214,7 +214,7 @@
 - 参数 e: `{pause: Boolean, resume: Boolean}`
 
 > 在关闭前调用,在回调函数内, 设置`e.pause=true` 可以阻止关闭，
-> 设置 `e.continue=true` 可以继续关闭(支持异步)。
+> 设置 `e.resume=true` 可以继续关闭(支持异步)。
 
 #### closed
 
