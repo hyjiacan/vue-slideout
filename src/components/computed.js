@@ -2,43 +2,56 @@ export default {
   computed: {
     // The side to dock on.
     // The default value is right.
-    dockOn () {
+    dockOn() {
       return this.dock || 'right'
     },
     // If to show the header bar or not.
     // This depends on the title property and the header slot.
-    showHeader () {
+    showHeader() {
       return this.title || this.$slots.header
     },
     // If to show the footer bar or not.
     // This depends on the footer slot.
-    showFooter () {
+    showFooter() {
       return this.$slots.footer
     },
-    containerStyle () {
+    containerStyle() {
       const style = {
         'z-index': this.zIndex,
         display: this.showContainer ? 'block' : 'none'
+      }
+      const customStyle = this.$attrs.style
+      if (customStyle) {
+        if (typeof customStyle === 'string') {
+          customStyle.split(';').forEach(item => {
+            const [key, value] = item.split(':')
+            style[key] = value
+          })
+        } else {
+          for (const key in customStyle) {
+            style[key] = customStyle[key]
+          }
+        }
       }
       if (this.mousedown) {
         style.userSelect = 'none'
       }
       return style
     },
-    maskStyle () {
+    maskStyle() {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
     // If to use the fixed size or not:
     // true if the value of size is an Array
-    isSizeFixed () {
+    isSizeFixed() {
       return Array.isArray(this.size)
     },
     // Should I fit the size automatically ?
     // If the value of size is 0 or [0, 0],
     // then make it auto.
-    isAutoSize () {
+    isAutoSize() {
       if (this.isSizeFixed) {
         return !this.size.every(i => i.toString() !== '0')
       }
@@ -48,14 +61,14 @@ export default {
      * Get the value of size with unit px or "%"
      * @return {Array|String}
      */
-    sizeWithUnit () {
+    sizeWithUnit() {
       if (!this.isSizeFixed) {
         return this._fixSizeUnit(this.size)
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
     // The styles of panel
-    panelStyle () {
+    panelStyle() {
       const style = {}
 
       // Styles for fixed
@@ -94,7 +107,7 @@ export default {
       }
       return style
     },
-    containerClasses () {
+    containerClasses() {
       return {
         'slideout': true,
         [this.customClass || '']: true,
@@ -112,7 +125,7 @@ export default {
       }
     },
     // If to use fixed position.
-    isFixed () {
+    isFixed() {
       // False if target specified,
       // except the parent element is document.body.
       return this.fixed || this.parentElement === document.body || !this.target

@@ -67,6 +67,16 @@
     "Component has limited the max value of <code>size</code> as <code>100%</code>.": "组件限制了 <code>size</code> 的最大值为 <code>100%</code>。",
     "The <code>size=\"120%\"</code> specified here is greater than <code>100%</code>, thus it wouldn't work as expected.": "此处指定的值 <code>size=\"120%\"</code> 大于 <code>100%</code>, 因此其不会如期起作用。",
     "There are some breaking changes at 3.0.0, see migrations on": "版本 3.0.0 发生不兼容的变化，可以在这里找到迁移信息",
-    "Try it on the fly.": "试试在线示例"
+    "Try it on the fly.": "试试在线示例",
+    "Open": "打开",
+    "Nested usage": "嵌套使用",
+    "Click to open the inner Slide": "点击打开内层的 Slide",
+    "Here is the outer Slide.": "这是外层 Slide",
+    "Here is the inner Slide.": "这是内层 Slide",
+    "The style": "样式",
+    "is important, you can": "很重要，你可以",
+    "remove it": "将其移除",
+    "add it": "将其加上",
+    "to see what's difference.": "再看看有什么不同。"
   }
 }

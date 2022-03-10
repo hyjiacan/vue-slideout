@@ -1,6 +1,6 @@
 export default {
   methods: {
-    makeBeforeEventArgs (resumeCallback, cancelCallback) {
+    makeBeforeEventArgs(resumeCallback, cancelCallback) {
       const vm = this
       let canceled = false
       return {
@@ -8,7 +8,7 @@ export default {
         pause: false,
         // setter
         // Resume the paused operation.
-        set resume (value) {
+        set resume(value) {
           // Cancel the operation if the value is falsy.
           if (!value) {
             return
@@ -18,10 +18,10 @@ export default {
             resumeCallback()
           })
         },
-        get resume () {
+        get resume() {
           return undefined
         },
-        set cancel (value) {
+        set cancel(value) {
           canceled = value
           if (!value) {
             return
@@ -30,12 +30,12 @@ export default {
             cancelCallback()
           })
         },
-        get cancel () {
+        get cancel() {
           return canceled
         }
       }
     },
-    tryOpen () {
+    tryOpen() {
       // Do nothing if slideout is visible.
       if (this.isVisible) {
         return
@@ -59,7 +59,7 @@ export default {
       // Show slideout.
       this.setVisibleValue(true)
     },
-    tryClose () {
+    tryClose() {
       // Do nothing if slideout is invisible.
       if (!this.isVisible) {
         return
@@ -86,7 +86,7 @@ export default {
      * Update the value of isVisible.
      * @param {Boolean} visible The visible state
      */
-    setVisibleValue (visible) {
+    setVisibleValue(visible) {
       // Reset the size while slideout is brought into visible.
       if (visible) {
         this.resizeValue = 0
@@ -113,7 +113,7 @@ export default {
         })
       }
     },
-    emitOpenedEvent () {
+    emitOpenedEvent() {
       if (this.disableAnimation) {
         // The animation is disabled.
         this._doOpen()
@@ -124,7 +124,7 @@ export default {
         this._doOpen()
       }, this.animationDuration)
     },
-    emitClosedEvent () {
+    emitClosedEvent() {
       if (this.disableAnimation) {
         // The animation is disabled.
         this._doClose()
@@ -135,13 +135,13 @@ export default {
         this._doClose()
       }, this.animationDuration)
     },
-    _doOpen () {
+    _doOpen() {
       this.$emit('opened', this.$refs.panel)
       if (this.visible !== this.isVisible) {
         this._updateVisibleValue(true)
       }
     },
-    _doClose () {
+    _doClose() {
       this.showContainer = false
       this.isVisible = false
       this.$emit('closed')
@@ -149,7 +149,7 @@ export default {
         this._updateVisibleValue(false)
       }
     },
-    toggleFillState (fillparent) {
+    toggleFillState(fillparent) {
       if (typeof fillparent !== 'boolean') {
         this.isFilled = !this.isFilled
       } else if (this.isFilled === fillparent) {
@@ -164,9 +164,9 @@ export default {
     /**
      * Get the actual parent element of Slideout
      */
-    updateParentElement () {
+    updateParentElement() {
       if (!this.target) {
-        this.parentElement = this.$refs.container.parentElement
+        this.parentElement = this.$parent.$el.parentElement
         return
       }
       let target = this.target
@@ -182,7 +182,7 @@ export default {
     /**
      * The handler for mask click.
      */
-    onMaskClick () {
+    onMaskClick() {
       if (this.closeOnMaskClick) {
         this.tryClose()
       }
@@ -190,7 +190,7 @@ export default {
     /**
      * @return {{width: Number, height: Number}}
      */
-    getParentSize () {
+    getParentSize() {
       const rect = this.parentElement.getClientRects()[0]
       return {
         width: rect.width,
@@ -200,14 +200,14 @@ export default {
     /**
      * @return {{width: Number, height: Number}}
      */
-    getMyownSize () {
+    getMyownSize() {
       const rect = this.$refs.panel.getClientRects()[0]
       return {
         width: rect.width,
         height: rect.height
       }
     },
-    mouseDownHandler (e) {
+    mouseDownHandler(e) {
       if (this.isFilled) {
         // Resize is disabled while fillparent.
         return
@@ -219,7 +219,7 @@ export default {
       }
       this.originSize = this.getMyownSize()
     },
-    mouseMoveHandler (e) {
+    mouseMoveHandler(e) {
       if (this.isFilled) {
         // Resize is disabled while fillparent.
         return
@@ -285,17 +285,17 @@ export default {
         this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       })
       this.$nextTick(() => {
-        this.$emit('resize', { size: this.resizeValue })
+        this.$emit('resize', {size: this.resizeValue})
       })
     },
-    mouseUpHandler () {
+    mouseUpHandler() {
       this.mousedown = false
     },
     /**
      * Close slideout after Esc pressed.
      * @param {KeyboardEvent} e
      */
-    onKeydown (e) {
+    onKeydown(e) {
       if (this.ignoreEsc) {
         return
       }
@@ -313,10 +313,17 @@ export default {
       this.tryClose()
       return false
     },
-    _fixSizeUnit (val) {
-      return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
+    _fixSizeUnit(val) {
+      if (val.toString() === '0') {
+        return 'auto'
+      }
+      // Use unit PX as default
+      if (/^[0-9.]+$/.test(val)) {
+        return val + 'px'
+      }
+      return val
     },
-    _updateVisibleValue (value) {
+    _updateVisibleValue(value) {
       this.$emit('update:modelValue', value)
     }
   }

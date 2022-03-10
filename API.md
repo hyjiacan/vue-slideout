@@ -40,7 +40,7 @@
 #### target (optional)
 
 - type `String/HTMLElement`
-- default `null`
+- default `body`
 
 > Append component into the specified element.
 > Both `string`(selector) and `HTMLElement`(DOM object) available.
@@ -49,7 +49,9 @@
 > Note the target element must exist before the component is mounted
 >
 > i.e. the target cannot be rendered by the component itself,
-> and ideally should be outside of the entire Vue component tree.
+> and ideally should be outside the entire Vue component tree.
+
+If you indent to mount it onto it's parent element, you should use `:target="null"`.
 
 ### Mask layer
 
