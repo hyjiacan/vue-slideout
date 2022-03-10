@@ -295,7 +295,7 @@ export default {
       if (val.toString() === '0') {
         return 'auto'
       }
-      // 如果没有单位，那么直接使用 100%
+      // 使用像素 (px) 作为默认值
       if (/^[0-9.]+$/.test(val)) {
         return val + 'px'
       }
