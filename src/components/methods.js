@@ -292,7 +292,14 @@ export default {
       }
     },
     _fixSizeUnit(val) {
-      return val.toString() === '0' ? 'auto' : `${parseInt(val)}${/%$/.test(val) ? '%' : 'px'}`
+      if (val.toString() === '0') {
+        return 'auto'
+      }
+      // 如果没有单位，那么直接使用 100%
+      if (/^[0-9.]+$/.test(val)) {
+        return val + 'px'
+      }
+      return val
     }
   }
 }

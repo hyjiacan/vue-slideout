@@ -10,6 +10,7 @@
     <fullscreen-demo/>
     <fixed-n-offset-demo/>
     <auto-size-demo/>
+    <nested-demo />
   </div>
 </template>
 
@@ -23,10 +24,12 @@ import ResizeDemo from './demos/ResizeDemo'
 import EventDemo from './demos/EventDemo'
 import CustomizeDemo from './demos/CustomizeDemo'
 import AutoSizeDemo from './demos/AutoSizeDemo'
+import NestedDemo from '@/views/demos/NestedDemo'
 
 export default {
   name: 'Demo',
   components: {
+    NestedDemo,
     AutoSizeDemo,
     CustomizeDemo,
     EventDemo,

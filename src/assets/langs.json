@@ -63,6 +63,16 @@
     "So these four components get <code>append-to=\"body\"</code>": "所以这四个组件都设置了 <code>append-to=\"body\"</code>",
     "Auto size (wrap content)": "自适应尺寸（包围内容）",
     "Scrolling": "滚动条",
-    "Fullscreen as default": "默认为全屏"
+    "Fullscreen as default": "默认为全屏",
+    "Open": "打开",
+    "Nested usage": "嵌套使用",
+    "Click to open the inner Slide": "点击打开内层的 Slide",
+    "Here is the outer Slide.": "这是外层 Slide",
+    "Here is the inner Slide.": "这是内层 Slide",
+    "The style": "样式",
+    "is important, you can": "很重要，你可以",
+    "remove it": "将其移除",
+    "add it": "将其加上",
+    "to see what's difference.": "再看看有什么不同。"
   }
 }
