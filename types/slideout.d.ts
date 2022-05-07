@@ -15,12 +15,12 @@ export declare class SlideOutProps {
    */
   allowResize?: boolean
   /**
-   * The minimize value for resizing.
+   * The minimized value for resizing.
    * This does not limit the value of size.
    */
   minSize?: number
   /**
-   * The minimize value for resizing.
+   * The maximized value for resizing.
    * 0 means there is no limit.
    * This does not limit the value of size.
    */
@@ -51,14 +51,20 @@ export declare class SlideOutProps {
    */
   ignoreEsc?: boolean
   /**
-   * The dock side, the default value is "right".
+   * The side to dock, the default value is "right".
    */
   dock?: DockOptions
   /**
    * Specify the parent element to append slideout to.
    */
   appendTo?: string | HTMLElement
+  /**
+   * Whether to disable the animation effects.
+   */
   disableAnimation?: boolean
+  /**
+   * Whether to make the slideout fullscreen.
+   */
   fullscreen?: boolean
   /**
    * Whether to show the close button.
@@ -88,6 +94,7 @@ export declare class SlideOutProps {
 
 export declare class SlideOut extends SlideOutProps {
   install(vue, defaults?: SlideOutProps)
+
   /**
    * 是否可见，可使用 .sync 修饰符
    */

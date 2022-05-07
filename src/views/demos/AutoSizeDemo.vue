@@ -6,7 +6,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slide-out>
     <slide-out dock="right" :size="0" :visible.sync="v2" :title="text.header">
@@ -15,7 +15,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slide-out>
     <slide-out dock="bottom" :size="[0]" offset="100px" :visible.sync="v3" :title="text.header">
@@ -24,7 +24,7 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slide-out>
     <slide-out dock="left" :size="[300, 0]" offset="100px" :visible.sync="v4" :title="text.header">
@@ -35,17 +35,23 @@
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slide-out>
     <slide-out dock="top" :size="0" :visible.sync="v5" :min-size="400" :max-size="500" :title="text.header">
       <ul>
         <li><code>dock="top" :size="0" :visible.sync="v5" :min-size="400" :max-size="500"</code></li>
-        <li>Use `min-size` and `max-size` to limit the size, and enable scrolling</li>
+        <li>
+          <span v-lang>Use</span>
+          <code>min-size</code>
+          <span v-lang>and</span>
+          <code>max-size</code>
+          <span v-lang>to limit the size, and enable scrolling</span>
+        </li>
       </ul>
       <input-control/>
       <template v-slot:footer>
-        {{text.footer}}
+        {{ text.footer }}
       </template>
     </slide-out>
     <div class="demo-block">

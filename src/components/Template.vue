@@ -7,7 +7,7 @@
       <div class="vue-slideout-header" v-if="showHeader">
         <slot name="header" :title="title">
           <div class="vue-slideout-title-text">
-            <span>{{title}}</span>
+            <span>{{ title }}</span>
           </div>
           <div class="vue-slideout-title-buttons" ref="buttons">
             <span class="vue-slideout-custom-buttons">
@@ -51,6 +51,10 @@ export default {
   name: 'SlideOut',
   mixins: [computed, data, methods, watch],
   components: {IconArrow, IconCross, IconFullscreen, IconFullscreenExit},
+  model: {
+    prop: 'visible',
+    event: 'update:visible'
+  },
   props: {
     /**
      * 滑出尺寸，单位为像素，当为数组时，表示设置宽度和高度

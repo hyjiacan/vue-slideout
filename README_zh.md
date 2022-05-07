@@ -77,11 +77,15 @@ Vue.use(SlideOut, {
 
 *Foobar.vue*
 ```html
-<slide-out @close="onClose">
-    <div slot="header" slot-scope="{title}">
+<template>
+    <div>
+        <slide-out :visible.sync="isVisible" @close="onClose">
+            <div #header="{title}">
+            </div>
+            <div>这里是内容</div>
+        </slide-out>
     </div>
-    这里是内容
-</slide-out>
+</template>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
@@ -103,6 +107,9 @@ export default {
 }
 </script>
 ```
+
+> 在版本 `2.6.0` 及以后, 属性 `:visible.sync="isVisible"` 可以使用 `v-model="isVisible"` 代替。
+
 
 - 更多的用法，参见 http://hyjiacan.gitee.io/vue-slideout
 - API文档参见 [API.zh-CN.md](./API.zh-CN.md)

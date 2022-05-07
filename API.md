@@ -26,6 +26,8 @@
 
 > Is the slide visible, modifier `.sync` is available
 
+After version `2.6.0`, property `visible.sync` can be instead with `v-model`.
+
 #### title  (optional)
 
 - type `String`
@@ -115,14 +117,14 @@
 - type `Number`
 - default `60`
 
-> The min limit of drag-resize, value in `px`
+> The minimized limit of drag-resize, value in `px`
 
 #### max-size  (optional)
 
 - type `Number`
 - default `0`
 
-> The max limit of drag-resize, value `0` makes no limit, value in `px`
+> The maximized limit of drag-resize, value `0` makes no limit, value in `px`
 
 #### ignore-esc  (optional)
 

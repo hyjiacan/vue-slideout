@@ -26,6 +26,9 @@
 
 > 是否可见，可使用 `.sync` 修饰
 
+
+在版本 `2.6.0` 及以后, `visible.sync` 可以使用 `v-model` 代替。 
+
 #### title  (可选)
 
 - 类型 `String`

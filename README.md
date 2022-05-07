@@ -78,11 +78,15 @@ Vue.use(SlideOut, {
 
 *Foobar.vue*
 ```html
-<slide-out @close="onClose">
-    <div slot="header" slot-scope="{title}">
+<template>
+    <div>
+        <slide-out :visible.sync="isVisible" @close="onClose">
+            <div #header="{title}">
+            </div>
+            <div>content</div>
+        </slide-out>
     </div>
-    content
-</slide-out>
+</template>
 <script>
 import SlideOut from '@hyjiacan/vue-slideout'
 import '@hyjiacan/vue-slideout/lib/slideout.css'
@@ -90,6 +94,11 @@ import '@hyjiacan/vue-slideout/lib/slideout.css'
 export default {
     name: 'Foobar',
     components: {SlideOut},
+    data() {
+      return {
+          isVisible: false
+      }
+    },
     methods: {
         onClose (e) {
             // prevent close and wait
@@ -104,6 +113,8 @@ export default {
 }
 </script>
 ```
+
+> After version `2.6.0`, property `:visible.sync="isVisible"` can be instead with `v-model="isVisible"`.
 
 - For more usage, see https://hyjiacan.github.io/vue-slideout/
 - API reference: [API.md](./API.md)
