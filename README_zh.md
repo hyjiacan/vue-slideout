@@ -47,16 +47,16 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/dist/slideout.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/dist/slideout.css"/>
 ```
 
 使用指定版本
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/dist/slideout.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/dist/slideout.css"/>
 ```
 
 > **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com*
@@ -72,7 +72,7 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 ```javascript
 import Vue from 'vue'
 import Slideout from '@hyjiacan/vue-slideout'
-import '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/dist/slideout.css'
 
 // 引入 Slideout 组件，并设置组件默认值
 Vue.use(Slideout, {
@@ -93,7 +93,7 @@ Vue.use(Slideout, {
 </template>
 <script>
 import Slideout from '@hyjiacan/vue-slideout'
-import '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/dist/slideout.css'
 
 export default {
   name: 'Foobar',

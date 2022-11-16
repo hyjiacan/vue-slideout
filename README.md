@@ -47,16 +47,16 @@ The newest version
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/lib/slideout.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/dist/slideout.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout/dist/slideout.css"/>
 ```
 
 Specified version
 
 ```html
 
-<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/lib/slideout.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/dist/slideout.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hyjiacan/vue-slideout@<VERSION>/dist/slideout.css"/>
 ```
 
 > **unpkg** is also available: instead *cdn.jsdelivr.net* with *unpkg.com*.
@@ -72,7 +72,7 @@ Specified version
 ```javascript
 import Vue from 'vue'
 import Slideout from '@hyjiacan/vue-slideout'
-import '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/dist/slideout.css'
 
 // import Slideout component, and set the defaults props
 Vue.use(Slideout, {
@@ -92,7 +92,7 @@ Vue.use(Slideout, {
 </template>
 <script>
 import Slideout from '@hyjiacan/vue-slideout'
-import '@hyjiacan/vue-slideout/lib/slideout.css'
+import '@hyjiacan/vue-slideout/dist/slideout.css'
 
 export default {
   name: 'Foobar',
