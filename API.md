@@ -4,24 +4,25 @@
 
 ### Basic
 
+#### v-model (required)
+
+- type `Boolean`
+
+> The visible state of component.
+
 #### size (optional)
 
 - type `String/Number/Array`
 - default `400px`
 
 > The size of component, both `px` and `%` are available;
+>
 > - If it is an array, then: The 1st element is the width, and the 2nd element is the height,
 > - if there is only one element: that makes width equals with height.
     > In this situation, props `resizable`, `min-size`, `max-size` are not available.
 > - ( **Auto-fit size supported** ).
     > You can set value `0/[0]/[0,size]/[size,0]` to make component auto fit content size.
     > In this situation, props `min-size`, `max-size` are available.
-
-#### v-model (required)
-
-- type `Boolean`
-
-> The visible state of component.
 
 #### dock (optional)
 
@@ -183,13 +184,13 @@ If you indent to mount it onto it's parent element, you should use `:target="nul
 
 ## Slots
 
-#### default
+### default
 
 - args `-`
 
 > The content slot.
 
-#### header
+### header
 
 - args `{title}`
 
@@ -197,13 +198,13 @@ If you indent to mount it onto it's parent element, you should use `:target="nul
 > `title` will take no affected(and close button will be removed) if specified this,
 > use `slot-scope="{ title }"` to get prop `title`.
 
-#### buttons
+### buttons
 
 - args `-`
 
 > Extend header buttons.
 
-#### footer
+### footer
 
 - args `-`
 
@@ -211,7 +212,7 @@ If you indent to mount it onto it's parent element, you should use `:target="nul
 
 ## Events
 
-#### opening
+### opening
 
 - args e: `{pause: Boolean, resume: Boolean}`
 
@@ -219,20 +220,20 @@ If you indent to mount it onto it's parent element, you should use `:target="nul
 > Emitted before component open, in callback function,
 > assign `e.pause=true` to pause open, and assign `e.resume=true` to resume open (async supported).
 
-#### opened
+### opened
 
 - args `-`
 
 > Emitted after opened (and after the animation completed).
 
-#### closing
+### closing
 
 - args e: `{pause: Boolean, resume: Boolean}`
 
 > Emitted before component close, in callback function,
 > assign `e.pause=true` to pause close, and assign `e.resume=true` to resume close (async supported).
 
-#### closed
+### closed
 
 - args `-`
 

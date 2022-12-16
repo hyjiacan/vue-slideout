@@ -16,6 +16,7 @@
 - 默认值 `400px`
 
 > 显示的尺寸, 可以使用单位`px`和`%`；
+> 
 > - 当为数组时: 第一个值表示宽度，第二个值表示高度;
 > - 当数组只有一个值时: 表示宽度和高度相同，此时属性 `resizable`, `min-size`, `max-size` 值会被忽略，即不允许改变大小。
 > - ( **自适应尺寸支持** ) 可以设置值为 `0/[0]/[0,size]/[size,0]` 格式， 使组件尺寸自动适应内容。此时 `min-size`, `max-size` 可用。
@@ -177,48 +178,48 @@
 
 ## 插槽
 
-#### header
+### header
 
 - 作用域 `{title}`
 
 > 头部内容，使用时会占据整个头部，此时属性`title`会无效，
 > 同时也不会显示关闭按钮使用`slot-scope="{ title }"`可以取到属性`title`的值。
 
-#### buttons
+### buttons
 
 > 头部的扩展按钮部分。
 
-#### default
+### default
 
 > 内容部分。
 
-#### footer
+### footer
 
 > 底部内容。
 
 ## 事件
 
-#### opening
+### opening
 
 - 参数 e: `{pause: Boolean, resume: Boolean}`
 
 > 在打开前调用,在回调函数内, 设置`e.pause=true` 可以阻止打开，
 > 设置 `e.resume=true` 可以继续打开(支持异步)。
 
-#### opened
+### opened
 
 - 参数 `-`
 
 > 在打开后(动画完成)调用。
 
-#### closing
+### closing
 
 - 参数 e: `{pause: Boolean, resume: Boolean}`
 
 > 在关闭前调用,在回调函数内, 设置`e.pause=true` 可以阻止关闭，
 > 设置 `e.resume=true` 可以继续关闭(支持异步)。
 
-#### closed
+### closed
 
 - 参数 `-`
 
