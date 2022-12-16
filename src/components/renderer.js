@@ -55,7 +55,7 @@ export default {
     renderContent() {
       return this.div({
         class: 'slideout-content',
-      }, this.$slots.default())
+      }, this.$slots.default ? this.$slots.default() : [])
     },
     renderFooter() {
       return this.div({
