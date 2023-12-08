@@ -162,6 +162,10 @@ export default {
         // 全屏时不允许改变大小
         return
       }
+      if (e.type === 'touchstart') {
+        e = e.touches[0]
+      }
+      console.info('start', e)
       this.mousedown = true
       this.mouseDownPosition = {
         x: e.pageX,
@@ -178,7 +182,12 @@ export default {
       if (!this.mousedown) {
         return
       }
-      e.preventDefault()
+      if (e.type === 'touchmove') {
+        e = e.touches[0]
+      } else {
+        e.preventDefault()
+      }
+      console.info('move', e)
       // 获取鼠标的偏移量
       let x = e.pageX - this.mouseDownPosition.x
       let y = e.pageY - this.mouseDownPosition.y
@@ -235,7 +244,7 @@ export default {
         this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       })
       this.$nextTick(() => {
-        this.$emit('resize', {size: this.resizeValue})
+        this.$emit('resize', { size: this.resizeValue })
       })
     },
     mouseUpHandler() {

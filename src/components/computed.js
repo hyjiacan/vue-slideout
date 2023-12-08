@@ -1,17 +1,17 @@
 export default {
   computed: {
     // 停靠边，当未指定时，设置为默认值 right
-    dockOn () {
+    dockOn() {
       return this.dock || 'right'
     },
-    showHeader () {
+    showHeader() {
       return this.title || this.$slots.header
     },
-    showFooter () {
+    showFooter() {
       return this.$slots.footer
     },
     // SlideOut 容器样式
-    containerStyle () {
+    containerStyle() {
       let style = {
         // 2147483647 是允许的最大值
         // 'z-index': this.isFullscreen ? 2147483647 : this.zIndex,
@@ -20,20 +20,26 @@ export default {
       }
       if (this.mousedown) {
         style.userSelect = 'none'
+        style.cursor = {
+          left: 'ew-resize',
+          right: 'ew-resize',
+          top: 'ns-resize',
+          bottom: 'ns-resize'
+        }[this.dockOn]
       }
       return style
     },
     // SlideOut 遮罩层样式
-    maskStyle () {
+    maskStyle() {
       return this.maskColor ? {
         'background-color': this.maskColor
       } : {}
     },
     // 是否使用固定大小，判断依据：指定的大小是一个数组
-    isSizeFixed () {
+    isSizeFixed() {
       return Array.isArray(this.size)
     },
-    isAutoSize () {
+    isAutoSize() {
       if (this.isSizeFixed) {
         return !this.size.every(i => i.toString() !== '0')
       }
@@ -43,14 +49,14 @@ export default {
      * 获取带上单位的size值
      * @return {Array|String}
      */
-    sizeWithUnit () {
+    sizeWithUnit() {
       if (!this.isSizeFixed) {
         return this._fixSizeUnit(this.size)
       }
       return [this._fixSizeUnit(this.size[0]), this._fixSizeUnit(this.size[this.size.length === 1 ? 0 : 1])]
     },
     // SlideOut 内容样式
-    layoutStyle () {
+    layoutStyle() {
       let style = {}
       if (this.isSizeFixed) {
         // 指定大小
@@ -88,7 +94,7 @@ export default {
       return style
     },
     // 容器需要应用的样式类
-    containerClasses () {
+    containerClasses() {
       return {
         [this.customClass || '']: true,
         [`vue-slideout-dock-${this.dockOn}`]: true,
@@ -104,7 +110,7 @@ export default {
       }
     },
     // 是否使用固定定位
-    isFixed () {
+    isFixed() {
       // 设置了 appendTo 的时候，就不固定显示
       // 但是如果父元素为 body 时，也需要固定显示
       return this.fixed || this.parentElement === document.body || !this.appendTo

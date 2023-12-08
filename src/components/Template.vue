@@ -3,7 +3,7 @@
     <div class="vue-slideout-mask" v-if="showMask" @click="onMaskClick" :style="maskStyle"></div>
     <div class="vue-slideout-layout" v-if="!renderWhenVisible || isVisible" :style="layoutStyle" ref="layout">
       <div class="vue-slideout-drag-handle" v-if="allowResize && !isFullscreen && !isSizeFixed"
-           @mousedown="mouseDownHandler"></div>
+           @mousedown.passive="mouseDownHandler" @touchstart.passive="mouseDownHandler"></div>
       <div class="vue-slideout-header" v-if="showHeader">
         <slot name="header" :title="title">
           <div class="vue-slideout-title-text">
@@ -218,6 +218,8 @@ export default {
       // 绑定鼠标事件
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
+      document.addEventListener('touchmove', this.mouseMoveHandler)
+      document.addEventListener('touchend', this.mouseUpHandler)
     }
     this._bindKeyboardEvent()
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
@@ -229,6 +231,8 @@ export default {
       // 移除事件
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)
+      document.removeEventListener('touchmove', this.mouseMoveHandler)
+      document.removeEventListener('touchend', this.mouseUpHandler)
     }
     if (this.isVisible) {
       this.setVisibleValue(false)
