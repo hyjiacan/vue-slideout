@@ -165,7 +165,6 @@ export default {
       if (e.type === 'touchstart') {
         e = e.touches[0]
       }
-      console.info('start', e)
       this.mousedown = true
       this.mouseDownPosition = {
         x: e.pageX,
@@ -187,7 +186,6 @@ export default {
       } else {
         e.preventDefault()
       }
-      console.info('move', e)
       // 获取鼠标的偏移量
       let x = e.pageX - this.mouseDownPosition.x
       let y = e.pageY - this.mouseDownPosition.y
