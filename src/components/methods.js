@@ -212,6 +212,9 @@ export default {
         // Resize is disabled while fillparent.
         return
       }
+      if (e.type === 'touchstart') {
+        e = e.touches[0]
+      }
       this.mousedown = true
       this.mouseDownPosition = {
         x: e.pageX,
@@ -228,7 +231,13 @@ export default {
       if (!this.mousedown) {
         return
       }
-      e.preventDefault()
+
+      if (e.type === 'touchmove') {
+        e = e.touches[0]
+      } else {
+        e.preventDefault()
+      }
+
       // The offset of mouse movement.
       const x = e.pageX - this.mouseDownPosition.x
       const y = e.pageY - this.mouseDownPosition.y
@@ -285,7 +294,7 @@ export default {
         this.resizeValue = newSize < this.minSize ? this.minSize : newSize
       })
       this.$nextTick(() => {
-        this.$emit('resize', {size: this.resizeValue})
+        this.$emit('resize', { size: this.resizeValue })
       })
     },
     mouseUpHandler() {

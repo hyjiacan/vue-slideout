@@ -180,6 +180,8 @@ export default {
       // Bind the mouse events for resizing.
       document.addEventListener('mousemove', this.mouseMoveHandler)
       document.addEventListener('mouseup', this.mouseUpHandler)
+      document.addEventListener('touchmove', this.mouseMoveHandler)
+      document.addEventListener('touchend', this.mouseUpHandler)
     }
     this.headerButtons = this.$slots.btn ? this.$refs.buttons : null
   },
@@ -189,6 +191,8 @@ export default {
       // Remove the mouse events for resizing.
       document.removeEventListener('mousemove', this.mouseUpHandler)
       document.removeEventListener('mouseup', this.mouseMoveHandler)
+      document.removeEventListener('touchmove', this.mouseMoveHandler)
+      document.removeEventListener('touchend', this.mouseUpHandler)
     }
     if (this.isVisible) {
       this.tryClose()

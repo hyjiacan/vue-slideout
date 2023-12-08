@@ -31,7 +31,8 @@ export default {
     renderResizeHandle() {
       return this.div({
         class: 'slideout-resize--handle',
-        onMousedown: this.mouseDownHandler
+        onMousedown: this.mouseDownHandler,
+        onTouchstart: this.mouseDownHandler
       })
     },
     renderHeader() {
