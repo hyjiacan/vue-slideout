@@ -6,11 +6,11 @@
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@hyjiacan/vue-slideout?style=flat-square)
 [![npm](https://img.shields.io/npm/dm/@hyjiacan/vue-slideout?style=flat-square)](https://npmcharts.com/compare/@hyjiacan/vue-slideout?minimal=true)
 [![Coverage Status](https://coveralls.io/repos/github/hyjiacan/vue-slideout/badge.svg?branch=master)](https://coveralls.io/github/hyjiacan/vue-slideout?branch=master)
-[![](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
+[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/@hyjiacan/vue-slideout/badge)](https://www.jsdelivr.com/package/npm/@hyjiacan/vue-slideout)
 
 一个 Vue3 的侧滑组件
 
-### 依赖
+## 依赖
 
 - Vue.js 3.x
 - Less
@@ -60,7 +60,6 @@ git clone https://github.com/hyjiacan/vue-slideout.git
 ```
 
 > **unpkg** 也可以使用: 替换 *cdn.jsdelivr.net* 为 *unpkg.com*
-
 > 可以通过替换 *slideout.umd.min.js* 为 *slideout.umd.js* 使用未被压缩的文件来
 
 ## 使用
